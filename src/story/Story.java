@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import graphics.Graphics;
 import graphics.Colors;
 import story.Gorm;
+import story.Gro;
 
 
 
@@ -34,7 +35,7 @@ public class Story {
             }
             else if(input == 2){
                 //Choosing Gro 
-                Graphics.text("You have chosen ");
+                Graphics.text("You have chosen " + Gro.name);
             }
             else{
                 //input error
