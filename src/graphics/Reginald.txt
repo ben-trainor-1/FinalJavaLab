@@ -1,5 +1,5 @@
 Reginald
-Stats: 
+Stats: Class/Info; Average damage: ; Health: 
 --------------
  __
 |00|

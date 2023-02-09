@@ -7,7 +7,7 @@ public class Test {
 
         Graphics.text("Hello there");
 
-        Graphics.displayCharacter("LokiTest");
+        Graphics.displayCharacter("Reginald", 100);
 
     }
     
