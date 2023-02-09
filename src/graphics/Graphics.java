@@ -35,7 +35,7 @@ public class Graphics {
 
     // Method for printing out enemies
 
-    public static void displayCharacter(String characterName) throws Exception {
+    public static void displayCharacter(String characterName, int characterHealth) throws Exception {
          
         String filePath = "./src/graphics/" + characterName + ".txt";
         File characterFile = new File(filePath);
@@ -46,11 +46,12 @@ public class Graphics {
 
         // Stats
         textInline(characterScanner.nextLine());
-        text("Numbers numbers");
+        text(characterHealth + ";");
 
         // Character sprite
         while (characterScanner.hasNext()) {
             System.out.println(characterScanner.nextLine());
+            Thread.sleep(textSpeed);
         }
 
     }
