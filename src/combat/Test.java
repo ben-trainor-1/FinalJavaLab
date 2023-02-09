@@ -7,7 +7,7 @@ public class Test {
 
         Graphics.text("Hello there");
 
-        Graphics.textEnemy("./src/graphics/Test.txt");
+        Graphics.displayCharacter("LokiTest");
 
     }
     
