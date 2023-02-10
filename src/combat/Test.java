@@ -7,7 +7,9 @@ public class Test {
 
         Graphics.text("Hello there");
 
-        Graphics.textEnemy("./src/graphics/Test.txt");
+        // Graphics.displayCharacter("Gullinkambi", 500);
+
+        FullCombat.fight("Gullinkambi", 500);
 
     }
     
