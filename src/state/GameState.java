@@ -1,3 +1,5 @@
+package state;
+
 public class GameState {
 
     public static String name = "";
