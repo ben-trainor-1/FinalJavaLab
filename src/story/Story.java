@@ -89,6 +89,29 @@ public class Story {
         //Setting 
         Graphics.text(Colors.ANSI_PURPLE + "Your story starts in the misty mountains of Iceland in a town called Asbjorn \n" + 
                         "It is a small town sparsely populated. While the inhabitants are kind an welcoming, You are a warrior who wishes to fight." + Colors.ANSI_RESET);
+        //Leave Village; go to cave
+        //First fight(required): Dire wolf
+        //Enter cave, but run into dead end. Odin comes, scorns you, but then feels guilty and moves boulder allowing you to move on.
+        //Choice: left of right
+            //left: Loki room
+            //right: locked door
+        //Meet with Loki. He thanks you for freeing him, then taunts you. He figures out your plans and laughs at them
+            //Many dialouge choices, but they all end in embaressment 
+        //Fight undead skeleton for key
+            //another optional US for ???
+        //Head back to right 
+        //Some sort of stronghold...
+        //Maze:
+            //Riddles to help you thru (perhaps some allude to the good ending)
+            //You can do an "Theseus and the Minotaur" kinda thing
+            //Few suprise battles; (avoidable but mandatory if you find them)
+            //At the end: Gullinkambi: the Golden Comb (boss fight)
+                //After the fight: Loki mocks you again
+                //Weapon upgrade!
+            //
+        //Flyting: A poetic constest of insults
+            //Allusions to this thru out game. remember old insults and what peeps are sensitive to.
+            //Winning allowd good ending
     }
     
     
