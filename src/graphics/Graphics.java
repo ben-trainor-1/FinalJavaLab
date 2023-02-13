@@ -37,7 +37,7 @@ public class Graphics {
 
     public static void displayCharacter(String characterName, int characterHealth) throws Exception {
          
-        String filePath = "./src/graphics/" + characterName + ".txt";
+        String filePath = "./src/graphics/Characters/" + characterName + ".txt";
         File characterFile = new File(filePath);
         Scanner characterScanner = new Scanner(characterFile);
 
