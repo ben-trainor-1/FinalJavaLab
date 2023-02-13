@@ -1,15 +1,20 @@
 package combat;
 import java.util.Scanner;
-import graphics.Colors;
-import graphics.Graphics;
+import java.util.Random;
+import graphics.*;
+import state.*;
 
 
 public class FullCombat {
         
-    public static void fight(String enemy, int enemyHealth) throws Exception {
+    // Create variables for methods
+    int enemyAction;
+
+    public void fight(String enemy, int enemyHealth) throws Exception {
     
-        // Create scanner and variables
+        // Create objects and variables
         Scanner in = new Scanner(System.in);
+        Random Rand = new Random();
         int input;
 
         // Display enemy
@@ -19,19 +24,25 @@ public class FullCombat {
         // Combat
         do {
 
+            // Display the character
             Graphics.displayCharacter("Reginald", 100);
 
+            // Randomly select enemy action
+            enemyAction = Rand.nextInt(3);
+
+            // Choose action
             Graphics.text(Colors.ANSI_YELLOW + "Enter 1 for Attack - Enter 2 for Defend - Enter 3 for Heal\n1. Attack - \n2. Defend - Blocks all damage except critical hits\n3. Heal - " + Colors.ANSI_RESET);
             input = in.nextInt();
 
+            // Calculate outcome
             if (input == 1) {
-                Attack.
+                attack();
             }
             else if (input == 2) {
-                Defend.
+                
             }
             else if (input == 3) {
-                Heal.
+                
             }
             else {
                 Graphics.text("Do you not know how to read? You must be a true viking. Try again.");
@@ -42,5 +53,19 @@ public class FullCombat {
 
     }
 
+    public void attack() throws Exception {
+
+        if (enemyAction == 0) {
+
+        }
+        else if (enemyAction == 1) {
+
+        }
+        else {
+
+        }
+
+    }
+ 
     
 }
