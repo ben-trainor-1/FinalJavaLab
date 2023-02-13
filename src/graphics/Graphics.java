@@ -55,5 +55,25 @@ public class Graphics {
         }
 
     }
+
+    // Method for printing out background
+
+    public static void displayBackground(String backgroundName) throws Exception {
+         
+            String filePath = "./src/graphics/Background/" + backgroundName + ".txt";
+            File backgroundFile = new File(filePath);
+            Scanner backgroundScanner = new Scanner(backgroundFile);
+    
+            // Character name
+            text(backgroundScanner.nextLine());
+    
+    
+            // Character sprite
+            while (backgroundScanner.hasNext()) {
+                System.out.println(backgroundScanner.nextLine());
+                Thread.sleep(textSpeed);
+            }
+    
+        }
     
 }
