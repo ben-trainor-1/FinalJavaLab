@@ -93,6 +93,7 @@ public class Graphics {
             System.out.println(deathScanner.nextLine());
             Thread.sleep(textSpeed);
         }
+    }
 
     // Method for printing out weapons
 
@@ -113,4 +114,5 @@ public class Graphics {
 
     
     }
+}
 }
