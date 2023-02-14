@@ -8,9 +8,9 @@ import state.*;
 public class FullCombat {
         
     // Create variables for methods
-    int enemyAction;
+    static int enemyAction;
 
-    public void fight(String enemy, int enemyHealth) throws Exception {
+    public static void fight(String enemy, int enemyHealth) throws Exception {
     
         // Create objects and variables
         Scanner in = new Scanner(System.in);
@@ -53,7 +53,7 @@ public class FullCombat {
 
     }
 
-    public void attack() throws Exception {
+    public static void attack() throws Exception {
 
         if (enemyAction == 0) {
 
