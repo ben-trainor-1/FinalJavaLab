@@ -60,20 +60,39 @@ public class Graphics {
 
     public static void displayBackground(String backgroundName) throws Exception {
          
-            String filePath = "./src/graphics/Background/" + backgroundName + ".txt";
-            File backgroundFile = new File(filePath);
-            Scanner backgroundScanner = new Scanner(backgroundFile);
+        String filePath = "./src/graphics/Background/" + backgroundName + ".txt";
+        File backgroundFile = new File(filePath);
+        Scanner backgroundScanner = new Scanner(backgroundFile);
     
-            // Character name
-            text(backgroundScanner.nextLine());
+        // Background name
+        text(backgroundScanner.nextLine());
     
     
-            // Character sprite
-            while (backgroundScanner.hasNext()) {
-                System.out.println(backgroundScanner.nextLine());
-                Thread.sleep(textSpeed);
-            }
-    
+        // Background sprite
+        while (backgroundScanner.hasNext()) {
+            System.out.println(backgroundScanner.nextLine());
+            Thread.sleep(textSpeed);
         }
     
+    }
+    
+    // Method for printing out death
+
+    public static void displayDeath(String deathName) throws Exception {
+         
+        String filePath = "./src/graphics/Death/" + deathName + ".txt";
+        File deathFile = new File(filePath);
+        Scanner deathScanner = new Scanner(deathFile);
+    
+        // Death name
+        text(deathScanner.nextLine());
+    
+    
+        // Death sprite
+        while (deathScanner.hasNext()) {
+            System.out.println(deathScanner.nextLine());
+            Thread.sleep(textSpeed);
+        }
+    
+    }
 }
