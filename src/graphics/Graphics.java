@@ -93,6 +93,7 @@ public class Graphics {
             System.out.println(deathScanner.nextLine());
             Thread.sleep(textSpeed);
         }
+    }
 
     // Method for printing out weapons
 
@@ -111,6 +112,26 @@ public class Graphics {
             System.out.println(weaponsScanner.nextLine());
             Thread.sleep(textSpeed);
 
-    
+        }
     }
+
+        // Method for printing out win
+
+        public static void displayWin(String winName) throws Exception {
+         
+            String filePath = "./src/graphics/Win/" + winName + ".txt";
+            File winFile = new File(filePath);
+            Scanner winScanner = new Scanner(winFile);
+            
+            // Weapons name
+            text(winScanner.nextLine());
+            
+            
+            // Weapons sprite
+            while (winScanner.hasNext()) {
+                System.out.println(winScanner.nextLine());
+                Thread.sleep(textSpeed);
+    
+            }
+        }
 }
