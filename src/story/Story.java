@@ -138,6 +138,4 @@ public class Story {
             //Allusions to this thru out game. remember old insults and what peeps are sensitive to.
             //Winning allowd good ending
     }
-    
-    
 }
