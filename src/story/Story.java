@@ -103,12 +103,37 @@ public class Story {
         //Some sort of stronghold...
         //Maze:
             //Riddles to help you thru (perhaps some allude to the good ending)
-            //You can do an "Theseus and the Minotaur" kinda thing
+            //You can do a "Theseus and the Minotaur" kinda thing
             //Few suprise battles; (avoidable but mandatory if you find them)
             //At the end: Gullinkambi: the Golden Comb (boss fight)
                 //After the fight: Loki mocks you again
                 //Weapon upgrade!
-            //
+            //Discover large cavern
+        //Abyss
+            //The only way is an elevator, but it is broken
+            //Go to path on right
+                //Easier enemy (required)
+                //One room contains a blacksmith puzzle 
+                //You find a spare gear lying around
+            //or return to village
+                //On your way out you notice a hidden crevice - it contains Weapon upgrade  
+                //Chance to fight hard enemy
+                //Blacksmith gives a gear
+            //Epic art as descend in the elevator 
+            //At the bottom is the gates of Hel
+                //The Fenris Wolf (Boss fight) guards it
+                    //weapon upgrade!
+                    //defeat the wolf but don't kill it
+                    //Get absolutely mocked by Loki again
+        //Greater Hel Area
+            //Outside the gates: Nothing of note, but a trickling stream of dirty water
+            //Eastern Hel:
+            //Western Hel:
+            //Southern Hel: Gates to Hel; judgy dude
+            //Northern Hel: Hela's palace 
+        //bIG BOTE
+
+
         //Flyting: A poetic constest of insults
             //Allusions to this thru out game. remember old insults and what peeps are sensitive to.
             //Winning allowd good ending
