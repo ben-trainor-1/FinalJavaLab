@@ -8,7 +8,7 @@ import state.*;
 public class FullCombat {
         
     // Create variables for methods
-    int enemyAction;
+    static int enemyAction;
 
     public void fight(String enemy, int enemyHealth, int attackChance, int defenseChance, int healChance) throws Exception {
     
@@ -59,7 +59,7 @@ public class FullCombat {
 
     }
 
-    public void attack() throws Exception {
+    public static void attack() throws Exception {
 
         if (enemyAction == 0) {
 

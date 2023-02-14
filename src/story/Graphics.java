@@ -1,4 +1,4 @@
-package graphics;
+package story;
 import java.io.File;
 import java.util.Scanner;
 
@@ -37,7 +37,7 @@ public class Graphics {
 
     public static void displayCharacter(String characterName, int characterHealth) throws Exception {
          
-        String filePath = "./src/graphics/Characters/" + characterName + ".txt";
+        String filePath = "./src/graphics/" + characterName + ".txt";
         File characterFile = new File(filePath);
         Scanner characterScanner = new Scanner(characterFile);
 
@@ -55,44 +55,5 @@ public class Graphics {
         }
 
     }
-
-    // Method for printing out background
-
-    public static void displayBackground(String backgroundName) throws Exception {
-         
-        String filePath = "./src/graphics/Background/" + backgroundName + ".txt";
-        File backgroundFile = new File(filePath);
-        Scanner backgroundScanner = new Scanner(backgroundFile);
     
-        // Background name
-        text(backgroundScanner.nextLine());
-    
-    
-        // Background sprite
-        while (backgroundScanner.hasNext()) {
-            System.out.println(backgroundScanner.nextLine());
-            Thread.sleep(textSpeed);
-        }
-    
-    }
-    
-    // Method for printing out death
-
-    public static void displayDeath(String deathName) throws Exception {
-         
-        String filePath = "./src/graphics/Death/" + deathName + ".txt";
-        File deathFile = new File(filePath);
-        Scanner deathScanner = new Scanner(deathFile);
-    
-        // Death name
-        text(deathScanner.nextLine());
-    
-    
-        // Death sprite
-        while (deathScanner.hasNext()) {
-            System.out.println(deathScanner.nextLine());
-            Thread.sleep(textSpeed);
-        }
-    
-    }
 }
