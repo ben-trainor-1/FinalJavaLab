@@ -127,16 +127,29 @@ public class Story {
                     //Get absolutely mocked by Loki again
         //Greater Hel Area
             //Outside the gates: Nothing of note, but a trickling stream of dirty water
-            //Eastern Hel:
-            //Western Hel:
-            //Southern Hel: Gates to Hel; judgy dude
-            //Northern Hel: Hela's palace 
+            //Eastern Hel: Docks
+                //Naglfar, the ship made of fingernails and toenails resides here.
+                    //Loki fight is on this ship
+                    //Must find way on ship
+            //Western Hel: Tavern 
+                //Lots of dead people drinking here
+                //Flyting happens here
+                    //Flyting: A poetic constest of insults
+                        //Allusions to this thru out game. remember old insults and what peeps are sensitive to.
+                        //Winning allowd good ending
+                //find rumors about ship
+            //Southern Hel: Gates to Hel; 
+                //Entrance
+            //Northern Hel: Hela's palace
+                //permission from Hel to get on ship 
+                //Must find/fight way into palace
         //bIG BOTE
+            //Loki bossfight
+                //If you win Loki runs away
+                //If you lose, you get thrown into water (die)
+                //If you win against loki and in the flyting, then Loki drops weapon, which you then use in Ragnorak
 
 
-        //Flyting: A poetic constest of insults
-            //Allusions to this thru out game. remember old insults and what peeps are sensitive to.
-            //Winning allowd good ending
     }
     
     
