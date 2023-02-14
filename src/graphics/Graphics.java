@@ -93,6 +93,24 @@ public class Graphics {
             System.out.println(deathScanner.nextLine());
             Thread.sleep(textSpeed);
         }
+
+    // Method for printing out weapons
+
+    public static void displayWeapons(String weaponsName) throws Exception {
+         
+        String filePath = "./src/graphics/Weapons/" + weaponsName + ".txt";
+        File weaponsFile = new File(filePath);
+        Scanner weaponsScanner = new Scanner(weaponsFile);
+        
+        // Weapons name
+        text(weaponsScanner.nextLine());
+        
+        
+        // Weapons sprite
+        while (weaponsScanner.hasNext()) {
+            System.out.println(weaponsScanner.nextLine());
+            Thread.sleep(textSpeed);
+
     
     }
 }
