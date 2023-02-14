@@ -115,24 +115,24 @@ public class Graphics {
         }
     }
 
-        // Method for printing out win
+    // Method for printing out win
 
-        public static void displayWin(String winName) throws Exception {
+    public static void displayWin(String winName) throws Exception {
          
-            String filePath = "./src/graphics/Win/" + winName + ".txt";
-            File winFile = new File(filePath);
-            Scanner winScanner = new Scanner(winFile);
+        String filePath = "./src/graphics/Win/" + winName + ".txt";
+        File winFile = new File(filePath);
+        Scanner winScanner = new Scanner(winFile);
             
-            // Weapons name
-            text(winScanner.nextLine());
+        // Win name
+        text(winScanner.nextLine());
             
             
-            // Weapons sprite
-            while (winScanner.hasNext()) {
-                System.out.println(winScanner.nextLine());
-                Thread.sleep(textSpeed);
+        // Win sprite
+        while (winScanner.hasNext()) {
+            System.out.println(winScanner.nextLine());
+            Thread.sleep(textSpeed);
     
-            }
         }
+    }
 }
-}
+
