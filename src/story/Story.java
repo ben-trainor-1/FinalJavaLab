@@ -2,6 +2,7 @@ package story;
 
 import java.util.Scanner;
 import java.io.File;
+import java.nio.file.attribute.GroupPrincipal;
 import java.util.ArrayList;
 import graphics.Graphics;
 import graphics.Colors;
@@ -73,22 +74,38 @@ public class Story {
         input = 0;
         input = in.nextInt();
 
-        if(input == 1){
-            //Choosing Greatspear
-            Graphics.text("You  have chosen spear");
-        }
-        else if(input == 2){
-            //Choosing Battleaxe
-            Graphics.text("You have chosen axe");
-        }
-        else{
-            //input error
-            Graphics.text("Please choose spear or axe");
-        }
+        // if(input == 1){
+        //     //Choosing Greatspear
+        //     Graphics.text("You  have chosen spear");
+        // }
+        // else if(input == 2){
+        //     //Choosing Battleaxe
+        //     Graphics.text("You have chosen axe");
+        // }
+        // else{
+        //     //input error
+        //     Graphics.text("Please choose spear or axe");
+        // }
 
         //Setting 
         Graphics.text(Colors.ANSI_PURPLE + "Your story starts in the misty mountains of Iceland in a town called Asbjorn \n" + 
-                        "It is a small town sparsely populated. While the inhabitants are kind an welcoming, You are a warrior who wishes to fight." + Colors.ANSI_RESET);
+                        "It is a small town sparsely populated. While the inhabitants are kind and welcoming, you are a warrior who wishes to fight.\n" +
+                        "Lucky for you, a cave leading straight to Hel is nearby, and since your chances of fighting in Ragnarok are slim, this is your best shot for action.\n" +
+                        Colors.ANSI_YELLOW + "You can 1) leave the village now, or 2) stay a give a brief goodbye to your acquaintences"
+                        + Colors.ANSI_RESET);
+        
+        //Option for leaving or staying
+        input = in.nextInt();
+            if(input == 1){
+                Graphics.text("You have chosen to leave the village straightaway. It will be easier this for them this way.");
+            }
+            else if(input == 2){
+                Graphics.text("You decided to stay and say goodbye.");
+            }
+            else{
+                Graphics.text("Please inout a valid option");
+            }
+
         //Leave Village; go to cave
         //First fight(required): Dire wolf
         //Enter cave, but run into dead end. Odin comes, scorns you, but then feels guilty and moves boulder allowing you to move on.
@@ -127,15 +144,28 @@ public class Story {
                     //Get absolutely mocked by Loki again
         //Greater Hel Area
             //Outside the gates: Nothing of note, but a trickling stream of dirty water
-            //Eastern Hel:
-            //Western Hel:
-            //Southern Hel: Gates to Hel; judgy dude
-            //Northern Hel: Hela's palace 
+            //Eastern Hel: Docks
+                //Naglfar, the ship made of fingernails and toenails resides here.
+                    //Loki fight is on this ship
+                    //Must find way on ship
+            //Western Hel: Tavern 
+                //Lots of dead people drinking here
+                //Flyting happens here
+                    //Flyting: A poetic constest of insults
+                        //Allusions to this thru out game. remember old insults and what peeps are sensitive to.
+                        //Winning allowd good ending
+                //find rumors about ship
+            //Southern Hel: Gates to Hel; 
+                //Entrance
+            //Northern Hel: Hela's palace
+                //permission from Hel to get on ship 
+                //Must find/fight way into palace
         //bIG BOTE
+            //Loki bossfight
+                //If you win Loki runs away
+                //If you lose, you get thrown into water (die)
+                //If you win against loki and in the flyting, then Loki drops weapon, which you then use in Ragnorak
 
 
-        //Flyting: A poetic constest of insults
-            //Allusions to this thru out game. remember old insults and what peeps are sensitive to.
-            //Winning allowd good ending
     }
 }
