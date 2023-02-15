@@ -1,5 +1,5 @@
 Loki
-Stats:
+Stats: Class/Info; Average attack: ; Health: 
 --------------
 
   ))   ((
