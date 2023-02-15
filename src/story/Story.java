@@ -23,12 +23,12 @@ public class Story {
         ////NOTE: Storing character data is yet to be implemented!
         //String [] info = {" "," "," "," "," "," "};
             //Intro:
+            Graphics.displayBackground("Mountains");
             Graphics.text(Colors.ANSI_BLUE +  "temp studio name" + Colors.ANSI_RESET + " presents temp game name" + "\n" + "please choose a character...");
         
-            Scanner in = new Scanner(System.in);
             
             //Call scanner
-            //Use integers
+            Scanner in = new Scanner(System.in);
             int input;
             
             do{
@@ -101,16 +101,20 @@ public class Story {
                         + Colors.ANSI_RESET);
         
         //Option for leaving or staying
-        input = in.nextInt();
+        do{
+
+            input = in.nextInt();
             if(input == 1){
                 Graphics.text("You have chosen to leave the village straightaway. It will be easier this for them this way.");
             }
             else if(input == 2){
-                Graphics.text("You decided to stay and say goodbye.");
+                Graphics.text("You decided to stay and say goodbye.\n" + Colors.ANSI_PURPLE + "In Asbjorn you approach Viggo, the blacksmith. Once he was a great warrior like you, but he now he has settled down.\n He accepted his fate here...\n"
+                                + Colors.ANSI_GREEN +  " \"Viggo, I'm leaving this town. I'm going to Hel. You can join me if you wish\"\n  \"Alas, young (...) I do not display your energetic talent any more.\n I will stay here, accepting my banishment\"");
             }
             else{
-                Graphics.text("Please inout a valid option");
+                failedInput();
             }
+        }while(true);
 
         //Leave Village; go to cave
         //First fight(required): Dire wolf
