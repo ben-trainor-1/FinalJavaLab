@@ -1,6 +1,10 @@
 package story;
 
 import java.util.Scanner;
+
+import javax.swing.colorchooser.ColorSelectionModel;
+
+import java.awt.Color;
 import java.io.File;
 import java.nio.file.attribute.GroupPrincipal;
 import java.util.ArrayList;
@@ -106,19 +110,46 @@ public class Story {
             input = in.nextInt();
             if(input == 1){
                 Graphics.text("You have chosen to leave the village straightaway. It will be easier this for them this way.");
+                break;
             }
             else if(input == 2){
+                Graphics.displayCharacter("Viggo", 1);
                 Graphics.text("You decided to stay and say goodbye.\n" + Colors.ANSI_PURPLE + "In Asbjorn you approach Viggo, the blacksmith. Once he was a great warrior like you, but he now he has settled down.\n He accepted his fate here...\n"
-                                + Colors.ANSI_GREEN +  " \"Viggo, I'm leaving this town. I'm going to Hel. You can join me if you wish\"\n  \"Alas, young (...) I do not display your energetic talent any more.\n I will stay here, accepting my banishment\"");
+                                + Colors.ANSI_GREEN +  "\"Viggo, I'm leaving this town. I'm going to Hel. You can join me if you wish\"\n\"Alas, young (...) I do not display your energetic talent any more.\n I will stay here, accepting my banishment\"\n"
+                                + "\"Well, I'll miss you then. You were the closest one of this lot to me.\"\n"
+                                + "\"We understand that you have not lost your fervor for fighting like we have. We all wish you luck from the bottom of our hearts.\"\n"
+                                + Colors.ANSI_PURPLE + "With that you leave the town filled with Thrill and anticipation for your upcoming battles." + Colors.ANSI_RESET);
+                break;
             }
             else{
                 failedInput();
             }
         }while(true);
 
-        //Leave Village; go to cave
-        //First fight(required): Dire wolf
+         //Leave Village; go to cave
+        Graphics.displayBackground("Trees");
+        Graphics.text(Colors.ANSI_PURPLE + "You walk down the path leading to the cave. Nothing eventful so far..." + Colors.ANSI_RESET);
+        Thread.sleep(1000);
+        Graphics.text(Colors.ANSI_PURPLE + "But wait..." + Colors.ANSI_RESET);
+        Thread.sleep(1000);
+        Graphics.text(Colors.ANSI_PURPLE + "There's something there! Behind that tree!" + Colors.ANSI_RESET);
+        Thread.sleep(1000);
+        Graphics.text(Colors.ANSI_PURPLE + "You are filled with determination as a dire wolf leaps, and blocks your path." + Colors.ANSI_RESET);
+        
+         //First fight(required): Dire wolf
+        //Insert Battle with dire wolf here
+
         //Enter cave, but run into dead end. Odin comes, scorns you, but then feels guilty and moves boulder allowing you to move on.
+        Graphics.text(Colors.ANSI_PURPLE + "After a rather bloody battle, you reach the mouth of the cave you seek.\n"
+                        + "You have known of this cave for a while now, but you soon realize there is a dead end.\n"
+                        + "You are overcome with confusion. Your sources are reliable how could they get this wrong\n?"
+                        + "Then the answer comes to you as a figure steps out of the shadows.\n"
+                        + Colors.ANSI_BLUE + "\"You should not have come here, World-Traitor.\"\n"
+                        + Colors.ANSI_GREEN + "\"That was not my fault. I was baited into it. You know this since you are soooooo great and wise, Odin\"\n"
+                        + "\"DO NOT SASS ME YOUNG [...]! YOU HAVE BROUGHT RUIN TO US ALL. you do not deserve to have fought even that dire wolf, worthless wretch...\"\n"
+                        + Colors.ANSI_PURPLE + "As quickly as it came, Odin's sudden outbust turns somber. Pain contorts his face\n"
+                        + Colors.ANSI_BLUE + "Well... none of us deserve to live anymore. That's why Ragnarok is here.\n I will remove this boulder here. Continue to Hel if you wish. If you can board Naglfar, you can fight in Ragnarok." + Colors.ANSI_RESET);      
+
         //Choice: left of right
             //left: Loki room
             //right: locked door
