@@ -6,7 +6,7 @@ import java.io.*;
 
 public class Player {
 
-    void playAudio(String audioFilePath) throws Exception {
+    Clip playAudio(String audioFilePath, int loopCount) throws Exception {
 
         File audioFile = new File(audioFilePath);
 
@@ -16,8 +16,14 @@ public class Player {
 
             Clip clip = AudioSystem.getClip();
             clip.open(audioInput);
-            clip.loop(3);
+            clip.loop(loopCount);
+            return clip;
         }
+        else {
+            System.out.println("Audio file does not exist.");
+            return null;
+        }
+
 
     }
     
