@@ -118,7 +118,7 @@ public class Story {
                                 + Colors.ANSI_GREEN +  "\"Viggo, I'm leaving this town. I'm going to Hel. You can join me if you wish\"\n\"Alas, young (...) I do not display your energetic talent any more.\n I will stay here, accepting my banishment\"\n"
                                 + "\"Well, I'll miss you then. You were the closest one of this lot to me.\"\n"
                                 + "\"We understand that you have not lost your fervor for fighting like we have. We all wish you luck from the bottom of our hearts.\"\n"
-                                + Colors.ANSI_PURPLE + "With that you leave the town filled with Thrill and anticipation for your upcoming battles." + Colors.ANSI_RESET);
+                                + Colors.ANSI_PURPLE + "With that you leave the town filled with Thrill and anticipation for your upcoming battles.\n" + Colors.ANSI_RESET);
                 break;
             }
             else{
@@ -146,11 +146,42 @@ public class Story {
                         + "Then the answer comes to you as a figure steps out of the shadows.\n"
                         + Colors.ANSI_BLUE + "\"You should not have come here, World-Traitor.\"\n"
                         + Colors.ANSI_GREEN + "\"That was not my fault. I was baited into it. You know this since you are soooooo great and wise, Odin\"\n"
-                        + "\"DO NOT SASS ME YOUNG [...]! YOU HAVE BROUGHT RUIN TO US ALL. you do not deserve to have fought even that dire wolf, worthless wretch...\"\n"
+                        + Colors.ANSI_BLUE + "\"DO NOT SASS ME YOUNG [...]! YOU HAVE BROUGHT RUIN TO US ALL. you do not deserve to have fought even that dire wolf, worthless wretch...\"\n"
                         + Colors.ANSI_PURPLE + "As quickly as it came, Odin's sudden outbust turns somber. Pain contorts his face\n"
-                        + Colors.ANSI_BLUE + "Well... none of us deserve to live anymore. That's why Ragnarok is here.\n I will remove this boulder here. Continue to Hel if you wish. If you can board Naglfar, you can fight in Ragnarok." + Colors.ANSI_RESET);      
+                        + Colors.ANSI_BLUE + "Well... none of us deserve to live anymore. That's why Ragnarok is here.\n I will remove this boulder here. Continue to Hel if you wish. If you can board Naglfar, you can fight in Ragnarok." + Colors.ANSI_RESET);  
+
+        do{
+            //Choice of how to respond to the offer
+            Graphics.text(Colors.ANSI_YELLOW + "What luck! A chance like this has never arisen before. How do you repsond?\n"
+                            + "1) \"Thank you, father Odin, for this chance at glory.\"\n"
+                            + "2) \"Haha! you suck. I'll do this only to prove that you are weak.\"" );  
+            input =in.nextInt();
+
+            //Odin's responses
+            if(input == 1){
+                Graphics.text(Colors.ANSI_PURPLE + "Odin looks solemnly at you, as if peering into your mind.\n"
+                                + Colors.ANSI_BLUE + "You have courage. I only hope it will stay with to the end."); 
+                break; 
+            }
+            else if(input == 2){
+                Graphics.text(Colors.ANSI_PURPLE + "\"Odin flares in rage, judging you with his eye.\"\n"
+                                + Colors.ANSI_BLUE + "\"You have courage and wit. That will take you far\""); 
+                break; 
+            }
+            else{
+                failedInput();
+            }
+        }while(true);  
+        
+        //Odin leaves
+        Graphics.text(Colors.ANSI_PURPLE + "With that Odin steps away, and the way foward reveals itself to you.");
+        Thread.sleep(1000);
 
         //Choice: left of right
+        Graphics.text(Colors.ANSI_PURPLE + "You walk through the cave. It is quiet and dark. You have a torch, though, so that helps.\n"
+                        + Colors.ANSI_YELLOW + "You come upon an intersection. Which way do you choose?\n"
+                        + "1) Left\n"
+                        + "2) Right");
             //left: Loki room
             //right: locked door
         //Meet with Loki. He thanks you for freeing him, then taunts you. He figures out your plans and laughs at them
@@ -158,6 +189,9 @@ public class Story {
         //Fight undead skeleton for key
             //another optional US for ???
         //Head back to right 
+
+
+
         //Some sort of stronghold...
         //Maze:
             //Riddles to help you thru (perhaps some allude to the good ending)
