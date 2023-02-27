@@ -28,8 +28,9 @@ public class Story {
         //String [] info = {" "," "," "," "," "," "};
             //Intro:
             Graphics.displayBackground("Mountains");
-            Graphics.text(Colors.ANSI_BLUE +  "temp studio name" + Colors.ANSI_RESET + " presents temp game name" + "\n" + "please choose a character...");
-        
+            Graphics.textInline(Colors.ANSI_BLUE +  "temp studio name" + Colors.ANSI_RESET + " presents temp game name");
+            Graphics.waitForEnter();
+            Graphics.text("\n" + "please choose a character...");
             
             //Call scanner
             Scanner in = new Scanner(System.in);
@@ -103,6 +104,7 @@ public class Story {
                         "Lucky for you, a cave leading straight to Hel is nearby, and since your chances of fighting in Ragnarok are slim, this is your best shot for action.\n" +
                         Colors.ANSI_YELLOW + "You can 1) leave the village now, or 2) stay a give a brief goodbye to your acquaintences"
                         + Colors.ANSI_RESET);
+                       
         
         //Option for leaving or staying
         do{
@@ -182,7 +184,18 @@ public class Story {
                         + Colors.ANSI_YELLOW + "You come upon an intersection. Which way do you choose?\n"
                         + "1) Left\n"
                         + "2) Right");
+        input = in.nextInt();
             //left: Loki room
+        if(input == 1){
+            Graphics.textInline("You chose to the passage to the left");
+            //Play cavern sounds
+            Graphics.waitForEnter();
+            Graphics.textInline(Colors.ANSI_PURPLE + "The carvern is narrow and musty. Silence permeates through the air.\n"
+                                    + "As you round a corner, however, you spot torchlight ahead." + Colors.ANSI_RESET); 
+            Graphics.waitForEnter();
+            Graphics.textInline("A figure stands in a small room.");   
+            Graphics.displayCharacter("Loki", 500);   
+        }
             //right: locked door
         //Meet with Loki. He thanks you for freeing him, then taunts you. He figures out your plans and laughs at them
             //Many dialouge choices, but they all end in embaressment 
@@ -240,7 +253,5 @@ public class Story {
                 //If you win Loki runs away
                 //If you lose, you get thrown into water (die)
                 //If you win against loki and in the flyting, then Loki drops weapon, which you then use in Ragnorak
-
-
     }
 }
