@@ -84,12 +84,12 @@ public class Story {
 
             if(input == 1){
                 //Choosing Greatspear
-                Graphics.text("You  have chosen spear");
+                Graphics.text("You  have chosen a greatspear");
                 break;
             }
             else if(input == 2){
                 //Choosing Battleaxe
-                Graphics.text("You have chosen axe");
+                Graphics.text("You have chosen battleaxe");
                 break;
             }
             else{
@@ -99,11 +99,12 @@ public class Story {
         }while(true);
 
         //Setting 
-        Graphics.text(Colors.ANSI_PURPLE + "Your story starts in the misty mountains of Iceland in a town called Asbjorn \n" + 
-                        "It is a small town sparsely populated. While the inhabitants are kind and welcoming, you are a warrior who wishes to fight.\n" +
-                        "Lucky for you, a cave leading straight to Hel is nearby, and since your chances of fighting in Ragnarok are slim, this is your best shot for action.\n" +
-                        Colors.ANSI_YELLOW + "You can 1) leave the village now, or 2) stay a give a brief goodbye to your acquaintences"
-                        + Colors.ANSI_RESET);
+        Graphics.textInline(Colors.ANSI_PURPLE + "Your story starts in the misty mountains of Iceland in a town called Asbjorn \n" + 
+                            "It is a small town sparsely populated. While the inhabitants are kind and welcoming, you are a warrior who wishes to fight.\n");
+        Graphics.waitForEnter();
+        Graphics.textInline("Lucky for you, a cave leading straight to Hel is nearby, and since your chances of fighting in Ragnarok are slim, this is your best shot for action.\n" +
+                            Colors.ANSI_YELLOW + "You can 1) leave the village now, or 2) stay a give a brief goodbye to your acquaintences"
+                            + Colors.ANSI_RESET);
                        
         
         //Option for leaving or staying
@@ -129,6 +130,7 @@ public class Story {
         }while(true);
 
          //Leave Village; go to cave
+        Graphics.waitForEnter();
         Graphics.displayBackground("Trees");
         Graphics.text(Colors.ANSI_PURPLE + "You walk down the path leading to the cave. Nothing eventful so far..." + Colors.ANSI_RESET);
         Thread.sleep(1000);
@@ -138,36 +140,38 @@ public class Story {
         Thread.sleep(1000);
         Graphics.text(Colors.ANSI_PURPLE + "You are filled with determination as a dire wolf leaps, and blocks your path." + Colors.ANSI_RESET);
         
+
          //First fight(required): Dire wolf
         //Insert Battle with dire wolf here
 
         //Enter cave, but run into dead end. Odin comes, scorns you, but then feels guilty and moves boulder allowing you to move on.
-        Graphics.text(Colors.ANSI_PURPLE + "After a rather bloody battle, you reach the mouth of the cave you seek.\n"
+        Graphics.textInline(Colors.ANSI_PURPLE + "After a rather bloody battle, you reach the mouth of the cave you seek.\n"
                         + "You have known of this cave for a while now, but you soon realize there is a dead end.\n"
-                        + "You are overcome with confusion. Your sources are reliable how could they get this wrong\n?"
-                        + "Then the answer comes to you as a figure steps out of the shadows.\n"
-                        + Colors.ANSI_BLUE + "\"You should not have come here, World-Traitor.\"\n"
+                        + "You are overcome with confusion. Your sources are reliable how could they get this wrong?\n"
+                        + "Then the answer comes to you as a figure steps out of the shadows.\n");
+        Graphics.waitForEnter();
+        Graphics.textInline(Colors.BLUE_BOLD_BRIGHT + "\"You should not have come here, World-Traitor.\"\n" + Colors.ANSI_RESET
                         + Colors.ANSI_GREEN + "\"That was not my fault. I was baited into it. You know this since you are soooooo great and wise, Odin\"\n"
-                        + Colors.ANSI_BLUE + "\"DO NOT SASS ME YOUNG [...]! YOU HAVE BROUGHT RUIN TO US ALL. you do not deserve to have fought even that dire wolf, worthless wretch...\"\n"
+                        + Colors.BLUE_BOLD_BRIGHT + "\"DO NOT SASS ME YOUNG [...]! YOU HAVE BROUGHT RUIN TO US ALL. you do not deserve to have fought even that dire wolf, worthless wretch...\"\n" + Colors.ANSI_RESET
                         + Colors.ANSI_PURPLE + "As quickly as it came, Odin's sudden outbust turns somber. Pain contorts his face\n"
-                        + Colors.ANSI_BLUE + "Well... none of us deserve to live anymore. That's why Ragnarok is here.\n I will remove this boulder here. Continue to Hel if you wish. If you can board Naglfar, you can fight in Ragnarok." + Colors.ANSI_RESET);  
+                        + Colors.BLUE_BOLD_BRIGHT + "Well... none of us deserve to live anymore. That's why Ragnarok is here.\n I will remove this boulder here. Continue to Hel if you wish. If you can board Naglfar, you can fight in Ragnarok.\n" + Colors.ANSI_RESET);  
 
         do{
             //Choice of how to respond to the offer
-            Graphics.text(Colors.ANSI_YELLOW + "What luck! A chance like this has never arisen before. How do you repsond?\n"
+            Graphics.textInline(Colors.ANSI_YELLOW + "What luck! A chance like this has never arisen before. How do you repsond?\n"
                             + "1) \"Thank you, father Odin, for this chance at glory.\"\n"
                             + "2) \"Haha! you suck. I'll do this only to prove that you are weak.\"" );  
             input =in.nextInt();
 
             //Odin's responses
             if(input == 1){
-                Graphics.text(Colors.ANSI_PURPLE + "Odin looks solemnly at you, as if peering into your mind.\n"
-                                + Colors.ANSI_BLUE + "You have courage. I only hope it will stay with to the end."); 
+                Graphics.textInline(Colors.ANSI_PURPLE + "Odin looks solemnly at you, as if peering into your mind.\n"
+                                + Colors.BLUE_BOLD_BRIGHT + "You have courage. I only hope it will stay with to the end." + Colors.ANSI_RESET); 
                 break; 
             }
             else if(input == 2){
-                Graphics.text(Colors.ANSI_PURPLE + "\"Odin flares in rage, judging you with his eye.\"\n"
-                                + Colors.ANSI_BLUE + "\"You have courage and wit. That will take you far\""); 
+                Graphics.textInline(Colors.ANSI_PURPLE + "\"Odin flares in rage, judging you with his eye.\"\n"
+                                + Colors.BLUE_BOLD_BRIGHT + "\"You have courage and wit. That will take you far\"" + Colors.ANSI_RESET); 
                 break; 
             }
             else{
@@ -176,11 +180,12 @@ public class Story {
         }while(true);  
         
         //Odin leaves
-        Graphics.text(Colors.ANSI_PURPLE + "With that Odin steps away, and the way foward reveals itself to you.");
+        Graphics.textInline(Colors.ANSI_PURPLE + "With that Odin steps away, and the way foward reveals itself to you.");
+        Graphics.waitForEnter();
         Thread.sleep(1000);
 
         //Choice: left of right
-        Graphics.text(Colors.ANSI_PURPLE + "You walk through the cave. It is quiet and dark. You have a torch, though, so that helps.\n"
+        Graphics.textInline(Colors.ANSI_PURPLE + "You walk through the cave. It is quiet and dark. You have a torch, though, so that helps.\n"
                         + Colors.ANSI_YELLOW + "You come upon an intersection. Which way do you choose?\n"
                         + "1) Left\n"
                         + "2) Right");
@@ -188,13 +193,45 @@ public class Story {
             //left: Loki room
         if(input == 1){
             Graphics.textInline("You chose to the passage to the left");
+
             //Play cavern sounds
+
+            //Begin encounter with Loki
             Graphics.waitForEnter();
             Graphics.textInline(Colors.ANSI_PURPLE + "The carvern is narrow and musty. Silence permeates through the air.\n"
                                     + "As you round a corner, however, you spot torchlight ahead." + Colors.ANSI_RESET); 
             Graphics.waitForEnter();
-            Graphics.textInline("A figure stands in a small room.");   
-            Graphics.displayCharacter("Loki", 500);   
+            Graphics.textInline(Colors.BLACK_BRIGHT + "A figure stands in a small room." + Colors.ANSI_RESET);   
+            Graphics.displayCharacter("Loki", 500);  
+            Graphics.waitForEnter(); 
+
+            Graphics.textInline(Colors.BLACK_BACKGROUND + "\"Well, well, well, what do we have here?\n" + Colors.ANSI_RESET
+                                + Colors.ANSI_PURPLE + "You stand speechless before the infamous god of deceit. Words with him are dangerous... He molds them as if they are clay.\n"
+                                + Colors.BLACK_BACKGROUND + "I feel obliged to thank you. You have done so much for me! I must ask, how did Odin handle it? Was he mad?\"\n" + Colors.ANSI_RESET);
+            Graphics.waitForEnter();
+            
+            //Options to respond to Loki
+            Graphics.textInline(Colors.ANSI_YELLOW + "How do you respond?\n"
+                                + "1) \"THERE AIN'T NO WAY I'M TELLING YOU BOY!\"\n"
+                                + "2) \"Yeah, he was mad, but that doesn't matter. You tricked me.\"\n"
+                                + "3) \"I hate you! You got me banished!\"\n"
+                                + "4) (remain silent)\n");
+            input = in.nextInt();
+            //If player says something
+            if(input == 1 || input == 2 || input == 3){
+                Graphics.textInline(Colors.ANSI_PURPLE + "A thin smile dominates Loki's face.\n"
+                                    + Colors.BLACK_BACKGROUND + "\"Don't be so dramatic! I won't stop you from... whatever it is you're doing.\n"
+                                    + "Actually I have a gift for you!");  
+            }
+            //If player chooses to remain silent?
+            else if(input == 4){
+                Graphics.textInline(Colors.BLACK_BACKGROUND + "What? Cat got your tongue? You're so boring? I can't stand boring people...\n"
+                );          
+            }
+            else{
+                //User error
+                failedInput();
+            }
         }
             //right: locked door
         //Meet with Loki. He thanks you for freeing him, then taunts you. He figures out your plans and laughs at them
