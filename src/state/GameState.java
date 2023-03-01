@@ -3,12 +3,14 @@ package state;
 public class GameState {
 
     // Player stats
-    public static String name = "";
+    public static String name = "Gorm";
     public static String pNoun = "";
     public static String objpNoun = "";
     public static String weapon = "";
-    public static int playerHealth = 100;
+    public static int playerHealth = 1000;
     public static int playerAttack = 30;
+    public static int playerHealCount = 5;
+    public static int playerHealAmount;
 
     // Enemy stats
     public static String enemy = "";
