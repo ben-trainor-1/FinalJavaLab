@@ -100,10 +100,10 @@ public class Story {
 
         //Setting 
         Graphics.textInline(Colors.ANSI_PURPLE + "Your story starts in the misty mountains of Iceland in a town called Asbjorn \n" + 
-                            "It is a small town sparsely populated. While the inhabitants are kind and welcoming, you are a warrior who wishes to fight.\n");
+                            "It is a small town sparsely populated. While the inhabitants are kind and welcoming, you are a warrior who wishes to fight.");
         Graphics.waitForEnter();
         Graphics.textInline("Lucky for you, a cave leading straight to Hel is nearby, and since your chances of fighting in Ragnarok are slim, this is your best shot for action.\n" +
-                            Colors.ANSI_YELLOW + "You can 1) leave the village now, or 2) stay a give a brief goodbye to your acquaintences"
+                            Colors.ANSI_YELLOW + "You can 1) leave the village now, or 2) stay a give a brief goodbye to your acquaintences\n"
                             + Colors.ANSI_RESET);
                        
         
@@ -112,16 +112,16 @@ public class Story {
 
             input = in.nextInt();
             if(input == 1){
-                Graphics.text("You have chosen to leave the village straightaway. It will be easier this for them this way.");
+                Graphics.textInline("You have chosen to leave the village straightaway. It will be easier this for them this way.");
                 break;
             }
             else if(input == 2){
                 Graphics.displayCharacter("Viggo", 1);
-                Graphics.text("You decided to stay and say goodbye.\n" + Colors.ANSI_PURPLE + "In Asbjorn you approach Viggo, the blacksmith. Once he was a great warrior like you, but he now he has settled down.\n He accepted his fate here...\n"
+                Graphics.textInline("You decided to stay and say goodbye.\n" + Colors.ANSI_PURPLE + "In Asbjorn you approach Viggo, the blacksmith. Once he was a great warrior like you, but he now he has settled down.\n He accepted his fate here...\n"
                                 + Colors.ANSI_GREEN +  "\"Viggo, I'm leaving this town. I'm going to Hel. You can join me if you wish\"\n\"Alas, young (...) I do not display your energetic talent any more.\n I will stay here, accepting my banishment\"\n"
                                 + "\"Well, I'll miss you then. You were the closest one of this lot to me.\"\n"
                                 + "\"We understand that you have not lost your fervor for fighting like we have. We all wish you luck from the bottom of our hearts.\"\n"
-                                + Colors.ANSI_PURPLE + "With that you leave the town filled with Thrill and anticipation for your upcoming battles.\n" + Colors.ANSI_RESET);
+                                + Colors.ANSI_PURPLE + "With that you leave the town filled with Thrill and anticipation for your upcoming battles." + Colors.ANSI_RESET);
                 break;
             }
             else{
@@ -148,13 +148,13 @@ public class Story {
         Graphics.textInline(Colors.ANSI_PURPLE + "After a rather bloody battle, you reach the mouth of the cave you seek.\n"
                         + "You have known of this cave for a while now, but you soon realize there is a dead end.\n"
                         + "You are overcome with confusion. Your sources are reliable how could they get this wrong?\n"
-                        + "Then the answer comes to you as a figure steps out of the shadows.\n");
+                        + "Then the answer comes to you as a figure steps out of the shadows.");
         Graphics.waitForEnter();
         Graphics.textInline(Colors.BLUE_BOLD_BRIGHT + "\"You should not have come here, World-Traitor.\"\n" + Colors.ANSI_RESET
                         + Colors.ANSI_GREEN + "\"That was not my fault. I was baited into it. You know this since you are soooooo great and wise, Odin\"\n"
                         + Colors.BLUE_BOLD_BRIGHT + "\"DO NOT SASS ME YOUNG [...]! YOU HAVE BROUGHT RUIN TO US ALL. you do not deserve to have fought even that dire wolf, worthless wretch...\"\n" + Colors.ANSI_RESET
                         + Colors.ANSI_PURPLE + "As quickly as it came, Odin's sudden outbust turns somber. Pain contorts his face\n"
-                        + Colors.BLUE_BOLD_BRIGHT + "Well... none of us deserve to live anymore. That's why Ragnarok is here.\n I will remove this boulder here. Continue to Hel if you wish. If you can board Naglfar, you can fight in Ragnarok.\n" + Colors.ANSI_RESET);  
+                        + Colors.BLUE_BOLD_BRIGHT + "Well... none of us deserve to live anymore. That's why Ragnarok is here.\nI will remove this boulder here. Continue to Hel if you wish. If you can board Naglfar, you can fight in Ragnarok.\n" + Colors.ANSI_RESET);  
 
         do{
             //Choice of how to respond to the offer
@@ -205,9 +205,9 @@ public class Story {
             Graphics.displayCharacter("Loki", 500);  
             Graphics.waitForEnter(); 
 
-            Graphics.textInline(Colors.BLACK_BACKGROUND + "\"Well, well, well, what do we have here?\n" + Colors.ANSI_RESET
+            Graphics.textInline(Colors.BLACK_BRIGHT + "\"Well, well, well, what do we have here?\n" + Colors.ANSI_RESET
                                 + Colors.ANSI_PURPLE + "You stand speechless before the infamous god of deceit. Words with him are dangerous... He molds them as if they are clay.\n"
-                                + Colors.BLACK_BACKGROUND + "I feel obliged to thank you. You have done so much for me! I must ask, how did Odin handle it? Was he mad?\"\n" + Colors.ANSI_RESET);
+                                + Colors.BLACK_BRIGHT + "I feel obliged to thank you. You have done so much for me! I must ask, how did Odin handle it? Was he mad?\"\n" + Colors.ANSI_RESET);
             Graphics.waitForEnter();
             
             //Options to respond to Loki
@@ -220,17 +220,51 @@ public class Story {
             //If player says something
             if(input == 1 || input == 2 || input == 3){
                 Graphics.textInline(Colors.ANSI_PURPLE + "A thin smile dominates Loki's face.\n"
-                                    + Colors.BLACK_BACKGROUND + "\"Don't be so dramatic! I won't stop you from... whatever it is you're doing.\n"
+                                    + Colors.BLACK_BRIGHT + "\"Don't be so dramatic! I won't stop you from... whatever it is you're doing.\n"
                                     + "Actually I have a gift for you!");  
+                Graphics.waitForEnter();
+                Graphics.textInline(Colors.RED_BOLD + "\"Just kidding! I don't!\n" + Colors.BLACK_BRIGHT +  "Anyway, toodles! I would wish you luck on you endeavours, but we all know you can't have any!\"" + Colors.ANSI_RESET);
             }
             //If player chooses to remain silent?
             else if(input == 4){
-                Graphics.textInline(Colors.BLACK_BACKGROUND + "What? Cat got your tongue? You're so boring? I can't stand boring people...\n"
-                );          
+                Graphics.textInline(Colors.BLACK_BRIGHT + "What? Cat got your tongue? You're so boring? I can't stand boring people...");
+                Graphics.waitForEnter();
+                Graphics.textInline(Colors.ANSI_PURPLE + "Loki looks incredibly bored."
+                                    + Colors.BLACK_BRIGHT + "Why did I choose you to free me again? You lack any sort of emotion that I find so very entertaining.\n"
+                                    + "Well, toodles!\"" + Colors.ANSI_RESET);
             }
             else{
                 //User error
                 failedInput();
+            }
+
+            //Enter Undead skeleton fight
+            Graphics.textInline(Colors.ANSI_PURPLE + "You are left standing in the happy flickering torchlight coming from a nearby sconce.\n"
+                                + "A gaping doorway stands before, you can see two skeletons one on the ground... the other looming, staring right at you.");
+            Graphics.waitForEnter();
+            Graphics.textInline("You notice a key attached to its femur... It's fighting time!!!" + Colors.ANSI_RESET);
+            //insert undead skeleton fight #1 here
+
+            Graphics.textInline(Colors.ANSI_PURPLE + "With the skeleton now at rest. you remove the iron key from its femur.");
+            Graphics.waitForEnter();
+            //Optional skeleton fight
+            Graphics.textInline(Colors.ANSI_YELLOW + "You notice that you are now presented with yet another choice:\n"
+                                + "1) Enter the room with the other skeleton, for it appears to be holding something...\n"
+                                + "2) Go back to the the intersection and head to the right." + Colors.ANSI_RESET);
+            
+            //Options
+            input = in.nextInt();
+            if(input == 1){
+                //if the player chooses to enter the room
+                Graphics.textInline(Colors.ANSI_PURPLE + "You burst into the room.");
+                Thread.sleep(1000);
+                Graphics.textInline("The prone skeleton numbly rises to its boney feet. It's fighting time again!!!" + Colors.ANSI_RESET);
+                //Insert Undead skeleton fight #2
+                Graphics.textInline(Colors.ANSI_PURPLE + "The skeleton lies defeated, and you find that it was holding a necklace... magical no doubt.\n"
+                                    + Colors.BLUE_BACKGROUND_BRIGHT + "You recieved \'Magical Necklace!\' deal more damage in battle!" + Colors.ANSI_RESET);
+            }
+            else if (input == 2){
+                Graphics.textInline(Colors.ANSI_PURPLE + "You return to the intersection, seeking Hel more than anything. Ragnarok won't wait for anyone now!" + Colors.ANSI_RESET);
             }
         }
             //right: locked door
