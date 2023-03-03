@@ -1,12 +1,8 @@
 package story;
 
 import java.util.Scanner;
-
-import javax.swing.colorchooser.ColorSelectionModel;
-
 import java.awt.Color;
 import java.io.File;
-import java.nio.file.attribute.GroupPrincipal;
 import java.util.ArrayList;
 import graphics.Graphics;
 import graphics.Colors;
@@ -18,9 +14,17 @@ import story.Gro;
 
 public class Story {
 
+    //Method for user error
+    //TODO: Add dumpling box
     public static void failedInput(){
         System.out.println(Colors.ANSI_RED + "Please input a better number." + Colors.ANSI_RESET);
     }
+
+    // //Method for key at intersection
+    // public static boolean keyOne(){
+    //     return false;
+    // }
+    
 
     public static void main(String[] args) throws Exception {
 
@@ -185,6 +189,7 @@ public class Story {
         Thread.sleep(1000);
 
         //Choice: left of right
+        //TODO: Script may need to be revised into a method, so it can be called in different areas depending on your choice. A loop could also potentially work?
         Graphics.textInline(Colors.ANSI_PURPLE + "You walk through the cave. It is quiet and dark. You have a torch, though, so that helps.\n"
                         + Colors.ANSI_YELLOW + "You come upon an intersection. Which way do you choose?\n"
                         + "1) Left\n"
@@ -197,6 +202,8 @@ public class Story {
             //Play cavern sounds
 
             //Begin encounter with Loki
+                    //Meet with Loki. He thanks you for freeing him, then taunts you. He figures out your plans and laughs at them
+            //Many dialouge choices, but they all end in embaressment
             Graphics.waitForEnter();
             Graphics.textInline(Colors.ANSI_PURPLE + "The carvern is narrow and musty. Silence permeates through the air.\n"
                                     + "As you round a corner, however, you spot torchlight ahead." + Colors.ANSI_RESET); 
@@ -238,6 +245,7 @@ public class Story {
                 failedInput();
             }
 
+            //Fight undead skeleton for key
             //Enter Undead skeleton fight
             Graphics.textInline(Colors.ANSI_PURPLE + "You are left standing in the happy flickering torchlight coming from a nearby sconce.\n"
                                 + "A gaping doorway stands before, you can see two skeletons one on the ground... the other looming, staring right at you.");
@@ -245,8 +253,11 @@ public class Story {
             Graphics.textInline("You notice a key attached to its femur... It's fighting time!!!" + Colors.ANSI_RESET);
             //insert undead skeleton fight #1 here
 
-            Graphics.textInline(Colors.ANSI_PURPLE + "With the skeleton now at rest. you remove the iron key from its femur.");
+            //Head back to right 
+            Graphics.textInline(Colors.ANSI_PURPLE + "With the skeleton now at rest. you remove the iron key from its femur." + Colors.ANSI_RESET);
+            Graphics.textInline(Colors.BLUE_BACKGROUND_BRIGHT + "You revieced \'Special Key\'");
             Graphics.waitForEnter();
+
             //Optional skeleton fight
             Graphics.textInline(Colors.ANSI_YELLOW + "You notice that you are now presented with yet another choice:\n"
                                 + "1) Enter the room with the other skeleton, for it appears to be holding something...\n"
@@ -260,31 +271,81 @@ public class Story {
                 Thread.sleep(1000);
                 Graphics.textInline("The prone skeleton numbly rises to its boney feet. It's fighting time again!!!" + Colors.ANSI_RESET);
                 //Insert Undead skeleton fight #2
-                Graphics.textInline(Colors.ANSI_PURPLE + "The skeleton lies defeated, and you find that it was holding a necklace... magical no doubt.\n"
+                Graphics.textInline(Colors.ANSI_PURPLE + "The skeleton lies defeated, and you find that it was holding a necklace... magical no doubt.\n" + Colors.ANSI_RESET
                                     + Colors.BLUE_BACKGROUND_BRIGHT + "You recieved \'Magical Necklace!\' deal more damage in battle!" + Colors.ANSI_RESET);
             }
             else if (input == 2){
+                //if the player chooses to return to intersection
                 Graphics.textInline(Colors.ANSI_PURPLE + "You return to the intersection, seeking Hel more than anything. Ragnarok won't wait for anyone now!" + Colors.ANSI_RESET);
             }
+            else{
+                //User error
+                failedInput();
+            }
         }
+
             //right: locked door
-        //Meet with Loki. He thanks you for freeing him, then taunts you. He figures out your plans and laughs at them
-            //Many dialouge choices, but they all end in embaressment 
-        //Fight undead skeleton for key
-            //another optional US for ???
-        //Head back to right 
+        else if(input == 2){
+            Graphics.textInline("You chose the path on the right");
+            Graphics.waitForEnter();
+
+            //TODO: Add a key check to see if character has key in invetory or not. The following script must be revised.
+
+            input = in.nextInt();
+            //Some sort of stronghold...
+            if(input == 1){
+                Graphics.textInline(Colors.ANSI_PURPLE + "You walk through a winding pathway and approach a door.\n"
+                                    + "It is locked, but lucky for you, the key you found in the left passage fits snugly into the lock." + Colors.ANSI_RESET);  
+                Graphics.waitForEnter();
+                Graphics.textInline(Colors.ANSI_PURPLE + "The door seems to open on its own accord.\n"
+                                    + "Opposing all exections, you step into a sort of fortress with smooth stone walls.\n"
+                                    + "There is writing on the wall to your left:"
+                                    + Colors.PURPLE_BOLD_BRIGHT + "Be wary all ye travelers. This, the Fortress of Gullinkambi, seeks to decimate those faint of heart." + Colors.ANSI_RESET);
+                Graphics.waitForEnter();
+                Graphics.textInline(Colors.ANSI_PURPLE + "Hmmmm... those are forboding words. But they do not scare you!\n"
+                                    + "You continue foward approaching an intersection.");
+                Graphics.text(Colors.ANSI_YELLOW + "Which way do you choose:\n"
+                                + "1) Left\n"
+                                + "2) Right\n"
+                                + "3) Forward\n");  
+                //TODO: Design maze.
+                //TODO: Add a maze. I think it needs to be in some kind of loop, so the player can go back and forth. Dead ends contain riddles to help player through maze.
+                //Maze:
+                //Riddles to help you thru (perhaps some allude to the good ending)
+                //You can do a "Theseus and the Minotaur" kinda thing
+                //Few suprise battles; (avoidable but mandatory if you find them)
 
 
+                //At the end: Gullinkambi: the Golden Comb (boss fight)
+                Graphics.textInline(Colors.ANSI_PURPLE + "You found the end of the maze!\nYou enter a large circular and (oddly enough) well-lit room\n");
+                Graphics.waitForEnter();
+                Graphics.textInline("You stride triumphantly through the room. Suddenly! YOu hear a loud \"cuckaw\"" + Colors.ANSI_RESET);
+                //TODO: Add rooster crow
 
-        //Some sort of stronghold...
-        //Maze:
-            //Riddles to help you thru (perhaps some allude to the good ending)
-            //You can do a "Theseus and the Minotaur" kinda thing
-            //Few suprise battles; (avoidable but mandatory if you find them)
-            //At the end: Gullinkambi: the Golden Comb (boss fight)
+                Graphics.waitForEnter();
+                Graphics.textInline(Colors.RED_BACKGROUND + "A large rooster falls down and glares menacingly at you\nIt's Gullinkambi, the Golden Comb." + Colors.ANSI_RESET);
+                //TODO: Add Gullinkambi boss fight
+
                 //After the fight: Loki mocks you again
+                Graphics.textInline(Colors.ANSI_PURPLE + "The giant rooster twitches dead on the ground. You are left breathless and traumatized\n"
+                                    + Colors.RED_BOLD_BRIGHT + "You will never look at roosters the same way again...\n" + Colors.ANSI_RESET
+                                    + Colors.BLACK_BRIGHT + "Speaking of roosters, Loki enters the room!" + Colors.ANSI_RESET);
+                Graphics.waitForEnter(); 
+                Graphics.textInline(Colors.BLACK_BRIGHT + "\"Well, there goes Gullinkambi. Such a tragedy. I had plans with him.");
+
                 //Weapon upgrade!
-            //Discover large cavern
+                //Discover large cavern
+            }
+            else if(input == 2){
+                Graphics.textInline(Colors.ANSI_PURPLE + "You walk through a winding pathway and approach a door.\n"
+                                    + "It is locked.");
+            }
+            else{
+                failedInput();
+            }
+
+
+        } 
         //Abyss
             //The only way is an elevator, but it is broken
             //Go to path on right
