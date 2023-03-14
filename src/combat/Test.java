@@ -8,7 +8,7 @@ public class Test {
 
         // FullCombat.fight("Gullinkambi", 500, 30, 0, 10, 3);
 
-        FullCombat.enemyGameState("Gullinkambi", 500, 30, 0, 10, 3);
+        FullCombat.enemyGameState("Gullinkambi", 300, 30, 4, 0, 10, 4, 30);
         FullCombat.fight();
 
     }
