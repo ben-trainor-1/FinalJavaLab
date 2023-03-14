@@ -378,7 +378,7 @@ public class Story {
             //Southern Hel: Gates to Hel; 
                 //Entrance
             //Northern Hel: Hela's palace
-                //permission from Hel to get on ship 
+                //permission from Hel to get on ship - prove your worth; fight an enemy
                 //Must find/fight way into palace
         //bIG BOTE
             //Loki bossfight
