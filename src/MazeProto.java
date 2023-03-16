@@ -1,12 +1,17 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import graphics.Colors;
+import graphics.Graphics;
+
 public class MazeProto {
 
     public static String[][] maze = {
-        {"DE","UDB","RP","LD","DP"},
-        {"UR","ULRD","LRD","LRD","URD"},
-        {"DPE","UR","ULRD","UL","UD"},
+        //Key: L = left, R = right, U = up, D = down, B = bossfight(exit)
+        //     E = enemy, 1 = riddle #1, 2 = riddle #2, 3 = riddle #3
+        {"DE","DB","R1","LD","D2"},
+        {"UR","ULRD","LRD","LRDU","ULD"},
+        {"D3E","UR","ULRD","UL","UD"},
         {"UR","LR","URL","LR","LU"},
     };
 
@@ -17,7 +22,7 @@ public class MazeProto {
         // Display position
         System.out.println("[" + currentPosition[0] + ", " + currentPosition[1] + "]" );
 
-        while (true) {
+        while (currentPosition[0] != -1 && currentPosition[1] != -1) {
             // Print out the map
             printMap(maze, currentPosition);
             // Update position with movement method
@@ -25,6 +30,9 @@ public class MazeProto {
             // Display position
             System.out.println("[" + currentPosition[0] + ", " + currentPosition[1] + "]" );
         }
+        
+        System.out.println("[" + currentPosition[0] + ", " + currentPosition[1] + "]" );
+
 
     }
 
@@ -38,6 +46,7 @@ public class MazeProto {
      */
     public static int[] movement(int row, int col) {
 
+        int[] exitMaze = {-1,-1};
         String mazeInfo = maze[row][col]; // Keep track of movement options and item info in cell
         int[] mazePosition = {row, col}; // Keep track of position to return later
         ArrayList<String> movementOptions = new ArrayList<String>();
@@ -60,7 +69,33 @@ public class MazeProto {
             movementOptions.add("D");
         }
 
-        
+        //Check for Enemies
+        if(mazeInfo.contains("E")){
+            System.out.println(Colors.RED_BOLD + "Uh-oh! A mysterious figure stands menacingly" + Colors.ANSI_RESET);
+            //TODO: Add an enemy encounter
+        }
+
+        //Check for Riddles
+        if(mazeInfo.contains("1")){
+            System.out.println(Colors.ANSI_PURPLE + "You approach a dead end.\nThere is writing on the wall\n" + Colors.ANSI_RESET
+                                + Colors.ANSI_RED + "Some play with us, most confuse us.\n We are not approaching,\nNor do we mean as well.\nWhat are we?" + Colors.ANSI_RESET);  
+        }
+        if(mazeInfo.contains("2")){
+            System.out.println(Colors.ANSI_PURPLE + "You approach a dead end.\nThere is writing on the wall\n" + Colors.ANSI_RESET
+                                + Colors.ANSI_RED + "Though many try, you can't bring me down. What am I?" + Colors.ANSI_RESET);
+            
+        }
+        if(mazeInfo.contains("3")){
+            System.out.println("You approach a dead end.\nThere is writing on the wall\n" + Colors.ANSI_RESET
+                                + Colors.BLACK_BOLD_BRIGHT + "A Flyting is a poem\n of insults cut like a gem\nBeware pf the tongue\nlest you get stung\nLest you get carried away.\n"
+                                + Colors.ANSI_PURPLE + "Below is the single word, " + Colors.RED_BOLD_BRIGHT + "\"Cur\"" + Colors.ANSI_PURPLE + "." + Colors.ANSI_RESET);
+        }
+
+        //Check for Bossfight
+        if(mazeInfo.contains("B")){
+            //TODO: Add Gulinkambi bossfight, if the boss is defeated, exit the maze.
+            return exitMaze;
+        }
 
         // Print movement options
         System.out.println("Movement options: " + movementOptions.toString());
