@@ -1,6 +1,7 @@
 package graphics;
 import java.io.File;
 import java.util.Scanner;
+import java.io.Console;
 
 public class Graphics {
 
@@ -134,5 +135,16 @@ public class Graphics {
     
         }
     }
+
+    // Wait for user to press enter
+
+    public static void waitForEnter() {
+        Console c = System.console();
+        System.out.print(" \u2023");
+        if (c != null) {
+            c.readLine();
+        }
+    }
+
 }
 
