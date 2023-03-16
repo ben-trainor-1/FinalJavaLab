@@ -38,14 +38,34 @@ public class Player {
 
     }
 
-    public static void fadeOutAudio(Clip clip, long fadeSpeed) throws InterruptedException {
+    public static void fadeOutAudio(Clip clip, float fadeDuration) throws InterruptedException {
 
         FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
         
+        float floor = -80.0f; // Lowest valid decibel level
+        float fadeGap = 1.0f; // Gap between fade moments
+        long sleepDuration = (long) fadeGap;
+        float q = floor;
+        float s = fadeDuration / 1000.0f; // Convert fade duration to seconds
+        float x = 0;
+        float newVolume;
+
+        // Set volume according to the function
+        // y = sqrt{q^{2} * s} * 1/s * sqrt{(-x/1000) + s} + q
+        
         do {
-            volume.setValue(volume.getValue() - 0.05F);
-            Thread.sleep(fadeSpeed);
-        } while (volume.getValue() > -80.0F);
+            
+            // Calculate new volume level
+            newVolume = (float) (Math.sqrt(q * q * s) * (1/s) * Math.sqrt((-x/1000)+s) + q);
+            // Set new volume level
+            volume.setValue(newVolume);
+
+            // Note time elapsed
+            x += fadeGap;
+            Thread.sleep(sleepDuration);
+
+            
+        } while (x < fadeDuration); // volume.getValue() > -80.0F
 
         clip.stop();
         
