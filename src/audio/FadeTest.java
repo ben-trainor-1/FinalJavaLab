@@ -12,7 +12,7 @@ public class FadeTest {
         // Player.fadeOutAudio(clip, 4000);
         // System.out.println("Volume lowered.");
         
-        Player.fadeInAudio(clip, 4000);
+        Player.fadeInAudio(clip, 2000);
         
         do {
             // Wait for clip to end
