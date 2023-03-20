@@ -98,7 +98,7 @@ public class Player {
      * @param fadeDuration
      * @throws InterruptedException
      */
-    public static void fadeInAudio(Clip clip, float fadeDuration) throws InterruptedException {
+    public static void fadeInAudio(Clip clip, float fadeDuration, float targetVolume) throws InterruptedException {
 
         FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
         
@@ -128,7 +128,7 @@ public class Player {
             Thread.sleep(sleepDuration);
 
             
-        } while (volume.getValue() < 0.0f); // volume.getValue() > -80.0F
+        } while (volume.getValue() < targetVolume); // volume.getValue() > -80.0F
         
     }
     
