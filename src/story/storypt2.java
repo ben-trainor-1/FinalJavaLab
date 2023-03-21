@@ -37,25 +37,25 @@ public class storypt2 {
 
                 if(input == 1){ 
                     Graphics.text(Colors.ANSI_YELLOW + "You have chosen to to take the path on the right." 
-                    //+ " Suddenly, an angry dwarf comes out of the shadows\n"
-                    // + "He jumps you immediately and while you think he doesn't have a lot of strenghth, he continues to suprise you.\n" 
-                    // + "After a rather long battle, you defeat the little, yet mighty dwarf and walk towards the room on your left\n"
-                    // + "When you enter, your eyes immediately fall onto the blacksmith puzzle\n" + "It reminds you of your friend, Viggo and while exploring the rest of the room, you discover a spare gear lying around.\n "
+                    + " Suddenly, an angry dwarf comes out of the shadows\n"
+                    + "He jumps you immediately and while you think he doesn't have a lot of strenghth, he continues to suprise you.\n" 
+                    + "After a rather long battle, you defeat the little, yet mighty dwarf and walk towards the room on your left\n"
+                    + "When you enter, your eyes immediately fall onto the blacksmith puzzle\n" + "It reminds you of your friend, Viggo and while exploring the rest of the room, you discover a spare gear lying around.\n "
                      + Colors.ANSI_RESET);
                     break;
                 }
                 if (input == 2) {
                     Graphics.text(Colors.ANSI_YELLOW + "You have decided to return to the village\n" + Colors.ANSI_YELLOW + 
                     "You remember your friend, Viggo the blacksmith. He would probably help you fix the elevator so you can get to the bottom of Hel!\n" 
-                    //+ "On your way out, you notice something shining from a hidden crevice.\n"
-                   // + "You walk towards it and find that it's a weapon upgrade. Score! It can help you fight bigger battles!\n"
-                    //+ "Suddenly, out of nowhere, a berserker charges at you in fury. You fight him until he is no more.\n"
-                   // + "After the long battle, you defeat him and go on your way. The show/journey must go on!"
-                   // + Graphics.waitForEnter();
-                  //  + "When you are finally in Asbjorn, you find Viggo working.\n"
-                   // + Colors.ANSI_GREEN + "\"Can you come help me fix the elevator? I need the elevator fixed so I can get to the bottom of Hel and finish my journey\"\n"
-                    //+ Graphics.waitForEnter();
-                   // + Colors.ANSI_YELLOW + "Viggo agrees but tells you he doesn't want to fight at all. And then, he gives you a gear that looks helpful.\n"
+                    + "On your way out, you notice something shining from a hidden crevice.\n"
+                   + "You walk towards it and find that it's a weapon upgrade. Score! It can help you fight bigger battles!\n"
+                    + "Suddenly, out of nowhere, a berserker charges at you in fury. You fight him until he is no more.\n"
+                   + "After the long battle, you defeat him and go on your way. The show/journey must go on!");
+                    Graphics.waitForEnter();
+                    Graphics.textInline("When you are finally in Asbjorn, you find Viggo working.\n"
+                   + Colors.ANSI_GREEN + "\"Can you come help me fix the elevator? I need the elevator fixed so I can get to the bottom of Hel and finish my journey\"\n");
+                     Graphics.waitForEnter();
+                   Graphics.textInline(Colors.ANSI_YELLOW + "Viggo agrees but tells you he doesn't want to fight at all. And then, he gives you a gear that looks helpful.\n"
                    // + "After this, both of you start your journey back to the elevator"
                     +  Colors.ANSI_RESET);
                     break;
