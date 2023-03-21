@@ -59,21 +59,26 @@ public class Graphics {
 
     // Method for printing out background
 
-    public static void displayBackground(String backgroundName) throws Exception {
+    public static void displayBackground(String backgroundName, String color) throws Exception {
          
         String filePath = "./src/graphics/Background/" + backgroundName + ".txt";
         File backgroundFile = new File(filePath);
         Scanner backgroundScanner = new Scanner(backgroundFile);
-    
+
+        
         // Background name
         text(backgroundScanner.nextLine());
-    
+        System.out.print(color);
     
         // Background sprite
         while (backgroundScanner.hasNext()) {
             System.out.println(backgroundScanner.nextLine());
             Thread.sleep(textSpeed);
         }
+
+        System.out.println(Colors.ANSI_RESET);
+
+        
     
     }
     
@@ -136,6 +141,26 @@ public class Graphics {
         }
     }
 
+    // Method for printing out healing
+
+    public static void displayHealing(String healingName) throws Exception {
+
+        String filePath = "./src/graphics/Healing/" + healingName + ".txt";
+        File healingFile = new File(filePath);
+        Scanner healingScanner = new Scanner(healingFile);
+
+        // Healing name
+        text(healingScanner.nextLine());
+
+        // Healing sprite
+        while (healingScanner.hasNext()) {
+            System.out.println(healingScanner.nextLine());
+            Thread.sleep(textSpeed);
+            
+        }
+    }
+    
+
     // Wait for user to press enter
 
     public static void waitForEnter() {
@@ -145,6 +170,5 @@ public class Graphics {
             c.readLine();
         }
     }
-
 }
 
