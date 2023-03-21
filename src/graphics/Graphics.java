@@ -58,21 +58,26 @@ public class Graphics {
 
     // Method for printing out background
 
-    public static void displayBackground(String backgroundName) throws Exception {
+    public static void displayBackground(String backgroundName, String color) throws Exception {
          
         String filePath = "./src/graphics/Background/" + backgroundName + ".txt";
         File backgroundFile = new File(filePath);
         Scanner backgroundScanner = new Scanner(backgroundFile);
-    
+
+        
         // Background name
         text(backgroundScanner.nextLine());
-    
+        System.out.print(color);
     
         // Background sprite
         while (backgroundScanner.hasNext()) {
             System.out.println(backgroundScanner.nextLine());
             Thread.sleep(textSpeed);
         }
+
+        System.out.println(Colors.ANSI_RESET);
+
+        
     
     }
     
