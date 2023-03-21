@@ -1,7 +1,6 @@
 package story;
 
 import java.util.Scanner;
-import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
 import graphics.Graphics;
