@@ -1,9 +1,9 @@
 package story;
+
 import java.util.Scanner;
 import graphics.Colors;
 import graphics.Graphics;
 import java.util.ArrayList;
-
 
 public class storypt2 {
     public static void main(String[] args) throws Exception {
@@ -32,7 +32,7 @@ public class storypt2 {
         do { 
             Scanner in = new Scanner (System.in);
             int input;
-            Graphics.text(Colors.ANSI_YELLOW+"You can 1) go to the path on your right, or 2) return to the village" + Colors.ANSI_RESET);
+            Graphics.text(Colors.ANSI_YELLOW +"You can 1) go to the path on your right, or 2) return to the village" + Colors.ANSI_RESET);
             input = in.nextInt();
 
                 if(input == 1){ 
@@ -85,33 +85,60 @@ public class storypt2 {
     
    
     //Greater Hel Area
+        do { 
+            Scanner in = new Scanner (System.in);
+            int input;
+            Graphics.text(Colors.ANSI_YELLOW + "You can either go to 1) Eastern region (docks), 2) Western region (tavern) where there is a flyting\n" 
+                                            + "3) Southern region (gates of Hel), or 4) Northern region where you can find Hela's palace.\n");
+            input = in.nextInt();
         //Outside the gates: Nothing of note, but a trickling stream of dirty water
+                
             Graphics.textInline(Colors.ANSI_PURPLE + " After your fun little banter with Loki, you walk to the entrance of the gates.\n"
                                 + "There is nothing but a dirty stream but you're excited to find out what lies beyonf the gates.\n"
                                 + "You push them open and discover the bottom of Hel was so much more than what you expected.\n" );
      //Eastern Hel: Docks
              //Naglfar, the ship made of fingernails and toenails resides here.
              //Loki fight is on this ship
-             //Must find way on ship
+             //Must find way on ship 
+
+             if(input == 1){    
             Graphics.textInline(Colors.ANSI_PURPLE + "In the eastern region of the bottom of Hel, you find Naglfar, the famous ship made of finger and toe nails.\n"
-                                                   + "Loki had told you before you left that this is the ship that you must fight him on.\n"
-                                                   + "The only problem is that trying to get aboard is harder than expected and you have to travel to the Northern region to Hela's palace and get permission.\n" );
+                                 + "Loki had told you before you left that this is the ship that you must fight him on.\n"
+                                 + "The only problem is that trying to get aboard is harder than expected and you have to travel to the Northern region to Hela's palace and get permission.\n");
+                                break;
+             }
+                                
+                
+
+                
     //Western Hel: Tavern 
+            if (input == 2) {
             //Lots of dead people drinking here
              //Flyting happens here
               //Flyting: A poetic constest of insults
              //Allusions to this thru out game. remember old insults and what peeps are sensitive to.
             //Winning allows good ending
             //find rumors about ship
+    }
     //Southern Hel: Gates to Hel; 
+            if (input == 3) {
             //Entrance
             Graphics.textInline(Colors.ANSI_PURPLE + "You travel to the Southern region of Hel but there is nothing particularly exciting here so you head to the North region.\n");
+            break;
+            } 
+                
     //Northern Hel: Hela's palace
+           if (input == 4) {
             //permission from Hel to get on ship 
             //Must find/fight way into palace
             Graphics.textInline(Colors.ANSI_PURPLE + "After travelling around for a bit, you walk to the Northern part of Hel.\n"
-                                                   + "You must fight or find your way into the palace. Once you are in the palace, you must get permission to come aboard Naglfar.\n" );
+                                + "You must fight or find your way into the palace. Once you are in the palace, you must get permission to come aboard Naglfar.\n" );
+                                break;
+           }
+                                 
+        } while(true);
+    }
+    
+}
+    
 
-        }    
-                    
-        }  
