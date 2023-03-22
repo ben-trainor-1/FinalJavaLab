@@ -136,6 +136,26 @@ public class Graphics {
         }
     }
 
+    // Method for printing out healing
+
+    public static void displayHeal(String healName) throws Exception {
+         
+        String filePath = "./src/graphics/Win/" + healName + ".txt";
+        File healFile = new File(filePath);
+        Scanner healScanner = new Scanner(healFile);
+            
+        // Heal name
+        text(healScanner.nextLine());
+            
+            
+        // Heal sprite
+        while (healScanner.hasNext()) {
+            System.out.println(healScanner.nextLine());
+            Thread.sleep(textSpeed);
+    
+        }
+    }
+
     // Wait for user to press enter
 
     public static void waitForEnter() {
