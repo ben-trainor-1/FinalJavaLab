@@ -26,7 +26,13 @@ public class AudioTest {
             System.out.println();
 
         } while (creditsScanner.hasNext());
+
+
+        System.out.println("Lowering volume...");
+        Player.fadeOutAudio(clip, 15);
+        System.out.println("Volume lowered.");
         
+
         do {
             // Wait for clip to end
         } while (clip.isActive());
