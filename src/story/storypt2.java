@@ -134,11 +134,9 @@ public class storypt2 {
             Graphics.textInline(Colors.ANSI_PURPLE + "After travelling around for a bit, you walk to the Northern part of Hel.\n"
                                 + "You must fight or find your way into the palace. Once you are in the palace, you must get permission to come aboard Naglfar.\n" );
                                 break;
-           }
-                                 
+           }                      
         } while(true);
     }
-    
 }
     
 

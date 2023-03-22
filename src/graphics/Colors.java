@@ -1,7 +1,5 @@
 package graphics;
 
-import java.util.Scanner;
-
 public class Colors {
     
     // Color constants for printing text

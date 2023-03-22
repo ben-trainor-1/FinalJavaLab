@@ -6,19 +6,23 @@ import graphics.Colors;
 
 
 
-
 public class Story {
 
     //Method for user error
     //TODO: Add dumpling box
+    //TODO: Add enemy Blurbs
     public static void failedInput(){
         System.out.println(Colors.ANSI_RED + "Please input a better number." + Colors.ANSI_RESET);
     }
 
-    // //Method for key at intersection
-    // public static boolean keyOne(){
-    //     return false;
-    // }
+    public static String[][] maze = {
+        //Key: L = left, R = right, U = up, D = down, B = bossfight(exit)
+        //     E = enemy, 1 = riddle #1, 2 = riddle #2, 3 = riddle #3
+        {"DE","DB","R1","LD","D2"},
+        {"UR","ULRD","LRD","LRDU","ULD"},
+        {"D3E","UR","ULRD","UL","UD"},
+        {"UR","LR","URL","LR","LU"},
+    };
     
 
     public static void main(String[] args) throws Exception {
@@ -34,6 +38,11 @@ public class Story {
             //Call scanner
             Scanner in = new Scanner(System.in); 
             int input;
+
+            //File Scanner
+            // File fileActivate = new File("./src/MazeProto.java");
+            // Scanner runFile = new Scanner(fileActivate);
+          
             
             do{
             //Fancy Welcome
@@ -293,14 +302,12 @@ public class Story {
                 Graphics.waitForEnter();
 
                 //TODO: Add a key check to see if character has key in invetory or not.
+                
                 //Some sort of stronghold...
-    
-                //TODO: Design maze.
-                //TODO: Add a maze. I think it needs to be in some kind of loop, so the player can go back and forth. Dead ends contain riddles to help player through maze.
                 //Maze:
                 //Riddles to help you thru (perhaps some allude to the good ending)
-                //You can do a "Theseus and the Minotaur" kinda thing
                 //Few suprise battles; (avoidable but mandatory if you find them)
+                MazeProto.main(args);
 
 
                 //At the end: Gullinkambi: the Golden Comb (boss fight)
