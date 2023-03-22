@@ -1,6 +1,9 @@
 package graphics;
 import java.io.File;
 import java.util.Scanner;
+
+import state.GameState;
+
 import java.io.Console;
 
 public class Graphics {
@@ -34,22 +37,28 @@ public class Graphics {
 
     }
 
-    // Method for printing out enemies
+    // Display main character
+    public static void displayGormGro() throws Exception {
 
-    public static void displayCharacter(String characterName, int characterHealth) throws Exception {
-         
-        String filePath = "./src/graphics/Characters/" + characterName + ".txt";
+        String filePath = "./src/graphics/Characters/" + GameState.name + ".txt";
         File characterFile = new File(filePath);
         Scanner characterScanner = new Scanner(characterFile);
+        String currentLine;
 
-        // Character name
-        text(characterScanner.nextLine());
+        // Print name
+        text(Colors.GREEN_BACKGROUND + characterScanner.nextLine() + Colors.ANSI_RESET);
 
-        // Stats
-        textInline(characterScanner.nextLine());
-        text(characterHealth + ";");
+        // Print attack
+        currentLine = characterScanner.nextLine();
+        textInline(currentLine.substring(0, 8));
+        text(Colors.RED_BOLD + GameState.playerAttack + Colors.ANSI_RESET);
 
-        // Character sprite
+        // Print health
+        currentLine = characterScanner.nextLine();
+        textInline(currentLine.substring(0, 8));
+        text(Colors.GREEN_BOLD + GameState.playerHealth + Colors.ANSI_RESET);
+
+        // Print sprite
         while (characterScanner.hasNext()) {
             System.out.println(characterScanner.nextLine());
             Thread.sleep(textSpeed);
@@ -57,6 +66,35 @@ public class Graphics {
 
     }
 
+    // Display enemies
+    public static void displayEnemy(String enemyName) throws Exception {
+         
+        String filePath = "./src/graphics/Characters/" + enemyName + ".txt";
+        File enemyFile = new File(filePath);
+        Scanner enemyScanner = new Scanner(enemyFile);
+        String currentLine;
+
+        // Print name
+        text(Colors.RED_BACKGROUND + enemyScanner.nextLine() + Colors.ANSI_RESET);
+
+        // Print attack
+        currentLine = enemyScanner.nextLine();
+        textInline(currentLine.substring(0, 8));
+        text(Colors.RED_BOLD + GameState.enemyAttackAvg + Colors.ANSI_RESET);
+
+        // Print health
+        currentLine = enemyScanner.nextLine();
+        textInline(currentLine.substring(0, 8));
+        text(Colors.GREEN_BOLD + GameState.enemyHealth + Colors.ANSI_RESET);
+
+        // Print sprite
+        while (enemyScanner.hasNext()) {
+            System.out.println(enemyScanner.nextLine());
+            Thread.sleep(textSpeed);
+        }
+
+    }
+    
     // Method for printing out background
 
     public static void displayBackground(String backgroundName, String color) throws Exception {
@@ -84,7 +122,7 @@ public class Graphics {
     
     // Method for printing out death
 
-    public static void displayDeath(String deathName) throws Exception {
+    public static void displayDeath(String deathName, String color) throws Exception {
          
         String filePath = "./src/graphics/Death/" + deathName + ".txt";
         File deathFile = new File(filePath);
@@ -92,6 +130,7 @@ public class Graphics {
     
         // Death name
         text(deathScanner.nextLine());
+        System.out.print(color);
     
     
         // Death sprite
@@ -99,11 +138,13 @@ public class Graphics {
             System.out.println(deathScanner.nextLine());
             Thread.sleep(textSpeed);
         }
+
+        System.out.println(Colors.ANSI_RESET);
     }
 
     // Method for printing out weapons
 
-    public static void displayWeapons(String weaponsName) throws Exception {
+    public static void displayWeapons(String weaponsName, String color) throws Exception {
          
         String filePath = "./src/graphics/Weapons/" + weaponsName + ".txt";
         File weaponsFile = new File(filePath);
@@ -111,6 +152,7 @@ public class Graphics {
         
         // Weapons name
         text(weaponsScanner.nextLine());
+        System.out.print(color);
         
         
         // Weapons sprite
@@ -119,11 +161,13 @@ public class Graphics {
             Thread.sleep(textSpeed);
 
         }
+
+        System.out.println(Colors.ANSI_RESET);
     }
 
     // Method for printing out win
 
-    public static void displayWin(String winName) throws Exception {
+    public static void displayWin(String winName, String color) throws Exception {
          
         String filePath = "./src/graphics/Win/" + winName + ".txt";
         File winFile = new File(filePath);
@@ -131,6 +175,7 @@ public class Graphics {
             
         // Win name
         text(winScanner.nextLine());
+        System.out.print(color);
             
             
         // Win sprite
@@ -139,11 +184,13 @@ public class Graphics {
             Thread.sleep(textSpeed);
     
         }
+
+        System.out.println(Colors.ANSI_RESET);
     }
 
     // Method for printing out healing
 
-    public static void displayHealing(String healingName) throws Exception {
+    public static void displayHealing(String healingName, String color) throws Exception {
 
         String filePath = "./src/graphics/Healing/" + healingName + ".txt";
         File healingFile = new File(filePath);
@@ -151,6 +198,7 @@ public class Graphics {
 
         // Healing name
         text(healingScanner.nextLine());
+        System.out.print(color);
 
         // Healing sprite
         while (healingScanner.hasNext()) {
@@ -158,6 +206,8 @@ public class Graphics {
             Thread.sleep(textSpeed);
             
         }
+
+        System.out.println(Colors.ANSI_RESET);
     }
     
 
