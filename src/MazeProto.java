@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import graphics.Colors;
-import graphics.Graphics;
 
 public class MazeProto {
 
