@@ -30,7 +30,7 @@ public class Story {
         ////NOTE: Storing character data is yet to be implemented!
         //String [] info = {" "," "," "," "," "," "};
             //Intro:
-            Graphics.displayBackground("Mountains");
+            Graphics.displayBackground("Mountains", Colors.BLACK_BRIGHT);
             Graphics.textInline(Colors.ANSI_BLUE +  "temp studio name" + Colors.ANSI_RESET + " presents temp game name");
             Graphics.waitForEnter();
             Graphics.text("\n" + "please choose a character...");
@@ -140,7 +140,7 @@ public class Story {
 
          //Leave Village; go to cave
         Graphics.waitForEnter();
-        Graphics.displayBackground("Trees");
+        Graphics.displayBackground("Trees", Colors.WHITE_BACKGROUND);
         Graphics.text(Colors.ANSI_PURPLE + "You walk down the path leading to the cave. Nothing eventful so far..." + Colors.ANSI_RESET);
         Thread.sleep(1000);
         Graphics.text(Colors.ANSI_PURPLE + "But wait..." + Colors.ANSI_RESET);

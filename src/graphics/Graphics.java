@@ -143,7 +143,6 @@ public class Graphics {
 
     // Method for printing out healing
 
-<<<<<<< HEAD
     public static void displayHeal(String healName) throws Exception {
          
         String filePath = "./src/graphics/Win/" + healName + ".txt";
@@ -161,7 +160,6 @@ public class Graphics {
     
         }
     }
-=======
     public static void displayHealing(String healingName) throws Exception {
 
         String filePath = "./src/graphics/Healing/" + healingName + ".txt";
@@ -179,7 +177,6 @@ public class Graphics {
         }
     }
     
->>>>>>> 82fdef20c05a2a6cd3b33a1f591786778b678f6c
 
     // Wait for user to press enter
 
