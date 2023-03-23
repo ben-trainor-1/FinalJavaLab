@@ -1,14 +1,8 @@
 package story;
 
 import java.util.Scanner;
-import java.awt.Color;
-import java.io.File;
-import java.util.ArrayList;
 import graphics.Graphics;
 import graphics.Colors;
-import story.Gorm;
-import story.Gro;
-
 
 
 
@@ -16,14 +10,19 @@ public class Story {
 
     //Method for user error
     //TODO: Add dumpling box
+    //TODO: Add enemy Blurbs
     public static void failedInput(){
         System.out.println(Colors.ANSI_RED + "Please input a better number." + Colors.ANSI_RESET);
     }
 
-    // //Method for key at intersection
-    // public static boolean keyOne(){
-    //     return false;
-    // }
+    public static String[][] maze = {
+        //Key: L = left, R = right, U = up, D = down, B = bossfight(exit)
+        //     E = enemy, 1 = riddle #1, 2 = riddle #2, 3 = riddle #3
+        {"DE","DB","R1","LD","D2"},
+        {"UR","ULRD","LRD","LRDU","ULD"},
+        {"D3E","UR","ULRD","UL","UD"},
+        {"UR","LR","URL","LR","LU"},
+    };
     
 
     public static void main(String[] args) throws Exception {
@@ -37,8 +36,13 @@ public class Story {
             Graphics.text("\n" + "please choose a character...");
             
             //Call scanner
-            Scanner in = new Scanner(System.in);
+            Scanner in = new Scanner(System.in); 
             int input;
+
+            //File Scanner
+            // File fileActivate = new File("./src/MazeProto.java");
+            // Scanner runFile = new Scanner(fileActivate);
+          
             
             do{
             //Fancy Welcome
@@ -119,7 +123,8 @@ public class Story {
                 Graphics.textInline("You have chosen to leave the village straightaway. It will be easier this for them this way.");
                 break;
             }
-            else if(input == 2){
+            else if(input == 2
+            ){
                 Graphics.displayCharacter("Viggo", 1);
                 Graphics.textInline("You decided to stay and say goodbye.\n" + Colors.ANSI_PURPLE + "In Asbjorn you approach Viggo, the blacksmith. Once he was a great warrior like you, but he now he has settled down.\n He accepted his fate here...\n"
                                 + Colors.ANSI_GREEN +  "\"Viggo, I'm leaving this town. I'm going to Hel. You can join me if you wish\"\n\"Alas, young (...) I do not display your energetic talent any more.\n I will stay here, accepting my banishment\"\n"
@@ -194,126 +199,115 @@ public class Story {
                         + Colors.ANSI_YELLOW + "You come upon an intersection. Which way do you choose?\n"
                         + "1) Left\n"
                         + "2) Right");
-        input = in.nextInt();
-            //left: Loki room
-        if(input == 1){
-            Graphics.textInline("You chose to the passage to the left");
-
-            //Play cavern sounds
-
-            //Begin encounter with Loki
-                    //Meet with Loki. He thanks you for freeing him, then taunts you. He figures out your plans and laughs at them
-            //Many dialouge choices, but they all end in embaressment
-            Graphics.waitForEnter();
-            Graphics.textInline(Colors.ANSI_PURPLE + "The carvern is narrow and musty. Silence permeates through the air.\n"
-                                    + "As you round a corner, however, you spot torchlight ahead." + Colors.ANSI_RESET); 
-            Graphics.waitForEnter();
-            Graphics.textInline(Colors.BLACK_BRIGHT + "A figure stands in a small room." + Colors.ANSI_RESET);   
-            Graphics.displayCharacter("Loki", 500);  
-            Graphics.waitForEnter(); 
-
-            Graphics.textInline(Colors.BLACK_BRIGHT + "\"Well, well, well, what do we have here?\n" + Colors.ANSI_RESET
-                                + Colors.ANSI_PURPLE + "You stand speechless before the infamous god of deceit. Words with him are dangerous... He molds them as if they are clay.\n"
-                                + Colors.BLACK_BRIGHT + "I feel obliged to thank you. You have done so much for me! I must ask, how did Odin handle it? Was he mad?\"\n" + Colors.ANSI_RESET);
-            Graphics.waitForEnter();
-            
-            //Options to respond to Loki
-            Graphics.textInline(Colors.ANSI_YELLOW + "How do you respond?\n"
-                                + "1) \"THERE AIN'T NO WAY I'M TELLING YOU BOY!\"\n"
-                                + "2) \"Yeah, he was mad, but that doesn't matter. You tricked me.\"\n"
-                                + "3) \"I hate you! You got me banished!\"\n"
-                                + "4) (remain silent)\n");
+        do{
             input = in.nextInt();
-            //If player says something
-            if(input == 1 || input == 2 || input == 3){
-                Graphics.textInline(Colors.ANSI_PURPLE + "A thin smile dominates Loki's face.\n"
-                                    + Colors.BLACK_BRIGHT + "\"Don't be so dramatic! I won't stop you from... whatever it is you're doing.\n"
-                                    + "Actually I have a gift for you!");  
-                Graphics.waitForEnter();
-                Graphics.textInline(Colors.RED_BOLD + "\"Just kidding! I don't!\n" + Colors.BLACK_BRIGHT +  "Anyway, toodles! I would wish you luck on you endeavours, but we all know you can't have any!\"" + Colors.ANSI_RESET);
-            }
-            //If player chooses to remain silent?
-            else if(input == 4){
-                Graphics.textInline(Colors.BLACK_BRIGHT + "What? Cat got your tongue? You're so boring? I can't stand boring people...");
-                Graphics.waitForEnter();
-                Graphics.textInline(Colors.ANSI_PURPLE + "Loki looks incredibly bored."
-                                    + Colors.BLACK_BRIGHT + "Why did I choose you to free me again? You lack any sort of emotion that I find so very entertaining.\n"
-                                    + "Well, toodles!\"" + Colors.ANSI_RESET);
-            }
-            else{
-                //User error
-                failedInput();
-            }
-
-            //Fight undead skeleton for key
-            //Enter Undead skeleton fight
-            Graphics.textInline(Colors.ANSI_PURPLE + "You are left standing in the happy flickering torchlight coming from a nearby sconce.\n"
-                                + "A gaping doorway stands before, you can see two skeletons one on the ground... the other looming, staring right at you.");
-            Graphics.waitForEnter();
-            Graphics.textInline("You notice a key attached to its femur... It's fighting time!!!" + Colors.ANSI_RESET);
-            //insert undead skeleton fight #1 here
-
-            //Head back to right 
-            Graphics.textInline(Colors.ANSI_PURPLE + "With the skeleton now at rest. you remove the iron key from its femur." + Colors.ANSI_RESET);
-            Graphics.textInline(Colors.BLUE_BACKGROUND_BRIGHT + "You revieced \'Special Key\'");
-            Graphics.waitForEnter();
-
-            //Optional skeleton fight
-            Graphics.textInline(Colors.ANSI_YELLOW + "You notice that you are now presented with yet another choice:\n"
-                                + "1) Enter the room with the other skeleton, for it appears to be holding something...\n"
-                                + "2) Go back to the the intersection and head to the right." + Colors.ANSI_RESET);
-            
-            //Options
-            input = in.nextInt();
+                //left: Loki room
             if(input == 1){
-                //if the player chooses to enter the room
-                Graphics.textInline(Colors.ANSI_PURPLE + "You burst into the room.");
-                Thread.sleep(1000);
-                Graphics.textInline("The prone skeleton numbly rises to its boney feet. It's fighting time again!!!" + Colors.ANSI_RESET);
-                //Insert Undead skeleton fight #2
-                Graphics.textInline(Colors.ANSI_PURPLE + "The skeleton lies defeated, and you find that it was holding a necklace... magical no doubt.\n" + Colors.ANSI_RESET
-                                    + Colors.BLUE_BACKGROUND_BRIGHT + "You recieved \'Magical Necklace!\' deal more damage in battle!" + Colors.ANSI_RESET);
-            }
-            else if (input == 2){
-                //if the player chooses to return to intersection
-                Graphics.textInline(Colors.ANSI_PURPLE + "You return to the intersection, seeking Hel more than anything. Ragnarok won't wait for anyone now!" + Colors.ANSI_RESET);
-            }
-            else{
-                //User error
-                failedInput();
-            }
-        }
+                Graphics.textInline("You chose to the passage to the left");
 
-            //right: locked door
-        else if(input == 2){
-            Graphics.textInline("You chose the path on the right");
-            Graphics.waitForEnter();
+                //Play cavern sounds
 
-            //TODO: Add a key check to see if character has key in invetory or not. The following script must be revised.
-
-            input = in.nextInt();
-            //Some sort of stronghold...
-            if(input == 1){
-                Graphics.textInline(Colors.ANSI_PURPLE + "You walk through a winding pathway and approach a door.\n"
-                                    + "It is locked, but lucky for you, the key you found in the left passage fits snugly into the lock." + Colors.ANSI_RESET);  
+                //Begin encounter with Loki
+                        //Meet with Loki. He thanks you for freeing him, then taunts you. He figures out your plans and laughs at them
+                //Many dialouge choices, but they all end in embaressment
                 Graphics.waitForEnter();
-                Graphics.textInline(Colors.ANSI_PURPLE + "The door seems to open on its own accord.\n"
-                                    + "Opposing all exections, you step into a sort of fortress with smooth stone walls.\n"
-                                    + "There is writing on the wall to your left:"
-                                    + Colors.PURPLE_BOLD_BRIGHT + "Be wary all ye travelers. This, the Fortress of Gullinkambi, seeks to decimate those faint of heart." + Colors.ANSI_RESET);
+                Graphics.textInline(Colors.ANSI_PURPLE + "The carvern is narrow and musty. Silence permeates through the air.\n"
+                                        + "As you round a corner, however, you spot torchlight ahead." + Colors.ANSI_RESET); 
                 Graphics.waitForEnter();
-                Graphics.textInline(Colors.ANSI_PURPLE + "Hmmmm... those are forboding words. But they do not scare you!\n"
-                                    + "You continue foward approaching an intersection.");
-                Graphics.text(Colors.ANSI_YELLOW + "Which way do you choose:\n"
-                                + "1) Left\n"
-                                + "2) Right\n"
-                                + "3) Forward\n");  
-                //TODO: Design maze.
-                //TODO: Add a maze. I think it needs to be in some kind of loop, so the player can go back and forth. Dead ends contain riddles to help player through maze.
+                Graphics.textInline(Colors.BLACK_BRIGHT + "A figure stands in a small room." + Colors.ANSI_RESET);   
+                Graphics.displayCharacter("Loki", 500);  
+                Graphics.waitForEnter(); 
+
+                Graphics.textInline(Colors.BLACK_BRIGHT + "\"Well, well, well, what do we have here?\n" + Colors.ANSI_RESET
+                                    + Colors.ANSI_PURPLE + "You stand speechless before the infamous god of deceit. Words with him are dangerous... He molds them as if they are clay.\n"
+                                    + Colors.BLACK_BRIGHT + "I feel obliged to thank you. You have done so much for me! I must ask, how did Odin handle it? Was he mad?\"\n" + Colors.ANSI_RESET);
+                Graphics.waitForEnter();
+                
+                //Options to respond to Loki
+                Graphics.textInline(Colors.ANSI_YELLOW + "How do you respond?\n"
+                                    + "1) \"THERE AIN'T NO WAY I'M TELLING YOU BOY!\"\n"
+                                    + "2) \"Yeah, he was mad, but that doesn't matter. You tricked me.\"\n"
+                                    + "3) \"I hate you! You got me banished!\"\n"
+                                    + "4) (remain silent)\n");
+                do{
+                    input = in.nextInt();
+                    //If player says something
+                    if(input == 1 || input == 2 || input == 3){
+                        Graphics.textInline(Colors.ANSI_PURPLE + "A thin smile dominates Loki's face.\n"
+                                            + Colors.BLACK_BRIGHT + "\"Don't be so dramatic! I won't stop you from... whatever it is you're doing.\n"
+                                            + "Actually I have a gift for you!");  
+                        Graphics.waitForEnter();
+                        Graphics.textInline(Colors.RED_BOLD + "\"Just kidding! I don't!\n" + Colors.BLACK_BRIGHT +  "Anyway, toodles! I would wish you luck on you endeavours, but we all know you can't have any!\"" + Colors.ANSI_RESET);
+                        break;
+                    }
+                    //If player chooses to remain silent?
+                    else if(input == 4){
+                        Graphics.textInline(Colors.BLACK_BRIGHT + "What? Cat got your tongue? You're so boring? I can't stand boring people...");
+                        Graphics.waitForEnter();
+                        Graphics.textInline(Colors.ANSI_PURPLE + "Loki looks incredibly bored."
+                                            + Colors.BLACK_BRIGHT + "Why did I choose you to free me again? You lack any sort of emotion that I find so very entertaining.\n"
+                                            + "Well, toodles!\"" + Colors.ANSI_RESET);
+                        break;
+                    }
+                    else{
+                        //User error
+                        failedInput();
+                    }
+                }while(true);
+                //Fight undead skeleton for key
+                //Enter Undead skeleton fight
+                Graphics.textInline(Colors.ANSI_PURPLE + "You are left standing in the happy flickering torchlight coming from a nearby sconce.\n"
+                                    + "A gaping doorway stands before, you can see two skeletons one on the ground... the other looming, staring right at you.");
+                Graphics.waitForEnter();
+                Graphics.textInline("You notice a key attached to its femur... It's fighting time!!!" + Colors.ANSI_RESET);
+                //insert undead skeleton fight #1 here
+
+                //Head back to right 
+                Graphics.textInline(Colors.ANSI_PURPLE + "With the skeleton now at rest. you remove the iron key from its femur." + Colors.ANSI_RESET);
+                Graphics.textInline(Colors.BLUE_BACKGROUND_BRIGHT + "You revieced \'Special Key\'");
+                Graphics.waitForEnter();
+
+                //Optional skeleton fight
+                Graphics.textInline(Colors.ANSI_YELLOW + "You notice that you are now presented with yet another choice:\n"
+                                    + "1) Enter the room with the other skeleton, for it appears to be holding something...\n"
+                                    + "2) Go back to the the intersection and head to the right." + Colors.ANSI_RESET);
+                
+                    //Options
+                do{
+                    input = in.nextInt();
+                    if(input == 1){
+                        //if the player chooses to enter the room
+                        Graphics.textInline(Colors.ANSI_PURPLE + "You burst into the room.");
+                        Thread.sleep(1000);
+                        Graphics.textInline("The prone skeleton numbly rises to its boney feet. It's fighting time again!!!" + Colors.ANSI_RESET);
+                        //Insert Undead skeleton fight #2
+                        Graphics.textInline(Colors.ANSI_PURPLE + "The skeleton lies defeated, and you find that it was holding a recipe... magical no doubt.\n" + Colors.ANSI_RESET
+                                            + Colors.BLUE_BACKGROUND_BRIGHT + "You recieved \'Magical Dumpling!\' deal more damage in battle!" + Colors.ANSI_RESET);
+                        break;
+                    }
+                    else if (input == 2){
+                        //if the player chooses to return to intersection
+                        Graphics.textInline(Colors.ANSI_PURPLE + "You return to the intersection, seeking Hel more than anything. Ragnarok won't wait for anyone now!" + Colors.ANSI_RESET);
+                         break;
+                    }
+                    else{
+                        //User error
+                        failedInput();
+                    }
+                }while(true);
+            }
+                //right: locked door
+            else if(input == 2){
+                Graphics.textInline("You chose the path on the right");
+                Graphics.waitForEnter();
+
+                //TODO: Add a key check to see if character has key in invetory or not.
+                
+                //Some sort of stronghold...
                 //Maze:
                 //Riddles to help you thru (perhaps some allude to the good ending)
-                //You can do a "Theseus and the Minotaur" kinda thing
                 //Few suprise battles; (avoidable but mandatory if you find them)
+                MazeProto.main(args);
 
 
                 //At the end: Gullinkambi: the Golden Comb (boss fight)
@@ -332,20 +326,160 @@ public class Story {
                                     + Colors.BLACK_BRIGHT + "Speaking of roosters, Loki enters the room!" + Colors.ANSI_RESET);
                 Graphics.waitForEnter(); 
                 Graphics.textInline(Colors.BLACK_BRIGHT + "\"Well, there goes Gullinkambi. Such a tragedy. I had plans with him.");
+                break;
 
                 //Weapon upgrade!
                 //Discover large cavern
             }
-            else if(input == 2){
-                Graphics.textInline(Colors.ANSI_PURPLE + "You walk through a winding pathway and approach a door.\n"
-                                    + "It is locked.");
-            }
             else{
                 failedInput();
             }
+        }while(true);
 
 
-        } 
+
+
+
+        //TODO: ADD KATE'S STORY 
+        do {
+            Graphics.text(Colors.ANSI_YELLOW +"You can 1) go to the path on your right, or 2) return to the village" + Colors.ANSI_RESET);
+            input = in.nextInt();
+
+                if(input == 1){ 
+                    Graphics.text(Colors.ANSI_YELLOW + "You have chosen to to take the path on the right." 
+                    + " Suddenly, an angry dwarf comes out of the shadows\n"
+                    + "He jumps you immediately and while you think he doesn't have a lot of strenghth, he continues to suprise you.\n" 
+                    + "After a rather long battle, you defeat the little, yet mighty dwarf and walk towards the room on your left\n"
+                    + "When you enter, your eyes immediately fall onto the blacksmith puzzle\n" + "It reminds you of your friend, Viggo and while exploring the rest of the room, you discover a spare gear lying around.\n "
+                     + Colors.ANSI_RESET);
+                    break;
+                }
+                if (input == 2) {
+                    Graphics.text(Colors.ANSI_YELLOW + "You have decided to return to the village\n" + Colors.ANSI_YELLOW + 
+                    "You remember your friend, Viggo the blacksmith. He would probably help you fix the elevator so you can get to the bottom of Hel!\n" 
+                    + "On your way out, you notice something shining from a hidden crevice.\n"
+                   + "You walk towards it and find that it's a weapon upgrade. Score! It can help you fight bigger battles!\n"
+                    + "Suddenly, out of nowhere, a berserker charges at you in fury. You fight him until he is no more.\n"
+                   + "After the long battle, you defeat him and go on your way. The show/journey must go on!");
+                    Graphics.waitForEnter();
+                    Graphics.textInline("When you are finally in Asbjorn, you find Viggo working.\n"
+                   + Colors.ANSI_GREEN + "\"Can you come help me fix the elevator? I need the elevator fixed so I can get to the bottom of Hel and finish my journey\"\n");
+                     Graphics.waitForEnter();
+                   Graphics.textInline(Colors.ANSI_YELLOW + "Viggo agrees but tells you he doesn't want to fight at all. And then, he gives you a gear that looks helpful.\n"
+                   // + "After this, both of you start your journey back to the elevator"
+                    +  Colors.ANSI_RESET);
+                    break;
+
+                }
+            } while(true);
+
+    //descending at the bottom of Hel and fight with wolf (Fenrir)
+            Graphics.textInline(Colors.ANSI_PURPLE + "After Viggo fixes the elevator, you finally descend to the bottom of Hel.\n"
+                     + "You soon discover that Fenrir the wolf is gurading the gate. You must defeat him.\n" 
+                     + "Without throwing caution to the wind, you approach him slowly. But Fenrir doesn't hesitate to rush at you.\n"
+                     + "You and Fenrir fight hard and the battle gets a bit bloody. You get a weapon upgrade!\n"
+                     + "You finally defeat Fenrir, but you don't kill him. Fewer the casualties the better, right?\n");
+            
+    //Loki's mocking 
+           Graphics.textInline(Colors.ANSI_PURPLE + "After standing there for a few moments, you hear sarcastic clapping and a small chuckle.\n"
+                    + "You spin around quickly and try and find where that sound is coming from. Suddenly Loki appears out of the shadows.\n"
+                    + Colors.ANSI_RESET
+                    + Colors.BLACK_BRIGHT + "\"Well done. You managed to fight without killing. How kind of you.\"\n" 
+                    + Colors.ANSI_RESET
+                    + Colors.ANSI_GREEN + "\"Loki? You were here the whole time? How did I not see you? Why are you here?\"\n"
+                    + Colors.ANSI_RESET
+                    + Colors.BLACK_BRIGHT + "\"So many questions but so little time. All you need to know, young lad, is that you really need to work on your fighting skills.\"\n"
+                    + Colors.ANSI_RESET); 
+
+         
+    
+   
+    //Greater Hel Area
+        do { 
+            Graphics.text(Colors.ANSI_YELLOW + "You can either go to 1) Eastern region (docks), 2) Western region (tavern) where there is a flyting\n" 
+                                            + "3) Southern region (gates of Hel), or 4) Northern region where you can find Hela's palace.\n");
+            input = in.nextInt();
+        //Outside the gates: Nothing of note, but a trickling stream of dirty water
+                
+            Graphics.textInline(Colors.ANSI_PURPLE + " After your fun little banter with Loki, you walk to the entrance of the gates.\n"
+                                + "There is nothing but a dirty stream but you're excited to find out what lies beyonf the gates.\n"
+                                + "You push them open and discover the bottom of Hel was so much more than what you expected.\n" );
+     //Eastern Hel: Docks
+             //Naglfar, the ship made of fingernails and toenails resides here.
+             //Loki fight is on this ship
+             //Must find way on ship 
+
+             if(input == 1){    
+            Graphics.textInline(Colors.ANSI_PURPLE + "In the eastern region of the bottom of Hel, you find Naglfar, the famous ship made of finger and toe nails.\n"
+                                 + "Loki had told you before you left that this is the ship that you must fight him on.\n"
+                                 + "The only problem is that trying to get aboard is harder than expected and you have to travel to the Northern region to Hela's palace and get permission.\n");
+                                break;
+             }
+                                
+                
+
+                
+    //Western Hel: Tavern 
+            if (input == 2) {
+            //Lots of dead people drinking here
+             //Flyting happens here
+              //Flyting: A poetic constest of insults
+             //Allusions to this thru out game. remember old insults and what peeps are sensitive to.
+            //Winning allows good ending
+            //find rumors about ship
+    }
+    //Southern Hel: Gates to Hel; 
+            if (input == 3) {
+            //Entrance
+            Graphics.textInline(Colors.ANSI_PURPLE + "You travel to the Southern region of Hel but there is nothing particularly exciting here so you head to the North region.\n");
+            break;
+            } 
+                
+    //Northern Hel: Hela's palace
+           if (input == 4) {
+            //permission from Hel to get on ship 
+            //Must find/fight way into palace
+            Graphics.textInline(Colors.ANSI_PURPLE + "After travelling around for a bit, you walk to the Northern part of Hel.\n"
+                                + "You must fight or find your way into the palace. Once you are in the palace, you must get permission to come aboard Naglfar.\n" );
+                                break;
+           }
+                                 
+        } while(true);
+
+        //TODO: Implement tavern into correct area.
+        Graphics.textInline("You enter the tavern. Lots of the deceased are mingling in here. It seems like a lively place.\n"
+                                    + "You look around overwhelmed.\n"); 
+        Graphics.waitForEnter();
+        Graphics.textInline("Do you recognize that man?");
+        Graphics.waitForEnter();
+        Graphics.textInline("You do! It's your old friend Fell! Memory floods your mind, as you recall the lead up to your banishment");
+        Graphics.waitForEnter();
+        Graphics.textInline("Fell, although reluctant to help, aided you in freeing Loki. However, Loki betrayed you and killed him, leaving you \'mercifully\' alive.");
+        Graphics.waitForEnter();
+        Graphics.textInline("Fell notices you, and a big grin invades his face.\n"
+                            + "\"[...] you old chap! You've finally come to dine with the dead? But wait. You have a spry look about you...\nYou're alive aren't you?\"\n"
+                            + "\"Good to see you too, Fell. Still the one with all the questions I see. Yes, I am alive. Odin promised redemption if I boarded Naglfar.\"\n"
+                            + "\"Ohh, that ship. A few of Loki's gurus came in and offered anyone to join him on the boat. Some of us went, but most of us... we don't want to fight the gods we once worshiped.\"");
+        Graphics.waitForEnter();
+        Graphics.textInline("Fell regards you for a long moment. Finally he pipes up,\n"
+                            + "\"Let's do one last flyting. I know its been a while, but for wit and old times sake. Let's have some fun.\"\n"
+                            + "\"Of course we can, but you know we can, but you know I only like to play with stakes.\"\n"
+                            + "\"I have here this bottle full of \'Godmead\'. Don't ask how I got it, and I don't know what it does. I think it has magical properties, and I was promised that is the best mead ever.\n"
+                            + "So, what do you say?\"\n"    
+                            + "Godmead, huh. A mysterious alcoholic beverage doesn't sound like much of a stake, but Fell seems so eager to flyt with you.\n"
+                            + "1) \"Let's do it!\"\n2) \"No, I can't do this right now.\"");
+        input = in.nextInt();
+        if(input == 1){
+            //TODO: Make a file for the flyting and run it
+        }
+        else if(input == 2){
+            Graphics.textInline("No!");
+        }
+        else{
+            failedInput();
+        }
+
+    } 
         //Abyss
             //The only way is an elevator, but it is broken
             //Go to path on right
@@ -369,12 +503,16 @@ public class Story {
                     //Loki fight is on this ship
                     //Must find way on ship
             //Western Hel: Tavern 
+
+
                 //Lots of dead people drinking here
                 //Flyting happens here
                     //Flyting: A poetic constest of insults
                         //Allusions to this thru out game. remember old insults and what peeps are sensitive to.
                         //Winning allowd good ending
                 //find rumors about ship
+
+
             //Southern Hel: Gates to Hel; 
                 //Entrance
             //Northern Hel: Hela's palace
@@ -385,5 +523,4 @@ public class Story {
                 //If you win Loki runs away
                 //If you lose, you get thrown into water (die)
                 //If you win against loki and in the flyting, then Loki drops weapon, which you then use in Ragnorak
-    }
 }

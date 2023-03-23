@@ -1,4 +1,5 @@
 package graphics;
+
 public class Colors {
     
     // Color constants for printing text
