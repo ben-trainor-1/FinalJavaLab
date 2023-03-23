@@ -1,5 +1,6 @@
 Fell
-Stats: Class/Info; Average attack: ; Health: 
+Attack:
+Health:
 -------------
 
    /_______\						 

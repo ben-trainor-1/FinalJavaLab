@@ -12,6 +12,13 @@ public class Graphics {
 
     static int textSpeed = 50;
 
+    // Space method
+    public static void space(int numOfSpaces) {
+        for (int i = 0; i < numOfSpaces; i++) {
+            System.out.println();
+        }
+    }
+
     // Method for printing text
 
     public static void text(String text) throws Exception {
@@ -50,12 +57,12 @@ public class Graphics {
 
         // Print attack
         currentLine = characterScanner.nextLine();
-        textInline(currentLine.substring(0, 8));
+        textInline(currentLine);
         text(Colors.RED_BOLD + GameState.playerAttack + Colors.ANSI_RESET);
 
         // Print health
         currentLine = characterScanner.nextLine();
-        textInline(currentLine.substring(0, 8));
+        textInline(currentLine);
         text(Colors.GREEN_BOLD + GameState.playerHealth + Colors.ANSI_RESET);
 
         // Print sprite

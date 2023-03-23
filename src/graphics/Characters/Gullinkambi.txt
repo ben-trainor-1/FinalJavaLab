@@ -1,5 +1,6 @@
 Gullinkambi
-Stats: Class/Info; Average attack: ; Health: 
+Attack: 100
+Health: 
 -------------
 
                            {-}

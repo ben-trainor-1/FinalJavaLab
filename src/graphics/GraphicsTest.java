@@ -6,11 +6,29 @@ public class GraphicsTest {
         // Graphics.displayCharacter("Loki", 100);
         // Graphics.displayCharacter("Viggo", 100);
         // Graphics.displayDeath("Dead");
-
-        Graphics.displayBackground("Trees", Colors.ANSI_GREEN);
-        Graphics.displayBackground("Mountains", Colors.ANSI_RED);
-
         
-       
+        Graphics.textSpeed = 30;
+
+        testAllGraphicsMethods();
+        
     }
+    
+    // Method for running every graphics method
+    public static void testAllGraphicsMethods() throws Exception {
+        
+        Graphics.displayBackground("Mountains", Colors.ANSI_WHITE);
+        Graphics.displayDeath("Tomb", Colors.ANSI_WHITE);
+        Graphics.displayEnemy("Gullinkambi");
+        Graphics.displayGormGro();
+        Graphics.displayHealing("Dumpling", Colors.ANSI_WHITE);
+        Graphics.displayWeapons("Axe", Colors.ANSI_WHITE);
+        Graphics.displayWin("Trophy", Colors.ANSI_WHITE);
+        Graphics.space(5);
+        Graphics.text("Hello, world!");
+        Graphics.textInline("Hello, world! Inline text!");
+        Graphics.waitForEnter();
+
+
+    }
+
 }

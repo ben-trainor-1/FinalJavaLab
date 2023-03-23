@@ -3,7 +3,7 @@ package state;
 public class GameState {
 
     // Player stats
-    public static String name = "Gorm";
+    public static String name = "Gro";
     public static String pNoun = "";
     public static String objpNoun = "";
     public static String weapon = "";
