@@ -15,6 +15,7 @@ public class Story {
         System.out.println(Colors.ANSI_RED + "Please input a better number." + Colors.ANSI_RESET);
     }
 
+    //Method for maze
     public static String[][] maze = {
         //Key: L = left, R = right, U = up, D = down, B = bossfight(exit)
         //     E = enemy, 1 = riddle #1, 2 = riddle #2, 3 = riddle #3
@@ -471,6 +472,7 @@ public class Story {
         input = in.nextInt();
         if(input == 1){
             //TODO: Make a file for the flyting and run it
+            Tavern.main(args);
         }
         else if(input == 2){
             Graphics.textInline("No!");
