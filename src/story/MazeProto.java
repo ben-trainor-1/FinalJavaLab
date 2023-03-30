@@ -1,3 +1,5 @@
+package story;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -29,8 +31,6 @@ public class MazeProto {
             // Display position
             System.out.println("[" + currentPosition[0] + ", " + currentPosition[1] + "]" );
         }
-        
-        System.out.println("[" + currentPosition[0] + ", " + currentPosition[1] + "]" );
 
 
     }
@@ -93,6 +93,8 @@ public class MazeProto {
         //Check for Bossfight
         if(mazeInfo.contains("B")){
             //TODO: Add Gulinkambi bossfight, if the boss is defeated, exit the maze.
+            //At the end: Gullinkambi: the Golden Comb (boss fight)
+            //TODO: Add Gullinkambi boss fight
             return exitMaze;
         }
 
@@ -128,7 +130,6 @@ public class MazeProto {
         else if (movementChoice.equals("D") || movementChoice.equals("DOWN")) {
             mazePosition[0] += 1;
         }
-
         return mazePosition;
 
     }
@@ -154,6 +155,5 @@ public class MazeProto {
             System.out.println("|");
 
         }
-    }
-    
+    } 
 }

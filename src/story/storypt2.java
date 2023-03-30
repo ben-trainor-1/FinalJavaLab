@@ -96,7 +96,7 @@ public class storypt2 {
             Graphics.textInline(Colors.ANSI_PURPLE + " After your fun little banter with Loki, you walk to the entrance of the gates.\n"
                                 + "There is nothing but a dirty stream but you're excited to find out what lies beyond the gates.\n"
                                 + "You push them open and discover the bottom of Hel was so much more than what you expected.\n" );
-     //Eastern Hel: Docks
+        //Eastern Hel: Docks
              //Naglfar, the ship made of fingernails and toenails resides here.
              //Loki fight is on this ship
              //Must find way on ship 
@@ -111,7 +111,7 @@ public class storypt2 {
                 
 
                 
-    //Western Hel: Tavern 
+        //Western Hel: Tavern 
             if (input == 2) {
             //Lots of dead people drinking here
              //Flyting happens here
@@ -119,26 +119,26 @@ public class storypt2 {
              //Allusions to this thru out game. remember old insults and what peeps are sensitive to.
             //Winning allows good ending
             //find rumors about ship
-    }
-    //Southern Hel: Gates to Hel; 
+            }
+        //Southern Hel: Gates to Hel; 
             if (input == 3) {
             //Entrance
             Graphics.textInline(Colors.ANSI_PURPLE + "You travel to the Southern region of Hel but there is nothing particularly exciting here so you head to the North region.\n");
             break;
             } 
                 
-    //Northern Hel: Hela's palace
+        //Northern Hel: Hela's palace
            if (input == 4) {
             //permission from Hel to get on ship 
             //Must find/fight way into palace
             Graphics.textInline(Colors.ANSI_PURPLE + "After travelling around for a bit, you walk to the Northern part of Hel.\n"
                                 + "You must fight or find your way into the palace. Once you are in the palace, you must get permission to come aboard Naglfar.\n" );
                                 break;
-           }
-                                 
+           }                      
         } while(true);
+    
    
-   // Approach palace after maze 
+        // Approach palace after maze 
         Graphics.text(Colors.ANSI_PURPLE + "When you finally get through and defeat the maze, you reach Hela's palace.\n"
                           + "There are guards at the door but you have to get in to get permission to fight aboard Naglfar.\n"
                           + "You appoarch the guards and try to make up a sob story but they don't buy it.\n"
