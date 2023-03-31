@@ -1,6 +1,6 @@
 Fell
-Attack:
-Health:
+Attack: 
+Health: 
 -------------
 
    /_______\						 

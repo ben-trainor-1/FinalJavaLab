@@ -1,6 +1,6 @@
 Loki
-Attack:
-Health:
+Attack: 
+Health: 
 --------------
 
   ))   ((

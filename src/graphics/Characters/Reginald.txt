@@ -1,6 +1,6 @@
 Reginald
-Attack:
-Health:
+Attack: 
+Health: 
 --------------
  __
 |00|
