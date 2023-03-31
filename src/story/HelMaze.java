@@ -1,16 +1,14 @@
 package story;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import graphics.Colors;
 
-public class MazeProto {
-
+public class HelMaze {
     public static String[][] maze = {
         //Key: L = left, R = right, U = up, D = down, B = bossfight(exit)
         //     E = enemy, 1 = riddle #1, 2 = riddle #2, 3 = riddle #3
-        {"DE","DB","R1","LD","D2"},
+        {"DE","","","",""},
         {"UR","ULRD","LRD","LRDU","ULD"},
         {"D3E","UR","ULRD","UL","UD"},
         {"UR","LR","URL","LR","LU"},
@@ -157,3 +155,4 @@ public class MazeProto {
         }
     } 
 }
+

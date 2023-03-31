@@ -209,10 +209,13 @@ public class Story {
 
                 //Begin encounter with Loki
                         //Meet with Loki. He thanks you for freeing him, then taunts you. He figures out your plans and laughs at them
-                //Many dialouge choices, but they all end in embaressment
+                //Many dialogue choices, but they all end in embarrassment
                 Graphics.waitForEnter();
-                Graphics.textInline(Colors.ANSI_PURPLE + "The carvern is narrow and musty. Silence permeates through the air.\n"
-                                        + "As you round a corner, however, you spot torchlight ahead." + Colors.ANSI_RESET); 
+                Graphics.textInline(Colors.RED_BOLD + "\"Just kidding! I don't!\n" + Colors.BLACK_BRIGHT +  "Anyway, toodles! I would wish you luck on you endeavors, but we all know you can't have any!\"" + Colors.ANSI_RESET);
+            }
+            //If player chooses to remain silent?
+            else if(input == 4){
+                Graphics.textInline(Colors.BLACK_BRIGHT + "What? Cat got your tongue? You're so boring? I can't stand boring people...");
                 Graphics.waitForEnter();
                 Graphics.textInline(Colors.BLACK_BRIGHT + "A figure stands in a small room." + Colors.ANSI_RESET);   
                 Graphics.displayCharacter("Loki", 500);  
@@ -307,7 +310,7 @@ public class Story {
                 //Maze:
                 //Riddles to help you thru (perhaps some allude to the good ending)
                 //Few suprise battles; (avoidable but mandatory if you find them)
-                MazeProto.main(args);
+                RoosterMaze.main(args);
 
 
                 //At the end: Gullinkambi: the Golden Comb (boss fight)
@@ -371,7 +374,7 @@ public class Story {
 
     //descending at the bottom of Hel and fight with wolf (Fenrir)
             Graphics.textInline(Colors.ANSI_PURPLE + "After Viggo fixes the elevator, you finally descend to the bottom of Hel.\n"
-                     + "You soon discover that Fenrir the wolf is gurading the gate. You must defeat him.\n" 
+                     + "You soon discover that Fenrir the wolf is guarding the gate. You must defeat him.\n" 
                      + "Without throwing caution to the wind, you approach him slowly. But Fenrir doesn't hesitate to rush at you.\n"
                      + "You and Fenrir fight hard and the battle gets a bit bloody. You get a weapon upgrade!\n"
                      + "You finally defeat Fenrir, but you don't kill him. Fewer the casualties the better, right? More to kill in Ragnorak ;)\n");
@@ -497,12 +500,48 @@ public class Story {
             Graphics.textInline(Colors.ANSI_PURPLE + "After traveling around for a bit, you walk to the Northern part of Hel.\n"
                                 + "You approach the sinister looking palace. Hela resides in the palace somewhere, and you must get permission from her board Naglfar.\n");
             Graphics.waitForEnter();
-           }
-    //Failed input
-           else{
-            failedInput();
-           }
-                                 
+
+            // Approach palace after maze 
+            Graphics.text(Colors.ANSI_PURPLE + "When you finally get through and defeat the maze, you reach Hela's palace.\n"
+            + "There are guards at the door but you have to get in to get permission to fight aboard Naglfar.\n"
+            + "You appoarch the guards and try to make up a sob story but they don't buy it.\n"
+            + "You finally give up and tell them the truth but they still don't care. Your only option is to fight your way in.\n"
+            + "After a long fight between the two of them, you are a little injured but you manage to get past the doors.\n"
+            + "\"Who are you and how did you get in here?\"\n"
+            + "\"My name is [...]. I was told I had to come here to get permission from you, great Hela.\"\n"
+            + "You approach her at her throne and kneel on one knee.\n"
+            + "\"You are correct. But don't think you'll get my consent so easily. I have a riddle for you.\"\n"
+            + "\"What does man love more than life, hate more than death or mortal strife; that which contented men desire; the poor have, the rich require; the miser spends, the spendthrift saves, and all men carry to their graves?\"\n"
+            + "You have three options for the answer.\n");
+                do {
+                    input = in.nextInt();
+                    Graphics.text(Colors.ANSI_YELLOW + "There are three options. Only one is the correct answer.\n"
+                                            + "option 1: Nothing.\n"
+                                            + "option 2: Money.\n"
+                                            + "A moral life.\n");
+                    if (input == 1) {
+                        Graphics.textInline(Colors.ANSI_PURPLE + "Hela slowly starts to nod her head.\n"
+                                                            + "\"You are very smart. You have my permission to aboard the Naglfar.\"\n"
+                                                            + "She hands you a letter and let you go on your way.\n");
+                        Graphics.displayWin("yay");
+                        break;
+                    }
+
+                    else if (input == 2 || input == 3) {
+                        Graphics.textInline("Hela shakes her head and says that you will not be able to board Naglfar and fight");
+                        Graphics.displayDeath("Dead");
+                        Graphics.textInline(Colors.ANSI_BLUE + "\"Because you got the riddle wrong, you must the fight my meanest elf.\"\n");
+
+                    }
+                    else{
+                        failedInput();
+                    }
+                } while(true);
+            }
+            //Failed input
+            else{
+                failedInput();
+            }                                     
         } while(true);
         //TODO: Implement tavern into correct area.
     } 
