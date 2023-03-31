@@ -530,7 +530,15 @@ public class Story {
                     else if (input == 2 || input == 3) {
                         Graphics.textInline("Hela shakes her head and says that you will not be able to board Naglfar and fight");
                         Graphics.displayDeath("Dead");
-                        Graphics.textInline(Colors.ANSI_BLUE + "\"Because you got the riddle wrong, you must the fight my meanest elf.\"\n");
+                        Graphics.textInline(Colors.RED_BRIGHT + "\"Because you got the riddle wrong, you must the fight my meanest elf.\"\n" + Colors.ANSI_RESET);
+                        Graphics.waitForEnter();
+                        Graphics.textInline(Colors.ANSI_PURPLE + "Hela summons her biggest, meanest elf and he comes stomping in.\n"
+                        + "Oh great. He looks so angry and irritated. This is going to be loades of fun, you think to yourself.\n"
+                        + "He immediately knows its you he has to fight and charges at you. You bring out your great spear while he pulls out an axe.\n"
+                        + "You finally defeat him, leaving the mean elf dirty, bloody, and in pain. You look at Hela who has been watching the whole time.\n"
+                        + Colors.RED_BRIGHT + "\"Good job young lad. You have defeated my undefeatable elf. You have my permission to aboard the Naglfar\"\n" + Colors.ANSI_RESET
+                        + Colors.ANSI_PURPLE + "She hads you a letter and lets you go on your way. You thank her and head out the door.\n");
+    
 
                     }
                     else{
