@@ -24,5 +24,14 @@ public class GameState {
     public static int enemyHealCount = 1;
     public static int enemyHealAmount;
     public static int enemyCriticalChance;
+
+    //Booleans for checking
+    public static boolean key = false;
+    public static boolean firstSouth = true;
+    public static boolean firstNorth = true;
+    public static boolean firstEast = true;
+    public static boolean firstWest = true;
+    public static boolean winFlyting = false;
+    public static boolean helPermission = false;
     
 }
