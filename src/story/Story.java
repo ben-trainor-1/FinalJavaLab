@@ -175,7 +175,8 @@ public class Story {
             //Odin's responses
             if(input == 1){
                 Graphics.textInline(Colors.ANSI_PURPLE + "Odin looks solemnly at you, as if peering into your mind.\n"
-                                + Colors.BLUE_BOLD_BRIGHT + "You have courage. I only hope it will stay with to the end." + Colors.ANSI_RESET); 
+                                + Colors.BLUE_BOLD_BRIGHT + "\"You have courage. I only hope it will stay with to the end.\"\n"
+                                + Colors.ANSI_RESET); 
                 break; 
             }
             else if(input == 2){
@@ -316,7 +317,7 @@ public class Story {
                 //At the end: Gullinkambi: the Golden Comb (boss fight)
                 Graphics.textInline(Colors.ANSI_PURPLE + "You found the end of the maze!\nYou enter a large circular and (oddly enough) well-lit room\n" + Colors.ANSI_RESET);
                 Graphics.waitForEnter();
-                Graphics.textInline("You stride triumphantly through the room. Suddenly! YOu hear a loud \"cuckaw\"" + Colors.ANSI_RESET);
+                Graphics.textInline("You stride triumphantly through the room. Suddenly! You hear a loud \"cuckaw\"" + Colors.ANSI_RESET);
                 //TODO: Add rooster crow
 
                 Graphics.waitForEnter();
@@ -337,11 +338,15 @@ public class Story {
             else{
                 failedInput();
             }
-        }while(true);
+        }while(true); 
+
+        Graphics.textInline(Colors.ANSI_PURPLE + "After defeating Gullinkambi, you get a weapon upgrade!\n"
+        + "Loki suddenly vanishes and you walk out of the room to go look for something that will lead to the bottom of Hel.\n"
+        + "You spot a cliff that will lead to an open cave with an elevator. After getting past the cliff and going into the open cave, you soon discover the elevator is broken. You have a few options.\n");
 
         //TODO: ADD KATE'S STORY 
         do {
-            Graphics.text(Colors.ANSI_YELLOW +"You can 1) go to the path on your right, or 2) return to the village" + Colors.ANSI_RESET);
+            Graphics.text(Colors.ANSI_YELLOW + "You can 1) go to the path on your right, or 2) return to the village to get help." + Colors.ANSI_RESET);
             input = in.nextInt();
 
                 if(input == 1){ 
@@ -439,6 +444,16 @@ public class Story {
             Graphics.textInline(Colors.ANSI_PURPLE + "In the eastern region of the bottom of Hel, you find Naglfar, the famous ship made of finger and toe nails.\n"
                                  + "Odin told you that this is the requisite ship to prove your worth.\n"
                                  + "The only problem is that trying to get aboard is harder than expected and you have to travel to the Northern region to Hela's palace and get permission.\n");
+            
+            Graphics.textInline(Colors.ANSI_PURPLE + "You show the guard of Naglfar the letter of permission from Hela.\n"
+                                 + "You board the ship. Loki is standing in the center of dock with his arms crossed and a smirk on his face.\n" + Colors.ANSI_RESET
+                                 + Colors.BLACK_BRIGHT + "\"You really don't know when to give up, do you? Well, it doesn't matter because I've been expecting you.\"\n" + Colors.ANSI_RESET
+                                 + Colors.ANSI_PURPLE + "You boldly stride up to him. Now y'all are standing head to head, glaring at each other with arms crossed.\n"
+                                 + Colors.ANSI_GREEN + "\"Loki, fancy seeing you here. You're right. I don't know when to give up but know is not the time. I'm fighting wheter you like it or not.\"\n" + Colors.ANSI_RESET
+                                 + Colors.BLACK_BRIGHT + "\"Ah, young lad. I was hoping you'd say that. But don't think I'm going to make it easy for you. I am the god of mischief after all.\"\n" + Colors.ANSI_RESET
+                                 + Colors.ANSI_GREEN + "\"Ha, why am I not surpised? Going easy on anyone would be the very last thing I'd except from you.\"\n" + Colors.ANSI_RESET);
+            
+            
             //TODO: Boolean Variable that allows to board the boat
             }      
     //Western Hel: Tavern 
@@ -506,13 +521,13 @@ public class Story {
             + "There are guards at the door but you have to get in to get permission to fight aboard Naglfar.\n"
             + "You appoarch the guards and try to make up a sob story but they don't buy it.\n"
             + "You finally give up and tell them the truth but they still don't care. Your only option is to fight your way in.\n"
-            + "After a long fight between the two of them, you are a little injured but you manage to get past the doors.\n"
-            + "\"Who are you and how did you get in here?\"\n"
-            + "\"My name is [...]. I was told I had to come here to get permission from you, great Hela.\"\n"
-            + "You approach her at her throne and kneel on one knee.\n"
-            + "\"You are correct. But don't think you'll get my consent so easily. I have a riddle for you.\"\n"
+            + "After a long fight between the two of them, you are a little injured but you manage to get past the doors.\n" + Colors.ANSI_RESET
+            + Colors.RED_BRIGHT + "\"Who are you and how did you get in here?\"\n" + Colors.ANSI_RESET
+            + Colors.ANSI_GREEN + "\"My name is [...]. I was told I had to come here to get permission from you, great Hela.\"\n" + Colors.ANSI_RESET
+            + Colors. ANSI_PURPLE + "You approach her at her throne and kneel on one knee.\n" + Colors.ANSI_RESET
+            + Colors.RED_BRIGHT + "\"You are correct. But don't think you'll get my consent so easily. I have a riddle for you.\"\n"
             + "\"What does man love more than life, hate more than death or mortal strife; that which contented men desire; the poor have, the rich require; the miser spends, the spendthrift saves, and all men carry to their graves?\"\n"
-            + "You have three options for the answer.\n");
+            + "You have three options for the answer.\n" + Colors.ANSI_RESET);
                 do {
                     input = in.nextInt();
                     Graphics.text(Colors.ANSI_YELLOW + "There are three options. Only one is the correct answer.\n"
@@ -521,8 +536,8 @@ public class Story {
                                             + "A moral life.\n");
                     if (input == 1) {
                         Graphics.textInline(Colors.ANSI_PURPLE + "Hela slowly starts to nod her head.\n"
-                                                            + "\"You are very smart. You have my permission to aboard the Naglfar.\"\n"
-                                                            + "She hands you a letter and let you go on your way.\n");
+                                                            + Colors.RED_BRIGHT + "\"You are very smart. You have my permission to aboard the Naglfar.\"\n" + Colors.ANSI_RESET
+                                                            + Colors.ANSI_PURPLE + "She hands you a letter and let you go on your way.\n");
                         Graphics.displayWin("yay");
                         break;
                     }
@@ -551,6 +566,7 @@ public class Story {
                 failedInput();
             }                                     
         } while(true);
+
         //TODO: Implement tavern into correct area.
     } 
         //Abyss
