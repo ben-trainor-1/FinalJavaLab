@@ -2,6 +2,7 @@ package story;
 
 import java.util.Scanner;
 import graphics.Graphics;
+import state.GameState;
 import graphics.Colors;
 
 
@@ -24,6 +25,7 @@ public class Story {
         {"D3E","UR","ULRD","UL","UD"},
         {"UR","LR","URL","LR","LU"},
     };
+    //Method for maze #2!
     
 
     public static void main(String[] args) throws Exception {
@@ -441,133 +443,161 @@ public class Story {
              //Must find way on ship 
 
             if(input == 1){    
-            Graphics.textInline(Colors.ANSI_PURPLE + "In the eastern region of the bottom of Hel, you find Naglfar, the famous ship made of finger and toe nails.\n"
-                                 + "Odin told you that this is the requisite ship to prove your worth.\n"
-                                 + "The only problem is that trying to get aboard is harder than expected and you have to travel to the Northern region to Hela's palace and get permission.\n");
-            
-            Graphics.textInline(Colors.ANSI_PURPLE + "You show the guard of Naglfar the letter of permission from Hela.\n"
-                                 + "You board the ship. Loki is standing in the center of dock with his arms crossed and a smirk on his face.\n" + Colors.ANSI_RESET
-                                 + Colors.BLACK_BRIGHT + "\"You really don't know when to give up, do you? Well, it doesn't matter because I've been expecting you.\"\n" + Colors.ANSI_RESET
-                                 + Colors.ANSI_PURPLE + "You boldly stride up to him. Now y'all are standing head to head, glaring at each other with arms crossed.\n"
-                                 + Colors.ANSI_GREEN + "\"Loki, fancy seeing you here. You're right. I don't know when to give up but know is not the time. I'm fighting wheter you like it or not.\"\n" + Colors.ANSI_RESET
-                                 + Colors.BLACK_BRIGHT + "\"Ah, young lad. I was hoping you'd say that. But don't think I'm going to make it easy for you. I am the god of mischief after all.\"\n" + Colors.ANSI_RESET
-                                 + Colors.ANSI_GREEN + "\"Ha, why am I not surpised? Going easy on anyone would be the very last thing I'd except from you.\"\n" + Colors.ANSI_RESET);
-            
-            
-            //TODO: Boolean Variable that allows to board the boat
+                if(GameState.helPermission = false){Graphics.textInline(Colors.ANSI_PURPLE + "In the eastern region of the bottom of Hel, you find Naglfar, the famous ship made of finger and toe nails.\n"
+                                    + "Odin told you that this is the requisite ship to prove your worth.\n"
+                                    + "The only problem is that trying to get aboard is harder than expected and you have to travel to the Northern region to Hela's palace and get permission.\n");
+                }
+                else{
+                    Graphics.textInline(Colors.ANSI_PURPLE + "You show the guard of Naglfar the letter of permission from Hela.\n"
+                                        + "You board the ship. Loki is standing in the center of dock with his arms crossed and a smirk on his face.\n" + Colors.ANSI_RESET
+                                        + Colors.BLACK_BRIGHT + "\"You really don't know when to give up, do you? Well, it doesn't matter because I've been expecting you.\"\n" + Colors.ANSI_RESET
+                                        + Colors.ANSI_PURPLE + "You boldly stride up to him. Now y'all are standing head to head, glaring at each other with arms crossed.\n"
+                                        + Colors.ANSI_GREEN + "\"Loki, fancy seeing you here. You're right. I don't know when to give up but know is not the time. I'm fighting whether you like it or not.\"\n" + Colors.ANSI_RESET
+                                        + Colors.BLACK_BRIGHT + "\"Ah, young lad. I was hoping you'd say that. But don't think I'm going to make it easy for you. I am the god of mischief after all.\"\n" + Colors.ANSI_RESET
+                                        + Colors.ANSI_GREEN + "\"Ha, why am I not surprised? Going easy on anyone would be the very last thing I'd except from you.\"\n" + Colors.ANSI_RESET);
+                    //TODO: Add final boss
+                    Graphics.textInline(Colors.PURPLE_BRIGHT + "After a long, exhausting battle, Loki seems completely unfazed. He suddenly stops.\n"
+                                        + Colors.BLACK_BRIGHT+  "\"Alas! I must be off! I\'m sincerely sorry we cannot finish. Perhaps I will visit you during Ragnorak!\nYou have my full assurances that this is fate\'s will, not mine!\nToddles!\"" + Colors.ANSI_RESET
+                                        + Colors.PURPLE_BRIGHT + "With that he jumps off the boat. As for you..." + Colors.ANSI_RESET);
+                    Graphics.waitForEnter();
+                    Thread.sleep(1000);
+                    Graphics.textInline(Colors.GREEN_BRIGHT + "You are no longer on the boat. Odin is next to you, and before you, a large army stands. You came in the nick of time!\n Odin smiles at you nods at the shiny armor at your feet.\n You hastily put it on and join the army." + Colors.ANSI_RESET
+                                        + Colors.ANSI_WHITE + "You run off to battle, destined to die forever...");
+                    Graphics.waitForEnter();
+                    Graphics.textInline("The end! (Ending #1 of 3)");
+                    //TODO: Add best and worst ending!
+                    //TODO: Add credits and exit system
+                }
             }      
     //Western Hel: Tavern 
             else if (input == 2) {
-            //Lots of dead people drinking here
-            //Flyting happens here
-            //Flyting: A poetic constest of insults
-            //Winning allows good ending
-            //find rumors about ship
-                Graphics.textInline("You enter the tavern. Lots of the deceased are mingling in here. It seems like a lively place.\n"
-                            + "You look around overwhelmed.\n"); 
-                Graphics.waitForEnter();
-                Graphics.textInline("Do you recognize that man?");
-                Graphics.waitForEnter();
-                Graphics.textInline("You do! It's your old friend Fell! Memory floods your mind, as you recall the lead up to your banishment");
-                Graphics.waitForEnter();
-                Graphics.textInline("Fell, although reluctant to help, aided you in freeing Loki. However, Loki betrayed you and killed him, leaving you \'mercifully\' alive.");
-                Graphics.waitForEnter();
-                Graphics.textInline("Fell notices you, and a big grin invades his face.\n"
-                    + "\"[...] you old chap! You've finally come to dine with the dead? But wait. You have a spry look about you...\nYou're alive aren't you?\"\n"
-                    + "\"Good to see you too, Fell. Still the one with all the questions I see. Yes, I am alive. Odin promised redemption if I boarded Naglfar.\"\n"
-                    + "\"Ohh, that ship. A few of Loki's gurus came in and offered anyone to join him on the boat. Some of us went, but most of us... we don't want to fight the gods we once worshiped.\"");
-                Graphics.waitForEnter();
-                Graphics.textInline("Fell regards you for a long moment. Finally he pipes up,\n"
-                    + "\"Let's do one last flyting. I know its been a while, but for wit and old times sake. Let's have some fun.\"\n"
-                    + "\"Of course we can, but you know we can, but you know I only like to play with stakes.\"\n"
-                    + "\"I have here this bottle full of \'Godmead\'. Don't ask how I got it, and I don't know what it does. I think it has magical properties, and I was promised that is the best mead ever.\n"
-                    + "So, what do you say?\"\n"    
-                    + "Godmead, huh. A mysterious alcoholic beverage doesn't sound like much of a stake, but Fell seems so eager to flyt with you.\n"
-                    + "1) \"Let's do it!\"\n2) \"No, I can't do this right now.\"");
-                input = in.nextInt();
-                if(input == 1){
-                    //TODO: Make a file for the flyting and run it
-                    Tavern.main(args);
-                    //TODO: Make a Boolean variable. Set it to true after flyting. It should be in GameState
-                }
-                else if(input == 2){
-                    Graphics.textInline(Colors.ANSI_GREEN + "\"Not today, Fell. I have better things to do\"");
+                if(GameState.firstWest = true){
+                    //Lots of dead people drinking here
+                    //Flyting happens here
+                    //Flyting: A poetic constest of insults
+                    //Winning allows good ending
+                    //find rumors about ship
+                    Graphics.textInline("You enter the tavern. Lots of the deceased are mingling in here. It seems like a lively place.\n"
+                                + "You look around overwhelmed.\n"); 
+                    Graphics.waitForEnter();
+                    Graphics.textInline("Do you recognize that man?");
+                    Graphics.waitForEnter();
+                    Graphics.textInline("You do! It's your old friend Fell! Memory floods your mind, as you recall the lead up to your banishment");
+                    Graphics.waitForEnter();
+                    Graphics.textInline("Fell, although reluctant to help, aided you in freeing Loki. However, Loki betrayed you and killed him, leaving you \'mercifully\' alive.");
+                    Graphics.waitForEnter();
+                    Graphics.textInline("Fell notices you, and a big grin invades his face.\n"
+                        + "\"[...] you old chap! You've finally come to dine with the dead? But wait. You have a spry look about you...\nYou're alive aren't you?\"\n"
+                        + "\"Good to see you too, Fell. Still the one with all the questions I see. Yes, I am alive. Odin promised redemption if I boarded Naglfar.\"\n"
+                        + "\"Ohh, that ship. A few of Loki's gurus came in and offered anyone to join him on the boat. Some of us went, but most of us... we don't want to fight the gods we once worshiped.\"");
+                    Graphics.waitForEnter();
+                    Graphics.textInline("Fell regards you for a long moment. Finally he pipes up,\n"
+                        + "\"Let's do one last flyting. I know its been a while, but for wit and old times sake. Let's have some fun.\"\n"
+                        + "\"Of course we can, but you know we can, but you know I only like to play with stakes.\"\n"
+                        + "\"I have here this bottle full of \'Godmead\'. Don't ask how I got it, and I don't know what it does. I think it has magical properties, and I was promised that is the best mead ever.\n"
+                        + "So, what do you say?\"\n"    
+                        + "Godmead, huh. A mysterious alcoholic beverage doesn't sound like much of a stake, but Fell seems so eager to flyt with you.\n"
+                        + "1) \"Let's do it!\"\n2) \"No, I can't do this right now.\"");
+                    input = in.nextInt();
+                    if(input == 1){
+                        //Run flyting 
+                        Tavern.main(args);
+                        GameState.winFlyting = true;
+                    }
+                    else if(input == 2){
+                        Graphics.textInline(Colors.ANSI_GREEN + "\"Not today, Fell. I have better things to do\"");
+                    }
+                    else{
+                        failedInput();
+                    }
+                    GameState.firstWest = false;
                 }
                 else{
-                    failedInput();
+                    Graphics.textInline(Colors.ANSI_PURPLE + "You do not feel like entering the tavern again");
                 }
             }
     //Southern Hel: Gates to Hel; 
             else if (input == 3) {
             //Entrance
-            //TODO: Add a variable to check for the first time you enter. I was thinking a counter for this one, so it only activates the second time you come here
             //Coming here a second time rewards you with a hidden dumpling recipe; add dialogue 
-            Graphics.textInline(Colors.ANSI_PURPLE + "You travel to the Southern region of Hel. You walk to the entrance at the gates.\n"
-            + "There is nothing but a dirty stream\n");
-            } 
+                if(GameState.firstSouth != 1){
+                    Graphics.textInline(Colors.ANSI_PURPLE + "You travel to the Southern region of Hel. You walk to the entrance at the gates.\n"
+                    + "There is nothing but a dirty stream\n");
+                    GameState.firstSouth++;
+                    } 
+                else{
+                    Graphics.textInline(Colors.ANSI_PURPLE + "You decide to investigate the stream a bit more..." + Colors.ANSI_RESET);
+                    Graphics.waitForEnter();
+                    Graphics.textInline(Colors.ANSI_BLUE + "You found a Dumpling recipe! It\'s mystical!" + Colors.ANSI_RESET);
+                    //TODO: Add healing upgrade
+                }
+            }
                 
     //Northern Hel: Hela's palace
             else if (input == 4) {
-            //TODO: create and implement another maze
-            //TODO: Create another variable to check if it is the first you enter this region. It should be in GameState
-            //permission from Hel to get on ship 
-            //Must find your way thru the palace (it's a maze ;)
-            Graphics.textInline(Colors.ANSI_PURPLE + "After traveling around for a bit, you walk to the Northern part of Hel.\n"
-                                + "You approach the sinister looking palace. Hela resides in the palace somewhere, and you must get permission from her board Naglfar.\n");
-            Graphics.waitForEnter();
-
-            // Approach palace after maze 
-            Graphics.text(Colors.ANSI_PURPLE + "When you finally get through and defeat the maze, you reach Hela's palace.\n"
-            + "There are guards at the door but you have to get in to get permission to fight aboard Naglfar.\n"
-            + "You appoarch the guards and try to make up a sob story but they don't buy it.\n"
-            + "You finally give up and tell them the truth but they still don't care. Your only option is to fight your way in.\n"
-            + "After a long fight between the two of them, you are a little injured but you manage to get past the doors.\n" + Colors.ANSI_RESET
-            + Colors.RED_BRIGHT + "\"Who are you and how did you get in here?\"\n" + Colors.ANSI_RESET
-            + Colors.ANSI_GREEN + "\"My name is [...]. I was told I had to come here to get permission from you, great Hela.\"\n" + Colors.ANSI_RESET
-            + Colors. ANSI_PURPLE + "You approach her at her throne and kneel on one knee.\n" + Colors.ANSI_RESET
-            + Colors.RED_BRIGHT + "\"You are correct. But don't think you'll get my consent so easily. I have a riddle for you.\"\n"
-            + "\"What does man love more than life, hate more than death or mortal strife; that which contented men desire; the poor have, the rich require; the miser spends, the spendthrift saves, and all men carry to their graves?\"\n"
-            + "You have three options for the answer.\n" + Colors.ANSI_RESET);
-                do {
-                    input = in.nextInt();
-                    Graphics.text(Colors.ANSI_YELLOW + "There are three options. Only one is the correct answer.\n"
-                                            + "option 1: Nothing.\n"
-                                            + "option 2: Money.\n"
-                                            + "A moral life.\n");
-                    if (input == 1) {
-                        Graphics.textInline(Colors.ANSI_PURPLE + "Hela slowly starts to nod her head.\n"
-                                                            + Colors.RED_BRIGHT + "\"You are very smart. You have my permission to aboard the Naglfar.\"\n" + Colors.ANSI_RESET
-                                                            + Colors.ANSI_PURPLE + "She hands you a letter and let you go on your way.\n");
-                        Graphics.displayWin("yay");
-                        break;
-                    }
-
-                    else if (input == 2 || input == 3) {
-                        Graphics.textInline("Hela shakes her head and says that you will not be able to board Naglfar and fight");
-                        Graphics.displayDeath("Dead");
-                        Graphics.textInline(Colors.RED_BRIGHT + "\"Because you got the riddle wrong, you must the fight my meanest elf.\"\n" + Colors.ANSI_RESET);
+                    if(GameState.firstNorth == true){
+                        //permission from Hel to get on ship 
+                        //Must find your way thru the palace (it's a maze ;)
+                        Graphics.textInline(Colors.ANSI_PURPLE + "After traveling around for a bit, you walk to the Northern part of Hel.\n"
+                                            + "You approach the sinister looking palace. Hela resides in the palace somewhere, and you must get permission from her board Naglfar.\n");
                         Graphics.waitForEnter();
-                        Graphics.textInline(Colors.ANSI_PURPLE + "Hela summons her biggest, meanest elf and he comes stomping in.\n"
-                        + "Oh great. He looks so angry and irritated. This is going to be loades of fun, you think to yourself.\n"
-                        + "He immediately knows its you he has to fight and charges at you. You bring out your great spear while he pulls out an axe.\n"
-                        + "You finally defeat him, leaving the mean elf dirty, bloody, and in pain. You look at Hela who has been watching the whole time.\n"
-                        + Colors.RED_BRIGHT + "\"Good job young lad. You have defeated my undefeatable elf. You have my permission to aboard the Naglfar\"\n" + Colors.ANSI_RESET
-                        + Colors.ANSI_PURPLE + "She hads you a letter and lets you go on your way. You thank her and head out the door.\n");
-    
 
+                        HelMaze.main(args);
+                        // Approach palace after maze 
+                        Graphics.text(Colors.ANSI_PURPLE + "When you finally get through and defeat the maze, you reach the throne room.\n"
+                        + "There are guards at the door but you have to get in to get permission to fight aboard Naglfar.\n"
+                        + "You approach the guards and try to make up a silly story but they don't buy it.\n"
+                        + "You finally give up and tell them the truth but they still don't care. Your only option is to fight your way in.\n"
+                        + "After a long fight between the two of them, you are a little injured but you manage to get past the doors.\n" + Colors.ANSI_RESET
+                        + Colors.RED_BRIGHT + "\"Who are you and how did you get in here?\"\n" + Colors.ANSI_RESET
+                        + Colors.ANSI_GREEN + "\"My name is [...]. I was told I had to come here to get permission from you, great Hela.\"\n" + Colors.ANSI_RESET
+                        + Colors. ANSI_PURPLE + "You approach her at her throne and kneel on one knee.\n" + Colors.ANSI_RESET
+                        + Colors.RED_BRIGHT + "\"You are correct. But don't think you'll get my consent so easily. I have a riddle for you.\"\n"
+                        + "\"What does man love more than life, hate more than death or mortal strife; that which contented men desire; the poor have, the rich require; the miser spends, the spendthrift saves, and all men carry to their graves?\"\n"
+                        + "You have three options for the answer.\n" + Colors.ANSI_RESET);
+                        do {
+                            input = in.nextInt();
+                            Graphics.text(Colors.ANSI_YELLOW + "There are three options. Only one is the correct answer.\n"
+                                                    + "option 1: Nothing.\n"
+                                                    + "option 2: Money.\n"
+                                                    + "A moral life.\n");
+                            if (input == 1) {
+                                Graphics.textInline(Colors.ANSI_PURPLE + "Hela slowly starts to nod her head.\n"
+                                                                    + Colors.RED_BRIGHT + "\"You are very smart. You have my permission to aboard the Naglfar.\"\n" + Colors.ANSI_RESET
+                                                                    + Colors.ANSI_PURPLE + "She hands you a letter and let you go on your way.\n");
+                                Graphics.displayWin("yay");
+                                GameState.helPermission = true;
+                                break;
+                            }
+
+                            else if (input == 2 || input == 3) {
+                                Graphics.textInline("Hela shakes her head and says that you will not be able to board Naglfar and fight");
+                                Graphics.displayDeath("Dead");
+                                Graphics.textInline(Colors.RED_BRIGHT + "\"Because you got the riddle wrong, you must the fight my meanest elf.\"\n" + Colors.ANSI_RESET);
+                                Graphics.waitForEnter();
+                                Graphics.textInline(Colors.ANSI_PURPLE + "Hela summons her biggest, meanest elf and he comes stomping in.\n"
+                                + "Oh great. He looks so angry and irritated. This is going to be loads of fun, you think to yourself.\n"
+                                + "He immediately knows its you he has to fight and charges at you. You bring out your great spear while he pulls out an axe.\n"
+                                + "You finally defeat him, leaving the mean elf dirty, bloody, and in pain. You look at Hela who has been watching the whole time.\n"
+                                + Colors.RED_BRIGHT + "\"Good job young lad. You have defeated my undefeatable elf. You have my permission to aboard the Naglfar\"\n" + Colors.ANSI_RESET
+                                + Colors.ANSI_PURPLE + "She hands you a letter and lets you go on your way. You thank her and head out the door.\n");
+                                GameState.helPermission = true;
+                            }
+                            else{
+                                failedInput();
+                            }
+                        } while(true);
+                        GameState.firstNorth = false;
                     }
-                    else{
-                        failedInput();
-                    }
-                } while(true);
-            }
+                else{
+                    Graphics.textInline(Colors.ANSI_PURPLE + "There is nothing else to do here.");
+                }
+            }                                   
             //Failed input
             else{
                 failedInput();
-            }                                     
+            }  
         } while(true);
-
-        //TODO: Implement tavern into correct area.
     } 
         //Abyss
             //The only way is an elevator, but it is broken

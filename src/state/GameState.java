@@ -27,7 +27,7 @@ public class GameState {
 
     //Booleans for checking
     public static boolean key = false;
-    public static boolean firstSouth = true;
+    public static int firstSouth = 0;
     public static boolean firstNorth = true;
     public static boolean firstEast = true;
     public static boolean firstWest = true;

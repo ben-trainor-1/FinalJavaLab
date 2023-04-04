@@ -97,7 +97,7 @@ public class HelMaze {
                                 + Colors.PURPLE_BOLD_BRIGHT + "You back away slowly..." + Colors.ANSI_RESET);
         }
         if(mazeInfo.contains("7")){
-            System.out.println(Colors.PURPLE_BOLD_BRIGHT + "You find a boring and plain dead end.");
+            System.out.println(Colors.PURPLE_BOLD_BRIGHT + "You find a boring and plain dead end." + Colors.ANSI_RESET);
         }
         if(mazeInfo.contains("8")){
             System.out.println(Colors.PURPLE_BOLD_BRIGHT + "Hi there! this is a message from the lovely devs! We sincerely hope you are doing well!" + Colors.ANSI_RESET);
