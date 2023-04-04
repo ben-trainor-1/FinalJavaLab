@@ -10,7 +10,7 @@ public class Graphics {
 
     // Text speed variable
 
-    static int textSpeed = 50;
+    public static int textSpeed = 50;
 
     // Space method
     public static void space(int numOfSpaces) {

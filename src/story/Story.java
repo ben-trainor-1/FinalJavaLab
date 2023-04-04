@@ -28,6 +28,8 @@ public class Story {
 
     public static void main(String[] args) throws Exception {
 
+        Graphics.textSpeed = 15;
+
         ////NOTE: Storing character data is yet to be implemented!
         //String [] info = {" "," "," "," "," "," "};   
          //Intro:
@@ -155,7 +157,7 @@ public class Story {
                         + "You are filled with confusion. Your sources are reliable; how could they get this wrong?\n"
                         + "Then the answer comes to you as a figure steps out of the shadows.");
         Graphics.waitForEnter();
-        Graphics.textInline(Colors.BLUE_BOLD_BRIGHT + "\"You should not have come here, World-Traitor.\"\n" + Colors.ANSI_RESET
+        Graphics.textInline(Colors.BLUE_BOLD_BRIGHT + "\n\"You should not have come here, World-Traitor.\"\n" + Colors.ANSI_RESET
                         + Colors.ANSI_GREEN + "\"That was not my fault. I was baited into it. You know this since you are soooooo great and wise, Odin\"\n"
                         + Colors.BLUE_BOLD_BRIGHT + "\"DO NOT SASS ME YOUNG [...]! YOU HAVE BROUGHT RUIN TO US ALL.\nYou did not deserve to have fought even that dire wolf, worthless wretch...\"\n" + Colors.ANSI_RESET
                         + Colors.ANSI_PURPLE + "As quickly as it came, Odin's sudden outburst turns somber. Pain contorts his face.\n"
