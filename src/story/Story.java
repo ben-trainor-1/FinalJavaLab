@@ -34,7 +34,7 @@ public class Story {
         //String [] info = {" "," "," "," "," "," "};   
          //Intro:
             Graphics.displayBackground("Mountains", Colors.ANSI_BLUE);
-            Graphics.textInline(Colors.ANSI_BLUE +  "temp studio name" + Colors.ANSI_RESET + " presents temp game name");
+            Graphics.textInline(Colors.ANSI_BLUE +  "temp studio name" + Colors.ANSI_RESET + " presents temp game name.");
             Graphics.waitForEnter();
             Graphics.text("\n" + "please choose a character...");
             
@@ -44,7 +44,7 @@ public class Story {
             
             do{
             //Fancy Welcome
-            Graphics.text(Colors.ANSI_YELLOW + "Enter 1 to choose Gorm (male) or 2 to choose Gro (Female)" + Colors.ANSI_RESET);
+            Graphics.text(Colors.ANSI_YELLOW + "Enter 1 to choose Gorm (male) or 2 to choose Gro (female)." + Colors.ANSI_RESET);
             
             //remember character- unimplemented
             //ArrayList<String> gormOrGroArray = new ArrayList<>();
@@ -59,7 +59,7 @@ public class Story {
                 // info[2] = Gorm.objectPNoun;
                 
                 //Choosing Gorm
-                Graphics.text("You have chosen Gorm! Gorm is a muscular, bald man with one long red braid");
+                Graphics.text("You have chosen Gorm! Gorm is a muscular, bald man with one long red braid.");
                 break;
                 
                 
@@ -72,7 +72,7 @@ public class Story {
                 // info[2] = Gro.objectPNoun;
                 
                 //Choosing Gro 
-                Graphics.text("You have chosen Gro! Gro is a graceful woman with blonde braids and one bald spot");
+                Graphics.text("You have chosen Gro! Gro is a graceful woman with blonde braids and one bald spot.");
                 break;
             }
             else{
@@ -85,17 +85,17 @@ public class Story {
         do{
             
             //prompt user
-            Graphics.text(Colors.ANSI_YELLOW + "Enter 1 for a greatspear or 2 for a battleaxe" + Colors.ANSI_RESET);
+            Graphics.text(Colors.ANSI_YELLOW + "Enter 1 for a greatspear or 2 for a battleaxe." + Colors.ANSI_RESET);
             input = in.nextInt();
 
             if(input == 1){
                 //Choosing Greatspear
-                Graphics.text("You have chosen a greatspear");
+                Graphics.text("You have chosen a greatspear.");
                 break;
             }
             else if(input == 2){
                 //Choosing Battleaxe
-                Graphics.text("You have chosen a battleaxe");
+                Graphics.text("You have chosen a battleaxe.");
                 break;
             }
             else{
@@ -108,7 +108,7 @@ public class Story {
         Graphics.textInline(Colors.ANSI_PURPLE + "Your story starts in the misty mountains of Iceland inside of a small, sparsely populated town called Asbjorn. \nWhile its inhabitants are kind and welcoming, you are a warrior who wishes to fight.");
         Graphics.waitForEnter();
         Graphics.textInline("Lucky for you, a cave leading straight to Hel is nearby.\nSince your chances of fighting in Ragnarok are slim, this is your best shot for action.\n" +
-                            Colors.ANSI_YELLOW + "You can 1) leave the village now or 2) stay a give a brief goodbye to your acquaintances\n"
+                            Colors.ANSI_YELLOW + "You can 1) leave the village now or 2) stay a give a brief goodbye to your acquaintances.\n"
                             + Colors.ANSI_RESET);
                        
         
@@ -125,7 +125,7 @@ public class Story {
                 Graphics.displayEnemy("Viggo");
                 Graphics.textInline(Colors.ANSI_PURPLE + "In Asbjorn you approach Viggo, the blacksmith. Once he was a great warrior like you, but he now he has settled down.\nHe accepted his fate here...\n"
                                 + Colors.ANSI_GREEN +  "\"Viggo, I'm leaving this town. I'm going to Hel. You can join me if you wish.\"\n"
-                                + Colors.ANSI_BLUE + "\"Alas young (...), I do not display your energetic talent any more.\nI will stay here, accepting my banishment\"\n"
+                                + Colors.ANSI_BLUE + "\"Alas young (...), I do not display your energetic talent any more.\nI will stay here, accepting my banishment.\"\n"
                                 + Colors.ANSI_GREEN + "\"Well, I'll miss you then. You were the closest one of this lot to me.\"\n"
                                 + Colors.ANSI_BLUE + "\"We understand that you have not lost your fervor for fighting like we have. \nWe all wish you luck from the bottom of our hearts.\"\n"
                                 + Colors.ANSI_PURPLE + "With that you leave the town filled with thrill and anticipation for your upcoming battles." + Colors.ANSI_RESET);
@@ -158,7 +158,7 @@ public class Story {
                         + "Then the answer comes to you as a figure steps out of the shadows.");
         Graphics.waitForEnter();
         Graphics.textInline(Colors.BLUE_BOLD_BRIGHT + "\n\"You should not have come here, World-Traitor.\"\n" + Colors.ANSI_RESET
-                        + Colors.ANSI_GREEN + "\"That was not my fault. I was baited into it. You know this since you are soooooo great and wise, Odin\"\n"
+                        + Colors.ANSI_GREEN + "\"That was not my fault. I was baited into it. You know this since you are soooooo great and wise, Odin.\"\n"
                         + Colors.BLUE_BOLD_BRIGHT + "\"DO NOT SASS ME YOUNG [...]! YOU HAVE BROUGHT RUIN TO US ALL.\nYou did not deserve to have fought even that dire wolf, worthless wretch...\"\n" + Colors.ANSI_RESET
                         + Colors.ANSI_PURPLE + "As quickly as it came, Odin's sudden outburst turns somber. Pain contorts his face.\n"
                         + Colors.BLUE_BOLD_BRIGHT + "\"Well... none of us deserve to live anymore. That's why Ragnarok is here.\nI will remove this boulder here. Continue to Hel if you wish. \nIf you can board Naglfar, you can fight in Ragnarok.\"\n" + Colors.ANSI_RESET);  
@@ -200,7 +200,7 @@ public class Story {
         input = in.nextInt();
             //left: Loki room
         if(input == 1){
-            Graphics.textInline("You chose to go through the passage on the left");
+            Graphics.textInline("You chose to go through the passage on the left.");
 
             //Play cavern sounds
 
@@ -259,7 +259,7 @@ public class Story {
 
             //Head back to right 
             Graphics.textInline(Colors.ANSI_PURPLE + "\nWith the skeleton now at rest, you remove the iron key from its femur." + Colors.ANSI_RESET);
-            Graphics.textInline(Colors.BLUE_BACKGROUND_BRIGHT + "\nYou received \'Special Key\'" + Colors.ANSI_RESET);
+            Graphics.textInline(Colors.BLUE_BACKGROUND_BRIGHT + "\nYou received \'Special Key\'!" + Colors.ANSI_RESET);
             Graphics.waitForEnter();
 
             //Optional skeleton fight
@@ -290,7 +290,7 @@ public class Story {
 
             //right: locked door
         else if(input == 2){
-            Graphics.textInline("You chose the path on the right");
+            Graphics.textInline("You chose the path on the right.");
             Graphics.waitForEnter();
 
             //TODO: Add a key check to see if character has key in inventory or not. The following script must be revised.
