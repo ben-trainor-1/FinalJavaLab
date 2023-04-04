@@ -129,10 +129,8 @@ public class FullCombat {
 
                 do {
 
-                    // TODO: take in string for attack, defend, heal -> convert to integer
+                    // Take in input as a String
                     stringInput = in.nextLine().toLowerCase();
-
-                    // input = in.nextInt();
 
                     // Calculate 
                     if (stringInput.equals("attack")) {
