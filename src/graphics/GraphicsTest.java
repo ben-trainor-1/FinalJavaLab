@@ -6,8 +6,7 @@ public class GraphicsTest {
         Graphics.displayCharacter("Loki", 100);
         Graphics.displayCharacter("Viggo", 100);
         Graphics.displayDeath("Dead");
-
-        
-       
+        Graphics.displayCharacter("Gorm", 100);
+        Graphics.displayDeath("Tomb");
     }
 }
