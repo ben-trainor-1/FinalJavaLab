@@ -1,25 +1,24 @@
 package story;
-
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import graphics.Colors;
 
-public class MazeProto {
-
+public class HelMaze {
     public static String[][] maze = {
         //Key: L = left, R = right, U = up, D = down, B = bossfight(exit)
         //     E = enemy, 1 = riddle #1, 2 = riddle #2, 3 = riddle #3
-        {"DE","DB","R1","LD","D2"},
-        {"UR","ULRD","LRD","LRDU","ULD"},
-        {"D3E","UR","ULRD","UL","UD"},
-        {"UR","LR","URL","LR","LU"},
+        {"DR","LDR","LR","L7","R8","LDR","LD"},
+        {"U6","RDU","LRD","LR","LR","LUD","H"},
+        {"R","LDU","RU","LR","L3","DE4","D5"},
+        {"D2E","UR","LDR","LR","LDR","LUR","DLU"},
+        {"DUR","LD","U","D1","U","D","LDU"},
+        {"UR","ULR","LR","ULR","LR","ULR","UL"},
     };
 
     public static void main(String[] args) {
 
         // Set current position
-        int[] currentPosition = {3,2};
+        int[] currentPosition = {5,3};
         // Display position
         System.out.println("[" + currentPosition[0] + ", " + currentPosition[1] + "]" );
 
@@ -76,30 +75,36 @@ public class MazeProto {
 
         //Check for Riddles
         if(mazeInfo.contains("1")){
-            System.out.println(Colors.ANSI_PURPLE + "You approach a dead end.\nThere is writing on the wall\n" + Colors.ANSI_RESET
-                                + Colors.ANSI_RED + "Some play with us, most confuse us.\n We are not approaching,\nNor do we mean as well.\nWhat are we?" + Colors.ANSI_RESET);  
+            System.out.println(Colors.PURPLE_BOLD_BRIGHT + "A faint sound bonetrousles you." + Colors.ANSI_RESET);
+            
         }
         if(mazeInfo.contains("2")){
-            System.out.println(Colors.ANSI_PURPLE + "You approach a dead end.\nThere is writing on the wall\n" + Colors.ANSI_RESET
-                                + Colors.ANSI_RED + "Though many try, you can't bring me down. What am I?" + Colors.ANSI_RESET);
+            System.out.println(Colors.PURPLE_BOLD_BRIGHT + "You find a discarded sign that says,\n\"Abandon all hope, those who enter\"\n" + Colors.ANSI_RESET);
             
         }
         if(mazeInfo.contains("3")){
-            System.out.println("You approach a dead end.\nThere is writing on the wall\n" + Colors.ANSI_RESET
-                                + Colors.BLACK_BOLD_BRIGHT + "A Flyting is a poem\n of insults cut like a gem\nBeware pf the tongue\nlest you get stung\nLest you get carried away.\n"
-                                + Colors.ANSI_PURPLE + "Below is the single word, " + Colors.RED_BOLD_BRIGHT + "\"Cur\"" + Colors.ANSI_PURPLE + "." + Colors.ANSI_RESET);
+            System.out.println(Colors.PURPLE_BOLD_BRIGHT + "You see a cake! But it is a lie :(" + Colors.ANSI_RESET);
+        }
+        if(mazeInfo.contains("4")){
+            System.out.println(Colors.PURPLE_BOLD_BRIGHT + "You come upon a mosaic depiction a small girl and a large man with a hook on a ship together.\nIt seems out of place" + Colors.ANSI_RESET);
+        }
+        if(mazeInfo.contains("5")){
+            System.out.println(Colors.PURPLE_BOLD_BRIGHT + "Nicco wuz here" + Colors.ANSI_RESET);
+        }
+        if(mazeInfo.contains("6")){
+            System.out.println(Colors.PURPLE_BOLD_BRIGHT + "You come upon upon a raving madman. He looks straight at you and says,\n" + Colors.ANSI_RESET
+                                + Colors.RED_BOLD + "\"You know, I was there for that whole sordid affair. Marvelous times! Butterflies, blood, a Fox and severed head... Oh, and the cheese! To die for.\"\n" + Colors.ANSI_RESET
+                                + Colors.PURPLE_BOLD_BRIGHT + "You back away slowly..." + Colors.ANSI_RESET);
+        }
+        if(mazeInfo.contains("7")){
+            System.out.println(Colors.PURPLE_BOLD_BRIGHT + "You find a boring and plain dead end." + Colors.ANSI_RESET);
+        }
+        if(mazeInfo.contains("8")){
+            System.out.println(Colors.PURPLE_BOLD_BRIGHT + "Hi there! this is a message from the lovely devs! We sincerely hope you are doing well!" + Colors.ANSI_RESET);
         }
 
         //Check for Bossfight
-        if(mazeInfo.contains("B")){
-            //TODO: Add Gulinkambi bossfight, if the boss is defeated, exit the maze.
-            //At the end: Gullinkambi: the Golden Comb (boss fight)
-
-            System.out.println(Colors.ANSI_PURPLE + "You found the end of the maze!\nYou enter a large circular and (oddly enough) well-lit room\n"
-             + "You stride triumphantly through the room. Suddenly! YOu hear a loud \"cuckaw\"\n" + Colors.ANSI_RESET
-             + Colors.RED_BACKGROUND + "A large rooster falls down and glares menacingly at you\nIt's Gullinkambi, the Golden Comb." + Colors.ANSI_RESET);
-
-            //TODO: Add Gullinkambi boss fight
+        if(mazeInfo.contains("H")){
             return exitMaze;
         }
 
@@ -162,3 +167,4 @@ public class MazeProto {
         }
     } 
 }
+

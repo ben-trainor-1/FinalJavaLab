@@ -36,7 +36,7 @@ public class storypt2 {
             input = in.nextInt();
 
                 if(input == 1){ 
-                    Graphics.text(Colors.ANSI_YELLOW + "You have chosen to to take the path on the right." 
+                    Graphics.text(Colors.ANSI_YELLOW + "You have chosen to take the path on the right." 
                     + " Suddenly, an angry dwarf comes out of the shadows\n"
                     + "He jumps you immediately and while you think he doesn't have a lot of strenghth, he continues to suprise you.\n" 
                     + "After a rather long battle, you defeat the little, yet mighty dwarf and walk towards the room on your left\n"
@@ -94,9 +94,9 @@ public class storypt2 {
         //Outside the gates: Nothing of note, but a trickling stream of dirty water
                 
             Graphics.textInline(Colors.ANSI_PURPLE + " After your fun little banter with Loki, you walk to the entrance of the gates.\n"
-                                + "There is nothing but a dirty stream but you're excited to find out what lies beyonf the gates.\n"
+                                + "There is nothing but a dirty stream but you're excited to find out what lies beyond the gates.\n"
                                 + "You push them open and discover the bottom of Hel was so much more than what you expected.\n" );
-     //Eastern Hel: Docks
+        //Eastern Hel: Docks
              //Naglfar, the ship made of fingernails and toenails resides here.
              //Loki fight is on this ship
              //Must find way on ship 
@@ -111,7 +111,7 @@ public class storypt2 {
                 
 
                 
-    //Western Hel: Tavern 
+        //Western Hel: Tavern 
             if (input == 2) {
             //Lots of dead people drinking here
              //Flyting happens here
@@ -119,15 +119,15 @@ public class storypt2 {
              //Allusions to this thru out game. remember old insults and what peeps are sensitive to.
             //Winning allows good ending
             //find rumors about ship
-    }
-    //Southern Hel: Gates to Hel; 
+            }
+        //Southern Hel: Gates to Hel; 
             if (input == 3) {
             //Entrance
             Graphics.textInline(Colors.ANSI_PURPLE + "You travel to the Southern region of Hel but there is nothing particularly exciting here so you head to the North region.\n");
             break;
             } 
                 
-    //Northern Hel: Hela's palace
+        //Northern Hel: Hela's palace
            if (input == 4) {
             //permission from Hel to get on ship 
             //Must find/fight way into palace
@@ -136,7 +136,58 @@ public class storypt2 {
                                 break;
            }                      
         } while(true);
-    }
+    
+   
+        // Approach palace after maze 
+        Graphics.text(Colors.ANSI_PURPLE + "When you finally get through and defeat the maze, you reach Hela's palace.\n"
+                          + "There are guards at the door but you have to get in to get permission to fight aboard Naglfar.\n"
+                          + "You appoarch the guards and try to make up a sob story but they don't buy it.\n"
+                          + "You finally give up and tell them the truth but they still don't care. Your only option is to fight your way in.\n"
+                          + "After a long fight between the two of them, you are a little injuired but you manage to get past the doors.\n"
+                          + "\"Who are you and how did you get in here?\"\n"
+                          + "\"My name is [...]. I was told I had to come here to get permission from you, great Hela.\"\n"
+                          + "You approach her at her throne and kneel on one knee.\n"
+                          + "\"You are correct. But don't think you'll get my consent so easily. I have a riddle for you.\"\n"
+                          + "\"What does man love more than life, hate more than death or mortal strife; that which contented men desire; the poor have, the rich require; the miser spends, the spendthrift saves, and all men carry to their graves?\"\n"
+                          + "You have three options for the answer.\n");
+    
+                
+                
+        do {
+            Scanner in = new Scanner (System.in);
+            int input;
+            input = in.nextInt();
+            Graphics.text(Colors.ANSI_YELLOW + "There are three options. Only one is the correct answer.\n"
+                                             + "option 1: Nothing.\n"
+                                             + "option 2: Money.\n"
+                                             + "A moral life.\n");
+
+            if (input == 1) {
+                Graphics.textInline(Colors.ANSI_PURPLE + "Hela slowly starts to nod her head.\n"
+                                                       +  Colors.RED_BRIGHT + "\"You are very smart. You have my permission to aboard the Naglfar.\"\n" + Colors.ANSI_RESET
+                                                       + "She hands you a letter and let you go on your way.\n"
+                                                       + Colors.ANSI_RESET);
+                Graphics.displayWin("yay");
+                break;
+              }
+
+            else if (input == 2 || input == 3) {
+                Graphics.textInline("Hela shakes her head and says that you will not be able to baord Naglfar and fight");
+                Graphics.displayDeath("Dead");
+                Graphics.textInline(Colors.RED_BRIGHT + "\"Because you got the riddle wrong, you must the meanest elf.\"\n" + Colors.ANSI_RESET 
+                                + Colors.ANSI_PURPLE + "Hela summons her biggest, meanest elf and he comes stomping in.\n"
+                                + "Oh great. He looks so angry and irritated. This is going to be loades of fun, you think to yourself.\n"
+                                + "He immediately knows its you he has to fight and charges at you. You bring out your great spear while he pulls out an axe.\n"
+                                + "You finally defeat him, leaving the mean elf dirty, bloody, and in pain. You look at Hela who has been watching the whole time.\n"
+                                + Colors.RED_BRIGHT + "\"Good job young lad. You have defeated my undefeatable elf. You have my permission to aboard the Naglfar\"\n" + Colors.ANSI_RESET
+                                + Colors.ANSI_PURPLE + "She hads you a letter and lets you go on your way. You thank her and head out the door.\n");
+            
+            
+            }
+
+          
+        } while(true);
+   }  
 }
     
 
