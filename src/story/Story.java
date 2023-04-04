@@ -302,9 +302,9 @@ public class Story {
                                     + "It is locked, but lucky for you, the key you found in the left passage fits snugly into the lock." + Colors.ANSI_RESET);  
                 Graphics.waitForEnter();
                 Graphics.textInline(Colors.ANSI_PURPLE + "The door seems to open on its own accord.\n"
-                                    + "Opposing all expectations, you step into a sort of fortress with smooth stone walls.\n"
+                                    + "Opposing all expectations, you step into some sort of fortress with smooth stone walls.\n"
                                     + "There is writing on the wall to your left:"
-                                    + Colors.PURPLE_BOLD_BRIGHT + "Be wary all ye travelers. This, the Fortress of Gullinkambi, seeks to decimate those who are faint of heart." + Colors.ANSI_RESET);
+                                    + Colors.PURPLE_BOLD_BRIGHT + "\nBe wary all ye travelers. This, the Fortress of Gullinkambi, seeks to decimate those who are faint of heart." + Colors.ANSI_RESET);
                 Graphics.waitForEnter();
                 Graphics.textInline(Colors.ANSI_PURPLE + "Hmmm... those are forboding words. But they do not scare you!\n"
                                     + "You continue forward approaching an intersection.");
