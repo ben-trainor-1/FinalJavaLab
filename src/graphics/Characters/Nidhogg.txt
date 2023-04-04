@@ -1,5 +1,6 @@
 Nidhogg
-Stats: Class/Info; Average attack: ; Health: 
+Attack: 
+Health: 
 -------------
 
    /—-------------------                         —---------------------\
