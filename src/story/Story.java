@@ -76,7 +76,7 @@ public class Story {
                 // info[2] = Gro.objectPNoun;
                 
                 //Choosing Gro 
-                Graphics.text("You have chosen Gro! Gro is a graceful woman with Blonde braids and one bald spot");
+                Graphics.text("You have chosen Gro! Gro is a graceful woman with blonde braids and one bald spot.");
                 break;
             }
             else{
@@ -89,7 +89,7 @@ public class Story {
         do{
             
             //prompt user
-            Graphics.text(Colors.ANSI_YELLOW + "Enter 1 for a greatspear or 2 for a battleaxe" + Colors.ANSI_RESET);
+            Graphics.text(Colors.ANSI_YELLOW + "Enter 1 for a greatspear or 2 for a battleaxe." + Colors.ANSI_RESET);
             input = in.nextInt();
 
             if(input == 1){
@@ -197,11 +197,10 @@ public class Story {
         Thread.sleep(1000);
 
         //Choice: left of right
-        //TODO: Script may need to be revised into a method, so it can be called in different areas depending on your choice. A loop could also potentially work?
         Graphics.textInline(Colors.ANSI_PURPLE + "You walk through the cave. It is quiet and dark. You have a torch, though, so that helps.\n"
                         + Colors.ANSI_YELLOW + "You come upon an intersection. Which way do you choose?\n"
                         + "1) Left\n"
-                        + "2) Right\n");
+                        + "2) Right\n" + Colors.ANSI_RESET);
         do{
             input = in.nextInt();
                 //left: Loki room
@@ -270,7 +269,7 @@ public class Story {
 
                 //Head back to right 
                 Graphics.textInline(Colors.ANSI_PURPLE + "With the skeleton now at rest. you remove the iron key from its femur." + Colors.ANSI_RESET);
-                Graphics.textInline(Colors.BLUE_BACKGROUND_BRIGHT + "You revieced \'Special Key\'");
+                Graphics.textInline(Colors.BLUE_BACKGROUND_BRIGHT + "You received \'Special Key\'");
                 Graphics.waitForEnter();
 
                 //Optional skeleton fight
@@ -306,33 +305,41 @@ public class Story {
             else if(input == 2){
                 Graphics.textInline(Colors.ANSI_PURPLE + "You chose the path on the right" + Colors.ANSI_RESET);
                 Graphics.waitForEnter();
-
-                //TODO: Add a key check to see if character has key in invetory or not.
-                
                 //Some sort of stronghold...
                 //Maze:
                 //Riddles to help you thru (perhaps some allude to the good ending)
-                //Few suprise battles; (avoidable but mandatory if you find them)
-                RoosterMaze.main(args);
+                //Few surprise battles; (avoidable but mandatory if you find them)
+                if(GameState.key){
+                    Graphics.textInline(Colors.ANSI_PURPLE + "You come upon a door. It is locked, but you have a key! It fits perfectly, and the door opens." + Colors.ANSI_RESET);
+                    Graphics.waitForEnter();
+                    Graphics.textInline(Colors.ANSI_PURPLE + "The walls are smooth stone. Ahead you see many different ways to go. You are in some sort fortress... and maze?" + Colors.ANSI_RESET);
+                    Graphics.waitForEnter();
+                
+                    //Maze!
+                    RoosterMaze.main(args);
 
 
-                //At the end: Gullinkambi: the Golden Comb (boss fight)
-                Graphics.textInline(Colors.ANSI_PURPLE + "You found the end of the maze!\nYou enter a large circular and (oddly enough) well-lit room\n" + Colors.ANSI_RESET);
-                Graphics.waitForEnter();
-                Graphics.textInline("You stride triumphantly through the room. Suddenly! You hear a loud \"cuckaw\"" + Colors.ANSI_RESET);
-                //TODO: Add rooster crow
+                    //At the end: Gullinkambi: the Golden Comb (boss fight)
+                    Graphics.textInline(Colors.ANSI_PURPLE + "You found the end of the maze!\nYou enter a large circular and (oddly enough) well-lit room\n" + Colors.ANSI_RESET);
+                    Graphics.waitForEnter();
+                    Graphics.textInline("You stride triumphantly through the room. Suddenly! You hear a loud \"cuckaw\"" + Colors.ANSI_RESET);
+                    //TODO: Add rooster crow
 
-                Graphics.waitForEnter();
-                Graphics.textInline(Colors.RED_BACKGROUND + "A large rooster falls down and glares menacingly at you.\nIt's Gullinkambi, the Golden Comb." + Colors.ANSI_RESET);
-                //TODO: Add Gullinkambi boss fight
+                    Graphics.waitForEnter();
+                    Graphics.textInline(Colors.RED_BACKGROUND + "A large rooster falls down and glares menacingly at you.\nIt's Gullinkambi, the Golden Comb." + Colors.ANSI_RESET);
+                    //TODO: Add Gullinkambi boss fight
 
-                //After the fight: Loki mocks you again
-                Graphics.textInline(Colors.ANSI_PURPLE + "The giant rooster twitches dead on the ground. You are left breathless and traumatized\n"
-                                    + Colors.RED_BOLD_BRIGHT + "You will never look at roosters the same way again...\n" + Colors.ANSI_RESET
-                                    + Colors.BLACK_BRIGHT + "Speaking of roosters, Loki enters the room!" + Colors.ANSI_RESET);
-                Graphics.waitForEnter(); 
-                Graphics.textInline(Colors.BLACK_BRIGHT + "\"Well, there goes Gullinkambi. Such a tragedy. I had plans with him.\n");
-                break;
+                    //After the fight: Loki mocks you again
+                    Graphics.textInline(Colors.ANSI_PURPLE + "The giant rooster twitches dead on the ground. You are left breathless and traumatized\n"
+                                        + Colors.RED_BOLD_BRIGHT + "You will never look at roosters the same way again...\n" + Colors.ANSI_RESET
+                                        + Colors.BLACK_BRIGHT + "Speaking of roosters, Loki enters the room!" + Colors.ANSI_RESET);
+                    Graphics.waitForEnter(); 
+                    Graphics.textInline(Colors.BLACK_BRIGHT + "\"Well, there goes Gullinkambi. Such a tragedy. I had plans with him.\n");
+                    break;
+                }
+                else{
+                    Graphics.textInline(Colors.ANSI_PURPLE + "You come upon a door. It is locked, perhaps you can find a key elsewhere...");
+                }
 
                 //Weapon upgrade!
                 //Discover large cavern
@@ -354,7 +361,7 @@ public class Story {
                 if(input == 1){ 
                     Graphics.text(Colors.ANSI_YELLOW + "You have chosen to to take the path on the right." 
                     + " Suddenly, an angry dwarf comes out of the shadows\n"
-                    + "He jumps you immediately and while you think he doesn't have a lot of strenghth, he continues to suprise you.\n" 
+                    + "He jumps you immediately and while you think he doesn't have a lot of strength, he continues to surprise you.\n" 
                     + "After a rather long battle, you defeat the little, yet mighty dwarf and walk towards the room on your left\n"
                     + "When you enter, your eyes immediately fall onto the blacksmith puzzle\n" + "It reminds you of your friend, Viggo and while exploring the rest of the room, you discover a spare gear lying around.\n "
                      + Colors.ANSI_RESET);
@@ -467,6 +474,7 @@ public class Story {
                     Graphics.textInline("The end! (Ending #1 of 3)");
                     //TODO: Add best and worst ending!
                     //TODO: Add credits and exit system
+                    in.close();
                 }
             }      
     //Western Hel: Tavern 
@@ -598,6 +606,7 @@ public class Story {
                 failedInput();
             }  
         } while(true);
+
     } 
         //Abyss
             //The only way is an elevator, but it is broken

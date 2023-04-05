@@ -33,5 +33,6 @@ public class GameState {
     public static boolean firstWest = true;
     public static boolean winFlyting = false;
     public static boolean helPermission = false;
+
     
 }
