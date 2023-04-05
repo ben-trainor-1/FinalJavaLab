@@ -196,7 +196,6 @@ public class Graphics {
     }
 
     // Method for printing out healing
-
     public static void displayHealing(String healingName, String color) throws Exception {
 
         String filePath = "./src/graphics/Healing/" + healingName + ".txt";
