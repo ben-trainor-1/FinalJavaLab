@@ -15,6 +15,7 @@ import state.*;
 public class FullCombat {
         
     // Create variables for methods
+    static boolean failsafe = false;
     static int enemyAction = 100;
     static boolean playerCritical = false;
     static boolean enemyCritical = false;
@@ -43,6 +44,8 @@ public class FullCombat {
     // Fight an enemy
     public static void fight() throws Exception {
 
+        failsafe = false;
+
         do {
             // Create objects and variables
             Scanner in = new Scanner(System.in);
@@ -66,7 +69,7 @@ public class FullCombat {
             Thread.sleep(1000);
 
             // Display enemy
-            Graphics.displayCharacter(GameState.enemy, GameState.enemyHealth);
+            Graphics.displayEnemy(GameState.enemy);
             System.out.println();
             
             // Dramatic pause
@@ -76,7 +79,7 @@ public class FullCombat {
             do {
 
                 // Display the character
-                Graphics.displayCharacter(GameState.name, GameState.playerHealth);
+                Graphics.displayGormGro();
                 System.out.print("\n\n");
 
 
@@ -173,303 +176,313 @@ public class FullCombat {
                         }
 
                     }
+                    else if (stringInput.equals("failsafe")) {
+                        input = 0;
+                        failsafe = true;
+                        break;
+                    }
                     else {
                         Graphics.text(Colors.ANSI_RESET + "Do you not know how to read? You must be a true viking. Try again.");
                     }
 
                 } while (true);
 
-                // Print space
-                System.out.print("\n\n");
+                if (failsafe == false) {
+                    // Print space
+                    System.out.print("\n\n");
 
-
-
-
-
-                // Enemy stunned print statement
-                if (enemyAction == -1) {
-                    Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " sways where they are, stunned.");
-                }
-
-                // GORM ACTION
-                // Gorm attack
-                if (input == 1) {
-            
-                    // enemy stunned
+                    // Enemy stunned print statement
                     if (enemyAction == -1) {
-                        if (playerCritical == true) {
-                            // TODO: Pronouns
-                            Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " takes advantage of his opening and deals a crushing " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " blow!");
-                        }
-                        else {
-                            // TODO: Pronouns
-                            Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " takes advantage of his opening and attacks!");
-                        }
-                    }
-                    // normal attack
-                    else {
-                        if (playerCritical == true) {
-                            Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " musters up extra strength and deals a crushing " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " blow!");
-                        }
-                        else {
-                            Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " lunges to attack!");
-                        }
-                    }
-        
-                }
-                // Gorm defends
-                else if (input == 2) {
-
-                    // enemy stunned
-                    if (enemyAction == -1) {
-                        Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " defends despite having an opening...");
-                    }
-                    // normal
-                    else {
-                        Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " braces for impact!");
+                        Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " sways where they are, stunned.");
                     }
 
-                }
-                // player heals
-                else if (input == 3) {
-                    
-                    // enemy stunned
-                    if (enemyAction == -1) {
-                        Graphics.text("Gorm takes a breather and pops a few dumplings.");
-                    }
-                    else {
-                        Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " quickly scarfs down a dumpling and prepares himself!");
-                    }
-                    // TODO: Low health heal
-                    // else if (playerLowHealth == true) {
-                    //     print("Gorm nervously gulps down a dumpling!");
-                    // }
-                    // // normal
-                    // else {
-                    //     print("Gorm quickly scarfs down a dumpling and prepares himself!");
-                    // }
-
-                }
-
-                // Wait
-                Thread.sleep(750);
-
-                // ENEMY ACTION
-                // Enemy attack
-                if (enemyAction >= 0 && enemyAction <= 4) {
-                    // critical
-                    if (enemyCritical == true) {
-                        Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " delivers a crushing" + Colors.ANSI_RED + " critical" + Colors.ANSI_RESET + " blow!"); 
-                    }
-                    // normal
-                    else {
-                        Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " lunges to attack!");
-                    }
-                }
-                // Enemy defense
-                else if (enemyAction >= 5 && enemyAction <= 9) {
-                    // Gorm crit
-                    if (input == 1 && playerCritical == true) {
-                        Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " nervously braces for impact!");
-                    }
-                    // Gorm normal
-                    else if (input == 1 && playerCritical == false) {
-                        // TODO: Add pronouns
-                        Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " puts up its guard!");
-                    }
-                    // Gorm defend
-                    else if (input == 2) {
-                        // TODO: Add pronouns
-                        Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " also puts up its guard...");
-                    }
-                    // Gorm heal
-                    else if (input == 3) {
-                        Graphics.text("Luckily, " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " decided to defend.");
-                    }
-                }
-                // enemy heals
-                else if (enemyAction == 10) {
+                    // GORM ACTION
+                    // Gorm attack
+                    if (input == 1) {
                 
-                    // // TODO: heal at low health
-                    // if (enemyLowHealth == true) {
-                    //     print("Enemy nervously heals some health!");
-                    // }
-                    // Gorm crit
-                    if (input == 1 && playerCritical == true) {
-                        Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " quickly heals and prepares for impact!");
+                        // enemy stunned
+                        if (enemyAction == -1) {
+                            if (playerCritical == true) {
+                                // TODO: Pronouns
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " takes advantage of his opening and deals a crushing " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " blow!");
+                            }
+                            else {
+                                // TODO: Pronouns
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " takes advantage of his opening and attacks!");
+                            }
+                        }
+                        // normal attack
+                        else {
+                            if (playerCritical == true) {
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " musters up extra strength and deals a crushing " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " blow!");
+                            }
+                            else {
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " lunges to attack!");
+                            }
+                        }
+            
                     }
-                    // Gorm normal
-                    else if (input == 1 && playerCritical == false) {
-                        // TODO: Add pronouns
-                        Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " heals and readies itself!");
+                    // Gorm defends
+                    else if (input == 2) {
+
+                        // enemy stunned
+                        if (enemyAction == -1) {
+                            Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " defends despite having an opening...");
+                        }
+                        // normal
+                        else {
+                            Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " braces for impact!");
+                        }
+
+                    }
+                    // player heals
+                    else if (input == 3) {
+                        
+                        // enemy stunned
+                        if (enemyAction == -1) {
+                            Graphics.text("Gorm takes a breather and pops a few dumplings.");
+                        }
+                        else {
+                            Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " quickly scarfs down a dumpling and prepares himself!");
+                        }
+                        // TODO: Low health heal
+                        // else if (playerLowHealth == true) {
+                        //     print("Gorm nervously gulps down a dumpling!");
+                        // }
+                        // // normal
+                        // else {
+                        //     print("Gorm quickly scarfs down a dumpling and prepares himself!");
+                        // }
+
+                    }
+
+                    // Wait
+                    Thread.sleep(750);
+
+                    // ENEMY ACTION
+                    // Enemy attack
+                    if (enemyAction >= 0 && enemyAction <= 4) {
+                        // critical
+                        if (enemyCritical == true) {
+                            Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " delivers a crushing" + Colors.ANSI_RED + " critical" + Colors.ANSI_RESET + " blow!"); 
+                        }
+                        // normal
+                        else {
+                            Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " lunges to attack!");
+                        }
+                    }
+                    // Enemy defense
+                    else if (enemyAction >= 5 && enemyAction <= 9) {
+                        // Gorm crit
+                        if (input == 1 && playerCritical == true) {
+                            Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " nervously braces for impact!");
+                        }
+                        // Gorm normal
+                        else if (input == 1 && playerCritical == false) {
+                            // TODO: Add pronouns
+                            Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " puts up its guard!");
+                        }
+                        // Gorm defend
+                        else if (input == 2) {
+                            // TODO: Add pronouns
+                            Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " also puts up its guard...");
+                        }
+                        // Gorm heal
+                        else if (input == 3) {
+                            Graphics.text("Luckily, " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " decided to defend.");
+                        }
+                    }
+                    // enemy heals
+                    else if (enemyAction == 10) {
+                    
+                        // // TODO: heal at low health
+                        // if (enemyLowHealth == true) {
+                        //     print("Enemy nervously heals some health!");
+                        // }
+                        // Gorm crit
+                        if (input == 1 && playerCritical == true) {
+                            Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " quickly heals and prepares for impact!");
+                        }
+                        // Gorm normal
+                        else if (input == 1 && playerCritical == false) {
+                            // TODO: Add pronouns
+                            Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " heals and readies itself!");
+                        }
+                        // Gorm defend
+                        else if (input == 2) {
+                            Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " takes advantage of the opening and heals!");
+                        }
+                        // Gorm heal
+                        else if (input == 3) {
+                            Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " also chooses to heal!");
+                        }
+                    }
+
+                    Thread.sleep(750);
+                    System.out.println();
+
+                    // RESULTS
+                    // Gorm attack
+                    if (input == 1) {
+                        // Gorm critical
+                        if (playerCritical == true) {
+                            // Enemy stun
+                            if (enemyAction == -1) {
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s  attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
+                            }
+                            // Enemy attack
+                            else if (enemyAction >= 0 && enemyAction <= 4) {
+                                // Enemy critical
+                                if (enemyCritical == true) {
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " and " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s attacks collide with a devastating clash!");
+                                    Thread.sleep(750);
+                                    Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " emerges from the encounter stunned!");
+                                }
+                                // Enemy standard
+                                else {
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s  attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
+                                    Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.eDamageDealt + Colors.ANSI_RESET + " damage!");
+                                }
+                            }
+                            // Enemy defend
+                            else if (enemyAction >= 5 && enemyAction <= 9) {
+                                // TODO: Add other cases for damage dealt
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " hit shatters " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s defense and duly whoops them!");
+                                System.out.println();
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s  attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
+                            } 
+                            // Enemy heal
+                            else if (enemyAction == 10) {
+                                Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " healed " + Colors.ANSI_GREEN + GameState.eHealthGained + Colors.ANSI_RESET + " health!");
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s  attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
+                            }
+                        }
+                        // Gorm standard
+                        else {
+                            // Enemy stun
+                            if (enemyAction == -1) {
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
+                            }
+                            // Enemy attack
+                            else if (enemyAction >= 0 && enemyAction <= 4) {
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s  attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
+                                Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.eDamageDealt + Colors.ANSI_RESET + " damage!");
+                            }
+                            // Enemy defend
+                            else if (enemyAction >= 5 && enemyAction <= 9) {
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s attack glances harmlessly off " + Colors.ANSI_RED + GameState.enemy  + Colors.ANSI_RESET + "\'s strong defense!");
+                            }
+                            // Enemy heal
+                            else if (enemyAction == 10) {
+                                Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " healed " + Colors.ANSI_GREEN + GameState.eHealthGained + Colors.ANSI_RESET + " health!");
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s  attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
+                            }
+                        }
                     }
                     // Gorm defend
                     else if (input == 2) {
-                        Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " takes advantage of the opening and heals!");
-                    }
-                    // Gorm heal
-                    else if (input == 3) {
-                        Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " also chooses to heal!");
-                    }
-                }
-
-                Thread.sleep(750);
-                System.out.println();
-
-                // RESULTS
-                // Gorm attack
-                if (input == 1) {
-                    // Gorm critical
-                    if (playerCritical == true) {
                         // Enemy stun
                         if (enemyAction == -1) {
-                            Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s  attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
+                            Graphics.text(". . .");
+                            Thread.sleep(750);
+                            Graphics.text("Nothing happens...");
                         }
                         // Enemy attack
                         else if (enemyAction >= 0 && enemyAction <= 4) {
                             // Enemy critical
                             if (enemyCritical == true) {
-                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " and " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s attacks collide with a devastating clash!");
-                                Thread.sleep(750);
-                                Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " emerges from the encounter stunned!");
+                                // TODO: Add other cases for damage dealt
+                                Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " hit shatters " + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s defense and duly whoops them!");
+                                System.out.println();
+                                Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.eDamageDealt + Colors.ANSI_RESET + " damage!");
                             }
                             // Enemy standard
                             else {
-                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s  attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
-                                Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.eDamageDealt + Colors.ANSI_RESET + " damage!");
+                                Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s attack glances harmlessly off " + Colors.ANSI_GREEN + GameState.name  + Colors.ANSI_RESET + "\'s strong defense!");
                             }
                         }
                         // Enemy defend
                         else if (enemyAction >= 5 && enemyAction <= 9) {
-                            // TODO: Add other cases for damage dealt
-                            Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " hit shatters " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s defense and duly whoops them!");
-                            System.out.println();
-                            Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s  attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
-                        } 
+                            Graphics.text("How ironic...");
+                            Thread.sleep(750);
+                            Graphics.text("Nothing happens...");
+                        }
                         // Enemy heal
                         else if (enemyAction == 10) {
                             Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " healed " + Colors.ANSI_GREEN + GameState.eHealthGained + Colors.ANSI_RESET + " health!");
-                            Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s  attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
                         }
                     }
-                    // Gorm standard
-                    else {
-                        // Enemy stun
-                        if (enemyAction == -1) {
-                            Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
-                        }
+                    // Gorm heal
+                    else if (input == 3) {
+                        Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " healed " + Colors.ANSI_GREEN + GameState.pHealthGained + Colors.ANSI_RESET + " health!");
                         // Enemy attack
-                        else if (enemyAction >= 0 && enemyAction <= 4) {
-                            Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s  attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
+                        if (enemyAction >= 0 && enemyAction <= 4) {
                             Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.eDamageDealt + Colors.ANSI_RESET + " damage!");
-                        }
-                        // Enemy defend
-                        else if (enemyAction >= 5 && enemyAction <= 9) {
-                            Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s attack glances harmlessly off " + Colors.ANSI_RED + GameState.enemy  + Colors.ANSI_RESET + "\'s strong defense!");
                         }
                         // Enemy heal
                         else if (enemyAction == 10) {
                             Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " healed " + Colors.ANSI_GREEN + GameState.eHealthGained + Colors.ANSI_RESET + " health!");
-                            Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s  attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
                         }
                     }
-                }
-                // Gorm defend
-                else if (input == 2) {
-                    // Enemy stun
-                    if (enemyAction == -1) {
-                        Graphics.text(". . .");
-                        Thread.sleep(750);
-                        Graphics.text("Nothing happens...");
-                    }
-                    // Enemy attack
-                    else if (enemyAction >= 0 && enemyAction <= 4) {
-                        // Enemy critical
-                        if (enemyCritical == true) {
-                            // TODO: Add other cases for damage dealt
-                            Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " hit shatters " + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s defense and duly whoops them!");
-                            System.out.println();
-                            Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.eDamageDealt + Colors.ANSI_RESET + " damage!");
-                        }
-                        // Enemy standard
-                        else {
-                            Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s attack glances harmlessly off " + Colors.ANSI_GREEN + GameState.name  + Colors.ANSI_RESET + "\'s strong defense!");
-                        }
-                    }
-                    // Enemy defend
-                    else if (enemyAction >= 5 && enemyAction <= 9) {
-                        Graphics.text("How ironic...");
-                        Thread.sleep(750);
-                        Graphics.text("Nothing happens...");
-                    }
-                    // Enemy heal
-                    else if (enemyAction == 10) {
-                        Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " healed " + Colors.ANSI_GREEN + GameState.eHealthGained + Colors.ANSI_RESET + " health!");
-                    }
-                }
-                // Gorm heal
-                else if (input == 3) {
-                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " healed " + Colors.ANSI_GREEN + GameState.pHealthGained + Colors.ANSI_RESET + " health!");
-                    // Enemy attack
-                    if (enemyAction >= 0 && enemyAction <= 4) {
-                        Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.eDamageDealt + Colors.ANSI_RESET + " damage!");
-                    }
-                    // Enemy heal
-                    else if (enemyAction == 10) {
-                        Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " healed " + Colors.ANSI_GREEN + GameState.eHealthGained + Colors.ANSI_RESET + " health!");
-                    }
-                }
 
-                // Wait
-                Thread.sleep(750);
+                    // Wait
+                    Thread.sleep(750);
 
-                // Print space
-                System.out.print("\n\n");
-            
-                // Reset critical chances
-                playerCritical = false;
-                enemyCritical = false;
+                    // Print space
+                    System.out.print("\n\n");
+                
+                    // Reset critical chances
+                    playerCritical = false;
+                    enemyCritical = false;
 
-                // Display enemy
-                Graphics.displayCharacter(GameState.enemy, GameState.enemyHealth);
-                System.out.println();
+                    // Display enemy
+                    Graphics.displayEnemy(GameState.enemy);
+                    System.out.println();
+                }
+                else {
+                    break;
+                }
 
             } while (GameState.playerHealth > 0 && GameState.enemyHealth > 0);
 
 
 
+            if (failsafe == false) {
+                // Display player
+                Graphics.displayGormGro();
+                System.out.print("\n\n");
 
-            // Display player
-            Graphics.displayCharacter(GameState.name, GameState.playerHealth);
-            System.out.print("\n\n");
+                // Calculate what happens
+                if (GameState.playerHealth <= 0) {
+                    Graphics.displayDeath("Tomb", Colors.ANSI_BLACK);
+                    Graphics.text("\n" + Colors.ANSI_RED + GameState.name + " fought honorably, but was slain by " + GameState.enemy + "..." + Colors.ANSI_RESET + "\n\n");
 
-            // Calculate what happens
-            if (GameState.playerHealth <= 0) {
-                Graphics.displayDeath("Tomb");
-                Graphics.text("\n" + Colors.ANSI_RED + GameState.name + " fought honorably, but was slain by " + GameState.enemy + "..." + Colors.ANSI_RESET + "\n\n");
+                    // Respawn statement
+                    Thread.sleep(3000);
+                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s brave soul is taken up to Valhalla for his eternal reward...\n");
+                    Thread.sleep(1500);
+                    Graphics.text("But wait!\n");
+                    Thread.sleep(1000);
+                    Graphics.text("Since " + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " died valiently in combat, the gods have granted him another chance to defeat his foe...\n");
+                    Thread.sleep(1500);
+                    Graphics.text("Don't let them regret their choice...");
+                    Thread.sleep(3000);
+                    
+                }
+                else {
+                    Graphics.displayWin("Trophy", Colors.ANSI_YELLOW);
+                    Graphics.text("\n" + Colors.ANSI_GREEN + GameState.name + " fought courageously and defeated " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "!\n");
+                    Thread.sleep(1500);
+                    Graphics.text("Safe travels on the rest of your journey, " + Colors.ANSI_GREEN + "Viking" + Colors.ANSI_RESET + "...");
+                    Thread.sleep(3000);
+                }
 
-                // Respawn statement
-                Thread.sleep(3000);
-                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s brave soul is taken up to Valhalla for his eternal reward...\n");
-                Thread.sleep(1500);
-                Graphics.text("But wait!\n");
-                Thread.sleep(1000);
-                Graphics.text("Since " + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " died valiently in combat, the gods have granted him another chance to defeat his foe...\n");
-                Thread.sleep(1500);
-                Graphics.text("Don't let them regret their choice...");
-                Thread.sleep(3000);
-                
+                printSpace(100);
+                Thread.sleep(750);
             }
             else {
-                Graphics.displayWin("Trophy");
-                Graphics.text("\n" + Colors.ANSI_GREEN + GameState.name + " fought courageously and defeated " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "!\n");
-                Thread.sleep(1500);
-                Graphics.text("Safe travels on the rest of your journey, " + Colors.ANSI_GREEN + "Viking" + Colors.ANSI_RESET + "...");
-                Thread.sleep(3000);
+                break;
             }
-
-            printSpace(100);
-            Thread.sleep(750);
     
         } while (GameState.playerHealth < 1);
 
