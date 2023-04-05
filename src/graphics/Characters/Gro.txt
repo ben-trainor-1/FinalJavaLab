@@ -1,5 +1,6 @@
 Gro
-Stats: Class/Info; Average attack: ; Health: 
+Attack: 
+Health: 
 ----------                                                                                                  
        x......... x x                             
       x  -      -  x x                            
