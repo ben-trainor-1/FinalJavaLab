@@ -473,8 +473,8 @@ public class Story {
                     Graphics.waitForEnter();
                     Graphics.textInline("The end! (Ending #1 of 3)");
                     //TODO: Add best and worst ending!
+                    
                     //TODO: Add credits and exit system
-                    in.close();
                 }
             }      
     //Western Hel: Tavern 
