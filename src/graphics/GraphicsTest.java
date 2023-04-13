@@ -16,17 +16,11 @@ public class GraphicsTest {
     // Method for running every graphics method
     public static void testAllGraphicsMethods() throws Exception {
         
-        Graphics.displayBackground("Mountains", Colors.ANSI_BLUE);
-        Graphics.displayDeath("Tomb", Colors.ANSI_BLACK);
-        Graphics.displayEnemy("Gullinkambi");
-        Graphics.displayGormGro();
-        Graphics.displayHealing("Dumpling", Colors.ANSI_WHITE);
+        Graphics.displayEnemy("Skeleton1");
+        Graphics.displayEnemy("Skeleton2");
+        Graphics.displayHealing("MagicalNecklace", Colors.ANSI_WHITE);
         Graphics.displayWeapons("Axe", Colors.ANSI_WHITE);
-        Graphics.displayWin("Trophy", Colors.ANSI_YELLOW);
-        Graphics.space(5);
-        Graphics.text("Hello, world!");
-        Graphics.textInline("Hello, world! Inline text!");
-        Graphics.waitForEnter();
+       
 
 
     }
