@@ -18,6 +18,7 @@ public class GraphicsTest {
         
         Graphics.displayEnemy("Skeleton1");
         Graphics.displayEnemy("Skeleton2");
+        Graphics.displayEnemy("Elf");
         Graphics.displayHealing("MagicalNecklace", Colors.ANSI_WHITE);
         Graphics.displayWeapons("Axe", Colors.ANSI_WHITE);
        
