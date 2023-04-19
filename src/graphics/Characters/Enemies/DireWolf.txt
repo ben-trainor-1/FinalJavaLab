@@ -1,6 +1,6 @@
 Dire Wolf
-Attack:
-Health:
+Attack: 
+Health: 
 ----------------
 
         _

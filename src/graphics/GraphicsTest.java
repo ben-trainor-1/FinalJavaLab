@@ -16,8 +16,9 @@ public class GraphicsTest {
     // Method for running every graphics method
     public static void testAllGraphicsMethods() throws Exception {
         
-        Graphics.displayEnemy("Skeleton1");
-        Graphics.displayEnemy("Skeleton2");
+        Graphics.displayEnemy("DireWolf");
+        Graphics.displayEnemy("Berserker");
+        Graphics.displayEnemy("Elf");
         Graphics.displayHealing("MagicalNecklace", Colors.ANSI_WHITE);
         Graphics.displayWeapons("Axe", Colors.ANSI_WHITE);
        
