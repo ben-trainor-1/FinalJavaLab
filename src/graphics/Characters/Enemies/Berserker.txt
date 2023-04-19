@@ -1,6 +1,6 @@
 Berserker
 Attack: 
-Health:
+Health: 
 ----------------
  
                                 .-'`-.
