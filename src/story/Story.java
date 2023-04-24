@@ -30,7 +30,7 @@ public class Story {
     //Random
     static Random rand = new Random();
     public static boolean berserkerFight(){
-        if(rand.nextInt(1) == 1)
+        if(rand.nextInt(2) == 1)
         return true;
         else{
             return false;
@@ -124,9 +124,9 @@ public class Story {
         //Setting 
         Graphics.textInline(Colors.ANSI_PURPLE + "Your story starts in the misty mountains of Iceland inside of a small, sparsely populated town called Asbjorn. \nWhile its inhabitants are kind and welcoming, you are a warrior who wishes to fight.");
         Graphics.waitForEnter();
-        Graphics.textInline("Lucky for you, a cave leading straight to Hel is nearby.\nSince your chances of fighting in Ragnarok are slim, this is your best shot for action.\n" +
-                            Colors.ANSI_YELLOW + "You can \n1) leave the village now or \n2) stay a give a brief goodbye to your acquaintances.\n"
-                            + Colors.ANSI_RESET);
+        Graphics.textInline("Lucky for you, a cave leading straight to Hel is nearby.\nSince your chances of fighting in Ragnarok are slim, this is your best shot for action.\n" 
+                            + "You sift through your belongings and discover your trusty dumpling box. It is a gift from a long-lost loved one.\nIt periodically fills up with revitalizing dumplings, so you may never go hungry.\nYou leave the rest behind.\n");
+        Graphics.textInline(Colors.ANSI_YELLOW + "Now you have a choice.\nYou can \n1) leave the village now or \n2) stay a give a brief goodbye to your acquaintances.\n" + Colors.ANSI_RESET);
                        
         
         //Option for leaving or staying
@@ -139,11 +139,11 @@ public class Story {
             }
             else if(input == 2){
                 Graphics.displayEnemy("Skeleton1");
-                Graphics.textInline("You decided to stay and say goodbye.\n" + Colors.ANSI_PURPLE + "In Asbjorn you approach Viggo, the blacksmith. Once he was a great warrior like you, but he now he has settled down.\n He accepted his fate here...\n"
+                Graphics.textInline("You decided to stay and say goodbye.\n" + Colors.ANSI_PURPLE + "In Asbjorn you approach Viggo, the blacksmith. Once he was a great warrior like you, but he now he has settled down.\nHe accepted his fate here...\n"
                                 + Colors.ANSI_GREEN +  "\"Viggo, I'm leaving this town. I'm going to Hel. You can join me if you wish\"\n\"Alas, young (...) I do not display your energetic talent any more.\n I will stay here, accepting my banishment\"\n"
                                 + "\"Well, I'll miss you then. You were the closest one of this lot to me.\"\n"
                                 + "\"We understand that you have not lost your fervor for fighting like we have. We all wish you luck from the bottom of our hearts.\"\n"
-                                + Colors.ANSI_PURPLE + "With that you leave the town filled with Thrill and anticipation for your upcoming battles." + Colors.ANSI_RESET);
+                                + Colors.ANSI_PURPLE + "With that you leave the town filled with thrill and anticipation for your upcoming battles.");
                 break;
             }
             else{
@@ -153,7 +153,7 @@ public class Story {
 
          //Leave Village; go to cave
         Graphics.waitForEnter();
-        Graphics.displayBackground("Trees", Colors.ANSI_PURPLE);
+        Graphics.displayBackground("Trees", Colors.GREEN_UNDERLINED);
         Graphics.text(Colors.ANSI_PURPLE + "You walk down the path leading to the cave. Nothing eventful so far..." + Colors.ANSI_RESET);
         Thread.sleep(1000);
         Graphics.text(Colors.ANSI_PURPLE + "But wait..." + Colors.ANSI_RESET);
@@ -221,7 +221,7 @@ public class Story {
             input = in.nextInt();
             //Loki room
             if(input == 1 && GameState.firstLeft == false){
-                Graphics.textInline(Colors.ANSI_PURPLE + "You chose to go through the passage on the left." + Colors.ANSI_RESET);
+                Graphics.textInline(Colors.ANSI_PURPLE + "You chose to go through the passage on the left.");
 
                 //Play cavern sounds
 
@@ -230,7 +230,7 @@ public class Story {
                 //Many dialogue choices, but they all end in embarrassment
                 Graphics.waitForEnter();
                 Graphics.textInline(Colors.ANSI_PURPLE + "The cavern is narrow and musty. Silence permeates through the air.\n"
-                                        + "As you round a corner, however, you spot torchlight ahead." + Colors.ANSI_RESET); 
+                                        + "As you round a corner, however, you spot torchlight ahead."); 
                 Graphics.waitForEnter();
                 Graphics.textInline(Colors.BLACK_BRIGHT + "A figure stands in a small room.\n" + Colors.ANSI_RESET);   
                 Graphics.displayEnemy("Loki");  
@@ -238,7 +238,7 @@ public class Story {
 
                 Graphics.textInline(Colors.BLACK_BRIGHT + "\"Well, well, well, what do we have here?\"\n" + Colors.ANSI_RESET
                                     + Colors.ANSI_PURPLE + "You stand speechless before the infamous god of deceit. Words with him are dangerous... He molds them as if they are clay.\n"
-                                    + Colors.BLACK_BRIGHT + "\"I feel obliged to thank you. You have done so much for me! I must ask, how did Odin handle it? Was he mad?\"" + Colors.ANSI_RESET);
+                                    + Colors.BLACK_BRIGHT + "\"I feel obliged to thank you. You have done so much for me! I must ask, how did Odin handle it? Was he mad?\"");
                 Graphics.waitForEnter();
                 
                 //Options to respond to Loki
@@ -281,7 +281,7 @@ public class Story {
 
                 //Head back to right 
                 Graphics.textInline(Colors.ANSI_PURPLE + "\nWith the skeleton now at rest, you remove the iron key from its femur." + Colors.ANSI_RESET);
-                Graphics.textInline(Colors.BLUE_BACKGROUND_BRIGHT + "\nYou received \'Special Key\'!" + Colors.ANSI_RESET + Colors.ANSI_YELLOW + "                                                                                                                            ");
+                Graphics.textInline(Colors.BLUE_BACKGROUND_BRIGHT + "\nYou received \'Special Key!\'" + Colors.ANSI_RESET + Colors.ANSI_YELLOW + "                                                                                                                            ");
 
                 //Optional skeleton fight
                 Graphics.textInline(Colors.ANSI_YELLOW + "\nYou notice that you are now presented with yet another choice:\n"
@@ -298,7 +298,7 @@ public class Story {
                         Graphics.textInline("The prone skeleton nimbly rises to its boney feet. It's fighting time again!!!" + Colors.ANSI_RESET);
                         //TODO: Insert Undead skeleton fight #2
                         Graphics.textInline(Colors.ANSI_PURPLE + "\nThe skeleton lies defeated, and you find that it was holding a necklace... magical no doubt.\n" + Colors.ANSI_RESET
-                                            + Colors.BLUE_BACKGROUND_BRIGHT + "You received \'Magical Necklace!\'" + Colors.ANSI_RESET + Colors.ANSI_PURPLE +  "\ndeal more damage in battle!" + Colors.ANSI_RESET);
+                                            + Colors.BLUE_BACKGROUND_BRIGHT + "You received \'Magical Necklace!\'" + Colors.ANSI_RESET + Colors.ANSI_PURPLE +  "\ndeal more damage in battle!");
                         Graphics.waitForEnter();
                         Graphics.textInline(Colors.ANSI_PURPLE + "You return to the intersection, seeking Hel more than anything. Ragnarok won't wait for anyone now!\n" + Colors.ANSI_RESET);
                         break;
@@ -334,33 +334,33 @@ public class Story {
                     //At the end: Gullinkambi: the Golden Comb (boss fight)
                     Graphics.textInline(Colors.ANSI_PURPLE + "You found the end of the maze!\nYou enter a large circular and (oddly enough) well-lit room.");
                     Graphics.waitForEnter();
-                    Graphics.textInline("You stride triumphantly through the room. Suddenly, you hear a loud \"cuckaw\"." + Colors.ANSI_RESET);
+                    Graphics.textInline("You stride triumphantly through the room. Suddenly, you hear a loud" + Colors.PURPLE_BACKGROUND + "\"cuckaw!\"" + Colors.ANSI_RESET);
                     //TODO: Add rooster crow
 
                     Graphics.waitForEnter();
-                    Graphics.textInline(Colors.RED_BACKGROUND + "A large rooster falls down and glares menacingly at you.\nIt's Gullinkambi, the Golden Comb." + Colors.ANSI_RESET + "\n" + Colors.ANSI_PURPLE);
+                    Graphics.textInline(Colors.RED_BACKGROUND + "A large rooster falls down and glares menacingly at you.\nIt's Gullinkambi, the Golden Comb." + Colors.ANSI_RESET);
                     //TODO: Add Gullinkambi boss fight
 
                     //After the fight: Loki mocks you again
                     Graphics.textInline(Colors.ANSI_PURPLE + "The giant rooster twitches dead on the ground. You are left breathless and traumatized.\n"
                                         + Colors.RED_BOLD_BRIGHT + "You will never look at roosters the same way again...\n" + Colors.ANSI_RESET
-                                        + Colors.ANSI_PURPLE + "Speaking of roosters, Loki enters the room!" + Colors.ANSI_RESET);
+                                        + Colors.ANSI_PURPLE + "Speaking of roosters, Loki enters the room!");
                     Graphics.waitForEnter(); 
                     Graphics.textInline(Colors.BLACK_BRIGHT + "\"Well, there goes Gullinkambi. Such a tragedy. I had plans with him.\"\n");
                     Graphics.textInline(Colors.ANSI_YELLOW + "What do you say?\n"
                                         + "1) \"Well, I\'m just that good!\"\n"
                                         + "2) \"Sorry to burst your bubble pal :)\"\n"
                                         + "3) \"And i\'m coming for you next.\"\n"
-                                        + "4) Remain silent\n");
+                                        + "4) Remain silent\n" + Colors.ANSI_RESET);
                     do{
                         input = in.nextInt();
                         if(input == 1 || input == 3){
-                            Graphics.textInline(Colors.BLACK_BRIGHT + "\"Likely story, buddy.\nBe honest for once in your life, you just get lucky.\nanyway, I have places to be. Toodles!\"\n" + Colors.ANSI_RESET);
+                            Graphics.textInline(Colors.BLACK_BRIGHT + "\"Likely story, buddy.\nBe honest for once in your life, you just get lucky.\nanyway, I have places to be. Toodles!\"");
                             Graphics.waitForEnter();
                             break;
                         }
                         else if (input == 2){
-                            Graphics.textInline(Colors.BLACK_BRIGHT + "\"Don\'t be sorry my little Munchkin! Papa Loki\'s big plans aren\'t ruined!\nBut he still some things to do... Toodles!\"\n");
+                            Graphics.textInline(Colors.BLACK_BRIGHT + "\"Don\'t be sorry my little Munchkin! Papa Loki\'s big plans aren\'t ruined!\nBut he still some things to do... Toodles!\"");
                             Graphics.waitForEnter();
                             break;
                         }
@@ -379,13 +379,13 @@ public class Story {
                     //Discover large cavern
                 }
                 else{
-                    Graphics.textInline(Colors.ANSI_PURPLE + "You come upon a door. It is locked. You try to force it open, but it remains steadfast.\n perhaps something in the left passage will help.\n");
+                    Graphics.textInline(Colors.ANSI_PURPLE + "You come upon a door. It is locked. You try to force it open, but it remains steadfast.\nperhaps something in the left passage will help.\n");
                 }
             }
         }while(true);
 
         Graphics.textInline(Colors.ANSI_PURPLE + "Loki suddenly vanishes and you walk out of the room to go look for something that will lead to the bottom of Hel.\n"
-        + "You spot a cliff that will lead to an open cave with an elevator. After getting past the cliff and going into the open cave, you soon discover the elevatoris broken. You have a few options.\n");
+        + "You spot a cliff that will lead to an open cave with an elevator.\nAfter getting past the cliff and going into the open cave, you soon discover the elevator is broken. You have a few options.\n");
 
         //TODO: ADD KATE'S STORY 
         do {
@@ -393,13 +393,13 @@ public class Story {
             input = in.nextInt();
 
                 if(input == 1){ 
-                    Graphics.text(Colors.ANSI_PURPLE+ "You have chosen to to take the path on the right." 
+                    Graphics.textInline(Colors.ANSI_PURPLE+ "You have chosen to to take the path on the right." 
                                     + "Suddenly, an angry dwarf comes out of the shadows\n"
                                     + "He jumps you immediately and while you think he doesn't have a lot of strength, he continues to surprise you.");
                     Graphics.waitForEnter();
                     //TODO: Add dwarf fight
                     Graphics.textInline(Colors.ANSI_PURPLE + "After a rather long battle, you defeat the little, yet mighty dwarf and walk towards the room on your left\n"
-                                        + "When you enter, your eyes immediately fall onto the blacksmith puzzle\n" + "It reminds you of your friend, Viggo and while exploring the rest of the room, you discover a spare gear lying around.\n "
+                                        + "When you enter, your eyes immediately fall onto the blacksmith puzzle\n" + "It reminds you of your friend, Viggo and while exploring the rest of the room, you discover a spare gear lying around."
                                         + Colors.ANSI_RESET);
                     break;
                 }
@@ -444,8 +444,7 @@ public class Story {
                     + Colors.ANSI_RESET
                     + Colors.ANSI_GREEN + "\"Loki? You were here the whole time? How did I not see you? Why are you here?\"\n"
                     + Colors.ANSI_RESET
-                    + Colors.BLACK_BRIGHT + "\"So many questions but so little time. All you need to know, young lad, is that you really need to work on your fighting skills.\"\n"
-                    + Colors.ANSI_RESET);
+                    + Colors.BLACK_BRIGHT + "\"So many questions but so little time. All you need to know, young lad, is that you really need to work on your fighting skills.\"");
             Graphics.waitForEnter();
             Graphics.textInline(Colors.ANSI_YELLOW + "What do you say?\n"
                                 + "1) \"Well, if you are soooooo good, why don\'t you fight me!\"\n"
@@ -455,12 +454,12 @@ public class Story {
             input =in.nextInt();
             do{
                 if(input == 1 || input == 2){
-                    Graphics.textInline(Colors.BLACK_BRIGHT + "\"Alas, young cur, I must get going now! Toodles!\"" + Colors.ANSI_RESET
+                    Graphics.textInline(Colors.BLACK_BRIGHT + "\"Alas, young cur, I must get going now! Toodles!\"\n"
                                         + Colors.ANSI_PURPLE + "With that Loki disappears, leaving you quivering in rage." + Colors.ANSI_RESET);
                     break;
                 }
                 else if(input == 3 || input == 4){
-                    Graphics.textInline(Colors.BLACK_BRIGHT + "\"Must you be such a bore?\nToodles for now, then.\"" + Colors.ANSI_RESET
+                    Graphics.textInline(Colors.BLACK_BRIGHT + "\"Must you be such a bore?\nToodles for now, then.\"\n"
                                         + Colors.ANSI_PURPLE + "With that Loki disappears, leaving you in a cloud of dust." + Colors.ANSI_RESET);  
                     break;
                 }
@@ -478,13 +477,13 @@ public class Story {
 
             Graphics.textInline(Colors.ANSI_PURPLE + "After your fun little banter with Loki, you walk to the entrance of the gates.\n"
                                 + "There is nothing but a dirty stream but you're excited to find out what lies beyond the gates.\n"
-                                + "You push them open and discover the bottom of Hel was so much more than what you expected.\n" );
+                                + "You push them open and discover the bottom of Hel was so much more than what you expected." );
             Graphics.waitForEnter();
 
     //Greater Hel Area
         do { 
             Graphics.text(Colors.ANSI_YELLOW + "You can either go to 1) Eastern region (docks), 2) Western region (tavern)\n" 
-                                            + "3) Southern region (gates of Hel), or 4) Northern region where you can visit Hela's palace.\n"+ Colors.ANSI_RESET );
+                                            + "3) Southern region (gates of Hel), or 4) Northern region where you can visit Hela's palace."+ Colors.ANSI_RESET );
             input = in.nextInt();
             //Eastern Hel: Docks
             //Naglfar, the ship made of fingernails and toenails resides here.
@@ -492,7 +491,7 @@ public class Story {
             //Must find way on ship 
 
             if(input == 1){    
-                if(GameState.helPermission == true){Graphics.textInline(Colors.ANSI_PURPLE + "In the eastern region of the bottom of Hel, you find Naglfar, the famous ship made of finger and toe nails.\n"
+                if(GameState.helPermission == false){Graphics.textInline(Colors.ANSI_PURPLE + "In the eastern region of the bottom of Hel, you find Naglfar, the famous ship made of finger and toe nails.\n"
                                     + "Odin told you that this is the requisite ship to prove your worth.\n"
                                     + "The only problem is that trying to get aboard is harder than expected, and you have to travel to the Northern region to Hela's palace and get permission.\n");
                 }
@@ -507,10 +506,10 @@ public class Story {
                     //TODO: Add final boss
                     Graphics.textInline(Colors.PURPLE_BRIGHT + "After a long, exhausting battle, Loki seems completely unfazed. He suddenly stops.\n"
                                         + Colors.BLACK_BRIGHT+  "\"Alas! I must be off! I\'m sincerely sorry we cannot finish. Perhaps I will visit you during Ragnorak!\nYou have my full assurances that this is fate\'s will, not mine!\nToddles!\"\n" + Colors.ANSI_RESET
-                                        + Colors.PURPLE_BRIGHT + "With that he jumps off the boat. As for you..." + Colors.ANSI_RESET);
+                                        + Colors.PURPLE_BRIGHT + "With that he jumps off the boat. As for you...");
                     Graphics.waitForEnter();
                     Thread.sleep(1000);
-                    Graphics.textInline(Colors.GREEN_BRIGHT + "You are no longer on the boat. Odin is next to you, and before you, a large army stands. You came in the nick of time!\n Odin smiles at you nods at the shiny armor at your feet.\n You hastily put it on and join the army." + Colors.ANSI_RESET
+                    Graphics.textInline(Colors.GREEN_BRIGHT + "You are no longer on the boat. Odin is next to you, and before you, a large army stands. You came in the nick of time!\nOdin smiles at you nods at the shiny armor at your feet.\nYou hastily put it on and join the army." + Colors.ANSI_RESET
                                         + Colors.ANSI_WHITE + "\nYou run off to battle, destined to die forever...");
                     Graphics.waitForEnter();
                     Graphics.textInline("The end! (Ending #1 of 3)");
@@ -527,7 +526,7 @@ public class Story {
                     //Winning allows good ending
                     //find rumors about ship
                     Graphics.textInline(Colors.ANSI_PURPLE + "You enter the tavern. Lots of the deceased are mingling in here. It seems like a lively place.\n"
-                                + "You look around overwhelmed.\n"); 
+                                + "You look around overwhelmed."); 
                     Graphics.waitForEnter();
                     Graphics.textInline("Do you recognize that man?");
                     Graphics.waitForEnter();
@@ -536,16 +535,16 @@ public class Story {
                     Graphics.textInline("Fell, although reluctant to help, aided you in freeing Loki. However, Loki betrayed you and killed him, leaving you \'mercifully\' alive.");
                     Graphics.waitForEnter();
                     Graphics.textInline("Fell notices you, and a big grin invades his face.\n"
-                        + "\"[...] you old chap! You've finally come to dine with the dead? But wait. You have a spry look about you...\nYou're alive aren't you?\"\n"
-                        + "\"Good to see you too, Fell. Still the one with all the questions I see. Yes, I am alive. Odin promised redemption if I boarded Naglfar.\"\n"
-                        + "\"Ohh, that ship. A few of Loki's gurus came in and offered anyone to join him on the boat. Some of us went, but most of us... we don't want to fight the gods we once worshiped.\"");
+                        + Colors.CYAN_BRIGHT + "\"[...] you old chap! You've finally come to dine with the dead? But wait. You have a spry look about you...\nYou're alive aren't you?\"\n"
+                        + Colors.ANSI_GREEN + "\"Good to see you too, Fell. Still the one with all the questions I see. Yes, I am alive. Odin promised redemption if I boarded Naglfar.\"\n"
+                        + Colors.CYAN_BRIGHT + "\"Ohh, that ship. A few of Loki's gurus came in and offered anyone to join him on the boat. Some of us went, but most of us... we don't want to fight the gods we once worshiped.\"");
                     Graphics.waitForEnter();
                     Graphics.textInline("Fell regards you for a long moment. Finally he pipes up,\n"
-                        + "\"Let's do one last flyting. I know its been a while, but for wit and old times sake. Let's have some fun.\"\n"
-                        + "\"Of course we can, but you know we can, but you know I only like to play with stakes.\"\n"
-                        + "\"I have here this bottle full of \'Godmead\'. Don't ask how I got it, and I don't know what it does. I think it has magical properties, and I was promised that is the best mead ever.\n"
-                        + "So, what do you say?\"\n"    
-                        + "Godmead, huh. A mysterious alcoholic beverage doesn't sound like much of a stake, but Fell seems so eager to flyt with you.\n"
+                        + Colors.CYAN_BRIGHT + "\"Let's do one last flyting. I know its been a while, but for wit and old times sake. Let's have some fun.\"\n"
+                        + Colors.ANSI_GREEN + "\"Of course we can, but you know we can, but you know I only like to play with stakes.\"\n"
+                        + Colors.CYAN_BRIGHT + "\"I have here this bottle full of \'Godmead\'. Don't ask how I got it, and I don't know what it does. I think it has magical properties, and I was promised that is the best mead ever.\n"
+                        + Colors.ANSI_GREEN + "So, what do you say?\"\n"    
+                        + Colors.ANSI_PURPLE + "Godmead, huh. A mysterious alcoholic beverage doesn't sound like much of a stake, but Fell seems so eager to flyt with you.\n"
                         + Colors.ANSI_YELLOW + "1) \"Let's do it!\"\n2) \"No, I can't do this right now.\"\n" + Colors.ANSI_RESET);
                     input = in.nextInt();
                     if(input == 1){
@@ -588,7 +587,7 @@ public class Story {
                         //permission from Hel to get on ship 
                         //Must find your way thru the palace (it's a maze ;)
                         Graphics.textInline(Colors.ANSI_PURPLE + "After traveling around for a bit, you walk to the Northern part of Hel.\n"
-                                            + "You approach the sinister looking palace. Hela resides in the palace somewhere, and you must get permission from her board Naglfar.\n" + Colors.ANSI_RESET);
+                                            + "You approach the sinister looking palace. Hela resides in the palace somewhere, and you must get permission from her board Naglfar.");
                         Graphics.waitForEnter();
 
                         HelMaze.main(args);
@@ -603,7 +602,7 @@ public class Story {
                         + Colors. ANSI_PURPLE + "You approach her at her throne and kneel on one knee.\n" + Colors.ANSI_RESET
                         + Colors.RED_BRIGHT + "\"You are correct. But don't think you'll get my consent so easily. I have a riddle for you.\"\n"
                         + "\"What does man love more than life,\nhate more than death or mortal strife;\nthat which contented men desire;\nthe poor have,\nthe rich require;\nthe miser spends,\nthe spendthrift saves,\nand all men carry to their graves?\"\n"
-                        + "You have three options for the answer.\n" + Colors.ANSI_RESET);
+                        + "You have three options for the answer." + Colors.ANSI_RESET);
                         do {
                            
                             Graphics.text(Colors.ANSI_YELLOW + "There are three options. Only one is the correct answer.\n"
@@ -616,22 +615,22 @@ public class Story {
                                                                     + Colors.RED_BRIGHT + "\"You are very smart. You have my permission to aboard the Naglfar.\"\n" + Colors.ANSI_RESET
                                                                     + Colors.ANSI_PURPLE + "She hands you a letter and let you go on your way.\n");
                                 Graphics.displayWin("yay", Colors.YELLOW_BRIGHT);
-                                GameState.helPermission = false;
+                                GameState.helPermission = true;
                                 break;
                             }
 
                             else if (input == 2 || input == 3) {
                                 Graphics.textInline("Hela shakes her head and says that you will not be able to board Naglfar and fight");
                                 Graphics.displayDeath("Dead", Colors.RED_BOLD);
-                                Graphics.textInline(Colors.RED_BRIGHT + "\"Because you got the riddle wrong, you must the fight my meanest elf.\"\n" + Colors.ANSI_RESET);
+                                Graphics.textInline(Colors.RED_BRIGHT + "\"Because you got the riddle wrong, you must the fight my meanest elf.\"");
                                 Graphics.waitForEnter();
                                 Graphics.textInline(Colors.ANSI_PURPLE + "Hela summons her biggest, meanest elf and he comes stomping in.\n"
                                 + "Oh great. He looks so angry and irritated. This is going to be loads of fun, you think to yourself.\n"
-                                + "He immediately knows its you he has to fight and charges at you. You bring out your great spear while he pulls out an axe.\n"
+                                + "He immediately knows its you he has to fight and charges at you. You bring out your [...] while he pulls out an axe.\n"
                                 + "You finally defeat him, leaving the mean elf dirty, bloody, and in pain. You look at Hela who has been watching the whole time.\n"
                                 + Colors.RED_BRIGHT + "\"Good job young lad. You have defeated my undefeatable elf. You have my permission to aboard the Naglfar\"\n" + Colors.ANSI_RESET
                                 + Colors.ANSI_PURPLE + "She hands you a letter and lets you go on your way. You thank her and head out the door.\n");
-                                GameState.helPermission = false;
+                                GameState.helPermission = true;
                                 break;
                             }
                             else{

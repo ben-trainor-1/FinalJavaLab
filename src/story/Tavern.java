@@ -162,7 +162,7 @@ public class Tavern {
         //TODO: update gamestate winFlyting to true
         else{
             Graphics.textInline(Colors.ANSI_PURPLE + "The crowd is enthusiastic over you. Fell sighs and pulls out the Godmead,\n" 
-            + Colors.ANSI_GREEN + "\"This is for you buddy.\"\n" + Colors.ANSI_RESET);
+            + Colors.CYAN_BRIGHT + "\"This is for you buddy.\"\n" + Colors.ANSI_RESET);
             Graphics.displayWin("Trophy", Colors.ANSI_YELLOW);
             Graphics.waitForEnter();
             Graphics.textInline(Colors.ANSI_PURPLE + "You a deep swig, and the crowd swells over you. It goes down smoothly, but you do not feel a bit intoxicated. How odd.\nYou say your farewells to Fell and continue forward.\n" + Colors.ANSI_RESET);
