@@ -101,6 +101,25 @@ public class Graphics {
         }
 
     }
+    // Method for displaying Characters
+    public static void displayCharacter(String characterName) throws Exception {
+         
+        String filePath = "./src/graphics/Characters/" + characterName + ".txt";
+        File characterFile = new File(filePath);
+        Scanner characterScanner = new Scanner(characterFile);
+            
+        // Character name
+        text(characterScanner.nextLine());
+        
+        // Character sprite
+        while (characterScanner.hasNext()) {
+            System.out.println(characterScanner.nextLine());
+            Thread.sleep(textSpeed);
+    
+        }
+
+        System.out.println(Colors.ANSI_RESET);
+    }
     
     // Method for printing out background
 
