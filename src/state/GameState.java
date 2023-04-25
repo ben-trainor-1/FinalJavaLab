@@ -41,7 +41,6 @@ public class GameState {
     public static boolean helPermission = false;
     public static boolean firstLeft = true;
         
-    }
 
     // Display stats
     public static int pDamageDealt;
