@@ -208,26 +208,45 @@ public class FullCombat {
                         if (enemyAction == -1) {
                             if (playerCritical == true) {
                                 if (GameState.weapon.equals("battleaxe")) {
-                                    // TODO: Pronouns
-                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " takes advantage of the opening and deals a crushing " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " blow!");  
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " takes advantage of the opening and slices " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " with a vicious " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " slash!");  
                                 }
                                 else {
                                     // TODO: Pronouns
-                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " takes advantage of the opening and deals a crushing " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " blow!");  
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " takes advantage of the opening and hurls his spear, plunging deep into " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s flesh, causing a  " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " wound!");  
                                 }
                             }
                             else {
-                                // TODO: Pronouns
-                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " takes advantage of the opening and attacks!");
+                                if (GameState.weapon.equals("battleaxe")) {
+                                    // TODO: Pronouns
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " realizes his opportunity and quickly swings his axe!");
+                                }
+                                else {
+                                    // TODO: Pronouns
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " realizes his opportunity and quickly jabs at " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "!");
+                                }
                             }
                         }
                         // normal attack
                         else {
                             if (playerCritical == true) {
-                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " musters up extra strength and deals a crushing " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " blow!");
+                                if (GameState.weapon.equals("battleaxe")) {
+                                    // TODO: Pronouns
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " musters up extra strength and slices " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " with a vicious " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " slash!");  
+                                }
+                                else {
+                                    // TODO: Pronouns
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " musters up extra strength and hurls his spear, plunging deep into " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s flesh, causing a  " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " wound!");  
+                                }
                             }
                             else {
-                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " lunges to attack!");
+                                if (GameState.weapon.equals("battleaxe")) {
+                                    // TODO: Pronouns
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " swings his axe!");
+                                }
+                                else {
+                                    // TODO: Pronouns
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " thrusts with his spear!");
+                                }
                             }
                         }
             
@@ -339,7 +358,7 @@ public class FullCombat {
                         if (playerCritical == true) {
                             // Enemy stun
                             if (enemyAction == -1) {
-                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s  attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
                             }
                             // Enemy attack
                             else if (enemyAction >= 0 && enemyAction <= 4) {
@@ -360,7 +379,7 @@ public class FullCombat {
                                         Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s strong defensive buff leaves " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s attack as only a glancing blow, hardly injuring " + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "!");
                                         System.out.println();
                                     }
-                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s  attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
                                     Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.eDamageDealt + Colors.ANSI_RESET + " damage!");
                                 }
                             }
@@ -369,7 +388,7 @@ public class FullCombat {
                                 // TODO: Add other cases for damage dealt
                                 Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " hit shatters " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s defense and duly whoops them!");
                                 System.out.println();
-                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s  attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
                                 if (GameState.pBuffPhase == 1) {
                                     Thread.sleep(750);
                                     System.out.println();
@@ -379,7 +398,7 @@ public class FullCombat {
                             // Enemy heal
                             else if (enemyAction == 10) {
                                 Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " healed " + Colors.ANSI_GREEN + GameState.eHealthGained + Colors.ANSI_RESET + " health!");
-                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s  attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
                                 if (GameState.pBuffPhase == 1) {
                                     Thread.sleep(750);
                                     System.out.println();
@@ -406,12 +425,18 @@ public class FullCombat {
                                     }
                                 }
                                 System.out.println();
-                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s  attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
                                 Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.eDamageDealt + Colors.ANSI_RESET + " damage!");
                             }
                             // Enemy defend
                             else if (enemyAction >= 5 && enemyAction <= 9) {
-                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s attack glances harmlessly off " + Colors.ANSI_RED + GameState.enemy  + Colors.ANSI_RESET + "\'s strong defense!");
+                                if (GameState.weapon.equals("battleaxe")) {
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s axe glances harmlessly off " + Colors.ANSI_RED + GameState.enemy  + Colors.ANSI_RESET + "\'s strong defense!");
+                                }
+                                else {
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s spear glances harmlessly off " + Colors.ANSI_RED + GameState.enemy  + Colors.ANSI_RESET + "\'s strong defense!");
+                                }
+
                                 if (GameState.pBuffPhase == 1) {
                                     Thread.sleep(750);
                                     System.out.println();
@@ -421,7 +446,7 @@ public class FullCombat {
                             // Enemy heal
                             else if (enemyAction == 10) {
                                 Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " healed " + Colors.ANSI_GREEN + GameState.eHealthGained + Colors.ANSI_RESET + " health!");
-                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s  attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
                                 if (GameState.pBuffPhase == 1) {
                                     Thread.sleep(750);
                                     System.out.println();

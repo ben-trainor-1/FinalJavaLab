@@ -7,7 +7,7 @@ public class GameState {
     public static String pNoun = "";
     public static String objpNoun = "";
     public static String posNoun = "";
-    public static String weapon = "battleaxe"; // greatspear
+    public static String weapon = "greatspear"; // greatspear
     public static int playerHealth;
     public static int playerMaxHealth = 100;
     public static int playerAttack = 10;
