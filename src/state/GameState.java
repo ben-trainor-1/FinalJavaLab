@@ -9,13 +9,13 @@ public class GameState {
     public static String posNoun = "";
     public static String weapon = "battleaxe"; // greatspear
     public static int playerHealth;
-    public static int playerMaxHealth = 100;
-    public static int playerAttack = 10;
-    public static int pDefenseBuff = 5;
-    public static int pBuffPhase = 0;
+    public static int playerMaxHealth = 125;
+    public static int playerAttack = 25;
+    public static int pDefenseBuff = 7;
+    public static int pBuffPhase = 2;
     public static int playerHealCount = 2;
     public static int playerHealAmount = 30;
-    public static int playerCriticalChance = 5;
+    public static int playerCriticalChance = 4;
 
     // Enemy stats
     public static String enemy = "";
