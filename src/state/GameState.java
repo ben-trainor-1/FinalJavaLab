@@ -7,6 +7,9 @@ public class GameState {
     public static String pNoun = "";
     public static String objpNoun = "";
     public static String posNoun = "";
+    public static String genderNoun = "";
+    public static String newName = "";
+    public static String lostLove = "";
     public static String weapon = "";
     public static int playerHealth;
     public static int playerMaxHealth = 100;
@@ -36,15 +39,13 @@ public class GameState {
     public static boolean firstWest = false;
     public static boolean winFlyting = false;
     public static boolean helPermission = false;
-    public static boolean firstLeft = true;
+    public static boolean firstLeft = false;
         
-    }
 
     // Display stats
     public static int pDamageDealt;
     public static int pHealthGained;
     public static int eDamageDealt;
     public static int eHealthGained;
-
     
 }

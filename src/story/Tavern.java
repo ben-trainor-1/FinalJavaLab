@@ -18,7 +18,7 @@ public class Tavern {
         int counter = 0;
 
         //Begin flyting 
-        Graphics.textInline(Colors.ANSI_PURPLE + "Fell gives a sly look. The battle begins" + Colors.ANSI_RESET);
+        Graphics.textInline(Colors.ANSI_PURPLE + "Fell gives a sly look. The battle begins");
         Graphics.waitForEnter();
         Graphics.textInline(Colors.RED_BOLD_BRIGHT + "\"Well, then let's begin, I may have died, but you're a cur.\"\n" + Colors.ANSI_RESET);
 
