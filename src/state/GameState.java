@@ -4,9 +4,9 @@ public class GameState {
 
     // Player stats
     public static String name = "Gro";
-    public static String pNoun = "";
-    public static String objpNoun = "";
-    public static String posNoun = "";
+    public static String pNoun = "He";
+    public static String objpNoun = "Him";
+    public static String posNoun = "His";
     public static String weapon = "greatspear"; // greatspear
     public static int playerHealth;
     public static int playerMaxHealth = 100;
@@ -25,6 +25,7 @@ public class GameState {
     public static int attackChance = 0;
     public static int defenseChance = 0;
     public static int eDefenseBuff = 5;
+    public static int eBuffPhase = 0;
     public static int healChance = 0;
     public static int enemyHealCount = 1;
     public static int enemyHealAmount;
@@ -41,13 +42,15 @@ public class GameState {
     public static boolean helPermission = false;
     public static boolean firstLeft = true;
         
-    }
+    
 
     // Display stats
     public static int pDamageDealt;
     public static int pHealthGained;
+    public static boolean pHealedToMax = false;
     public static int eDamageDealt;
     public static int eHealthGained;
+    public static boolean eHealedToMax = false;
 
     
 }
