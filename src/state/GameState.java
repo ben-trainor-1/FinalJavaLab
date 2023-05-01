@@ -3,11 +3,14 @@ package state;
 public class GameState {
 
     // Player stats
-    public static String name = "Gro";
-    public static String pNoun = "He";
-    public static String objpNoun = "Him";
-    public static String posNoun = "His";
-    public static String weapon = "greatspear"; // greatspear
+    public static String name = "";
+    public static String pNoun = "";
+    public static String objpNoun = "";
+    public static String posNoun = "";
+    public static String genderNoun = "";
+    public static String newName = "";
+    public static String lostLove = "";
+    public static String weapon = "";
     public static int playerHealth;
     public static int playerMaxHealth = 100;
     public static int playerAttack = 10;
@@ -40,9 +43,7 @@ public class GameState {
     public static boolean firstWest = false;
     public static boolean winFlyting = false;
     public static boolean helPermission = false;
-    public static boolean firstLeft = true;
-        
-    
+    public static boolean firstLeft = false;
 
     // Display stats
     public static int pDamageDealt;
@@ -52,5 +53,4 @@ public class GameState {
     public static int eHealthGained;
     public static boolean eHealedToMax = false;
 
-    
 }
