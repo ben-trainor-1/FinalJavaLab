@@ -54,9 +54,13 @@ public class FullCombat {
             String stringInput;
             GameState.playerHealCount = 2;
 
-            // Reset health for the fight
+            // Reset variables for the fight
             GameState.playerHealth = GameState.playerMaxHealth;
             GameState.enemyHealth = GameState.enemyMaxHealth;
+            GameState.pBuffPhase = 0;
+            GameState.eBuffPhase = 0;
+            GameState.pHealedToMax = false;
+            GameState.eHealedToMax = false;
 
             // Display enemy 
 
@@ -93,10 +97,13 @@ public class FullCombat {
                     
                     do {
                         // Randomly select enemy action
-                        if ((GameState.enemyHealCount > 0) && (GameState.enemyHealth < GameState.enemyMaxHealth)) {
+                        if ((GameState.enemyHealCount > 0) && (GameState.enemyHealth < GameState.enemyMaxHealth) && (GameState.healChance != -1)) {
                             
                             enemyAction = Rand.nextInt(GameState.healChance);
 
+                        }
+                        else if (GameState.healChance == -1) {
+                            enemyAction = -1;
                         }
 
                         // Enemy heal
@@ -203,21 +210,41 @@ public class FullCombat {
                         // enemy stunned
                         if (enemyAction == -1) {
                             if (playerCritical == true) {
-                                // TODO: Pronouns
-                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " takes advantage of his opening and deals a crushing " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " blow!");
+                                if (GameState.weapon.equals("battleaxe")) {
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " takes advantage of the opening and slices " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " with a vicious " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " slash!");  
+                                }
+                                else {
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " takes advantage of the opening and hurls " + GameState.posNoun.toLowerCase() + " spear, plunging deep into " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s flesh, causing a " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " wound!");  
+                                }
                             }
                             else {
-                                // TODO: Pronouns
-                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " takes advantage of his opening and attacks!");
+                                if (GameState.weapon.equals("battleaxe")) {
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " realizes " + GameState.posNoun.toLowerCase() + " opportunity and quickly swings " + GameState.posNoun.toLowerCase() + " axe!");
+                                }
+                                else {
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " realizes " + GameState.posNoun.toLowerCase() + " opportunity and quickly jabs at " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "!");
+                                }
                             }
                         }
                         // normal attack
                         else {
                             if (playerCritical == true) {
-                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " musters up extra strength and deals a crushing " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " blow!");
+                                
+                                if (GameState.weapon.equals("battleaxe")) {
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " musters up extra strength and attempts to slice " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " with a vicious " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " slash!");  
+                                }
+                                else {
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " musters up extra strength and hurls " + GameState.posNoun.toLowerCase() + " spear at " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "...");  
+                                }
+                            
                             }
                             else {
-                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " lunges to attack!");
+                                if (GameState.weapon.equals("battleaxe")) {
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " swings " + GameState.posNoun.toLowerCase() + " axe!");
+                                }
+                                else {
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " thrusts with " + GameState.posNoun.toLowerCase() + " spear!");
+                                }
                             }
                         }
             
@@ -240,10 +267,10 @@ public class FullCombat {
                         
                         // enemy stunned
                         if (enemyAction == -1) {
-                            Graphics.text("Gorm takes a breather and pops a few dumplings.");
+                            Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " takes a breather and pops a few dumplings.");
                         }
                         else {
-                            Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " quickly scarfs down a dumpling and prepares himself!");
+                            Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " quickly scarfs down a dumpling and prepares " + GameState.objpNoun.toLowerCase() + "self!");
                         }
                         // TODO: Low health heal
                         // else if (playerLowHealth == true) {
@@ -279,12 +306,10 @@ public class FullCombat {
                         }
                         // Gorm normal
                         else if (input == 1 && playerCritical == false) {
-                            // TODO: Add pronouns
                             Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " puts up its guard!");
                         }
                         // Gorm defend
                         else if (input == 2) {
-                            // TODO: Add pronouns
                             Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " also puts up its guard...");
                         }
                         // Gorm heal
@@ -305,7 +330,6 @@ public class FullCombat {
                         }
                         // Gorm normal
                         else if (input == 1 && playerCritical == false) {
-                            // TODO: Add pronouns
                             Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " heals and readies itself!");
                         }
                         // Gorm defend
@@ -321,6 +345,7 @@ public class FullCombat {
                     Thread.sleep(750);
                     System.out.println();
 
+
                     // RESULTS
                     // Gorm attack
                     if (input == 1) {
@@ -328,7 +353,7 @@ public class FullCombat {
                         if (playerCritical == true) {
                             // Enemy stun
                             if (enemyAction == -1) {
-                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s  attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
                             }
                             // Enemy attack
                             else if (enemyAction >= 0 && enemyAction <= 4) {
@@ -337,24 +362,64 @@ public class FullCombat {
                                     Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " and " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s attacks collide with a devastating clash!");
                                     Thread.sleep(750);
                                     Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " emerges from the encounter stunned!");
+                                    if (GameState.pBuffPhase == 1) {
+                                        Thread.sleep(750);
+                                        System.out.println();
+                                        Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s defensive buff wears off...");
+                                    }
+                                    if (GameState.eBuffPhase == 1) {
+                                        Thread.sleep(750);
+                                        System.out.println();
+                                        Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s defensive buff wears off...");
+                                    }
                                 }
                                 // Enemy standard
                                 else {
-                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s  attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
+                                    if (GameState.pBuffPhase == 1) {
+                                        Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s strong defensive buff leaves " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s attack as only a glancing blow, hardly injuring " + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "!");
+                                        System.out.println();
+                                    }
+                                    else if (GameState.eBuffPhase == 1) {
+                                        Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " calls upon the name of " + GameState.posNoun.toLowerCase() + " Ancestors, and " + GameState.pNoun.toLowerCase() + " attack is still able to do some critical damage!");
+                                    }
+                                    
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
                                     Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.eDamageDealt + Colors.ANSI_RESET + " damage!");
                                 }
                             }
                             // Enemy defend
                             else if (enemyAction >= 5 && enemyAction <= 9) {
+                                if (GameState.eBuffPhase == 1) {
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " calls upon the name of " + GameState.posNoun.toLowerCase() + " Ancestors, and " + GameState.pNoun.toLowerCase() + " attack is still able to do some critical damage!");
+                                }
                                 // TODO: Add other cases for damage dealt
                                 Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " hit shatters " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s defense and duly whoops them!");
                                 System.out.println();
-                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s  attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
+                                if (GameState.pBuffPhase == 1) {
+                                    Thread.sleep(750);
+                                    System.out.println();
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s defensive buff wears off...");
+                                }
                             } 
                             // Enemy heal
                             else if (enemyAction == 10) {
-                                Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " healed " + Colors.ANSI_GREEN + GameState.eHealthGained + Colors.ANSI_RESET + " health!");
-                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s  attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
+                                if (GameState.eBuffPhase == 1) {
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " calls upon the name of " + GameState.posNoun.toLowerCase() + " Ancestors, and " + GameState.pNoun.toLowerCase() + " attack is still able to do some critical damage!");
+                                }
+
+                                if (!GameState.eHealedToMax) {
+                                    Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " healed " + Colors.ANSI_GREEN + GameState.eHealthGained + Colors.ANSI_RESET + " health!");
+                                }
+                                else {
+                                    Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " healed to max health!");
+                                }
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
+                                if (GameState.pBuffPhase == 1) {
+                                    Thread.sleep(750);
+                                    System.out.println();
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s defensive buff wears off...");
+                                }
                             }
                         }
                         // Gorm standard
@@ -365,17 +430,72 @@ public class FullCombat {
                             }
                             // Enemy attack
                             else if (enemyAction >= 0 && enemyAction <= 4) {
-                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s  attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
+                                if (enemyCritical == true) {
+                                    if (GameState.pBuffPhase == 1) {
+                                        Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " calls upon the name of SURTUR, and their attack is still able to do some critical damage!");
+                                    }
+                                    else if (GameState.eBuffPhase == 1) {
+                                        Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s strong defensive buff leaves " + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s attack as only a glancing blow, hardly injuring " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "!");
+                                        System.out.println();
+                                    }
+                                }
+                                else {
+                                    if (GameState.pBuffPhase == 1) {
+                                        Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s strong defensive buff leaves " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s attack as only a glancing blow, hardly injuring " + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "!");
+                                    }
+                                    else if (GameState.eBuffPhase == 1) {
+                                        Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s strong defensive buff leaves " + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s attack as only a glancing blow, hardly injuring " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "!");
+                                        System.out.println();
+                                    }
+                                }
+                                System.out.println();
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
                                 Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.eDamageDealt + Colors.ANSI_RESET + " damage!");
                             }
                             // Enemy defend
                             else if (enemyAction >= 5 && enemyAction <= 9) {
-                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s attack glances harmlessly off " + Colors.ANSI_RED + GameState.enemy  + Colors.ANSI_RESET + "\'s strong defense!");
+                                if (GameState.weapon.equals("battleaxe")) {
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s axe glances harmlessly off " + Colors.ANSI_RED + GameState.enemy  + Colors.ANSI_RESET + "\'s strong defense!");
+                                }
+                                else {
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s spear glances harmlessly off " + Colors.ANSI_RED + GameState.enemy  + Colors.ANSI_RESET + "\'s strong defense!");
+                                }
+
+                                Thread.sleep(750);
+                                System.out.println();
+                                Graphics.text("The strong defense prepares " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " for the next attack!");
+                                Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " gains a defensive buff!");
+
+                                if (GameState.pBuffPhase == 1) {
+                                    Thread.sleep(750);
+                                    System.out.println();
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s defensive buff wears off...");
+                                }
+                                if (GameState.eBuffPhase == 1) {
+                                    Thread.sleep(750);
+                                    System.out.println();
+                                    Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s defensive buff wears off...");
+                                }
                             }
                             // Enemy heal
                             else if (enemyAction == 10) {
-                                Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " healed " + Colors.ANSI_GREEN + GameState.eHealthGained + Colors.ANSI_RESET + " health!");
-                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s  attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
+                                if (GameState.eBuffPhase == 1) {
+                                    Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s strong defensive buff leaves " + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s attack as only a glancing blow, hardly injuring " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "!");
+                                    System.out.println();
+                                }
+
+                                if (!GameState.eHealedToMax) {
+                                    Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " healed " + Colors.ANSI_GREEN + GameState.eHealthGained + Colors.ANSI_RESET + " health!");
+                                }
+                                else {
+                                    Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " healed to max health!");
+                                }
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
+                                if (GameState.pBuffPhase == 1) {
+                                    Thread.sleep(750);
+                                    System.out.println();
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s defensive buff wears off...");
+                                }
                             }
                         }
                     }
@@ -386,19 +506,37 @@ public class FullCombat {
                             Graphics.text(". . .");
                             Thread.sleep(750);
                             Graphics.text("Nothing happens...");
+                            if (GameState.eBuffPhase == 1) {
+                                Thread.sleep(750);
+                                System.out.println();
+                                Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s defensive buff wears off...");
+                            }
                         }
                         // Enemy attack
                         else if (enemyAction >= 0 && enemyAction <= 4) {
                             // Enemy critical
                             if (enemyCritical == true) {
+                                if (GameState.pBuffPhase == 1) {
+                                    Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " calls upon the name of SURTUR, and their attack is still able to do some critical damage!");
+                                }
+                                
                                 // TODO: Add other cases for damage dealt
                                 Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " hit shatters " + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s defense and duly whoops them!");
                                 System.out.println();
                                 Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.eDamageDealt + Colors.ANSI_RESET + " damage!");
+                                if (GameState.eBuffPhase == 1) {
+                                    Thread.sleep(750);
+                                    System.out.println();
+                                    Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s defensive buff wears off...");
+                                }
                             }
                             // Enemy standard
                             else {
                                 Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s attack glances harmlessly off " + Colors.ANSI_GREEN + GameState.name  + Colors.ANSI_RESET + "\'s strong defense!");
+                                Thread.sleep(750);
+                                System.out.println();
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s strong defense emboldens " + GameState.objpNoun.toLowerCase() + "! " + GameState.pNoun + "\'s prepared for the next attack!");
+                                Graphics.text(GameState.pNoun + " gains a defensive buff!");
                             }
                         }
                         // Enemy defend
@@ -406,22 +544,116 @@ public class FullCombat {
                             Graphics.text("How ironic...");
                             Thread.sleep(750);
                             Graphics.text("Nothing happens...");
+                            if (GameState.pBuffPhase == 1) {
+                                Thread.sleep(750);
+                                System.out.println();
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s defensive buff wears off...");
+                            }
+                            if (GameState.eBuffPhase == 1) {
+                                Thread.sleep(750);
+                                System.out.println();
+                                Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s defensive buff wears off...");
+                            }
                         }
                         // Enemy heal
                         else if (enemyAction == 10) {
-                            Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " healed " + Colors.ANSI_GREEN + GameState.eHealthGained + Colors.ANSI_RESET + " health!");
+                            if (!GameState.eHealedToMax) {
+                                Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " healed " + Colors.ANSI_GREEN + GameState.eHealthGained + Colors.ANSI_RESET + " health!");
+                            }
+                            else {
+                                Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " healed to max health!");
+                            }
+                            if (GameState.pBuffPhase == 1) {
+                                Thread.sleep(750);
+                                System.out.println();
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s defensive buff wears off...");
+                            }
+                            if (GameState.eBuffPhase == 1) {
+                                Thread.sleep(750);
+                                System.out.println();
+                                Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s defensive buff wears off...");
+                            }
                         }
                     }
                     // Gorm heal
                     else if (input == 3) {
-                        Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " healed " + Colors.ANSI_GREEN + GameState.pHealthGained + Colors.ANSI_RESET + " health!");
                         // Enemy attack
                         if (enemyAction >= 0 && enemyAction <= 4) {
+                            if (enemyCritical == false) {
+                                if (GameState.pBuffPhase == 1) {
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s strong defensive buff leaves " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s attack as only a glancing blow, hardly injuring " + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "!");
+                                    System.out.println();
+                                }
+                            }
+                            else {
+                                if (GameState.pBuffPhase == 1) {
+                                    Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " calls upon the name of SURTUR, and their attack is still able to do some critical damage!");
+                                }
+                            }
+
+                            if (!GameState.pHealedToMax) {
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " healed " + Colors.ANSI_GREEN + GameState.pHealthGained + Colors.ANSI_RESET + " health!");
+                            }
+                            else {
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " healed to max health!");
+                            }
+
                             Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.eDamageDealt + Colors.ANSI_RESET + " damage!");
+                            
+                            if (GameState.eBuffPhase == 1) {
+                                Thread.sleep(750);
+                                System.out.println();
+                                Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s defensive buff wears off...");
+                            }
+                        }
+                        // Enemy defense
+                        else if (!GameState.pHealedToMax) {
+
+                            if (GameState.enemyHealth < GameState.enemyMaxHealth) {
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " healed " + Colors.ANSI_GREEN + GameState.pHealthGained + Colors.ANSI_RESET + " health!");
+                            }
+                            else {
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " healed to max health!");
+                            }
+
+                            if (GameState.pBuffPhase == 1) {
+                                Thread.sleep(750);
+                                System.out.println();
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s defensive buff wears off...");
+                            }
+                            if (GameState.eBuffPhase == 1) {
+                                Thread.sleep(750);
+                                System.out.println();
+                                Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s defensive buff wears off...");
+                            }
                         }
                         // Enemy heal
                         else if (enemyAction == 10) {
-                            Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " healed " + Colors.ANSI_GREEN + GameState.eHealthGained + Colors.ANSI_RESET + " health!");
+
+                            if (!GameState.pHealedToMax) {
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " healed " + Colors.ANSI_GREEN + GameState.pHealthGained + Colors.ANSI_RESET + " health!");
+                            }
+                            else {
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " healed to max health!");
+                            }
+
+                            if (!GameState.eHealedToMax) {
+                                Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " healed " + Colors.ANSI_GREEN + GameState.eHealthGained + Colors.ANSI_RESET + " health!");
+                            }
+                            else {
+                                Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " healed to max health!");
+                            }
+
+                            if (GameState.pBuffPhase == 1) {
+                                Thread.sleep(750);
+                                System.out.println();
+                                Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s defensive buff wears off...");
+                            }
+                            if (GameState.eBuffPhase == 1) {
+                                Thread.sleep(750);
+                                System.out.println();
+                                Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s defensive buff wears off...");
+                            }
                         }
                     }
 
@@ -431,9 +663,20 @@ public class FullCombat {
                     // Print space
                     System.out.print("\n\n");
                 
-                    // Reset critical chances
+                    // Reset critical chances/iterate buff phases/reset healedToMax
                     playerCritical = false;
                     enemyCritical = false;
+                    GameState.pHealedToMax = false;
+                    GameState.eHealedToMax = false;
+
+                    if (GameState.pBuffPhase > 0) {
+                        GameState.pBuffPhase --;
+                    }
+
+                    if (GameState.eBuffPhase > 0) {
+                        GameState.eBuffPhase --;
+                    }
+            
 
                     // Display enemy
                     Graphics.displayEnemy(GameState.enemy);
@@ -454,27 +697,46 @@ public class FullCombat {
 
                 // Calculate what happens
                 if (GameState.playerHealth <= 0) {
-                    Graphics.displayDeath("Tomb", Colors.ANSI_BLACK);
-                    Graphics.text("\n" + Colors.ANSI_RED + GameState.name + " fought honorably, but was slain by " + GameState.enemy + "..." + Colors.ANSI_RESET + "\n\n");
+                    if (GameState.enemy.equals("Reginald")) {
+                        Graphics.displayDeath("Tomb", Colors.ANSI_BLACK);
+                        Graphics.textInline("\n" + Colors.ANSI_RED + GameState.name + " attempted to fight valiantly, but was absolutely whooped by the almighty " + GameState.enemy + "..." + Colors.ANSI_RESET);
+                        Graphics.waitForEnter();
 
-                    // Respawn statement
-                    Thread.sleep(3000);
-                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s brave soul is taken up to Valhalla for his eternal reward...\n");
-                    Thread.sleep(1500);
-                    Graphics.text("But wait!\n");
-                    Thread.sleep(1000);
-                    Graphics.text("Since " + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " died valiently in combat, the gods have granted him another chance to defeat his foe...\n");
-                    Thread.sleep(1500);
-                    Graphics.text("Don't let them regret their choice...");
-                    Thread.sleep(3000);
-                    
+                        // Respawn statement
+                        Graphics.textInline("\n\n" + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s puny soul is dragged down to Niflheim for " + GameState.posNoun.toLowerCase() + " eternal punishment...");
+                        Graphics.waitForEnter();
+                        Graphics.textInline("\nBut wait!");
+                        Graphics.waitForEnter();
+                        Graphics.text("\nHela recognizes that " + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " is a feeble, unworthy opponent for " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "...");
+                        Graphics.textInline("She grants you another life...");
+                        Graphics.waitForEnter();
+                        Graphics.textInline("\nDon't make the mistake of fighting the almighty " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " again...");
+                        Graphics.waitForEnter();                    }
+                    else if (GameState.enemy.equals("Loki")) {
+
+                    }
+                    else {
+                        Graphics.displayDeath("Tomb", Colors.ANSI_BLACK);
+                        Graphics.textInline("\n" + Colors.ANSI_RED + GameState.name + " fought honorably, but was slain by " + GameState.enemy + "..." + Colors.ANSI_RESET);
+                        Graphics.waitForEnter();
+
+                        // Respawn statement
+                        Graphics.textInline("\n\n" + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s brave soul is taken up to Valhalla for " + GameState.posNoun.toLowerCase() + "eternal reward...");
+                        Graphics.waitForEnter();
+                        Graphics.textInline("\nBut wait!\n");
+                        Graphics.waitForEnter();
+                        Graphics.textInline("\nSince " + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " died valiently in combat, the gods have granted " + GameState.objpNoun.toLowerCase() + " another chance to defeat " + GameState.posNoun.toLowerCase() + " foe...");
+                        Graphics.waitForEnter();
+                        Graphics.text("\nDon't let them regret their choice...");
+                        Graphics.waitForEnter();
+                    }
                 }
                 else {
                     Graphics.displayWin("Trophy", Colors.ANSI_YELLOW);
-                    Graphics.text("\n" + Colors.ANSI_GREEN + GameState.name + " fought courageously and defeated " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "!\n");
-                    Thread.sleep(1500);
-                    Graphics.text("Safe travels on the rest of your journey, " + Colors.ANSI_GREEN + "Viking" + Colors.ANSI_RESET + "...");
-                    Thread.sleep(3000);
+                    Graphics.textInline("\n" + Colors.ANSI_GREEN + GameState.name + " fought courageously and defeated " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "!");
+                    Graphics.waitForEnter();
+                    Graphics.textInline("\nSafe travels on the rest of your journey, " + Colors.ANSI_GREEN + "Viking" + Colors.ANSI_RESET + "...");
+                    Graphics.waitForEnter();
                 }
 
                 printSpace(100);
@@ -484,7 +746,7 @@ public class FullCombat {
                 break;
             }
     
-        } while (GameState.playerHealth < 1);
+        } while (GameState.playerHealth < 1 && !GameState.enemy.equals("Loki") && !GameState.enemy.equals("Reginald"));
 
     }
 
@@ -512,8 +774,12 @@ public class FullCombat {
             if (playerCritical == true) {
 
                 // ENEMY DAMAGED
-                GameState.pDamageDealt = ((GameState.playerAttack + (Rand.nextInt(11) - 5)) + critical);
+                GameState.pDamageDealt = (GameState.playerAttack + (Rand.nextInt(11) - 5) + critical);
+                if (GameState.eBuffPhase == 1) {
+                    GameState.pDamageDealt -= GameState.eDefenseBuff;
+                }
                 GameState.enemyHealth -= GameState.pDamageDealt;
+
 
                 // Don't go below 0
                 if (GameState.enemyHealth < 0) {
@@ -526,6 +792,9 @@ public class FullCombat {
 
                 // ENEMY DAMAGED
                 GameState.pDamageDealt = (GameState.playerAttack + (Rand.nextInt(11) - 5));
+                if (GameState.eBuffPhase == 1) {
+                    GameState.pDamageDealt -= GameState.eDefenseBuff;
+                }
                 GameState.enemyHealth -= GameState.pDamageDealt;
 
                 // Don't go below 0
@@ -540,7 +809,7 @@ public class FullCombat {
         else if ((enemyAction >= 0 && enemyAction <= 4)) {
                 
             // Enemy critical hit
-            if (Rand.nextInt(GameState.enemyCriticalChance) == 0) {
+            if (Rand.nextInt(GameState.enemyCriticalChance) == 0 && (GameState.enemyCriticalChance != -1)) {
                 
                 enemyCritical = true;
 
@@ -565,15 +834,23 @@ public class FullCombat {
 
                 // PLAYER DAMAGED
                 GameState.eDamageDealt = (GameState.enemyAttackAvg + (Rand.nextInt(11) - 5));
+                if (GameState.pBuffPhase == 1) {
+                    GameState.eDamageDealt -= GameState.pDefenseBuff;
+                }
                 GameState.playerHealth -= GameState.eDamageDealt;
+
+
 
                 // Don't go below 0
                 if (GameState.playerHealth < 0) {
                     GameState.playerHealth = 0;
                 }
-                
+
                 // ENEMY DAMAGED
-                GameState.pDamageDealt = ((GameState.playerAttack + (Rand.nextInt(11) - 5)) + critical);
+                GameState.pDamageDealt = (GameState.playerAttack + (Rand.nextInt(11) - 5) + critical);
+                if (GameState.eBuffPhase == 1) {
+                    GameState.pDamageDealt -= GameState.eDefenseBuff;
+                }
                 GameState.enemyHealth -= GameState.pDamageDealt;
 
                 // Don't go below 0
@@ -587,6 +864,9 @@ public class FullCombat {
 
                 // PLAYER DAMAGED
                 GameState.eDamageDealt = ((GameState.enemyAttackAvg + (Rand.nextInt(11) - 5)) + critical);
+                if (GameState.pBuffPhase == 1) {
+                    GameState.eDamageDealt -= GameState.pDefenseBuff;
+                }
                 GameState.playerHealth -= GameState.eDamageDealt;
 
                 // Don't go below 0
@@ -596,6 +876,9 @@ public class FullCombat {
 
                 // ENEMY DAMAGED
                 GameState.pDamageDealt = (GameState.playerAttack + (Rand.nextInt(11) - 5));
+                if (GameState.eBuffPhase == 1) {
+                    GameState.pDamageDealt -= GameState.eDefenseBuff;
+                }
                 GameState.enemyHealth -= GameState.pDamageDealt;
 
                 // Don't go below 0
@@ -609,6 +892,9 @@ public class FullCombat {
                 
                 // PLAYER DAMAGED
                 GameState.eDamageDealt = (GameState.enemyAttackAvg + (Rand.nextInt(11) - 5));
+                if (GameState.pBuffPhase == 1) {
+                    GameState.eDamageDealt -= GameState.pDefenseBuff;
+                }
                 GameState.playerHealth -= GameState.eDamageDealt;
 
                 // Don't go below 0
@@ -618,6 +904,9 @@ public class FullCombat {
                 
                 // ENEMY DAMAGED
                 GameState.pDamageDealt = (GameState.playerAttack + (Rand.nextInt(11) - 5));
+                if (GameState.eBuffPhase == 1) {
+                    GameState.pDamageDealt -= GameState.eDefenseBuff;
+                }
                 GameState.enemyHealth -= GameState.pDamageDealt;
 
                 // Don't go below 0
@@ -626,6 +915,7 @@ public class FullCombat {
                 }
 
             }
+
             
         }
         // Enemy defense
@@ -635,7 +925,10 @@ public class FullCombat {
             if (playerCritical == true) {
 
                 // ENEMY DAMAGED
-                GameState.pDamageDealt = ((GameState.playerAttack + (Rand.nextInt(11) - 5)) + critical);
+                GameState.pDamageDealt = (GameState.playerAttack + (Rand.nextInt(11) - 5) + critical);
+                if (GameState.eBuffPhase == 1) {
+                    GameState.pDamageDealt -= GameState.eDefenseBuff;
+                }
                 GameState.enemyHealth -= GameState.pDamageDealt;
                 
                 // Don't go below 0
@@ -643,6 +936,9 @@ public class FullCombat {
                     GameState.enemyHealth = 0;
                 }
 
+            }
+            else {
+                GameState.eBuffPhase = 2;
             }
 
         }
@@ -654,8 +950,9 @@ public class FullCombat {
             GameState.enemyHealth += GameState.eHealthGained;
 
             // Don't go over enemy max health
-            if (GameState.enemyHealth > GameState.enemyMaxHealth) {
+            if (GameState.enemyHealth >= GameState.enemyMaxHealth) {
 
+                GameState.eHealedToMax = true;
                 GameState.enemyHealth = GameState.enemyMaxHealth;
 
             }
@@ -664,7 +961,10 @@ public class FullCombat {
             if (playerCritical == true) {
 
                 // ENEMY DAMAGED
-                GameState.pDamageDealt = ((GameState.playerAttack + (Rand.nextInt(11) - 5)) + critical);
+                GameState.pDamageDealt = (GameState.playerAttack + (Rand.nextInt(11) - 5) + critical);
+                if (GameState.eBuffPhase == 1) {
+                    GameState.pDamageDealt -= GameState.eDefenseBuff;
+                }
                 GameState.enemyHealth -= GameState.pDamageDealt;
 
             }
@@ -673,6 +973,9 @@ public class FullCombat {
 
                 // ENEMY DAMAGED
                 GameState.pDamageDealt = (GameState.playerAttack + (Rand.nextInt(11) - 5));
+                if (GameState.eBuffPhase == 1) {
+                    GameState.pDamageDealt -= GameState.eDefenseBuff;
+                }
                 GameState.enemyHealth -= GameState.pDamageDealt;
                 
             }
@@ -695,7 +998,7 @@ public class FullCombat {
         if ((enemyAction >= 0 && enemyAction <= 4)) {
                 
             // Enemy critical hit
-            if (Rand.nextInt(GameState.enemyCriticalChance) == 0) {
+            if (Rand.nextInt(GameState.enemyCriticalChance) == 0 && (GameState.enemyCriticalChance != -1)) {
                 
                 enemyCritical = true;
 
@@ -704,6 +1007,8 @@ public class FullCombat {
             else {
 
                 enemyCritical = false;
+
+                GameState.pBuffPhase = 2;
     
             }
 
@@ -713,6 +1018,9 @@ public class FullCombat {
 
                 /// PLAYER DAMAGED
                 GameState.eDamageDealt = (GameState.enemyAttackAvg + (Rand.nextInt(11) - 5) + critical);
+                if (GameState.pBuffPhase == 1) {
+                    GameState.eDamageDealt -= GameState.pDefenseBuff;
+                }
                 GameState.playerHealth -= GameState.eDamageDealt;
 
                 // Don't go below 0
@@ -732,8 +1040,9 @@ public class FullCombat {
             GameState.enemyHealth += GameState.eHealthGained;
 
             // Don't go over enemy max health
-            if (GameState.enemyHealth > GameState.enemyMaxHealth) {
+            if (GameState.enemyHealth >= GameState.enemyMaxHealth) {
 
+                GameState.eHealedToMax = true;
                 GameState.enemyHealth = GameState.enemyMaxHealth;
 
             }
@@ -754,17 +1063,19 @@ public class FullCombat {
         GameState.playerHealth += GameState.pHealthGained;
 
         // Don't go over max player health
-        if (GameState.playerHealth > 100) {
+        if (GameState.playerHealth >= GameState.playerMaxHealth) {
 
-            GameState.playerHealth = 100;
+            GameState.pHealedToMax = true;
+            GameState.playerHealth = GameState.playerMaxHealth;
+
         }
 
         // No need for Stunned enemy case
         // Enemy attack
-        else if ((enemyAction >= 0 && enemyAction <= 4)) {
+        if ((enemyAction >= 0 && enemyAction <= 4)) {
                 
             // Enemy critical hit
-            if (Rand.nextInt(GameState.enemyCriticalChance) == 0) {
+            if (Rand.nextInt(GameState.enemyCriticalChance) == 0 && (GameState.enemyCriticalChance != -1)) {
                 
                 enemyCritical = true;
 
@@ -782,6 +1093,9 @@ public class FullCombat {
                     
                 // PLAYER DAMAGED
                 GameState.eDamageDealt = (GameState.enemyAttackAvg + (Rand.nextInt(11) - 5) + critical);
+                if (GameState.pBuffPhase == 1) {
+                    GameState.eDamageDealt -= GameState.pDefenseBuff;
+                }
                 GameState.playerHealth -= GameState.eDamageDealt;
 
             }
@@ -790,6 +1104,9 @@ public class FullCombat {
 
                 // PLAYER DAMAGED
                 GameState.eDamageDealt = (GameState.enemyAttackAvg + (Rand.nextInt(11) - 5));
+                if (GameState.pBuffPhase == 1) {
+                    GameState.eDamageDealt -= GameState.pDefenseBuff;
+                }
                 GameState.playerHealth -= GameState.eDamageDealt;
 
             }
@@ -809,8 +1126,9 @@ public class FullCombat {
             GameState.enemyHealth += GameState.eHealthGained;
 
             // Don't go over enemy max health
-            if (GameState.enemyHealth > GameState.enemyMaxHealth) {
+            if (GameState.enemyHealth >= GameState.enemyMaxHealth) {
 
+                GameState.eHealedToMax = true;
                 GameState.enemyHealth = GameState.enemyMaxHealth;
 
             }
