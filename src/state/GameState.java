@@ -19,6 +19,7 @@ public class GameState {
     public static int playerHealCount = 2;
     public static int playerHealAmount = 30;
     public static int playerCriticalChance = 5;
+    public static int pCritical = 20;
 
     // Enemy stats
     public static String enemy = "";
@@ -33,6 +34,7 @@ public class GameState {
     public static int enemyHealCount = 1;
     public static int enemyHealAmount;
     public static int enemyCriticalChance;
+    public static int eCritical;
 
 
     //Booleans for checking

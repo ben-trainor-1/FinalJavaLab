@@ -20,7 +20,6 @@ public class FullCombat {
     static boolean playerCritical = false;
     static boolean enemyCritical = false;
     static boolean parry = false;
-    static int critical = 20;
 
     public static void printSpace(int spaceCount) {
         for (int i = 0; i < spaceCount; i++) {
@@ -29,14 +28,16 @@ public class FullCombat {
     }
 
     // Update enemy GameState stats (before a fight)
-    public static void enemyGameState(String enemy, int enemyHealth, int enemyAttackAvg, int enemyCriticalChance, int attackChance, int defenseChance, int healChance, int enemyHealAmount) throws Exception {
+    public static void enemyGameState(String enemy, int enemyHealth, int enemyAttackAvg, int enemyCriticalChance, int eCritical, int attackChance, int defenseChance, int eDefenseBuff, int healChance, int enemyHealAmount) throws Exception {
         GameState.enemy = enemy;
         GameState.enemyMaxHealth = enemyHealth;
         GameState.enemyHealth = enemyHealth;
         GameState.enemyAttackAvg = enemyAttackAvg;
         GameState.enemyCriticalChance = enemyCriticalChance;
+        GameState.eCritical = eCritical;
         GameState.attackChance = attackChance;
         GameState.defenseChance = defenseChance;
+        GameState.eDefenseBuff = eDefenseBuff;
         GameState.healChance = healChance;
         GameState.enemyHealAmount = enemyHealAmount;
     }
@@ -774,7 +775,7 @@ public class FullCombat {
             if (playerCritical == true) {
 
                 // ENEMY DAMAGED
-                GameState.pDamageDealt = (GameState.playerAttack + (Rand.nextInt(11) - 5) + critical);
+                GameState.pDamageDealt = (GameState.playerAttack + (Rand.nextInt(11) - 5) + GameState.pCritical);
                 if (GameState.eBuffPhase == 1) {
                     GameState.pDamageDealt -= GameState.eDefenseBuff;
                 }
@@ -847,7 +848,7 @@ public class FullCombat {
                 }
 
                 // ENEMY DAMAGED
-                GameState.pDamageDealt = (GameState.playerAttack + (Rand.nextInt(11) - 5) + critical);
+                GameState.pDamageDealt = (GameState.playerAttack + (Rand.nextInt(11) - 5) + GameState.pCritical);
                 if (GameState.eBuffPhase == 1) {
                     GameState.pDamageDealt -= GameState.eDefenseBuff;
                 }
@@ -863,7 +864,7 @@ public class FullCombat {
             else if (enemyCritical == true) {
 
                 // PLAYER DAMAGED
-                GameState.eDamageDealt = ((GameState.enemyAttackAvg + (Rand.nextInt(11) - 5)) + critical);
+                GameState.eDamageDealt = ((GameState.enemyAttackAvg + (Rand.nextInt(11) - 5)) + GameState.eCritical);
                 if (GameState.pBuffPhase == 1) {
                     GameState.eDamageDealt -= GameState.pDefenseBuff;
                 }
@@ -925,7 +926,7 @@ public class FullCombat {
             if (playerCritical == true) {
 
                 // ENEMY DAMAGED
-                GameState.pDamageDealt = (GameState.playerAttack + (Rand.nextInt(11) - 5) + critical);
+                GameState.pDamageDealt = (GameState.playerAttack + (Rand.nextInt(11) - 5) + GameState.pCritical);
                 if (GameState.eBuffPhase == 1) {
                     GameState.pDamageDealt -= GameState.eDefenseBuff;
                 }
@@ -961,7 +962,7 @@ public class FullCombat {
             if (playerCritical == true) {
 
                 // ENEMY DAMAGED
-                GameState.pDamageDealt = (GameState.playerAttack + (Rand.nextInt(11) - 5) + critical);
+                GameState.pDamageDealt = (GameState.playerAttack + (Rand.nextInt(11) - 5) + GameState.pCritical);
                 if (GameState.eBuffPhase == 1) {
                     GameState.pDamageDealt -= GameState.eDefenseBuff;
                 }
@@ -1017,7 +1018,7 @@ public class FullCombat {
             if (enemyCritical == true) {
 
                 /// PLAYER DAMAGED
-                GameState.eDamageDealt = (GameState.enemyAttackAvg + (Rand.nextInt(11) - 5) + critical);
+                GameState.eDamageDealt = (GameState.enemyAttackAvg + (Rand.nextInt(11) - 5) + GameState.eCritical);
                 if (GameState.pBuffPhase == 1) {
                     GameState.eDamageDealt -= GameState.pDefenseBuff;
                 }
@@ -1092,7 +1093,7 @@ public class FullCombat {
             if (enemyCritical == true) {
                     
                 // PLAYER DAMAGED
-                GameState.eDamageDealt = (GameState.enemyAttackAvg + (Rand.nextInt(11) - 5) + critical);
+                GameState.eDamageDealt = (GameState.enemyAttackAvg + (Rand.nextInt(11) - 5) + GameState.eCritical);
                 if (GameState.pBuffPhase == 1) {
                     GameState.eDamageDealt -= GameState.pDefenseBuff;
                 }
