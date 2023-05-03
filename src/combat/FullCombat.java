@@ -27,7 +27,20 @@ public class FullCombat {
         }
     }
 
-    // Update enemy GameState stats (before a fight)
+    /**
+     * Updates enemy stats for combat. Call before calling `fight()`.
+     * @param enemy
+     * @param enemyHealth
+     * @param enemyAttackAvg
+     * @param enemyCriticalChance
+     * @param eCritical
+     * @param attackChance
+     * @param defenseChance
+     * @param eDefenseBuff
+     * @param healChance
+     * @param enemyHealAmount
+     * @throws Exception
+     */
     public static void enemyGameState(String enemy, int enemyHealth, int enemyAttackAvg, int enemyCriticalChance, int eCritical, int attackChance, int defenseChance, int eDefenseBuff, int healChance, int enemyHealAmount) throws Exception {
         GameState.enemy = enemy;
         GameState.enemyMaxHealth = enemyHealth;
