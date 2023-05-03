@@ -53,7 +53,6 @@ public class FullCombat {
             Random Rand = new Random();
             int input;
             String stringInput;
-            GameState.playerHealCount = 2;
 
             // Reset variables for the fight
             GameState.playerHealth = GameState.playerMaxHealth;
@@ -62,6 +61,7 @@ public class FullCombat {
             GameState.eBuffPhase = 0;
             GameState.pHealedToMax = false;
             GameState.eHealedToMax = false;
+            int playerInitialHealCount = GameState.playerHealCount;
 
             // Display enemy 
 
@@ -717,6 +717,7 @@ public class FullCombat {
 
                     }
                     else {
+                        GameState.playerHealCount = playerInitialHealCount;
                         Graphics.displayDeath("Tomb", Colors.ANSI_BLACK);
                         Graphics.textInline("\n" + Colors.ANSI_RED + GameState.name + " fought honorably, but was slain by " + GameState.enemy + "..." + Colors.ANSI_RESET);
                         Graphics.waitForEnter();
@@ -726,7 +727,7 @@ public class FullCombat {
                         Graphics.waitForEnter();
                         Graphics.textInline("\nBut wait!\n");
                         Graphics.waitForEnter();
-                        Graphics.textInline("\nSince " + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " died valiently in combat, the gods have granted " + GameState.objpNoun.toLowerCase() + " another chance to defeat " + GameState.posNoun.toLowerCase() + " foe...");
+                        Graphics.textInline("\nSince " + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " died valiantly in combat, the gods have granted " + GameState.objpNoun.toLowerCase() + " another chance to defeat " + GameState.posNoun.toLowerCase() + " foe...");
                         Graphics.waitForEnter();
                         Graphics.text("\nDon't let them regret their choice...");
                         Graphics.waitForEnter();
