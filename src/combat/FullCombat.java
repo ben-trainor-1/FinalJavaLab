@@ -117,7 +117,12 @@ public class FullCombat {
                         // Enemy attack/defend
                         else {
                             
-                            enemyAction = Rand.nextInt(GameState.defenseChance - GameState.attackChance) + GameState.attackChance;
+                            if (GameState.eBuffPhase == 1) {
+                                enemyAction = 0;
+                            }
+                            else {
+                                enemyAction = Rand.nextInt(GameState.defenseChance - GameState.attackChance) + GameState.attackChance;
+                            }
 
                         }
 
@@ -608,9 +613,9 @@ public class FullCombat {
                             }
                         }
                         // Enemy defense
-                        else if (!GameState.pHealedToMax) {
+                        else if (enemyAction >= 5 && enemyAction <= 9) {
 
-                            if (GameState.enemyHealth < GameState.enemyMaxHealth) {
+                            if (!GameState.pHealedToMax) {
                                 Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " healed " + Colors.ANSI_GREEN + GameState.pHealthGained + Colors.ANSI_RESET + " health!");
                             }
                             else {

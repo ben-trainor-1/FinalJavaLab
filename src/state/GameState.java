@@ -3,23 +3,23 @@ package state;
 public class GameState {
 
     // Player stats
-    public static String name = "";
-    public static String pNoun = "";
-    public static String objpNoun = "";
-    public static String posNoun = "";
-    public static String genderNoun = "";
+    public static String name = "Gorm";
+    public static String pNoun = "He";
+    public static String objpNoun = "Him";
+    public static String posNoun = "His";
+    public static String genderNoun = "Lad";
     public static String newName = "";
     public static String lostLove = "";
     public static String weapon = "";
     public static int playerHealth;
-    public static int playerMaxHealth = 100;
-    public static int playerAttack = 10;
-    public static int pDefenseBuff = 5;
+    public static int playerMaxHealth = 125;
+    public static int playerAttack = 25;
+    public static int pDefenseBuff = 7;
     public static int pBuffPhase = 0;
     public static int playerHealCount = 2;
     public static int playerHealAmount = 30;
     public static int playerCriticalChance = 5;
-    public static int pCritical = 20;
+    public static int pCritical = 25;
 
     // Enemy stats
     public static String enemy = "";
