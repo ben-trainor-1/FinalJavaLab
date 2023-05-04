@@ -41,7 +41,7 @@ public class FullCombat {
      * @param enemyHealAmount
      * @throws Exception
      */
-    public static void enemyGameState(String enemy, int enemyHealth, int enemyAttackAvg, int enemyCriticalChance, int eCritical, int attackChance, int defenseChance, int eDefenseBuff, int healChance, int enemyHealAmount) throws Exception {
+    public static void enemyGameState(String enemy, int enemyHealth, int enemyAttackAvg, int enemyCriticalChance, int eCritical, int attackChance, int defenseChance, int eDefenseBuff, int healChance, int healCount, int enemyHealAmount) throws Exception {
         GameState.enemy = enemy;
         GameState.enemyMaxHealth = enemyHealth;
         GameState.enemyHealth = enemyHealth;
@@ -52,6 +52,7 @@ public class FullCombat {
         GameState.defenseChance = defenseChance;
         GameState.eDefenseBuff = eDefenseBuff;
         GameState.healChance = healChance;
+        GameState.enemyHealCount = healCount;
         GameState.enemyHealAmount = enemyHealAmount;
     }
 
@@ -75,6 +76,7 @@ public class FullCombat {
             GameState.pHealedToMax = false;
             GameState.eHealedToMax = false;
             int playerInitialHealCount = GameState.playerHealCount;
+            int enemyInitialHealCount = GameState.enemyHealCount;
 
             // Display enemy 
 
@@ -130,7 +132,12 @@ public class FullCombat {
                         // Enemy attack/defend
                         else {
                             
-                            enemyAction = Rand.nextInt(GameState.defenseChance - GameState.attackChance) + GameState.attackChance;
+                            if (GameState.eBuffPhase == 1) {
+                                enemyAction = 0;
+                            }
+                            else {
+                                enemyAction = Rand.nextInt(GameState.defenseChance - GameState.attackChance) + GameState.attackChance;
+                            }
 
                         }
 
@@ -621,9 +628,9 @@ public class FullCombat {
                             }
                         }
                         // Enemy defense
-                        else if (!GameState.pHealedToMax) {
+                        else if (enemyAction >= 5 && enemyAction <= 9) {
 
-                            if (GameState.enemyHealth < GameState.enemyMaxHealth) {
+                            if (!GameState.pHealedToMax) {
                                 Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " healed " + Colors.ANSI_GREEN + GameState.pHealthGained + Colors.ANSI_RESET + " health!");
                             }
                             else {
@@ -731,6 +738,7 @@ public class FullCombat {
                     }
                     else {
                         GameState.playerHealCount = playerInitialHealCount;
+                        GameState.enemyHealCount = enemyInitialHealCount;
                         Graphics.displayDeath("Tomb", Colors.ANSI_BLACK);
                         Graphics.textInline("\n" + Colors.ANSI_RED + GameState.name + " fought honorably, but was slain by " + GameState.enemy + "..." + Colors.ANSI_RESET);
                         Graphics.waitForEnter();
