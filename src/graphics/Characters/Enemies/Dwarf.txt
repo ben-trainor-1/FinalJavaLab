@@ -1,6 +1,6 @@
 Dwarf
-Attack:
-Health:
+Attack: 
+Health: 
 -------------
                                        
      00 ** ** ** **** ** *                           
