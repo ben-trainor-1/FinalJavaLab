@@ -65,6 +65,11 @@ public class Graphics {
         textInline(currentLine);
         text(Colors.GREEN_BOLD + GameState.playerHealth + Colors.ANSI_RESET);
 
+        // Print defense buff
+        if (GameState.pBuffPhase == 1) {
+            text(Colors.YELLOW_BOLD + "Buff active" + Colors.ANSI_RESET + "! " + Colors.YELLOW_BOLD + "-" + GameState.pDefenseBuff + " damage" + Colors.ANSI_RESET);
+        }
+
         // Print sprite
         while (characterScanner.hasNext()) {
             System.out.println(characterScanner.nextLine());
@@ -93,6 +98,11 @@ public class Graphics {
         currentLine = enemyScanner.nextLine();
         textInline(currentLine.substring(0, 8));
         text(Colors.GREEN_BOLD + GameState.enemyHealth + Colors.ANSI_RESET);
+
+        // Print defense buff
+        if (GameState.eBuffPhase == 1) {
+            text(Colors.YELLOW_BOLD + "Buff active" + Colors.ANSI_RESET + "! " + Colors.YELLOW_BOLD + "-" + GameState.eDefenseBuff + " damage" + Colors.ANSI_RESET);
+        }
 
         // Print sprite
         while (enemyScanner.hasNext()) {
