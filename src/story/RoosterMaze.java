@@ -86,7 +86,7 @@ public class RoosterMaze {
         }
         if(mazeInfo.contains("3")){
             System.out.println("You approach a dead end.\nThere is writing on the wall\n" + Colors.ANSI_RESET
-                                + Colors.BLACK_BOLD_BRIGHT + "A Flyting is a poem\nof insults cut like a gem\nBeware pf the tongue\nlest you get stung\nLest you get carried away.\n"
+                                + Colors.BLACK_BOLD_BRIGHT + "A Flyting is a poem\nof insults cut like a gem\nBeware of the tongue\nlest you get stung\nLest you get carried away.\n"
                                 + Colors.ANSI_PURPLE + "Below is the single word, " + Colors.RED_BOLD_BRIGHT + "\"Cur\"" + Colors.ANSI_PURPLE + "." + Colors.ANSI_RESET);
         }
 
