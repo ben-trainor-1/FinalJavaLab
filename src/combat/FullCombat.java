@@ -401,7 +401,7 @@ public class FullCombat {
                                         System.out.println();
                                     }
                                     else if (GameState.eBuffPhase == 1) {
-                                        Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " calls upon the name of " + GameState.posNoun.toLowerCase() + " Ancestors, and " + GameState.pNoun.toLowerCase() + " attack is still able to do some critical damage!");
+                                        Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " calls upon the name of " + GameState.posNoun.toLowerCase() + " Ancestors, and " + GameState.pNoun.toLowerCase() + " attack is still able to do some " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " damage!");
                                     }
                                     
                                     Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s attack did " + Colors.ANSI_RED + GameState.pDamageDealt + Colors.ANSI_RESET + " damage!");
@@ -411,7 +411,7 @@ public class FullCombat {
                             // Enemy defend
                             else if (enemyAction >= 5 && enemyAction <= 9) {
                                 if (GameState.eBuffPhase == 1) {
-                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " calls upon the name of " + GameState.posNoun.toLowerCase() + " Ancestors, and " + GameState.pNoun.toLowerCase() + " attack is still able to do some critical damage!");
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " calls upon the name of " + GameState.posNoun.toLowerCase() + " Ancestors, and " + GameState.pNoun.toLowerCase() + " attack is still able to do some " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " damage!");
                                 }
                                 // TODO: Add other cases for damage dealt
                                 Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " hit shatters " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s defense and duly whoops them!");
@@ -426,7 +426,7 @@ public class FullCombat {
                             // Enemy heal
                             else if (enemyAction == 10) {
                                 if (GameState.eBuffPhase == 1) {
-                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " calls upon the name of " + GameState.posNoun.toLowerCase() + " Ancestors, and " + GameState.pNoun.toLowerCase() + " attack is still able to do some critical damage!");
+                                    Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " calls upon the name of " + GameState.posNoun.toLowerCase() + " Ancestors, and " + GameState.pNoun.toLowerCase() + " attack is still able to do some " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " damage!");
                                 }
 
                                 if (!GameState.eHealedToMax) {
@@ -453,7 +453,7 @@ public class FullCombat {
                             else if (enemyAction >= 0 && enemyAction <= 4) {
                                 if (enemyCritical == true) {
                                     if (GameState.pBuffPhase == 1) {
-                                        Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " calls upon the name of SURTUR, and their attack is still able to do some critical damage!");
+                                        Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " calls upon the name of SURTUR, and their attack is still able to do some " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " damage!");
                                     }
                                     else if (GameState.eBuffPhase == 1) {
                                         Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s strong defensive buff leaves " + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s attack as only a glancing blow, hardly injuring " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "!");
@@ -538,7 +538,7 @@ public class FullCombat {
                             // Enemy critical
                             if (enemyCritical == true) {
                                 if (GameState.pBuffPhase == 1) {
-                                    Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " calls upon the name of SURTUR, and their attack is still able to do some critical damage!");
+                                    Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " calls upon the name of SURTUR, and their attack is still able to do some " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " damage!");
                                 }
                                 
                                 // TODO: Add other cases for damage dealt
@@ -558,6 +558,11 @@ public class FullCombat {
                                 System.out.println();
                                 Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s strong defense emboldens " + GameState.objpNoun.toLowerCase() + "! " + GameState.pNoun + "\'s prepared for the next attack!");
                                 Graphics.text(GameState.pNoun + " gains a defensive buff!");
+                                if (GameState.eBuffPhase == 1) {
+                                    Thread.sleep(750);
+                                    System.out.println();
+                                    Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s defensive buff wears off...");
+                                }
                             }
                         }
                         // Enemy defend
@@ -608,7 +613,7 @@ public class FullCombat {
                             }
                             else {
                                 if (GameState.pBuffPhase == 1) {
-                                    Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " calls upon the name of SURTUR, and their attack is still able to do some critical damage!");
+                                    Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " calls upon the name of SURTUR, and their attack is still able to do some " + Colors.ANSI_RED + "critical" + Colors.ANSI_RESET + " damage!");
                                 }
                             }
 
@@ -734,6 +739,19 @@ public class FullCombat {
                         Graphics.textInline("\nDon't make the mistake of fighting the almighty " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " again...");
                         Graphics.waitForEnter();                    }
                     else if (GameState.enemy.equals("Loki")) {
+                        Graphics.textInline("\n\nThe fight with " + Colors.ANSI_RED + "Loki" + Colors.ANSI_RESET + " is hard and tedious...");
+                        Graphics.waitForEnter();
+                        Graphics.textInline("\n" + Colors.ANSI_RED + "Loki" + Colors.ANSI_RESET + " seems to never run out of energy, never ceasing his fast, ferocious attacks.");
+                        Graphics.waitForEnter();
+                        Graphics.textInline("\nHe finally gets the upperhand as he nimbly swings his scepter to disarm you!");
+                        Graphics.textInline("\nYou attempt to retaliate, but he impales you through the chest...");
+                        Graphics.waitForEnter();
+                        Graphics.textInline("\nThe last thing you see is " + Colors.ANSI_RED + "Loki" + Colors.ANSI_RESET + " laughing...");
+                        Graphics.waitForEnter();
+                        Graphics.textInline("\n\"You thought you had a chance...\"");
+                        Graphics.waitForEnter();
+                        Graphics.displayDeath("Tomb", Colors.ANSI_BLACK);
+                        Graphics.waitForEnter();
 
                     }
                     else {
@@ -746,7 +764,7 @@ public class FullCombat {
                         // Respawn statement
                         Graphics.textInline("\n\n" + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s brave soul is taken up to Valhalla for " + GameState.posNoun.toLowerCase() + "eternal reward...");
                         Graphics.waitForEnter();
-                        Graphics.textInline("\nBut wait!\n");
+                        Graphics.textInline("\nBut wait!");
                         Graphics.waitForEnter();
                         Graphics.textInline("\nSince " + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " died valiantly in combat, the gods have granted " + GameState.objpNoun.toLowerCase() + " another chance to defeat " + GameState.posNoun.toLowerCase() + " foe...");
                         Graphics.waitForEnter();
