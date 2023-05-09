@@ -30,7 +30,7 @@ public class Player {
      * @return void
      * @throws Exception
      */
-    Clip playAudio(String audioFilePath, int loopCount, float startVolume) throws Exception {
+    public Clip playAudio(String audioFilePath, int loopCount, float startVolume) throws Exception {
 
         File audioFile = new File(audioFilePath);
 

@@ -7,7 +7,7 @@ public class SoundTest {
     public static void main(String[] args) throws Exception {
 
         Player play = new Player();
-        Clip clip = play.playAudio("./src/audio/loop_soft_harp.wav", 0);
+        Clip clip = play.playAudio("./src/audio/backgroundSceneryNoise/suspenseful/loop_phase_1.wav", -1, 0.0F);
         
         Scanner in = new Scanner(System.in);
         in.nextLine();
