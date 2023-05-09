@@ -2,7 +2,7 @@ package story;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import combat.FullCombat;
 import graphics.Colors;
 
 public class RoosterMaze {
@@ -16,7 +16,7 @@ public class RoosterMaze {
         {"UR","LR","URL","LR","LU"},
     };
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception  {
 
         // Set current position
         int[] currentPosition = {3,2};
@@ -43,7 +43,7 @@ public class RoosterMaze {
      * @param col
      * @return mazePosition
      */
-    public static int[] movement(int row, int col) {
+    public static int[] movement(int row, int col) throws Exception {
 
         int[] exitMaze = {-1,-1};
         String mazeInfo = maze[row][col]; // Keep track of movement options and item info in cell
@@ -72,6 +72,8 @@ public class RoosterMaze {
         if(mazeInfo.contains("E")){
             System.out.println(Colors.RED_BOLD + "Uh-oh! A mysterious figure stands menacingly" + Colors.ANSI_RESET);
             //TODO: Add an enemy encounter
+            FullCombat.enemyGameState("Skeleton2",85,15,5,10,4,7,5,4,1,20);
+            FullCombat.fight();
         }
 
         //Check for Riddles
