@@ -2,6 +2,7 @@ package story;
 import java.util.ArrayList;
 import java.util.Scanner;
 import graphics.Colors;
+import state.GameState;
 import combat.FullCombat;
 
 public class HelMaze {
@@ -72,13 +73,20 @@ public class HelMaze {
         if(mazeInfo.contains("E")){
             System.out.println(Colors.RED_BOLD + "Uh-oh! A mysterious figure stands menacingly" + Colors.ANSI_RESET);
 
-            //TODO: Add an enemy encounter
+            //enemy encounter
             FullCombat.enemyGameState("Elf",175,25,5,25,2,7,20,8,2,45);
             FullCombat.fight();
         }
         if(mazeInfo.contains("X")){
+            if(GameState.reginald == false){
             FullCombat.enemyGameState("Reginald",1000,200,1,100,0,5,0,-1,0,0);
             FullCombat.fight();
+            GameState.reginald = true;
+
+            }
+            else{
+                System.out.println(Colors.ANSI_PURPLE + "William only wants you fight Reginald once lol.");
+            }
         }
 
         //Check for Riddles

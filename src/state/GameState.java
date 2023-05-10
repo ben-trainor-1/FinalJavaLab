@@ -3,6 +3,7 @@ package state;
 public class GameState {
 
     // Player stats
+    public static String nicco = "Nicco";
     public static String name = "Gorm";
     public static String pNoun = "He";
     public static String objpNoun = "Him";
@@ -12,14 +13,14 @@ public class GameState {
     public static String lostLove = "";
     public static String weapon = "";
     public static int playerHealth;
-    public static int playerMaxHealth = 150;
-    public static int playerAttack = 40;
-    public static int pDefenseBuff = 10;
+    public static int playerMaxHealth = 15000;
+    public static int playerAttack = 10000;
+    public static int pDefenseBuff = 100;
     public static int pBuffPhase = 0;
-    public static int playerHealCount = 4;
-    public static int playerHealAmount = 40;
-    public static int playerCriticalChance = 4;
-    public static int pCritical = 30;
+    public static int playerHealCount = 10;
+    public static int playerHealAmount = 400;
+    public static int playerCriticalChance = 10;
+    public static int pCritical = 3000;
 
     // Enemy stats
     public static String enemy = "";
@@ -35,6 +36,7 @@ public class GameState {
     public static int enemyHealAmount;
     public static int enemyCriticalChance;
     public static int eCritical;
+    public static boolean reginald = false;
 
 
     //Booleans for checking
