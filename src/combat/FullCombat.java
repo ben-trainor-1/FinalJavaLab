@@ -67,7 +67,7 @@ public class FullCombat {
         Player play = new Player();
         Clip combatMusic;
         if (GameState.enemy.equals("Loki")) {
-            combatMusic = play.playAudio("./src/audio/music/loop_phase_1.wav", -1, 0.0F);
+            combatMusic = play.playAudio("./src/audio/music/more_intense_bit_loop.wav", -1, 0.0F);
         }
         else if (GameState.enemy.equals("Reginald")) {
             combatMusic = play.playAudio(null, -1, 0.0F);
