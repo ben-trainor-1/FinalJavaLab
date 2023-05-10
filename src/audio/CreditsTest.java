@@ -9,7 +9,7 @@ public class CreditsTest {
 
         Player play = new Player();
         
-        Clip clip = play.playAudio("./src/audio/loop_soft_piano.wav", 0);
+        Clip clip = play.playAudio("./src/audio/loop_soft_piano.wav", 0, 0.0F);
 
         File credits = new File("./src/audio/Credits.txt");
         Scanner creditsScanner = new Scanner(credits);

@@ -11,7 +11,7 @@ public class Test {
         
         Graphics.textSpeed = 10;
 
-        FullCombat.enemyGameState("Skeleton1",180,30,4,20,2,6,25,4,2,50);
+        FullCombat.enemyGameState("Dwarf",180,100,4,20,2,6,25,4,2,50);
         FullCombat.fight();
 
     }

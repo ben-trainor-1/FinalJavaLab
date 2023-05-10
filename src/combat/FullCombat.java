@@ -63,25 +63,27 @@ public class FullCombat {
 
         failsafe = false;
 
-        // Combat music
-        Player play = new Player();
-        Clip combatMusic;
-        if (GameState.enemy.equals("Loki")) {
-            combatMusic = play.playAudio("./src/audio/music/more_intense_bit_loop.wav", -1, 0.0F);
-        }
-        else if (GameState.enemy.equals("Reginald")) {
-            combatMusic = play.playAudio(null, -1, 0.0F);
-        }
-        else {
-            combatMusic = play.playAudio("./src/audio/music/spooky_bit_loop.wav", -1, 0.0F);
-        }
-
         do {
             // Create objects and variables
             Scanner in = new Scanner(System.in);
             Random Rand = new Random();
             int input;
             String stringInput;
+
+            
+            // Combat music
+            Player play = new Player();
+            Clip combatMusic;
+            if (GameState.enemy.equals("Loki")) {
+                combatMusic = play.playAudio("./src/audio/music/more_intense_bit_loop.wav", -1, 0.0F);
+            }
+            else if (GameState.enemy.equals("Reginald")) {
+                combatMusic = play.playAudio(null, -1, 0.0F);
+            }
+            else {
+                combatMusic = play.playAudio("./src/audio/music/spooky_bit_loop.wav", -1, 0.0F);
+            }
+
 
             // Reset variables for the fight
             GameState.playerHealth = GameState.playerMaxHealth;
@@ -766,6 +768,7 @@ public class FullCombat {
                         GameState.playerHealCount = playerInitialHealCount;
                         GameState.enemyHealCount = enemyInitialHealCount;
                         Graphics.displayDeath("Tomb", Colors.ANSI_BLACK);
+                        Player.fadeOutAudio(combatMusic, 2000);
                         Graphics.textInline("\n" + Colors.ANSI_RED + GameState.name + " fought honorably, but was slain by " + GameState.enemy + "..." + Colors.ANSI_RESET);
                         Graphics.waitForEnter();
 
