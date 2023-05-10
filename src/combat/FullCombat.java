@@ -65,7 +65,16 @@ public class FullCombat {
 
         // Combat music
         Player play = new Player();
-        Clip combatMusic = play.playAudio("./src/audio/backgroundSceneryNoise/suspenseful/loop_phase_1.wav", -1, -5.0F);
+        Clip combatMusic;
+        if (GameState.enemy.equals("Loki")) {
+            combatMusic = play.playAudio("./src/audio/music/loop_phase_1.wav", -1, 0.0F);
+        }
+        else if (GameState.enemy.equals("Reginald")) {
+            combatMusic = play.playAudio(null, -1, 0.0F);
+        }
+        else {
+            combatMusic = play.playAudio("./src/audio/music/spooky_bit_loop.wav", -1, 0.0F);
+        }
 
         do {
             // Create objects and variables
@@ -387,6 +396,7 @@ public class FullCombat {
                                 // Enemy critical
                                 if (enemyCritical == true) {
                                     Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " and " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s attacks collide with a devastating clash!");
+                                    Clip parrySound = play.playAudio("./src/audio/soundEffects/upgrade_3.wav", 0, 0.0F);
                                     Thread.sleep(750);
                                     Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " emerges from the encounter stunned!");
                                     if (GameState.pBuffPhase == 1) {
