@@ -10,7 +10,6 @@ public class GameState {
     public static String posNoun = "His";
     public static String genderNoun = "Lad";
     public static String newName = "";
-    public static String lostLove = "";
     public static String weapon = "";
     public static int playerHealth;
     public static int playerMaxHealth = 15000;

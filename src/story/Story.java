@@ -35,6 +35,16 @@ public class Story {
          int fastSpeed = 0; //25
          int fasterSpeed = 0; //10
 
+         //Starting stats
+         GameState.playerMaxHealth = 100;
+         GameState.playerAttack = 10;
+         GameState.pDefenseBuff = 5;
+         GameState.pBuffPhase = 0;
+         GameState.playerHealCount = 2;
+         GameState.playerHealAmount = 30;
+         GameState.playerCriticalChance = 5;
+         GameState.pCritical =  20; 
+
         //Fancy welcome
         Graphics.textSpeed = fasterSpeed;
 
@@ -71,7 +81,6 @@ public class Story {
             GameState.posNoun = "His";
             GameState.genderNoun = "Lad";
             GameState.newName = "Lifthrasir";
-            GameState.lostLove = "Lif";
             break;
             
         }
@@ -85,7 +94,6 @@ public class Story {
             GameState.posNoun = "Her";
             GameState.genderNoun = "Lass";
             GameState.newName = "Lif";
-            GameState.lostLove = "Lifthrasir";
             break;
 
         }
@@ -111,6 +119,8 @@ public class Story {
                 Graphics.text("You have chosen a greatspear.");
                 GameState.weapon = "Greatspear";
                 Graphics.displayWeapons("Spear", Colors.BLACK_BOLD_BRIGHT);
+                GameState.pDefenseBuff = 6;
+                System.out.println(GameState.playerAttack);
                 break;
 
             }
@@ -120,6 +130,8 @@ public class Story {
                 Graphics.text("You have chosen a battleaxe.");
                 GameState.weapon = "Battleaxe";
                 Graphics.displayWeapons("Axe", Colors.RED_BOLD);
+                GameState.playerAttack = 11;
+                System.out.println(GameState.playerAttack);
                 break;
 
             }
@@ -428,6 +440,19 @@ public class Story {
                         Graphics.displayHealing("MagicalNecklace", Colors.CYAN_BOLD);
                         Graphics.waitForEnter();
                         Graphics.textInline(Colors.ANSI_PURPLE + "You return to the intersection, seeking Hel more than anything. Ragnarok won't wait for anyone now!\n" + Colors.ANSI_RESET);
+                        
+                        if(GameState.weapon == "Greatspear"){
+
+                            GameState.playerAttack = 15;
+                            System.out.println(GameState.playerAttack);
+
+                        }
+                        else{
+
+                            GameState.playerAttack = 16;
+                            System.out.println(GameState.playerAttack);
+
+                        }
                         break;
 
                     }
@@ -487,11 +512,28 @@ public class Story {
                     FullCombat.fight();
 
                     //After the fight: Loki mocks you again
-                    Graphics.textInline(Colors.ANSI_PURPLE + "The giant rooster twitches dead on the ground. You are left breathless and traumatized.\n"
+                    Graphics.textInline(Colors.ANSI_PURPLE + "You feel empowered by overcoming such a powerful foe!\nThe giant rooster twitches dead on the ground. You are left breathless and traumatized.\n"
                                         + Colors.RED_BOLD_BRIGHT + "You will never look at roosters the same way again...\n" + Colors.ANSI_RESET
                                         + Colors.ANSI_PURPLE + "Speaking of roosters, Loki enters the room!\n");
                     Graphics.displayEnemy("Loki");
                     Graphics.waitForEnter(); 
+
+                    //New stats
+                    GameState.playerHealth = 125;
+                    GameState. pCritical = 25;
+
+                    if(GameState.weapon == "Greatspear"){
+
+                        GameState.playerAttack = 25;
+                        GameState.pDefenseBuff = 8;
+                        
+                    }
+                    else{
+
+                        GameState.playerAttack = 2;
+                        GameState.pDefenseBuff = 7;
+
+                    }
 
                     Graphics.textSpeed = slowSpeed;
 
@@ -626,6 +668,7 @@ public class Story {
                         }
 
                         Graphics.textSpeed = normalSpeed;
+                        GameState.playerCriticalChance = 4;
 
                         Graphics.textInline(Colors.ANSI_PURPLE + "\n You continue your way.");
                     
@@ -673,8 +716,28 @@ public class Story {
             FullCombat.enemyGameState("Fenrir",125,20,5,25,0,8,15,8,2,40);
             FullCombat.fight();
 
-            Graphics.textInline(Colors.ANSI_PURPLE + "You and Fenrir fight hard and the battle gets a bit bloody. You feel empowered.\n"
+            Graphics.textInline(Colors.ANSI_PURPLE + "You feel empowered by overcoming such a powerful foe! The battle gets a bit bloody. You feel empowered.\n"
                                 + "You finally defeat Fenrir, but you don't kill him. Fewer the casualties the better, right? More to kill in Ragnorak ;)\n");
+
+            //New stats
+            GameState.playerHealth = 150;
+            GameState.playerHealCount = 4;
+            GameState.playerHealAmount = 40;
+            GameState.pCritical = 30;
+
+            if(GameState.weapon == "Greatspear"){
+
+                GameState.playerAttack = 40;
+                GameState.pDefenseBuff = 12;
+
+            }
+            else{
+
+                GameState.playerAttack = 42;
+                GameState.pDefenseBuff = 10;
+
+            }
+
             //Loki's mocking 
             Graphics.textInline(Colors.ANSI_PURPLE + "After standing there for a few moments, you hear sarcastic clapping and a small chuckle.\n"
                     + "You spin around quickly and try and find where that sound is coming from. Suddenly Loki appears out of the shadows.\n");
@@ -827,13 +890,7 @@ public class Story {
                         Graphics.textSpeed = slowSpeed;
 
                         Graphics.textInline("Light encompasses you, as you stir.\nThe last thing you remember is the conflict at Ragnorak. You fought for one hundred days and nights.\nYou eventually were eventually were bested, but not before having the satisfaction of seeing Loki perish at the hands of Heimdall.\n"
-                                            + "You sit up on a grassy field.\nBefore you, a host of deities, Hoenir, Magni, Modi, Njord, Vidar, Vali, and the daughter of Sol, stand before you.\nSome of them you\'ve never met, and most you have only glanced at during the battle. Regardless you recognize them.");
-                        Graphics.waitForEnter();
-                        Graphics.textInline("\"Welcome to the new life, " + GameState.newName + "\", a voice calls from behind you. You turn to see Baldr, the dead god, the one who Loki slew.\nBeside him, to your delight, your long-lost love stands. " + GameState.lostLove);
-                        Graphics.waitForEnter();
-                        Graphics.textInline("\"Long before you were born, you were chosen to live again, multiplying and filling this new earth.\nNow, for your struggles and efforts, you will dwell with us in rest forever. Be anxious no more.\"\n"
-                                                + "A calmness excitement washes over you. So much to do! All of eternity to do it!. Thus, you began your new job.");
-                        Graphics.waitForEnter();
+                                            + "You sit up on a grassy field. You survived Ragnorak! It should be impossible! You recall, however, the Godmead which you won.\nIt must have been what resurrected you.\n You rise, feeling rested like you never had before.\nA new adventure awaits somewhere!\nYou thrilled to discover what it is! ");
                         Graphics.textInline("The end! (Ending #2 of 3)\n");
                         System.exit(input);
 
@@ -907,6 +964,8 @@ public class Story {
                     Graphics.displayHealing("DumplingRecipe", Colors.WHITE_BRIGHT);
                     Graphics.textSpeed = slowSpeed;
                     Graphics.textInline(Colors.CYAN_BACKGROUND + "You found a Dumpling recipe! It\'s mystical!" + Colors.ANSI_RESET + "\n");
+                    GameState.playerHealCount = 5;
+                    GameState.playerHealAmount = 45;
                     GameState.firstSouth ++;
                 }
                 else{
