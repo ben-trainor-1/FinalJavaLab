@@ -78,7 +78,7 @@ public class FullCombat {
                 combatMusic = play.playAudio("./src/audio/music/more_intense_bit_loop.wav", -1, 0.0F);
             }
             else if (GameState.enemy.equals("Reginald")) {
-                combatMusic = play.playAudio(null, -1, 0.0F);
+                combatMusic = play.playAudio("./src/audio/music/reginald_loop.wav", -1, 0.0F);
             }
             else {
                 combatMusic = play.playAudio("./src/audio/music/spooky_bit_loop.wav", -1, 0.0F);
@@ -748,6 +748,7 @@ public class FullCombat {
                 if (GameState.playerHealth <= 0) {
                     if (GameState.enemy.equals("Reginald")) {
                         Graphics.displayDeath("Tomb", Colors.ANSI_BLACK);
+                        Player.fadeOutAudio(combatMusic, 2000);
                         Graphics.textInline("\n" + Colors.ANSI_RED + GameState.name + " attempted to fight valiantly, but was absolutely whooped by the almighty " + GameState.enemy + "..." + Colors.ANSI_RESET);
                         Graphics.waitForEnter();
 
@@ -762,7 +763,7 @@ public class FullCombat {
                         Graphics.textInline("\nDon't make the mistake of fighting the almighty " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " again...");
                         Graphics.waitForEnter();                    }
                     else if (GameState.enemy.equals("Loki")) {
-
+                        Player.fadeOutAudio(combatMusic, 2000);
                     }
                     else {
                         GameState.playerHealCount = playerInitialHealCount;
