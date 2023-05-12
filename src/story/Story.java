@@ -746,7 +746,7 @@ public class Story {
                                 + "You soon discover, however, that Fenrir the wolf is guarding the gates. You must defeat him.\n" 
                                 + "Without throwing caution to the wind, you approach him slowly. But Fenrir doesn't hesitate to rush at you.\n" + Colors.ANSI_RESET);
         
-            play.playAudio("./audio/sfx/wolf.wav", 0, 0.0F, 0);
+            play.playAudio("./src/audio/animalsAndCharacters/wolf_bit.wav", 0, 0.0F, 0);
             Graphics.displayEnemy("Fenrir", false);
             Graphics.textInline("Fenrir: The largest, most menacing god wolf. He is chained at the gates of Hel.");
 
