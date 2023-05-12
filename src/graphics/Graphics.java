@@ -112,20 +112,33 @@ public class Graphics {
 
     }
     // Method for displaying Characters
-    public static void displayCharacter(String characterName) throws Exception {
+    public static void displayCharacter(String characterName, boolean showStats) throws Exception {
          
         String filePath = "./src/graphics/Characters/" + characterName + ".txt";
         File characterFile = new File(filePath);
         Scanner characterScanner = new Scanner(characterFile);
+
+        if (showStats) {
             
-        // Character name
-        text(characterScanner.nextLine());
-        
-        // Character sprite
-        while (characterScanner.hasNext()) {
-            System.out.println(characterScanner.nextLine());
-            Thread.sleep(textSpeed);
-    
+            // Character name
+            text(characterScanner.nextLine());
+            
+            // Character sprite
+            while (characterScanner.hasNext()) {
+                System.out.println(characterScanner.nextLine());
+                Thread.sleep(textSpeed);
+            }
+
+        }
+        else {
+            // Skip first four lines
+            for (int i = 0; i < 3; i++) characterScanner.nextLine();
+            
+            // Character sprite
+            while (characterScanner.hasNext()) {
+                System.out.println(characterScanner.nextLine());
+                Thread.sleep(textSpeed);
+            }
         }
 
         System.out.println(Colors.ANSI_RESET);
