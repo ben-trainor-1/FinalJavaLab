@@ -4,6 +4,9 @@ import java.util.Scanner;
 import graphics.Colors;
 import state.GameState;
 import combat.FullCombat;
+import audio.*;
+import javax.sound.sampled.Clip;
+import graphics.*;
 
 public class HelMaze {
     public static String[][] maze = {
@@ -19,18 +22,24 @@ public class HelMaze {
 
     public static void main(String[] args) throws Exception {
 
+        Graphics.textSpeed = 10;
+
+        // Start music
+        Player play = new Player();
+        Clip mazeMusic = play.playAudio("./src/audio/music/ambient_beat_loop.wav", -1, 0.0F, 0);
+
         // Set current position
         int[] currentPosition = {5,3};
         // Display position
-        System.out.println("[" + currentPosition[0] + ", " + currentPosition[1] + "]" );
+        Graphics.text("[" + currentPosition[0] + ", " + currentPosition[1] + "]" );
 
         while (currentPosition[0] != -1 && currentPosition[1] != -1) {
             // Print out the map
             printMap(maze, currentPosition);
             // Update position with movement method
-            currentPosition =  movement(currentPosition[0], currentPosition[1]);
+            currentPosition =  movement(currentPosition[0], currentPosition[1], mazeMusic);
             // Display position
-            System.out.println("[" + currentPosition[0] + ", " + currentPosition[1] + "]" );
+            if (currentPosition[0] != -1) Graphics.text("[" + currentPosition[0] + ", " + currentPosition[1] + "]" );
         }
 
 
@@ -44,7 +53,7 @@ public class HelMaze {
      * @param col
      * @return mazePosition
      */
-    public static int[] movement(int row, int col) throws Exception {
+    public static int[] movement(int row, int col, Clip clip) throws Exception {
 
         int[] exitMaze = {-1,-1};
         String mazeInfo = maze[row][col]; // Keep track of movement options and item info in cell
@@ -71,66 +80,71 @@ public class HelMaze {
 
         //Check for Enemies
         if(mazeInfo.contains("E")){
-            System.out.println(Colors.RED_BOLD + "Uh-oh! A mysterious figure stands menacingly" + Colors.ANSI_RESET);
+            Player.fadeOutAudio(clip, 1500);
+            Graphics.text(Colors.RED_BOLD + "Uh-oh! A mysterious figure stands menacingly" + Colors.ANSI_RESET);
 
             //enemy encounter
             FullCombat.enemyGameState("Elf",175,25,5,25,2,7,20,8,2,45);
             FullCombat.fight();
+
+            Player.fadeInAudio(clip, 1500, -1, 0.0F);
         }
         if(mazeInfo.contains("X")){
             if(GameState.reginald == false){
-            FullCombat.enemyGameState("Reginald",1000,200,1,100,0,5,0,-1,0,0);
-            FullCombat.fight();
-            GameState.reginald = true;
-
+                Player.fadeOutAudio(clip, 1500);
+                FullCombat.enemyGameState("Reginald",1000,200,1,100,0,5,0,-1,0,0);
+                FullCombat.fight();
+                GameState.reginald = true;
+                Player.fadeInAudio(clip, 1500, -1, 0.0F);
             }
             else{
-                System.out.println(Colors.ANSI_PURPLE + "William only wants you fight Reginald once lol.");
+                Graphics.text(Colors.ANSI_PURPLE + "William only wants you fight Reginald once lol.");
             }
         }
 
         //Check for Riddles
         if(mazeInfo.contains("1")){
-            System.out.println(Colors.PURPLE_BOLD_BRIGHT + "A faint sound bonetrousles you." + Colors.ANSI_RESET);
+            Graphics.text(Colors.PURPLE_BOLD_BRIGHT + "A faint sound bonetrousles you." + Colors.ANSI_RESET);
             
         }
         if(mazeInfo.contains("2")){
-            System.out.println(Colors.PURPLE_BOLD_BRIGHT + "You find a discarded sign that says,\n\"Abandon all hope, those who enter\"\n" + Colors.ANSI_RESET);
+            Graphics.text(Colors.PURPLE_BOLD_BRIGHT + "You find a discarded sign that says,\n\"Abandon all hope, those who enter\"\n" + Colors.ANSI_RESET);
             
         }
         if(mazeInfo.contains("3")){
-            System.out.println(Colors.PURPLE_BOLD_BRIGHT + "You see a cake! But it is a lie :(" + Colors.ANSI_RESET);
+            Graphics.text(Colors.PURPLE_BOLD_BRIGHT + "You see a cake! But it is a lie :(" + Colors.ANSI_RESET);
         }
         if(mazeInfo.contains("4")){
-            System.out.println(Colors.PURPLE_BOLD_BRIGHT + "You come upon a mosaic depiction a small girl and a large man with a hook on a ship together.\nIt seems out of place" + Colors.ANSI_RESET);
+            Graphics.text(Colors.PURPLE_BOLD_BRIGHT + "You come upon a mosaic depiction a small girl and a large man with a hook on a ship together.\nIt seems out of place" + Colors.ANSI_RESET);
         }
         if(mazeInfo.contains("5")){
-            System.out.println(Colors.PURPLE_BOLD_BRIGHT + "Nicco wuz here" + Colors.ANSI_RESET);
+            Graphics.text(Colors.PURPLE_BOLD_BRIGHT + "Nicco wuz here" + Colors.ANSI_RESET);
         }
         if(mazeInfo.contains("6")){
-            System.out.println(Colors.PURPLE_BOLD_BRIGHT + "You come upon upon a raving madman. He looks straight at you and says,\n" + Colors.ANSI_RESET
+            Graphics.text(Colors.PURPLE_BOLD_BRIGHT + "You come upon upon a raving madman. He looks straight at you and says,\n" + Colors.ANSI_RESET
                                 + Colors.RED_BOLD + "\"You know, I was there for that whole sordid affair. Marvelous times! Butterflies, blood, a Fox and severed head... Oh, and the cheese! To die for.\"\n" + Colors.ANSI_RESET
                                 + Colors.PURPLE_BOLD_BRIGHT + "You back away slowly..." + Colors.ANSI_RESET);
         }
         if(mazeInfo.contains("7")){
-            System.out.println(Colors.PURPLE_BOLD_BRIGHT + "You find a boring and plain dead end." + Colors.ANSI_RESET);
+            Graphics.text(Colors.PURPLE_BOLD_BRIGHT + "You find a boring and plain dead end." + Colors.ANSI_RESET);
         }
         if(mazeInfo.contains("8")){
-            System.out.println(Colors.PURPLE_BOLD_BRIGHT + "Hi there! this is a message from the lovely devs! We sincerely hope you are doing well!" + Colors.ANSI_RESET);
+            Graphics.text(Colors.PURPLE_BOLD_BRIGHT + "Hi there! this is a message from the lovely devs! We sincerely hope you are doing well!" + Colors.ANSI_RESET);
         }
 
         //Check for Bossfight
         if(mazeInfo.contains("H")){
+            Player.fadeOutAudio(clip, 1500);
             return exitMaze;
         }
 
         // Print movement options
-        System.out.println("Movement options: " + movementOptions.toString());
+        Graphics.text("Movement options: " + movementOptions.toString());
 
         // Scanner and user movement choice
         Scanner in = new Scanner(System.in);
         String movementChoice;
-        System.out.println("Where would you like to go?");
+        Graphics.text("Where would you like to go?");
 
         // Prevent illegal moves
         do {
@@ -139,7 +153,7 @@ public class HelMaze {
                 break;
             }
             else {
-                System.out.println("Please enter a valid direction.");
+                Graphics.text("Please enter a valid direction.");
             }
         } while (true);
 
@@ -160,7 +174,7 @@ public class HelMaze {
 
     }
 
-    public static void printMap(String[][] mazeInstance, int[] playerLocation) {
+    public static void printMap(String[][] mazeInstance, int[] playerLocation) throws Exception {
         
         for (int i = 0; i < mazeInstance.length; i++) {
             
@@ -179,6 +193,7 @@ public class HelMaze {
 
             }
             System.out.println("|");
+            Thread.sleep(50);
 
         }
     } 

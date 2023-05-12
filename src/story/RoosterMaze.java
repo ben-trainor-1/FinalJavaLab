@@ -20,7 +20,7 @@ public class RoosterMaze {
 
     public static void main(String[] args) throws Exception  {
 
-        Graphics.textSpeed = 15;
+        Graphics.textSpeed = 10;
         
         // Start music
         Player play = new Player();
@@ -29,7 +29,7 @@ public class RoosterMaze {
         // Set current position
         int[] currentPosition = {3,2};
         // Display position
-        System.out.println("[" + currentPosition[0] + ", " + currentPosition[1] + "]" );
+        Graphics.text("[" + currentPosition[0] + ", " + currentPosition[1] + "]" );
 
         while (currentPosition[0] != -1 && currentPosition[1] != -1) {
             // Print out the map
@@ -37,7 +37,7 @@ public class RoosterMaze {
             // Update position with movement method
             currentPosition =  movement(currentPosition[0], currentPosition[1], mazeMusic);
             // Display position
-            if (!(currentPosition[0] == -1)) System.out.println("[" + currentPosition[0] + ", " + currentPosition[1] + "]" );
+            if (!(currentPosition[0] == -1)) Graphics.text("[" + currentPosition[0] + ", " + currentPosition[1] + "]" );
             
         }
 
