@@ -79,29 +79,36 @@ public class Graphics {
     }
 
     // Display enemies
-    public static void displayEnemy(String enemyName) throws Exception {
+    public static void displayEnemy(String enemyName, boolean showStats) throws Exception {
          
         String filePath = "./src/graphics/Characters/Enemies/" + enemyName + ".txt";
         File enemyFile = new File(filePath);
         Scanner enemyScanner = new Scanner(enemyFile);
         String currentLine;
 
-        // Print name
-        text(Colors.RED_BACKGROUND + enemyScanner.nextLine() + Colors.ANSI_RESET);
+        if (showStats) {
+            // Print name
+            text(Colors.RED_BACKGROUND + enemyScanner.nextLine() + Colors.ANSI_RESET);
 
-        // Print attack
-        currentLine = enemyScanner.nextLine();
-        textInline(currentLine.substring(0, 8));
-        text(Colors.RED_BOLD + GameState.enemyAttackAvg + Colors.ANSI_RESET);
+            // Print attack
+            currentLine = enemyScanner.nextLine();
+            textInline(currentLine.substring(0, 8));
+            text(Colors.RED_BOLD + GameState.enemyAttackAvg + Colors.ANSI_RESET);
 
-        // Print health
-        currentLine = enemyScanner.nextLine();
-        textInline(currentLine.substring(0, 8));
-        text(Colors.GREEN_BOLD + GameState.enemyHealth + Colors.ANSI_RESET);
+            // Print health
+            currentLine = enemyScanner.nextLine();
+            textInline(currentLine.substring(0, 8));
+            text(Colors.GREEN_BOLD + GameState.enemyHealth + Colors.ANSI_RESET);
 
-        // Print defense buff
-        if (GameState.eBuffPhase == 1) {
-            text(Colors.YELLOW_BOLD + "Buff active" + Colors.ANSI_RESET + "! " + Colors.YELLOW_BOLD + "-" + GameState.eDefenseBuff + " damage" + Colors.ANSI_RESET);
+            // Print defense buff
+            if (GameState.eBuffPhase == 1) {
+                text(Colors.YELLOW_BOLD + "Buff active" + Colors.ANSI_RESET + "! " + Colors.YELLOW_BOLD + "-" + GameState.eDefenseBuff + " damage" + Colors.ANSI_RESET);
+            }
+        }
+
+        else {
+            // Skip first four lines
+            for (int i = 0; i < 4; i++) enemyScanner.nextLine();
         }
 
         // Print sprite
@@ -122,23 +129,17 @@ public class Graphics {
             
             // Character name
             text(characterScanner.nextLine());
-            
-            // Character sprite
-            while (characterScanner.hasNext()) {
-                System.out.println(characterScanner.nextLine());
-                Thread.sleep(textSpeed);
-            }
 
         }
         else {
             // Skip first four lines
-            for (int i = 0; i < 3; i++) characterScanner.nextLine();
-            
-            // Character sprite
-            while (characterScanner.hasNext()) {
-                System.out.println(characterScanner.nextLine());
-                Thread.sleep(textSpeed);
-            }
+            for (int i = 0; i < 4; i++) characterScanner.nextLine();
+        }
+
+        // Character sprite
+        while (characterScanner.hasNext()) {
+            System.out.println(characterScanner.nextLine());
+            Thread.sleep(textSpeed);
         }
 
         System.out.println(Colors.ANSI_RESET);
