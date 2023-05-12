@@ -8,7 +8,6 @@ import state.GameState;
 import graphics.Colors;
 import java.util.Random;
 import javax.sound.sampled.Clip;
-import audio.*;
 import combat.FullCombat;
 
 
@@ -879,7 +878,7 @@ public class Story {
                     Graphics.displayEnemy("Loki", false);
                     Graphics.textInline("Loki: A the devious god of mischief and the cause of all your problems.\n");
                     
-                    //TODO: Add final boss
+                    // Final boss
                     FullCombat.enemyGameState("Loki",180,30,4,20,2,6,25,4,2,50);
                     FullCombat.fight();
 
@@ -1044,7 +1043,7 @@ public class Story {
                         Graphics.displayEnemy("Elf", false);
                         Graphics.textInline("Elf: a wiry race. Be wary. They know many deadly tricks.\n");
                         
-                        //TODO: Add elf fight
+                        // Elf fight
                         FullCombat.enemyGameState("Elf",175,25,5,25,2,7,20,8,2,45);
                         FullCombat.fight();
 

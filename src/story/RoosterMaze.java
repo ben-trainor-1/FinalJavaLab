@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import combat.FullCombat;
 import graphics.*;
-import state.GameState;
 import audio.*;
 import javax.sound.sampled.Clip;
 
