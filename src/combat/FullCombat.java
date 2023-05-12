@@ -62,6 +62,7 @@ public class FullCombat {
     public static void fight() throws Exception {
 
         failsafe = false;
+        Graphics.textSpeed = 10;
 
         do {
             // Create objects and variables
@@ -106,11 +107,11 @@ public class FullCombat {
             Thread.sleep(1000);
 
             // Display enemy
-            Graphics.displayEnemy(GameState.enemy);
+            Graphics.displayEnemy(GameState.enemy, true);
             System.out.println();
             
             // Dramatic pause
-            Thread.sleep(1500);
+            Thread.sleep(500);
 
             // Combat
             do {
@@ -733,7 +734,7 @@ public class FullCombat {
             
 
                     // Display enemy
-                    Graphics.displayEnemy(GameState.enemy);
+                    Graphics.displayEnemy(GameState.enemy, true);
                     System.out.println();
                 }
                 else {
@@ -817,7 +818,7 @@ public class FullCombat {
                     Graphics.waitForEnter();
                 }
 
-                printSpace(100);
+                // printSpace(100);
                 Thread.sleep(750);
             }
             else {

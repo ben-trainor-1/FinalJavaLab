@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import combat.FullCombat;
 import graphics.Colors;
+import audio.*;
+import javax.sound.sampled.Clip;
 
 public class RoosterMaze {
 
@@ -18,6 +20,10 @@ public class RoosterMaze {
 
     public static void main(String[] args) throws Exception  {
 
+        // Start music
+        Player play = new Player();
+        Clip mazeMusic = play.playAudio("./src/audio/music/spooky_bit_no_drums_loop.wav", -1, 0.0F);
+        
         // Set current position
         int[] currentPosition = {3,2};
         // Display position
@@ -27,7 +33,7 @@ public class RoosterMaze {
             // Print out the map
             printMap(maze, currentPosition);
             // Update position with movement method
-            currentPosition =  movement(currentPosition[0], currentPosition[1]);
+            currentPosition =  movement(currentPosition[0], currentPosition[1], mazeMusic);
             // Display position
             System.out.println("[" + currentPosition[0] + ", " + currentPosition[1] + "]" );
         }
@@ -43,7 +49,7 @@ public class RoosterMaze {
      * @param col
      * @return mazePosition
      */
-    public static int[] movement(int row, int col) throws Exception {
+    public static int[] movement(int row, int col, Clip clip) throws Exception {
 
         int[] exitMaze = {-1,-1};
         String mazeInfo = maze[row][col]; // Keep track of movement options and item info in cell
@@ -71,9 +77,12 @@ public class RoosterMaze {
         //Check for Enemies
         if(mazeInfo.contains("E")){
             System.out.println(Colors.RED_BOLD + "Uh-oh! A mysterious figure stands menacingly" + Colors.ANSI_RESET);
-            //TODO: Add an enemy encounter
+            Player.fadeOutAudio(clip, 1500);
+            Thread.sleep(50);
+            
             FullCombat.enemyGameState("Skeleton2",85,15,5,10,4,7,5,4,1,20);
             FullCombat.fight();
+            Player.fadeInAudio(clip, 1500, 0.0F);
         }
 
         //Check for Riddles
@@ -136,7 +145,7 @@ public class RoosterMaze {
 
     }
 
-    public static void printMap(String[][] mazeInstance, int[] playerLocation) {
+    public static void printMap(String[][] mazeInstance, int[] playerLocation) throws Exception {
         
         for (int i = 0; i < mazeInstance.length; i++) {
             
@@ -155,6 +164,7 @@ public class RoosterMaze {
 
             }
             System.out.println("|");
+            Thread.sleep(50);
 
         }
     } 
