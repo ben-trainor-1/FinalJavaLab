@@ -9,6 +9,7 @@ import graphics.Colors;
 import java.util.Random;
 import javax.sound.sampled.Clip;
 import audio.*;
+import combat.FullCombat;
 
 
 
@@ -37,8 +38,19 @@ public class Story {
          int slowerSpeed = 0; //75
          int fastSpeed = 0; //25
          int fasterSpeed = 0; //10
-
+         
         Player play = new Player();
+        
+         //Starting stats
+         GameState.playerMaxHealth = 100;
+         GameState.playerAttack = 10;
+         GameState.pDefenseBuff = 5;
+         GameState.pBuffPhase = 0;
+         GameState.playerHealCount = 2;
+         GameState.playerHealAmount = 30;
+         GameState.playerCriticalChance = 5;
+         GameState.pCritical =  20; 
+
 
         //Fancy welcome
         Graphics.textSpeed = fasterSpeed;
@@ -76,7 +88,6 @@ public class Story {
             GameState.posNoun = "His";
             GameState.genderNoun = "Lad";
             GameState.newName = "Lifthrasir";
-            GameState.lostLove = "Lif";
             break;
             
         }
@@ -90,7 +101,6 @@ public class Story {
             GameState.posNoun = "Her";
             GameState.genderNoun = "Lass";
             GameState.newName = "Lif";
-            GameState.lostLove = "Lifthrasir";
             break;
 
         }
@@ -116,6 +126,8 @@ public class Story {
                 Graphics.text("You have chosen a greatspear.");
                 GameState.weapon = "Greatspear";
                 Graphics.displayWeapons("Spear", Colors.BLACK_BOLD_BRIGHT);
+                GameState.pDefenseBuff = 6;
+                System.out.println(GameState.playerAttack);
                 break;
 
             }
@@ -125,6 +137,8 @@ public class Story {
                 Graphics.text("You have chosen a battleaxe.");
                 GameState.weapon = "Battleaxe";
                 Graphics.displayWeapons("Axe", Colors.RED_BOLD);
+                GameState.playerAttack = 11;
+                System.out.println(GameState.playerAttack);
                 break;
 
             }
@@ -200,6 +214,8 @@ public class Story {
         Graphics.textInline("Dire Wolf: A fierce wolf common in these cold regions, posing a deadly threat to the unprepared.\n");
 
         //Insert Battle with dire wolf here
+        FullCombat.enemyGameState("DireWolf", 75, 10, 5, 5, 0, 6, 5, -1, 0, 0);
+        FullCombat.fight();
 
         //Enter cave, but run into dead end. Odin comes, scorns you, but then feels guilty and moves boulder allowing you to move on.
 
@@ -381,6 +397,10 @@ public class Story {
                 Graphics.waitForEnter();
 
                 //insert undead skeleton fight #1 here
+
+                FullCombat.enemyGameState("Skeleton1",85,15,5,10,4,7,5,4,1,20);
+                FullCombat.fight();
+
                 GameState.key = true;
 
                 //Head back to right 
@@ -413,7 +433,9 @@ public class Story {
                         Graphics.displayEnemy("Skeleton2");
                         Graphics.waitForEnter();
 
-                        //TODO: Insert Undead skeleton fight #2
+                        //Undead skeleton fight #2
+                        FullCombat.enemyGameState("Skeleton2",85,15,5,10,4,7,5,4,1,20);
+                        FullCombat.fight();
 
                         Graphics.textSpeed = slowSpeed;
 
@@ -425,6 +447,19 @@ public class Story {
                         Graphics.displayHealing("MagicalNecklace", Colors.CYAN_BOLD);
                         Graphics.waitForEnter();
                         Graphics.textInline(Colors.ANSI_PURPLE + "You return to the intersection, seeking Hel more than anything. Ragnarok won't wait for anyone now!\n" + Colors.ANSI_RESET);
+                        
+                        if(GameState.weapon == "Greatspear"){
+
+                            GameState.playerAttack = 15;
+                            System.out.println(GameState.playerAttack);
+
+                        }
+                        else{
+
+                            GameState.playerAttack = 16;
+                            System.out.println(GameState.playerAttack);
+
+                        }
                         break;
 
                     }
@@ -478,14 +513,34 @@ public class Story {
                     Graphics.displayEnemy("Gullinkambi");
                     Graphics.textInline("Gullinkambi: A mighty primal being with a beak sharper than all swords.");
                     Graphics.waitForEnter();
-                    //TODO: Add Gullinkambi boss fight
+                    
+                    //Gullinkambi boss fight
+                    FullCombat.enemyGameState("Gullinkambi",100,15,5,20,0,10,10,6,2,30);
+                    FullCombat.fight();
 
                     //After the fight: Loki mocks you again
-                    Graphics.textInline(Colors.ANSI_PURPLE + "The giant rooster twitches dead on the ground. You are left breathless and traumatized.\n"
+                    Graphics.textInline(Colors.ANSI_PURPLE + "You feel empowered by overcoming such a powerful foe!\nThe giant rooster twitches dead on the ground. You are left breathless and traumatized.\n"
                                         + Colors.RED_BOLD_BRIGHT + "You will never look at roosters the same way again...\n" + Colors.ANSI_RESET
                                         + Colors.ANSI_PURPLE + "Speaking of roosters, Loki enters the room!\n");
                     Graphics.displayEnemy("Loki");
                     Graphics.waitForEnter(); 
+
+                    //New stats
+                    GameState.playerHealth = 125;
+                    GameState. pCritical = 25;
+
+                    if(GameState.weapon == "Greatspear"){
+
+                        GameState.playerAttack = 25;
+                        GameState.pDefenseBuff = 8;
+                        
+                    }
+                    else{
+
+                        GameState.playerAttack = 2;
+                        GameState.pDefenseBuff = 7;
+
+                    }
 
                     Graphics.textSpeed = slowSpeed;
 
@@ -576,6 +631,9 @@ public class Story {
                     Graphics.waitForEnter();
 
                     //TODO: Add dwarf fight
+                    FullCombat.enemyGameState("Dwarf",110,18,5,25,2,10,10,7,2,35);
+                    FullCombat.fight();
+
                     Graphics.textInline(Colors.ANSI_PURPLE + "After a rather long battle, you defeat the little, yet mighty dwarf and walk towards the room on your left\n"
                                         + "When you enter, your eyes immediately fall onto the blacksmith puzzle\n" + "It reminds you of your friend, Viggo.\nWhile exploring the rest of the room, you discover a spare gear lying around."
                                         + Colors.ANSI_RESET);
@@ -594,7 +652,11 @@ public class Story {
                                             + Colors.ANSI_RESET + "Berseker: A powerful and quick warrior, seeming to be in a trance-like state.");
                         Graphics.displayEnemy("Berserker");
                         Graphics.waitForEnter();
-                        //TODO: Add berserker fight
+
+                        //berserker fight
+                        FullCombat.enemyGameState("Berserker",115,10,3,30,0,7,15,8,1,40);
+                        FullCombat.fight();
+
                         Graphics.textInline("You finally defeat the raging berserker, and you are left winded. By chance, you notice something shining from a hidden crevice.\n"
                                             + "You walk towards it. " + Colors.GREEN_BACKGROUND); 
                         
@@ -613,6 +675,7 @@ public class Story {
                         }
 
                         Graphics.textSpeed = normalSpeed;
+                        GameState.playerCriticalChance = 4;
 
                         Graphics.textInline(Colors.ANSI_PURPLE + "\n You continue your way.");
                     
@@ -644,7 +707,7 @@ public class Story {
 
             Graphics.textSpeed = normalSpeed;
 
-    //descending at the bottom of Hel and fight with wolf (Fenrir)
+            //descending at the bottom of Hel and fight with wolf (Fenrir)
             Graphics.textInline(Colors.ANSI_PURPLE + "You take a good long look at the broken elevator. You conveniently figure out that the you possess is exactly what you need to get it running!\n" 
                                 + "you finally descend to the bottom of Hel.\n"
                                 + "The descent is long and ominous. When you reach bottom, you can see the gates of Hel."
@@ -656,10 +719,33 @@ public class Story {
 
             Graphics.waitForEnter();
             
-            //TODO: Add Fenrir fight
-            Graphics.textInline(Colors.ANSI_PURPLE + "You and Fenrir fight hard and the battle gets a bit bloody. You feel empowered.\n"
+            //Fenrir fight
+            FullCombat.enemyGameState("Fenrir",125,20,5,25,0,8,15,8,2,40);
+            FullCombat.fight();
+
+            Graphics.textInline(Colors.ANSI_PURPLE + "You feel empowered by overcoming such a powerful foe! The battle gets a bit bloody. You feel empowered.\n"
                                 + "You finally defeat Fenrir, but you don't kill him. Fewer the casualties the better, right? More to kill in Ragnorak ;)\n");
-    //Loki's mocking 
+
+            //New stats
+            GameState.playerHealth = 150;
+            GameState.playerHealCount = 4;
+            GameState.playerHealAmount = 40;
+            GameState.pCritical = 30;
+
+            if(GameState.weapon == "Greatspear"){
+
+                GameState.playerAttack = 40;
+                GameState.pDefenseBuff = 12;
+
+            }
+            else{
+
+                GameState.playerAttack = 42;
+                GameState.pDefenseBuff = 10;
+
+            }
+
+            //Loki's mocking 
             Graphics.textInline(Colors.ANSI_PURPLE + "After standing there for a few moments, you hear sarcastic clapping and a small chuckle.\n"
                     + "You spin around quickly and try and find where that sound is coming from. Suddenly Loki appears out of the shadows.\n");
             Graphics.displayEnemy("Loki");
@@ -724,13 +810,14 @@ public class Story {
                                 + "You push them open and discover the bottom of Hel was so much more than what you expected." );
             Graphics.waitForEnter();
 
-    //Greater Hel Area
+        //Greater Hel Area
         do { 
 
             Graphics.textSpeed = normalSpeed;
 
             Graphics.text(Colors.ANSI_YELLOW + "You can either go to 1) Eastern region (docks), 2) Western region (tavern)\n" 
                                             + "3) Southern region (gates of Hel), or 4) Northern region where you can visit Hela's palace."+ Colors.ANSI_RESET );
+            
             input = in.nextInt();
             //Eastern Hel: Docks
             //Naglfar, the ship made of fingernails and toenails resides here.
@@ -764,6 +851,9 @@ public class Story {
                     Graphics.textInline("Loki: A the devious god of mischief and the cause of all your problems.\n");
                     
                     //TODO: Add final boss
+                    FullCombat.enemyGameState("Loki",180,30,4,20,2,6,25,4,2,50);
+                    FullCombat.fight();
+
                     if(GameState.winFlyting == false){
 
                         Graphics.textSpeed = slowSpeed;
@@ -807,13 +897,7 @@ public class Story {
                         Graphics.textSpeed = slowSpeed;
 
                         Graphics.textInline("Light encompasses you, as you stir.\nThe last thing you remember is the conflict at Ragnorak. You fought for one hundred days and nights.\nYou eventually were eventually were bested, but not before having the satisfaction of seeing Loki perish at the hands of Heimdall.\n"
-                                            + "You sit up on a grassy field.\nBefore you, a host of deities, Hoenir, Magni, Modi, Njord, Vidar, Vali, and the daughter of Sol, stand before you.\nSome of them you\'ve never met, and most you have only glanced at during the battle. Regardless you recognize them.");
-                        Graphics.waitForEnter();
-                        Graphics.textInline("\"Welcome to the new life, " + GameState.newName + "\", a voice calls from behind you. You turn to see Baldr, the dead god, the one who Loki slew.\nBeside him, to your delight, your long-lost love stands. " + GameState.lostLove);
-                        Graphics.waitForEnter();
-                        Graphics.textInline("\"Long before you were born, you were chosen to live again, multiplying and filling this new earth.\nNow, for your struggles and efforts, you will dwell with us in rest forever. Be anxious no more.\"\n"
-                                                + "A calmness excitement washes over you. So much to do! All of eternity to do it!. Thus, you began your new job.");
-                        Graphics.waitForEnter();
+                                            + "You sit up on a grassy field. You survived Ragnorak! It should be impossible! You recall, however, the Godmead which you won.\nIt must have been what resurrected you.\n You rise, feeling rested like you never had before.\nA new adventure awaits somewhere!\nYou thrilled to discover what it is! ");
                         Graphics.textInline("The end! (Ending #2 of 3)\n");
                         System.exit(input);
 
@@ -887,6 +971,8 @@ public class Story {
                     Graphics.displayHealing("DumplingRecipe", Colors.WHITE_BRIGHT);
                     Graphics.textSpeed = slowSpeed;
                     Graphics.textInline(Colors.CYAN_BACKGROUND + "You found a Dumpling recipe! It\'s mystical!" + Colors.ANSI_RESET + "\n");
+                    GameState.playerHealCount = 5;
+                    GameState.playerHealAmount = 45;
                     GameState.firstSouth ++;
                 }
                 else{
@@ -923,6 +1009,10 @@ public class Story {
                         Graphics.textInline("Elf: a wiry race. Be wary. They know many deadly tricks.\n");
                         
                         //TODO: Add elf fight
+                        FullCombat.enemyGameState("Elf",175,25,5,25,2,7,20,8,2,45);
+                        FullCombat.fight();
+
+
                         Graphics.textInline(Colors.ANSI_PURPLE + "After a long fight between the two of them, you are a little injured but you manage to get past the doors.\n"
                                             + "Hela, clad in royal garments, sits on the throne before you. She looks like a butterfly...\n");
                         Graphics.displayEnemy("Nidhogg");
@@ -986,7 +1076,11 @@ public class Story {
                                 + "He immediately knows its you he has to fight and charges at you. You bring out your " + GameState.weapon + " while he pulls out an axe.\n" + Colors.PURPLE_BOLD_BRIGHT);
                                 Graphics.displayEnemy("Elf");
                                 Graphics.textInline("Hela\'s elf: just an elf, but wearing the royal pink and red colors of Hela." + Colors.ANSI_RESET);
-                                //TODO: Add elf fight
+                                
+                                //elf fight
+                                FullCombat.enemyGameState("Elf",175,25,5,25,2,7,20,8,2,45);
+                                FullCombat.fight();
+
 
                                 Graphics.textInline(Colors.ANSI_PURPLE + "You finally defeat him, leaving the mean elf dirty, bloody, and in pain.\n You look at Hela who was watching the whole time.\n");
                                 
