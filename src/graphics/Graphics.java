@@ -130,6 +130,26 @@ public class Graphics {
 
         System.out.println(Colors.ANSI_RESET);
     }
+
+    // Method for printing out background
+
+    public static void displayCredits(int speed) throws Exception {
+         
+        String filePath = "./src/audio/Credits.txt";
+        File creditsFile = new File(filePath);
+        Scanner creditsScanner = new Scanner(creditsFile);
+    
+        // Background sprite
+        while (creditsScanner.hasNext()) {
+            System.out.println(creditsScanner.nextLine());
+            Thread.sleep(speed);
+        }
+
+        System.out.println(Colors.ANSI_RESET);
+
+        
+    
+    }
     
     // Method for printing out background
 
