@@ -7,7 +7,7 @@ public class SoundTest {
     public static void main(String[] args) throws Exception {
 
         Player play = new Player();
-        Clip clip = play.playAudio("./src/audio/animalsAndCharacters/wolf.wav", 0, 0.0F);
+        Clip clip = play.playAudio("./src/audio/animalsAndCharacters/wolf.wav", 0, 0.0F, 0);
         
         Scanner in = new Scanner(System.in);
         in.nextLine();
