@@ -136,6 +136,12 @@ public class Graphics {
             for (int i = 0; i < 4; i++) characterScanner.nextLine();
         }
 
+        // Character sprite
+        while (characterScanner.hasNext()) {
+            System.out.println(characterScanner.nextLine());
+            Thread.sleep(textSpeed);
+        }
+
         System.out.println(Colors.ANSI_RESET);
     }
 
