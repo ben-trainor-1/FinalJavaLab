@@ -949,7 +949,7 @@ public class Story {
                 if(GameState.firstWest == false){
                     //Lots of dead people drinking here
                     //Flyting happens here
-                    //Flyting: A poetic constest of insults
+                    //Flyting: A poetic contest of insults
                     //Winning allows good ending
                     //find rumors about ship
                     Graphics.textSpeed = normalSpeed;
@@ -979,7 +979,7 @@ public class Story {
                         + Colors.ANSI_YELLOW + "1) \"Let's do it!\"\n2) \"No, I can't do this right now.\"\n" + Colors.ANSI_RESET);
                     input = in.nextInt();
                     if(input == 1){
-                        //Run flyting 
+                        //Run flyting
                         Tavern.main(args);
                         GameState.winFlyting = true;
                     }

@@ -2,7 +2,8 @@ package story;
 import graphics.Colors;
 import graphics.Graphics;
 import java.util.Scanner;
-
+import audio.*;
+import javax.sound.sampled.Clip;
 
 public class Tavern {
 
@@ -21,6 +22,8 @@ public class Tavern {
 
         //Begin flyting 
         Graphics.textInline(Colors.ANSI_PURPLE + "Fell gives a sly look. The battle begins");
+        Player play = new Player();
+        Clip tavernMusic = play.playAudio("./src/audio/music/flyting_loop.wav", -1, 0.0F, 0);
         Graphics.waitForEnter();
         Graphics.textInline(Colors.RED_BOLD_BRIGHT + "\"Well, then let's begin, I may have died, but you're a cur.\"\n" + Colors.ANSI_RESET);
 
@@ -210,6 +213,7 @@ public class Tavern {
             Graphics.displayWin("Trophy", Colors.ANSI_YELLOW);
             Graphics.waitForEnter();
             Graphics.textInline(Colors.ANSI_PURPLE + "You a deep swig, and the crowd swells over you. It goes down smoothly, but you do not feel a bit intoxicated. How odd.\nYou say your farewells to Fell and continue forward.\n" + Colors.ANSI_RESET);
+            Player.fadeOutAudio(tavernMusic, 1500);
 
         }
     
