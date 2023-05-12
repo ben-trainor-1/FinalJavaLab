@@ -132,8 +132,8 @@ public class Graphics {
         }
         else {
             // Skip first four lines
-            for (int i = 0; i < 3; i++) characterScanner.nextLine();
-            
+            for (int i = 0; i < 4; i++) characterScanner.nextLine();
+
             // Character sprite
             while (characterScanner.hasNext()) {
                 System.out.println(characterScanner.nextLine());
