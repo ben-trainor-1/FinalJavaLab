@@ -422,7 +422,8 @@ public class Story {
                 
                 Graphics.textSpeed = slowSpeed;
 
-                // TODO: upgrade sound
+                // Upgrade sound
+                play.playAudio("./src/audio/soundEffects/significant_upgrade.wav", 0, 0.0F, 0);
                 Graphics.textInline(Colors.BLUE_BACKGROUND_BRIGHT + "You received \'Special Key!\'" + Colors.ANSI_RESET + Colors.ANSI_PURPLE + "\nIt opens a door!");
                 
                 Graphics.textSpeed = normalSpeed;
@@ -462,10 +463,11 @@ public class Story {
                        
                         Graphics.textSpeed = normalSpeed;
 
-                        // TODO: upgrade sound
+                        // Upgrade sound
+                        play.playAudio("./src/audio/soundEffects/significant_upgrade.wav", 0, 0.0F, 0);
                         Graphics.displayHealing("MagicalNecklace", Colors.CYAN_BOLD);
                         Graphics.waitForEnter();
-                        Player.fadeInAudio(caveSfx, 500, -1, 00F);
+                        Player.fadeInAudio(caveSfx, 500, -1, 0.0F);
                         Graphics.textInline(Colors.ANSI_PURPLE + "You return to the intersection, seeking Hel more than anything. Ragnarok won't wait for anyone now!\n" + Colors.ANSI_RESET);
                         
                         if(GameState.weapon == "Greatspear"){
@@ -687,6 +689,8 @@ public class Story {
                         
                         Graphics.textSpeed = slowSpeed;
 
+                        // Upgrade sound
+                        play.playAudio("./src/audio/soundEffects/significant_upgrade.wav", 0, 0.0F, 0);
                         Graphics.textInline("It\'s a better " + GameState.weapon + "! It can help you fight harder foes!" + Colors.ANSI_RESET);
 
                         // TODO: make upgraded weapon graphics
@@ -742,6 +746,7 @@ public class Story {
                                 + "You soon discover, however, that Fenrir the wolf is guarding the gates. You must defeat him.\n" 
                                 + "Without throwing caution to the wind, you approach him slowly. But Fenrir doesn't hesitate to rush at you.\n" + Colors.ANSI_RESET);
         
+            play.playAudio("./audio/sfx/wolf.wav", 0, 0.0F, 0);
             Graphics.displayEnemy("Fenrir", false);
             Graphics.textInline("Fenrir: The largest, most menacing god wolf. He is chained at the gates of Hel.");
 
