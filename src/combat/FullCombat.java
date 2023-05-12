@@ -3,6 +3,8 @@ import java.util.Scanner;
 import java.util.Random;
 import graphics.*;
 import state.*;
+import audio.Player;
+import javax.sound.sampled.Clip;
 
 
 /* ENEMY COMBAT CHOICE VALUES
@@ -67,6 +69,21 @@ public class FullCombat {
             Random Rand = new Random();
             int input;
             String stringInput;
+
+            
+            // Combat music
+            Player play = new Player();
+            Clip combatMusic;
+            if (GameState.enemy.equals("Loki")) {
+                combatMusic = play.playAudio("./src/audio/music/more_intense_bit_loop.wav", -1, 0.0F);
+            }
+            else if (GameState.enemy.equals("Reginald")) {
+                combatMusic = play.playAudio("./src/audio/music/reginald_loop.wav", -1, 0.0F);
+            }
+            else {
+                combatMusic = play.playAudio("./src/audio/music/spooky_bit_loop.wav", -1, 0.0F);
+            }
+
 
             // Reset variables for the fight
             GameState.playerHealth = GameState.playerMaxHealth;
@@ -381,11 +398,13 @@ public class FullCombat {
                                 // Enemy critical
                                 if (enemyCritical == true) {
                                     Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " and " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "\'s attacks collide with a devastating clash!");
+                                    Clip parrySound = play.playAudio("./src/audio/soundEffects/upgrade_3.wav", 0, 0.0F);
                                     Thread.sleep(750);
                                     Graphics.text(Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " emerges from the encounter stunned!");
                                     if (GameState.pBuffPhase == 1) {
                                         Thread.sleep(750);
                                         System.out.println();
+                                        Clip buffLost = play.playAudio("./src/audio/soundEffects/downgrade_1.wav", 0, 0.0F);
                                         Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s defensive buff wears off...");
                                     }
                                     if (GameState.eBuffPhase == 1) {
@@ -420,6 +439,7 @@ public class FullCombat {
                                 if (GameState.pBuffPhase == 1) {
                                     Thread.sleep(750);
                                     System.out.println();
+                                    Clip buffLost = play.playAudio("./src/audio/soundEffects/downgrade_1.wav", 0, 0.0F);
                                     Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s defensive buff wears off...");
                                 }
                             } 
@@ -439,6 +459,7 @@ public class FullCombat {
                                 if (GameState.pBuffPhase == 1) {
                                     Thread.sleep(750);
                                     System.out.println();
+                                    Clip buffLost = play.playAudio("./src/audio/soundEffects/downgrade_1.wav", 0, 0.0F);
                                     Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s defensive buff wears off...");
                                 }
                             }
@@ -490,6 +511,7 @@ public class FullCombat {
                                 if (GameState.pBuffPhase == 1) {
                                     Thread.sleep(750);
                                     System.out.println();
+                                    Clip buffLost = play.playAudio("./src/audio/soundEffects/downgrade_1.wav", 0, 0.0F);
                                     Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s defensive buff wears off...");
                                 }
                                 if (GameState.eBuffPhase == 1) {
@@ -515,6 +537,7 @@ public class FullCombat {
                                 if (GameState.pBuffPhase == 1) {
                                     Thread.sleep(750);
                                     System.out.println();
+                                    Clip buffLost = play.playAudio("./src/audio/soundEffects/downgrade_1.wav", 0, 0.0F);
                                     Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s defensive buff wears off...");
                                 }
                             }
@@ -557,6 +580,7 @@ public class FullCombat {
                                 Thread.sleep(750);
                                 System.out.println();
                                 Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s strong defense emboldens " + GameState.objpNoun.toLowerCase() + "! " + GameState.pNoun + "\'s prepared for the next attack!");
+                                Clip buffGained = play.playAudio("./src/audio/soundEffects/upgrade_1.wav", 0, 0.0F);
                                 Graphics.text(GameState.pNoun + " gains a defensive buff!");
                                 if (GameState.eBuffPhase == 1) {
                                     Thread.sleep(750);
@@ -573,6 +597,7 @@ public class FullCombat {
                             if (GameState.pBuffPhase == 1) {
                                 Thread.sleep(750);
                                 System.out.println();
+                                Clip buffLost = play.playAudio("./src/audio/soundEffects/downgrade_1.wav", 0, 0.0F);
                                 Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s defensive buff wears off...");
                             }
                             if (GameState.eBuffPhase == 1) {
@@ -592,6 +617,7 @@ public class FullCombat {
                             if (GameState.pBuffPhase == 1) {
                                 Thread.sleep(750);
                                 System.out.println();
+                                Clip buffLost = play.playAudio("./src/audio/soundEffects/downgrade_1.wav", 0, 0.0F);
                                 Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s defensive buff wears off...");
                             }
                             if (GameState.eBuffPhase == 1) {
@@ -645,6 +671,7 @@ public class FullCombat {
                             if (GameState.pBuffPhase == 1) {
                                 Thread.sleep(750);
                                 System.out.println();
+                                Clip buffLost = play.playAudio("./src/audio/soundEffects/downgrade_1.wav", 0, 0.0F);
                                 Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s defensive buff wears off...");
                             }
                             if (GameState.eBuffPhase == 1) {
@@ -673,6 +700,7 @@ public class FullCombat {
                             if (GameState.pBuffPhase == 1) {
                                 Thread.sleep(750);
                                 System.out.println();
+                                Clip buffLost = play.playAudio("./src/audio/soundEffects/downgrade_1.wav", 0, 0.0F);
                                 Graphics.text(Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s defensive buff wears off...");
                             }
                             if (GameState.eBuffPhase == 1) {
@@ -725,6 +753,7 @@ public class FullCombat {
                 if (GameState.playerHealth <= 0) {
                     if (GameState.enemy.equals("Reginald")) {
                         Graphics.displayDeath("Tomb", Colors.ANSI_BLACK);
+                        Player.fadeOutAudio(combatMusic, 2000);
                         Graphics.textInline("\n" + Colors.ANSI_RED + GameState.name + " attempted to fight valiantly, but was absolutely whooped by the almighty " + GameState.enemy + "..." + Colors.ANSI_RESET);
                         Graphics.waitForEnter();
 
@@ -739,6 +768,8 @@ public class FullCombat {
                         Graphics.textInline("\nDon't make the mistake of fighting the almighty " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " again...");
                         Graphics.waitForEnter();                    }
                     else if (GameState.enemy.equals("Loki")) {
+                      
+                        Player.fadeOutAudio(combatMusic, 2000);
                         Graphics.textInline("\n\nThe fight with " + Colors.ANSI_RED + "Loki" + Colors.ANSI_RESET + " is hard and tedious...");
                         Graphics.waitForEnter();
                         Graphics.textInline("\n" + Colors.ANSI_RED + "Loki" + Colors.ANSI_RESET + " seems to never run out of energy, never ceasing his fast, ferocious attacks.");
@@ -758,6 +789,7 @@ public class FullCombat {
                         GameState.playerHealCount = playerInitialHealCount;
                         GameState.enemyHealCount = enemyInitialHealCount;
                         Graphics.displayDeath("Tomb", Colors.ANSI_BLACK);
+                        Player.fadeOutAudio(combatMusic, 2000);
                         Graphics.textInline("\n" + Colors.ANSI_RED + GameState.name + " fought honorably, but was slain by " + GameState.enemy + "..." + Colors.ANSI_RESET);
                         Graphics.waitForEnter();
 
@@ -771,9 +803,15 @@ public class FullCombat {
                         Graphics.text("\nDon't let them regret their choice...");
                         Graphics.waitForEnter();
                     }
+                    
                 }
                 else {
+
+                    Clip winMusic = play.playAudio("./src/audio/soundEffects/victory_theme.wav", 0, -5.0F);
                     Graphics.displayWin("Trophy", Colors.ANSI_YELLOW);
+                    Player.fadeOutAudio(combatMusic, 1750);
+                  
+                    Graphics.textInline("\n" + Colors.ANSI_GREEN + GameState.name + " fought courageously and defeated " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "!");
                     Graphics.textInline("\n" + Colors.ANSI_GREEN + GameState.nicco + " fought courageously and defeated " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "!");
                     Graphics.waitForEnter();
                     Graphics.textInline("\nSafe travels on the rest of your journey, " + Colors.ANSI_GREEN + "Viking" + Colors.ANSI_RESET + "...");

@@ -1,10 +1,14 @@
 package story;
 
 import java.util.Scanner;
+
+import audio.Player;
 import graphics.Graphics;
 import state.GameState;
 import graphics.Colors;
 import java.util.Random;
+import javax.sound.sampled.Clip;
+import audio.*;
 import combat.FullCombat;
 
 
@@ -34,7 +38,9 @@ public class Story {
          int slowerSpeed = 0; //75
          int fastSpeed = 0; //25
          int fasterSpeed = 0; //10
-
+         
+        Player play = new Player();
+        
          //Starting stats
          GameState.playerMaxHealth = 100;
          GameState.playerAttack = 10;
@@ -44,6 +50,7 @@ public class Story {
          GameState.playerHealAmount = 30;
          GameState.playerCriticalChance = 5;
          GameState.pCritical =  20; 
+
 
         //Fancy welcome
         Graphics.textSpeed = fasterSpeed;
@@ -499,7 +506,7 @@ public class Story {
                     Graphics.textInline(Colors.ANSI_PURPLE + "You found the end of the maze!\nYou enter a large circular and (oddly enough) well-lit room.");
                     Graphics.waitForEnter();
                     Graphics.textInline("You stride triumphantly through the room. Suddenly, you hear a loud " + Colors.PURPLE_BACKGROUND + "\"cuckaw!\"" + Colors.ANSI_RESET);
-                    //TODO: Add rooster crow
+                    Clip cuckaw = play.playAudio("./src/audio/animalsAndCharacters/rooster.wav", 0, 0.0F);
 
                     Graphics.waitForEnter();
                     Graphics.textInline(Colors.RED_BACKGROUND + "A large rooster falls down and glares menacingly at you. It's Gullinkambi, the Golden Comb!" + Colors.ANSI_RESET);
