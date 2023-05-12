@@ -213,10 +213,11 @@ public class Tavern {
             Graphics.displayWin("Trophy", Colors.ANSI_YELLOW);
             Graphics.waitForEnter();
             Graphics.textInline(Colors.ANSI_PURPLE + "You a deep swig, and the crowd swells over you. It goes down smoothly, but you do not feel a bit intoxicated. How odd.\nYou say your farewells to Fell and continue forward.\n" + Colors.ANSI_RESET);
-            Player.fadeOutAudio(tavernMusic, 1500);
-
+            
         }
-    
+        
+        Player.fadeOutAudio(tavernMusic, 1500);
+        
     }
 
 }

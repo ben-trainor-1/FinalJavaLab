@@ -183,7 +183,7 @@ public class Story {
 
                 Graphics.textSpeed = slowSpeed;
 
-                Graphics.textInline(Colors.ANSI_GREEN +  "\"Viggo, I'm leaving this town. I'm going to Hel. You can join me if you wish\"\n\"" + Colors.PURPLE_BRIGHT + "Alas, young " + GameState.genderNoun.toLowerCase() + " I do not display your energetic talent any more.\n I will stay here, accepting my banishment.\"\n"
+                Graphics.textInline(Colors.ANSI_GREEN +  "\"Viggo, I'm leaving this town. I'm going to Hel. You can join me if you wish\"\n" + Colors.PURPLE_BRIGHT + "\"Alas, young " + GameState.genderNoun.toLowerCase() + " I do not display your energetic talent any more.\n I will stay here, accepting my banishment.\"\n"
                                 + "\"Well, I'll miss you then. You were the closest one of this lot to me.\"\n"
                                 + Colors.PURPLE_BRIGHT + "\"We understand that you have not lost your fervor for fighting like we have. We all wish you luck from the bottom of our hearts.\"\n");
                 
@@ -398,7 +398,7 @@ public class Story {
 
                 //Fight undead skeleton for key
                 //Enter Undead skeleton fight
-                Player.fadeOutAudio(caveSfx, 500);
+                Player.fadeOutAudio(caveSfx, 1500);
                 Graphics.textInline(Colors.ANSI_PURPLE + "\nYou are left standing in the happy flickering torchlight coming from a nearby sconce.\n"
                 + "A gaping doorway stands ahead and you can see two skeletons. " 
                 + "There is one on the ground... the other looming, staring right at you.");
@@ -427,8 +427,9 @@ public class Story {
                 Graphics.textInline(Colors.BLUE_BACKGROUND_BRIGHT + "You received \'Special Key!\'" + Colors.ANSI_RESET + Colors.ANSI_PURPLE + "\nIt opens a door!");
                 
                 Graphics.textSpeed = normalSpeed;
-
+                
                 Graphics.displayHealing("Key", Colors.BLACK_BRIGHT);
+                Thread.sleep(5000);
                 Graphics.waitForEnter();
 
                 //Option for 2nd skeleton fight
@@ -466,6 +467,8 @@ public class Story {
                         // Upgrade sound
                         play.playAudio("./src/audio/soundEffects/significant_upgrade.wav", 0, 0.0F, 0);
                         Graphics.displayHealing("MagicalNecklace", Colors.CYAN_BOLD);
+                        Thread.sleep(5000);
+                        
                         Graphics.waitForEnter();
                         Player.fadeInAudio(caveSfx, 500, -1, 0.0F);
                         Graphics.textInline(Colors.ANSI_PURPLE + "You return to the intersection, seeking Hel more than anything. Ragnarok won't wait for anyone now!\n" + Colors.ANSI_RESET);
@@ -628,7 +631,7 @@ public class Story {
 
         }while(true);
 
-        Graphics.textInline(Colors.ANSI_PURPLE + "Loki suddenly vanishes and you walk out of the room to go look for something that will lead to the bottom of Hel.\n"
+        Graphics.text(Colors.ANSI_PURPLE + "Loki suddenly vanishes and you walk out of the room to go look for something that will lead to the bottom of Hel.\n"
         + "You spot a cliff that will lead to an open cave with an elevator.\nAfter getting past the cliff and going into the open cave, you soon discover the elevator is broken. You have a few options." + Colors.ANSI_RESET);
         
         Graphics.textSpeed = fasterSpeed;
@@ -706,6 +709,8 @@ public class Story {
 
                         }
 
+                        Thread.sleep(5000);
+
                         Graphics.textSpeed = normalSpeed;
                         GameState.playerCriticalChance = 4;
 
@@ -780,7 +785,7 @@ public class Story {
 
             //Loki's mocking 
             Graphics.textInline(Colors.ANSI_PURPLE + "After standing there for a few moments, you hear sarcastic clapping and a small chuckle.\n"
-                    + "You spin around quickly and try and find where that sound is coming from. Suddenly Loki appears out of the shadows.\n");
+                    + "You spin around quickly and try and find where that sound is coming from. Suddenly Loki appears out of the shadows.\n" + Colors.ANSI_RESET);
             Graphics.displayEnemy("Loki", false);
             Graphics.waitForEnter();
 
