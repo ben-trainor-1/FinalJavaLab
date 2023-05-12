@@ -72,9 +72,9 @@ public class Story {
         do{
 
         Graphics.textInline(Colors.ANSI_YELLOW + "Enter 1 to choose Gorm (male)\n" + Colors.ANSI_RESET); 
-        Graphics.displayCharacter("Gorm");
+        Graphics.displayCharacter("Gorm", false);
         Graphics.textInline(Colors.ANSI_YELLOW + "or 2 to choose Gro (female).\n" + Colors.ANSI_RESET);
-        Graphics.displayCharacter("Gro");
+        Graphics.displayCharacter("Gro", false);
         
         //Choose character
         input = in.nextInt();
@@ -174,7 +174,7 @@ public class Story {
             }
             else if(input == 2){
 
-                Graphics.displayCharacter("Viggo");
+                Graphics.displayCharacter("Viggo", false);
                 Graphics.textInline("You decided to stay and say goodbye.\n" + Colors.ANSI_PURPLE + "In Asbjorn you approach Viggo, the blacksmith. Once he was a great warrior like you, but he now he has settled down.\nHe accepted his fate here...\n");
 
                 Graphics.textSpeed = slowSpeed;
@@ -223,7 +223,7 @@ public class Story {
                         + "You have known of this cave for a while now, but you soon realize it is a dead end.\n"
                         + "You are filled with confusion. Your sources are reliable; how could they get this wrong?\n"
                         + "Then the answer comes to you as a figure steps out of the shadows." + Colors.ANSI_RESET);
-        Graphics.displayCharacter("Odin");
+        Graphics.displayCharacter("Odin", false);
         Graphics.waitForEnter();
 
         Graphics.textSpeed = slowSpeed;
@@ -871,6 +871,13 @@ public class Story {
                                             + Colors.ANSI_WHITE + "\nYou run off to battle, destined to die forever...");
                         Graphics.waitForEnter();
                         Graphics.textInline("The end! (Ending #1 of 3)");
+                        Clip creditsMusic = play.playAudio("./src/audio/backgroundSceneryNoise/endCredits/loop_soft_piano.wav", -1, 0.0F);
+
+                        Graphics.displayCredits(slowSpeed);
+
+                        Player.fadeOutAudio(creditsMusic, 3000);
+
+                        System.exit(input);
                     }
                     else {
 
@@ -927,7 +934,7 @@ public class Story {
                     Graphics.waitForEnter();
                     Graphics.textInline("Fell, although reluctant to help, aided you in freeing Loki. However, Loki betrayed you and killed him, leaving you \'mercifully\' alive.");
                     Graphics.waitForEnter();
-                    Graphics.displayEnemy("Fell");
+                    Graphics.displayCharacter("Fell", false);
                     Graphics.textSpeed = fastSpeed;
                     Graphics.textInline(Colors.ANSI_PURPLE + "Fell notices you, and a big grin invades his face.\n"
                         + Colors.CYAN_BRIGHT + "\""+ GameState.name + " you old chap! You've finally come to dine with the dead? But wait. You have a spry look about you...\nYou're alive aren't you?\"\n"
