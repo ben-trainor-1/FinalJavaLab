@@ -33,11 +33,11 @@ public class Story {
     public static void main(String[] args) throws Exception {
 
          //Text speed integers
-         int normalSpeed = 50; //50
-         int slowSpeed = 60; //60
-         int slowerSpeed = 75; //75
-         int fastSpeed = 25; //25
-         int fasterSpeed = 10; //10
+         int normalSpeed = 0; //50
+         int slowSpeed = 0; //60
+         int slowerSpeed = 0; //75
+         int fastSpeed = 0; //25
+         int fasterSpeed = 0; //10
          
         Player play = new Player();
         
@@ -218,7 +218,8 @@ public class Story {
         Graphics.text(Colors.ANSI_PURPLE + "There's something there! Behind that tree!" + Colors.ANSI_RESET);
         Thread.sleep(1000);
         Graphics.text(Colors.ANSI_PURPLE + "You are fueled with determination as a dire wolf leaps and blocks your path." + Colors.ANSI_RESET);
-        play.playAudio("./src/audio/animalsAndCharacters/wolf_bit.wav", 0, 0.0F, 0);
+        play.playAudio("./src/audio/animalsAndCharacters/wolf_bit.wav", 0, 3.0F, 0);
+        Player.fadeOutAudio(forestSfx, 1500);
         Graphics.displayEnemy("DireWolf", false);
         Graphics.textInline("Dire Wolf: A fierce wolf common in these cold regions, posing a deadly threat to the unprepared.\n");
 
@@ -294,7 +295,9 @@ public class Story {
         //Odin leaves
         Graphics.textInline(Colors.ANSI_PURPLE + "With that Odin steps away, and the way forward reveals itself to you." + Colors.BLACK_BRIGHT);
 
-        Graphics.textSpeed = fasterSpeed;
+        
+        Graphics.textSpeed = slowerSpeed;
+        Clip caveSfx = play.playAudio("./src/audio/backgroundSceneryNoise/places/cave_loop_bit.wav", -1, 0.0F, 0);
 
         Graphics.displayBackground("Cave", Colors.BLACK_BACKGROUND);
 
@@ -396,6 +399,7 @@ public class Story {
 
                 //Fight undead skeleton for key
                 //Enter Undead skeleton fight
+                Player.fadeOutAudio(caveSfx, 500);
                 Graphics.textInline(Colors.ANSI_PURPLE + "\nYou are left standing in the happy flickering torchlight coming from a nearby sconce.\n"
                 + "A gaping doorway stands ahead and you can see two skeletons. " 
                 + "There is one on the ground... the other looming, staring right at you.");
@@ -412,12 +416,14 @@ public class Story {
                 FullCombat.fight();
 
                 GameState.key = true;
+                Player.fadeInAudio(caveSfx, 1500, -1, 0.0F);
 
                 //Head back to right 
                 Graphics.textInline(Colors.ANSI_PURPLE + "With the skeleton now at rest, you remove the iron key from its femur.\n" + Colors.ANSI_RESET);
                 
                 Graphics.textSpeed = slowSpeed;
 
+                // TODO: upgrade sound
                 Graphics.textInline(Colors.BLUE_BACKGROUND_BRIGHT + "You received \'Special Key!\'" + Colors.ANSI_RESET + Colors.ANSI_PURPLE + "\nIt opens a door!");
                 
                 Graphics.textSpeed = normalSpeed;
@@ -437,6 +443,7 @@ public class Story {
                     if(input == 1){
 
                         //if the player chooses to enter the room
+                        Player.fadeOutAudio(caveSfx, 1500);
                         Graphics.textInline(Colors.ANSI_PURPLE + "You burst into the room.\n");
                         Thread.sleep(1000);
                         Graphics.textInline("The prone skeleton nimbly rises to its boney feet. It's fighting time again!!!\n" + Colors.ANSI_RESET);
@@ -450,13 +457,16 @@ public class Story {
 
                         Graphics.textSpeed = slowSpeed;
 
-                        Graphics.textInline(Colors.ANSI_PURPLE + "\nThe skeleton lies defeated, and you find that it was holding a necklace... magical no doubt.\n" + Colors.ANSI_RESET
+
+                        Graphics.text(Colors.ANSI_PURPLE + "\nThe skeleton lies defeated, and you find that it was holding a necklace... magical no doubt.\n" + Colors.ANSI_RESET
                                             + Colors.BLUE_BACKGROUND_BRIGHT + "You received \'Magical Necklace!\'" + Colors.ANSI_RESET + Colors.ANSI_PURPLE +  "\nDeal more damage in battle!");
                        
                         Graphics.textSpeed = normalSpeed;
 
+                        // TODO: upgrade sound
                         Graphics.displayHealing("MagicalNecklace", Colors.CYAN_BOLD);
                         Graphics.waitForEnter();
+                        Player.fadeInAudio(caveSfx, 500, -1, 00F);
                         Graphics.textInline(Colors.ANSI_PURPLE + "You return to the intersection, seeking Hel more than anything. Ragnarok won't wait for anyone now!\n" + Colors.ANSI_RESET);
                         
                         if(GameState.weapon == "Greatspear"){
@@ -507,6 +517,8 @@ public class Story {
                 if(GameState.key == true){
 
                     Graphics.textInline(Colors.ANSI_PURPLE + "You come upon a door. It is locked, but you have a key!\nIt fits in snugly, and the door swings open.");
+                    // TODO: door opening sound
+                    Player.fadeOutAudio(caveSfx, 1500);
                     Graphics.waitForEnter();
                     Graphics.textInline(Colors.ANSI_PURPLE + "Before you the walls are smooth, cool stone. You appear to be in a winding fortress.\nYou continue along but quickly realize that you are in a maze!\n" + Colors.ANSI_RESET);
                     
@@ -532,7 +544,7 @@ public class Story {
                     //After the fight: Loki mocks you again
                     Graphics.textInline(Colors.ANSI_PURPLE + "You feel empowered by overcoming such a powerful foe!\nThe giant rooster twitches dead on the ground. You are left breathless and traumatized.\n"
                                         + Colors.RED_BOLD_BRIGHT + "You will never look at roosters the same way again...\n" + Colors.ANSI_RESET
-                                        + Colors.ANSI_PURPLE + "Speaking of roosters, Loki enters the room!\n");
+                                        + Colors.ANSI_PURPLE + "Speaking of roosters, Loki enters the room!\n" + Colors.ANSI_RESET);
                     Graphics.displayEnemy("Loki", false);
                     Graphics.waitForEnter(); 
 
@@ -548,7 +560,7 @@ public class Story {
                     }
                     else{
 
-                        GameState.playerAttack = 2; // TODO: Fix this number?
+                        GameState.playerAttack = 27; // TODO: Fix this number?
                         GameState.pDefenseBuff = 7;
 
                     }
@@ -637,11 +649,12 @@ public class Story {
                     Graphics.textInline(Colors.ANSI_PURPLE+ "You have chosen to to take the path on the right." 
                                     + "Suddenly, an angry dwarf comes out of the shadows\n"
                                     + "He jumps you immediately and while you think he doesn't have a lot of strength, he continues to surprise you." + Colors.ANSI_RESET);
+                    
+                    // TODO: dwarf sound
                     Graphics.displayEnemy("Dwarf", false);
                     Graphics.textInline("Dwarf: A stout humaniod, strong and steadfast");
                     Graphics.waitForEnter();
 
-                    //TODO: Add dwarf fight
                     FullCombat.enemyGameState("Dwarf",110,18,5,25,2,10,10,7,2,35);
                     FullCombat.fight();
 
@@ -661,10 +674,12 @@ public class Story {
 
                         Graphics.textInline(Colors.ANSI_PURPLE + "Suddenly, out of nowhere, a berserker charges at you in fury. Brace yourself!\n"
                                             + Colors.ANSI_RESET + "Berseker: A powerful and quick warrior, seeming to be in a trance-like state.");
+                        
+                        // TODO: berserker sound
                         Graphics.displayEnemy("Berserker", false);
                         Graphics.waitForEnter();
 
-                        //berserker fight
+                        // Berserker fight
                         FullCombat.enemyGameState("Berserker",115,10,3,30,0,7,15,8,1,40);
                         FullCombat.fight();
 
@@ -674,6 +689,9 @@ public class Story {
                         Graphics.textSpeed = slowSpeed;
 
                         Graphics.textInline("It\'s a better " + GameState.weapon + "! It can help you fight harder foes!" + Colors.ANSI_RESET);
+
+                        // TODO: make upgraded weapon graphics
+                        
                         if(GameState.weapon == "Greatspear"){
 
                             Graphics.displayWeapons("Spear", Colors.GREEN_BRIGHT);
