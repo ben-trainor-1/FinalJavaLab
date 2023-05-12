@@ -30,7 +30,7 @@ public class Player {
      * @return void
      * @throws Exception
      */
-    public Clip playAudio(String audioFilePath, int loopCount, float startVolume) throws Exception {
+    public Clip playAudio(String audioFilePath, int loopCount, float startVolume, int startMicroSeconds) throws Exception {
 
         File audioFile = new File(audioFilePath);
 
@@ -41,6 +41,7 @@ public class Player {
             clip.open(audioInput);
             FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
             volume.setValue(startVolume);
+            clip.setMicrosecondPosition(startMicroSeconds);
             clip.loop(loopCount);
             return clip;
         }
@@ -98,7 +99,7 @@ public class Player {
      * @param fadeDuration
      * @throws InterruptedException
      */
-    public static void fadeInAudio(Clip clip, float fadeDuration, float targetVolume) throws InterruptedException {
+    public static void fadeInAudio(Clip clip, float fadeDuration, int loopCount, float targetVolume) throws InterruptedException {
 
         FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
         
@@ -111,7 +112,7 @@ public class Player {
         float newVolume;
 
         volume.setValue(-80.0f);
-        clip.start();
+        clip.loop(loopCount);
 
         // Set volume according to the function
         // y = sqrt{q^{2} * s} * 1/s * sqrt{(-x/1000) + s} + q

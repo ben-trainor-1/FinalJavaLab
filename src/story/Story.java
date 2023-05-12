@@ -33,11 +33,11 @@ public class Story {
     public static void main(String[] args) throws Exception {
 
          //Text speed integers
-         int normalSpeed = 0; //50
-         int slowSpeed = 0; //60
-         int slowerSpeed = 0; //75
-         int fastSpeed = 0; //25
-         int fasterSpeed = 0; //10
+         int normalSpeed = 50; //50
+         int slowSpeed = 60; //60
+         int slowerSpeed = 75; //75
+         int fastSpeed = 25; //25
+         int fasterSpeed = 10; //10
          
         Player play = new Player();
         
@@ -53,14 +53,16 @@ public class Story {
 
 
         //Fancy welcome
-        Graphics.textSpeed = fasterSpeed;
+        Graphics.textSpeed = slowerSpeed;
+        Clip openingMusic = play.playAudio("./src/audio/music/opening_theme.wav", 0, 0.0F, 0);
 
         Graphics.displayBackground("Mountains", Colors.ANSI_RESET);
 
-        Graphics.textSpeed = normalSpeed;
-
+        
         Graphics.textInline(Colors.ANSI_BLUE +  "temp studio name" + Colors.ANSI_RESET + " presents temp game name.");
         Graphics.waitForEnter();
+
+        Graphics.textSpeed = fastSpeed;
         Graphics.text("please choose a character...");
         
         //Call scanner
@@ -150,6 +152,9 @@ public class Story {
 
         }while(true);
 
+        Player.fadeOutAudio(openingMusic, 2000);
+        Clip asbjornMusic = play.playAudio("./src/audio/music/asbjorn_loop.wav", -1, 0.0F, 3960000);
+        
         //Setting 
         Graphics.textInline(Colors.ANSI_PURPLE + "Your story starts in the misty mountains of Iceland inside of a small, sparsely populated town called Asbjorn. \nWhile its inhabitants are kind and welcoming, you are a warrior who wishes to fight.");
         Graphics.waitForEnter();
@@ -197,11 +202,14 @@ public class Story {
 
         }while(true);
 
-         //Leave Village; go to cave
-
+        
+        //Leave Village; go to cave
+        
         Graphics.textSpeed = normalSpeed;
-
+        
         Graphics.waitForEnter();
+        Clip forestSfx = play.playAudio("./src/audio/backgroundSceneryNoise/places/forest_loop_bit.wav", -1, 0.0F, 0);
+        Player.fadeOutAudio(asbjornMusic, 1500);
         Graphics.displayBackground("Trees", Colors.BLACK_BACKGROUND);
         Graphics.text(Colors.ANSI_PURPLE + "You walk down the path leading to the cave. Nothing eventful so far..." + Colors.ANSI_RESET);
         Thread.sleep(1000);
@@ -210,7 +218,8 @@ public class Story {
         Graphics.text(Colors.ANSI_PURPLE + "There's something there! Behind that tree!" + Colors.ANSI_RESET);
         Thread.sleep(1000);
         Graphics.text(Colors.ANSI_PURPLE + "You are fueled with determination as a dire wolf leaps and blocks your path." + Colors.ANSI_RESET);
-        Graphics.displayEnemy("DireWolf");
+        play.playAudio("./src/audio/animalsAndCharacters/wolf_bit.wav", 0, 0.0F, 0);
+        Graphics.displayEnemy("DireWolf", false);
         Graphics.textInline("Dire Wolf: A fierce wolf common in these cold regions, posing a deadly threat to the unprepared.\n");
 
         //Insert Battle with dire wolf here
@@ -219,7 +228,7 @@ public class Story {
 
         //Enter cave, but run into dead end. Odin comes, scorns you, but then feels guilty and moves boulder allowing you to move on.
 
-        Graphics.textInline(Colors.ANSI_PURPLE + "After a rather bloody battle, you reach the mouth of the cave.\n"
+        Graphics.text(Colors.ANSI_PURPLE + "After a rather bloody battle, you reach the mouth of the cave.\n"
                         + "You have known of this cave for a while now, but you soon realize it is a dead end.\n"
                         + "You are filled with confusion. Your sources are reliable; how could they get this wrong?\n"
                         + "Then the answer comes to you as a figure steps out of the shadows." + Colors.ANSI_RESET);
@@ -314,7 +323,7 @@ public class Story {
                                         + "As you round a corner, however, you spot torchlight ahead."); 
                 Graphics.waitForEnter();
                 Graphics.textInline(Colors.BLACK_BRIGHT + "A figure stands in a small room.\n" + Colors.ANSI_RESET);   
-                Graphics.displayEnemy("Loki");  
+                Graphics.displayEnemy("Loki", false);  
                 Graphics.waitForEnter(); 
 
                 Graphics.textSpeed = slowSpeed;
@@ -388,11 +397,12 @@ public class Story {
                 //Fight undead skeleton for key
                 //Enter Undead skeleton fight
                 Graphics.textInline(Colors.ANSI_PURPLE + "\nYou are left standing in the happy flickering torchlight coming from a nearby sconce.\n"
-                                    + "A gaping doorway stands ahead and you can see two skeletons. " 
-                                    + "There is one on the ground... the other looming, staring right at you.");
+                + "A gaping doorway stands ahead and you can see two skeletons. " 
+                + "There is one on the ground... the other looming, staring right at you.");
                 Graphics.waitForEnter();
                 Graphics.textInline("You notice a key attached to its femur... It's fighting time!!!\n" + Colors.ANSI_RESET);
-                Graphics.displayEnemy("Skeleton1");
+                play.playAudio("./src/audio/animalsAndCharacters/skeleton_bit.wav", 0, 0.0F, 0);
+                Graphics.displayEnemy("Skeleton1", false);
                 Graphics.textInline("Skeleton: The bones of the restless revitalized, this monster lurks seeking death.");
                 Graphics.waitForEnter();
 
@@ -430,7 +440,8 @@ public class Story {
                         Graphics.textInline(Colors.ANSI_PURPLE + "You burst into the room.\n");
                         Thread.sleep(1000);
                         Graphics.textInline("The prone skeleton nimbly rises to its boney feet. It's fighting time again!!!\n" + Colors.ANSI_RESET);
-                        Graphics.displayEnemy("Skeleton2");
+                        play.playAudio("src/audio/animalsAndCharacters/skeleton_bit.wav", 0, 0.0F, 0);
+                        Graphics.displayEnemy("Skeleton2", false);
                         Graphics.waitForEnter();
 
                         //Undead skeleton fight #2
@@ -506,11 +517,11 @@ public class Story {
                     Graphics.textInline(Colors.ANSI_PURPLE + "You found the end of the maze!\nYou enter a large circular and (oddly enough) well-lit room.");
                     Graphics.waitForEnter();
                     Graphics.textInline("You stride triumphantly through the room. Suddenly, you hear a loud " + Colors.PURPLE_BACKGROUND + "\"cuckaw!\"" + Colors.ANSI_RESET);
-                    Clip cuckaw = play.playAudio("./src/audio/animalsAndCharacters/rooster.wav", 0, 0.0F);
+                    play.playAudio("./src/audio/animalsAndCharacters/rooster_bit.wav", 0, 0.0F, 0);
 
                     Graphics.waitForEnter();
                     Graphics.textInline(Colors.RED_BACKGROUND + "A large rooster falls down and glares menacingly at you. It's Gullinkambi, the Golden Comb!" + Colors.ANSI_RESET);
-                    Graphics.displayEnemy("Gullinkambi");
+                    Graphics.displayEnemy("Gullinkambi", false);
                     Graphics.textInline("Gullinkambi: A mighty primal being with a beak sharper than all swords.");
                     Graphics.waitForEnter();
                     
@@ -522,7 +533,7 @@ public class Story {
                     Graphics.textInline(Colors.ANSI_PURPLE + "You feel empowered by overcoming such a powerful foe!\nThe giant rooster twitches dead on the ground. You are left breathless and traumatized.\n"
                                         + Colors.RED_BOLD_BRIGHT + "You will never look at roosters the same way again...\n" + Colors.ANSI_RESET
                                         + Colors.ANSI_PURPLE + "Speaking of roosters, Loki enters the room!\n");
-                    Graphics.displayEnemy("Loki");
+                    Graphics.displayEnemy("Loki", false);
                     Graphics.waitForEnter(); 
 
                     //New stats
@@ -537,7 +548,7 @@ public class Story {
                     }
                     else{
 
-                        GameState.playerAttack = 2;
+                        GameState.playerAttack = 2; // TODO: Fix this number?
                         GameState.pDefenseBuff = 7;
 
                     }
@@ -626,7 +637,7 @@ public class Story {
                     Graphics.textInline(Colors.ANSI_PURPLE+ "You have chosen to to take the path on the right." 
                                     + "Suddenly, an angry dwarf comes out of the shadows\n"
                                     + "He jumps you immediately and while you think he doesn't have a lot of strength, he continues to surprise you." + Colors.ANSI_RESET);
-                    Graphics.displayEnemy("Dwarf");
+                    Graphics.displayEnemy("Dwarf", false);
                     Graphics.textInline("Dwarf: A stout humaniod, strong and steadfast");
                     Graphics.waitForEnter();
 
@@ -650,7 +661,7 @@ public class Story {
 
                         Graphics.textInline(Colors.ANSI_PURPLE + "Suddenly, out of nowhere, a berserker charges at you in fury. Brace yourself!\n"
                                             + Colors.ANSI_RESET + "Berseker: A powerful and quick warrior, seeming to be in a trance-like state.");
-                        Graphics.displayEnemy("Berserker");
+                        Graphics.displayEnemy("Berserker", false);
                         Graphics.waitForEnter();
 
                         //berserker fight
@@ -714,7 +725,7 @@ public class Story {
                                 + "You soon discover, however, that Fenrir the wolf is guarding the gates. You must defeat him.\n" 
                                 + "Without throwing caution to the wind, you approach him slowly. But Fenrir doesn't hesitate to rush at you.\n" + Colors.ANSI_RESET);
         
-            Graphics.displayEnemy("Fenrir");
+            Graphics.displayEnemy("Fenrir", false);
             Graphics.textInline("Fenrir: The largest, most menacing god wolf. He is chained at the gates of Hel.");
 
             Graphics.waitForEnter();
@@ -748,7 +759,7 @@ public class Story {
             //Loki's mocking 
             Graphics.textInline(Colors.ANSI_PURPLE + "After standing there for a few moments, you hear sarcastic clapping and a small chuckle.\n"
                     + "You spin around quickly and try and find where that sound is coming from. Suddenly Loki appears out of the shadows.\n");
-            Graphics.displayEnemy("Loki");
+            Graphics.displayEnemy("Loki", false);
             Graphics.waitForEnter();
 
             Graphics.textSpeed = slowSpeed;
@@ -847,7 +858,7 @@ public class Story {
                    
                     Graphics.textSpeed = normalSpeed;
 
-                    Graphics.displayEnemy("Loki");
+                    Graphics.displayEnemy("Loki", false);
                     Graphics.textInline("Loki: A the devious god of mischief and the cause of all your problems.\n");
                     
                     //TODO: Add final boss
@@ -871,7 +882,7 @@ public class Story {
                                             + Colors.ANSI_WHITE + "\nYou run off to battle, destined to die forever...");
                         Graphics.waitForEnter();
                         Graphics.textInline("The end! (Ending #1 of 3)");
-                        Clip creditsMusic = play.playAudio("./src/audio/backgroundSceneryNoise/endCredits/loop_soft_piano.wav", -1, 0.0F);
+                        Clip creditsMusic = play.playAudio("./src/audio/backgroundSceneryNoise/endCredits/loop_soft_piano.wav", -1, 0.0F, 0);
 
                         Graphics.displayCredits(slowSpeed);
 
@@ -1012,7 +1023,7 @@ public class Story {
                         + "You approach the guards and try to make up a silly story but they don't buy it.\n"
                         + "You finally give up and tell them the truth but they still don't care. Your only option is to fight your way in.\n"
                         + Colors.ANSI_RESET);
-                        Graphics.displayEnemy("Elf");
+                        Graphics.displayEnemy("Elf", false);
                         Graphics.textInline("Elf: a wiry race. Be wary. They know many deadly tricks.\n");
                         
                         //TODO: Add elf fight
@@ -1022,7 +1033,7 @@ public class Story {
 
                         Graphics.textInline(Colors.ANSI_PURPLE + "After a long fight between the two of them, you are a little injured but you manage to get past the doors.\n"
                                             + "Hela, clad in royal garments, sits on the throne before you. She looks like a butterfly...\n");
-                        Graphics.displayEnemy("Nidhogg");
+                        Graphics.displayEnemy("Nidhogg", false);
                         Graphics.waitForEnter();
 
                         Graphics.textSpeed = slowSpeed;
@@ -1081,7 +1092,7 @@ public class Story {
                                 Graphics.textInline(Colors.ANSI_PURPLE + "Hela summons her biggest, meanest elf and he comes stomping in.\n"
                                 + "Oh great. He looks so angry and irritated. This is going to be loads of fun, you think to yourself.\n"
                                 + "He immediately knows its you he has to fight and charges at you. You bring out your " + GameState.weapon + " while he pulls out an axe.\n" + Colors.PURPLE_BOLD_BRIGHT);
-                                Graphics.displayEnemy("Elf");
+                                Graphics.displayEnemy("Elf", false);
                                 Graphics.textInline("Hela\'s elf: just an elf, but wearing the royal pink and red colors of Hela." + Colors.ANSI_RESET);
                                 
                                 //elf fight

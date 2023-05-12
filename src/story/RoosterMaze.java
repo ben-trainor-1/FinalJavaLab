@@ -25,7 +25,7 @@ public class RoosterMaze {
         
         // Start music
         Player play = new Player();
-        Clip mazeMusic = play.playAudio("./src/audio/music/spooky_bit_no_drums_loop.wav", -1, 0.0F);
+        Clip mazeMusic = play.playAudio("./src/audio/music/ambient_beat_loop.wav", -1, 0.0F, 0);
         
         // Set current position
         int[] currentPosition = {3,2};
@@ -80,13 +80,13 @@ public class RoosterMaze {
 
         //Check for Enemies
         if(mazeInfo.contains("E")){
-            Graphics.text(Colors.RED_BOLD + "Uh-oh! A mysterious figure stands menacingly" + Colors.ANSI_RESET);
             Player.fadeOutAudio(clip, 1500);
+            Graphics.text(Colors.RED_BOLD + "Uh-oh! A mysterious figure stands menacingly" + Colors.ANSI_RESET);
             Thread.sleep(50);
             
             FullCombat.enemyGameState("Skeleton2",85,15,5,10,4,7,5,4,1,20);
             FullCombat.fight();
-            Player.fadeInAudio(clip, 1500, 0.0F);
+            Player.fadeInAudio(clip, 1500, -1, 0.0F);
         }
 
         //Check for Riddles
@@ -108,8 +108,8 @@ public class RoosterMaze {
         //Check for Bossfight
         if(mazeInfo.contains("B")){
             Player.fadeOutAudio(clip, 2000);
-            FullCombat.enemyGameState("Gullinkambi",100,15,5,20,0,10,10,6,2,30);
-            FullCombat.fight();
+            // FullCombat.enemyGameState("Gullinkambi",100,15,5,20,0,10,10,6,2,30);
+            // FullCombat.fight();
             return exitMaze;
         }
 
