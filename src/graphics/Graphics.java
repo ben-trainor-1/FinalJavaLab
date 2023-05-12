@@ -131,7 +131,7 @@ public class Graphics {
         System.out.println(Colors.ANSI_RESET);
     }
 
-    // Method for printing out background
+    // Method for printing out credits
 
     public static void displayCredits(int speed) throws Exception {
          
