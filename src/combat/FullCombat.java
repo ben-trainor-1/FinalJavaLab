@@ -812,7 +812,6 @@ public class FullCombat {
                     Player.fadeOutAudio(combatMusic, 1750);
                   
                     Graphics.textInline("\n" + Colors.ANSI_GREEN + GameState.name + " fought courageously and defeated " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "!");
-                    Graphics.textInline("\n" + Colors.ANSI_GREEN + GameState.nicco + " fought courageously and defeated " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + "!");
                     Graphics.waitForEnter();
                     Graphics.textInline("\nSafe travels on the rest of your journey, " + Colors.ANSI_GREEN + "Viking" + Colors.ANSI_RESET + "...");
                     Graphics.waitForEnter();
