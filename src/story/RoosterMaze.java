@@ -3,7 +3,8 @@ package story;
 import java.util.ArrayList;
 import java.util.Scanner;
 import combat.FullCombat;
-import graphics.Colors;
+import graphics.*;
+import state.GameState;
 import audio.*;
 import javax.sound.sampled.Clip;
 
@@ -20,6 +21,8 @@ public class RoosterMaze {
 
     public static void main(String[] args) throws Exception  {
 
+        Graphics.textSpeed = 15;
+        
         // Start music
         Player play = new Player();
         Clip mazeMusic = play.playAudio("./src/audio/music/spooky_bit_no_drums_loop.wav", -1, 0.0F);
@@ -35,7 +38,8 @@ public class RoosterMaze {
             // Update position with movement method
             currentPosition =  movement(currentPosition[0], currentPosition[1], mazeMusic);
             // Display position
-            System.out.println("[" + currentPosition[0] + ", " + currentPosition[1] + "]" );
+            if (!(currentPosition[0] == -1)) System.out.println("[" + currentPosition[0] + ", " + currentPosition[1] + "]" );
+            
         }
 
 
@@ -76,7 +80,7 @@ public class RoosterMaze {
 
         //Check for Enemies
         if(mazeInfo.contains("E")){
-            System.out.println(Colors.RED_BOLD + "Uh-oh! A mysterious figure stands menacingly" + Colors.ANSI_RESET);
+            Graphics.text(Colors.RED_BOLD + "Uh-oh! A mysterious figure stands menacingly" + Colors.ANSI_RESET);
             Player.fadeOutAudio(clip, 1500);
             Thread.sleep(50);
             
@@ -87,25 +91,25 @@ public class RoosterMaze {
 
         //Check for Riddles
         if(mazeInfo.contains("1")){
-            System.out.println(Colors.ANSI_PURPLE + "You approach a dead end.\nThere is writing on the wall\n" + Colors.ANSI_RESET
+            Graphics.text(Colors.ANSI_PURPLE + "You approach a dead end.\nThere is writing on the wall\n" + Colors.ANSI_RESET
                                 + Colors.ANSI_RED + "Some play with us, most confuse us.\nWe are not approaching,\nNor do we mean as well.\nWhat are we?" + Colors.ANSI_RESET);  
         }
         if(mazeInfo.contains("2")){
-            System.out.println(Colors.ANSI_PURPLE + "You approach a dead end.\nThere is writing on the wall\n" + Colors.ANSI_RESET
+            Graphics.text(Colors.ANSI_PURPLE + "You approach a dead end.\nThere is writing on the wall\n" + Colors.ANSI_RESET
                                 + Colors.ANSI_RED + "Though many try, you can't bring me down. What am I?" + Colors.ANSI_RESET);
             
         }
         if(mazeInfo.contains("3")){
-            System.out.println("You approach a dead end.\nThere is writing on the wall\n" + Colors.ANSI_RESET
+            Graphics.text("You approach a dead end.\nThere is writing on the wall\n" + Colors.ANSI_RESET
                                 + Colors.BLACK_BOLD_BRIGHT + "A Flyting is a poem\nof insults cut like a gem\nBeware of the tongue\nlest you get stung\nLest you get carried away.\n"
                                 + Colors.ANSI_PURPLE + "Below is the single word, " + Colors.RED_BOLD_BRIGHT + "\"Cur\"" + Colors.ANSI_PURPLE + "." + Colors.ANSI_RESET);
         }
 
         //Check for Bossfight
         if(mazeInfo.contains("B")){
-            //TODO: Add Gulinkambi bossfight, if the boss is defeated, exit the maze.
-            //At the end: Gullinkambi: the Golden Comb (boss fight)
-            //TODO: Add Gullinkambi boss fight
+            Player.fadeOutAudio(clip, 2000);
+            FullCombat.enemyGameState("Gullinkambi",100,15,5,20,0,10,10,6,2,30);
+            FullCombat.fight();
             return exitMaze;
         }
 
