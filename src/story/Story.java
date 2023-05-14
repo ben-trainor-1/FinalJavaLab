@@ -32,11 +32,11 @@ public class Story {
     public static void main(String[] args) throws Exception {
 
          //Text speed integers
-         int normalSpeed = 0; //50
-         int slowSpeed = 0; //60
-         int slowerSpeed = 0; //75
-         int fastSpeed = 0; //25
-         int fasterSpeed = 0; //10
+         int slowerSpeed = 75; //75
+         int slowSpeed = 60; //60
+         int normalSpeed = 50; //50
+         int fastSpeed = 25; //25
+         int fasterSpeed = 10; //10
          
         Player play = new Player();
         
@@ -155,12 +155,19 @@ public class Story {
         Clip asbjornMusic = play.playAudio("./src/audio/music/asbjorn_loop.wav", -1, 0.0F, 3960000);
         
         //Setting 
-        Graphics.textInline(Colors.ANSI_PURPLE + "Your story starts in the misty mountains of Iceland inside of a small, sparsely populated town called Asbjorn. \nWhile its inhabitants are kind and welcoming, you are a warrior who wishes to fight.");
+        Graphics.text(Colors.ANSI_PURPLE + "Your story starts in the misty mountains of Iceland inside of a small, sparsely populated town called Asbjorn.");
+        Graphics.textSpeed = slowerSpeed;
+        Graphics.displayBackground("Asbjorn", Colors.BLACK_BRIGHT);
         Graphics.waitForEnter();
-        Graphics.textInline("Lucky for you, a cave leading straight to Hel is nearby.\nSince your chances of fighting in Ragnarok are slim, this is your best shot for action.\n" 
-                            + "You sift through your belongings and discover your trusty dumpling box. It is a gift from a long-lost loved one.\nIt periodically fills up with revitalizing dumplings, so you may never go hungry.\nYou leave the rest of your belongings behind.\n");
+        Graphics.textSpeed = fastSpeed;
+        Graphics.textInline("While its inhabitants are kind and welcoming, you are a warrior who wishes to fight.");
+        Graphics.waitForEnter();
+        Graphics.textInline("Lucky for you, a cave leading straight to Hel is nearby.\nSince your chances of fighting in Ragnarok are slim, this is your best shot for action.");
+        Graphics.waitForEnter();
+        Graphics.textInline("You sift through your belongings and discover your trusty dumpling box. It is a gift from a long-lost loved one.\nIt periodically fills up with revitalizing dumplings, so you may never go hungry.");
         Graphics.displayHealing("Dumpling", Colors.YELLOW_BOLD_BRIGHT);
-        Graphics.displayBackground("Asborn", Colors.BLACK_BRIGHT);
+        Graphics.waitForEnter();
+        Graphics.textInline("You leave the rest of your belongings behind.");
         Graphics.waitForEnter();
         Graphics.textInline(Colors.ANSI_YELLOW + "Now you have a choice.\nYou can \n1) leave the village now or \n2) stay a give a brief goodbye to your acquaintances.\n" + Colors.ANSI_RESET);
                        
