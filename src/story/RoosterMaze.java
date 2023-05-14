@@ -113,12 +113,12 @@ public class RoosterMaze {
         }
 
         // Print movement options
-        System.out.println("Movement options: " + movementOptions.toString());
+        Graphics.text("Movement options: " + movementOptions.toString());
 
         // Scanner and user movement choice
         Scanner in = new Scanner(System.in);
         String movementChoice;
-        System.out.println("Where would you like to go?");
+        Graphics.text("Where would you like to go?");
 
         // Prevent illegal moves
         do {

@@ -468,7 +468,7 @@ public class Story {
                         play.playAudio("./src/audio/soundEffects/significant_upgrade.wav", 0, 0.0F, 0);
                         Graphics.displayHealing("MagicalNecklace", Colors.CYAN_BOLD);
                         Thread.sleep(5000);
-                        
+
                         Graphics.waitForEnter();
                         Player.fadeInAudio(caveSfx, 500, -1, 0.0F);
                         Graphics.textInline(Colors.ANSI_PURPLE + "You return to the intersection, seeking Hel more than anything. Ragnarok won't wait for anyone now!\n" + Colors.ANSI_RESET);
@@ -761,8 +761,8 @@ public class Story {
             FullCombat.enemyGameState("Fenrir",125,20,5,25,0,8,15,8,2,40);
             FullCombat.fight();
 
-            Graphics.textInline(Colors.ANSI_PURPLE + "You feel empowered by overcoming such a powerful foe! The battle gets a bit bloody. You feel empowered.\n"
-                                + "You finally defeat Fenrir, but you don't kill him. Fewer the casualties the better, right? More to kill in Ragnorak ;)\n");
+            Graphics.textInline(Colors.ANSI_PURPLE + "You feel empowered by overcoming such a powerful foe! The battle gets a bit bloody.\n"
+                                + "You finally defeat Fenrir, but you don't kill him. Fewer the casualties the better, right? More to kill in Ragnarok ;)\n");
 
             //New stats
             GameState.playerHealth = 150;
@@ -848,6 +848,8 @@ public class Story {
                                 + "You push them open and discover the bottom of Hel was so much more than what you expected." );
             Graphics.waitForEnter();
 
+            Clip helMusic = play.playAudio("./src/audio/music/hel_loop.wav", -1, 0.0F, 0);
+
         //Greater Hel Area
         do { 
 
@@ -897,7 +899,7 @@ public class Story {
                         Graphics.textSpeed = slowSpeed;
 
                         Graphics.textInline(Colors.PURPLE_BRIGHT + "After a long, exhausting battle, Loki seems completely unfazed. He suddenly stops.\n"
-                                            + Colors.BLACK_BRIGHT+  "\"Alas! I must be off! I\'m sincerely sorry we cannot finish. Perhaps I will visit you during Ragnorak!\nYou have my full assurances that this is fate\'s will, not mine!\nToddles!\"\n" + Colors.ANSI_RESET
+                                            + Colors.BLACK_BRIGHT+  "\"Alas! I must be off! I\'m sincerely sorry we cannot finish. Perhaps I will visit you during Ragnarok!\nYou have my full assurances that this is fate\'s will, not mine!\nToddles!\"\n" + Colors.ANSI_RESET
                                             + Colors.PURPLE_BRIGHT + "With that he jumps off the boat."); 
                         Graphics.textInline("As for you...");
                         Graphics.waitForEnter();
@@ -909,6 +911,8 @@ public class Story {
                                             + Colors.ANSI_WHITE + "\nYou run off to battle, destined to die forever...");
                         Graphics.waitForEnter();
                         Graphics.textInline("The end! (Ending #1 of 3)");
+
+                        Player.fadeOutAudio(helMusic, 1500);
                         Clip creditsMusic = play.playAudio("./src/audio/backgroundSceneryNoise/endCredits/loop_soft_piano.wav", -1, 0.0F, 0);
 
                         Graphics.displayCredits(slowSpeed);
@@ -944,6 +948,10 @@ public class Story {
                         Graphics.textInline("Light encompasses you, as you stir.\nThe last thing you remember is the conflict at Ragnorak. You fought for one hundred days and nights.\nYou eventually were eventually were bested, but not before having the satisfaction of seeing Loki perish at the hands of Heimdall.\n"
                                             + "You sit up on a grassy field. You survived Ragnorak! It should be impossible! You recall, however, the Godmead which you won.\nIt must have been what resurrected you.\n You rise, feeling rested like you never had before.\nA new adventure awaits somewhere!\nYou thrilled to discover what it is! ");
                         Graphics.textInline("The end! (Ending #2 of 3)\n");
+                        Player.fadeOutAudio(helMusic, 1500);
+                        Clip creditsMusic = play.playAudio("./src/audio/backgroundSceneryNoise/endCredits/loop_soft_piano.wav", -1, 0.0F, 0);
+                        Graphics.displayCredits(slowSpeed);
+                        Player.fadeOutAudio(creditsMusic, 3000);
                         System.exit(input);
 
                     }
@@ -990,7 +998,9 @@ public class Story {
                     input = in.nextInt();
                     if(input == 1){
                         //Run flyting
+                        Player.fadeOutAudio(helMusic, 2000);
                         Tavern.main(args);
+                        Player.fadeInAudio(helMusic, 1500, -1, 0.0F);
                         GameState.winFlyting = true;
                     }
                     else if(input == 2){
