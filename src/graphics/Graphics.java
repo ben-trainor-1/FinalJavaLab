@@ -176,7 +176,6 @@ public class Graphics {
         
         // Background name
         System.out.print(color);
-        text(backgroundScanner.nextLine());
     
         // Background sprite
         while (backgroundScanner.hasNext()) {
