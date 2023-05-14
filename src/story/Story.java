@@ -160,14 +160,14 @@ public class Story {
         Graphics.displayBackground("Asbjorn", Colors.BLACK_BRIGHT);
         Graphics.waitForEnter();
         Graphics.textSpeed = fastSpeed;
-        Graphics.textInline("While its inhabitants are kind and welcoming, you are a warrior who wishes to fight.");
+        Graphics.textInline(Colors.ANSI_PURPLE + "While its inhabitants are kind and welcoming, you are a warrior who wishes to fight.");
         Graphics.waitForEnter();
         Graphics.textInline("Lucky for you, a cave leading straight to Hel is nearby.\nSince your chances of fighting in Ragnarok are slim, this is your best shot for action.");
         Graphics.waitForEnter();
         Graphics.textInline("You sift through your belongings and discover your trusty dumpling box. It is a gift from a long-lost loved one.\nIt periodically fills up with revitalizing dumplings, so you may never go hungry.");
         Graphics.displayHealing("Dumpling", Colors.YELLOW_BOLD_BRIGHT);
         Graphics.waitForEnter();
-        Graphics.textInline("You leave the rest of your belongings behind.");
+        Graphics.textInline(Colors.ANSI_PURPLE + "You leave the rest of your belongings behind.");
         Graphics.waitForEnter();
         Graphics.textInline(Colors.ANSI_YELLOW + "Now you have a choice.\nYou can \n1) leave the village now or \n2) stay a give a brief goodbye to your acquaintances.\n" + Colors.ANSI_RESET);
                        
@@ -235,6 +235,7 @@ public class Story {
 
         //Enter cave, but run into dead end. Odin comes, scorns you, but then feels guilty and moves boulder allowing you to move on.
 
+        Graphics.textSpeed = normalSpeed;
         Graphics.text(Colors.ANSI_PURPLE + "After a rather bloody battle, you reach the mouth of the cave.\n"
                         + "You have known of this cave for a while now, but you soon realize it is a dead end.\n"
                         + "You are filled with confusion. Your sources are reliable; how could they get this wrong?\n"
