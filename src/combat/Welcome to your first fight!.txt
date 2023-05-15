@@ -1,0 +1,25 @@
+Welcome to your first fight!
+Each encounter is structured kind of like rock-paper-scissors.
+You and your opponent blindly choose between attacking, defending, and healing.
+
+When you attack, you will deal a random amount of damage based on your character's attack.
+Currently, your base attack is *insert attack*. That means you will deal
+anywhere between *5 under* and *5 over* damage.
+You also have a chance of dealing a critical hit whenever you attack!
+Currently, a critical hit would increase the damage dealt by *crit amount*.
+If both you and your opponent crit, the enemy will be stunned and open for attack
+the next round.
+
+When you defend, you will be protected against all normal attacks.
+However, critical hits from your opponent will cut through your defense
+and deal the full amount.
+If you successfully defend, you will receive a defensive buff in the next round
+and receive less damage from any attacks (including critical hits).
+
+When you heal, you will recover a random amount of health based on
+your character's heal amount.
+Currently, your base heal amount is *insert heal amt*. That means you will heal
+anywhere between *5 under* and *5 over* health.
+You will be vulnerable to attacks but may mitigate the damage by healing.
+
+Your opponents will use these same tactics against you, so choose wisely!
