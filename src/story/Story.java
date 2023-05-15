@@ -633,7 +633,7 @@ public class Story {
                 }
                 else{
 
-                    Graphics.textInline(Colors.ANSI_PURPLE + "You come upon a door. It is locked. You try to force it open, but it remains steadfast.\nperhaps something in the left passage will help.\n");
+                    Graphics.textInline(Colors.ANSI_PURPLE + "You come upon a door. It is locked. You try to force it open, but it remains steadfast.\nPerhaps something in the left passage will help.\n");
                 
                 }
             }
