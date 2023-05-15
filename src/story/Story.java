@@ -123,20 +123,20 @@ public class Story {
 
             if(input == 1){
 
-                //Choosing Greatspear
+                //Choosing greatspear
                 Graphics.text("You have chosen a greatspear.");
-                GameState.weapon = "Greatspear";
+                GameState.weapon = "greatspear";
                 Graphics.displayWeapons("Spear", Colors.BLACK_BOLD_BRIGHT);
-                GameState.pDefenseBuff = 6;
+                GameState.playerHealAmount = 32;
                 System.out.println(GameState.playerAttack);
                 break;
 
             }
             else if(input == 2){
 
-                //Choosing Battleaxe
+                //Choosing battleaxe
                 Graphics.text("You have chosen a battleaxe.");
-                GameState.weapon = "Battleaxe";
+                GameState.weapon = "battleaxe";
                 Graphics.displayWeapons("Axe", Colors.RED_BOLD);
                 GameState.playerAttack = 11;
                 System.out.println(GameState.playerAttack);
@@ -482,7 +482,7 @@ public class Story {
                         Player.fadeInAudio(caveSfx, 500, -1, 0.0F);
                         Graphics.textInline(Colors.ANSI_PURPLE + "You return to the intersection, seeking Hel more than anything. Ragnarok won't wait for anyone now!\n" + Colors.ANSI_RESET);
                         
-                        if(GameState.weapon == "Greatspear"){
+                        if(GameState.weapon == "greatspear"){
 
                             GameState.playerAttack = 15;
                             System.out.println(GameState.playerAttack);
@@ -563,18 +563,18 @@ public class Story {
 
                     //New stats
                     GameState.playerHealth = 125;
+                    GameState.pDefenseBuff = 7;
                     GameState. pCritical = 25;
 
-                    if(GameState.weapon == "Greatspear"){
+                    if(GameState.weapon == "greatspear"){
 
                         GameState.playerAttack = 25;
-                        GameState.pDefenseBuff = 8;
+                        GameState.playerHealAmount = 33;
                         
                     }
                     else{
 
-                        GameState.playerAttack = 27; // TODO: Fix this number?
-                        GameState.pDefenseBuff = 7;
+                        GameState.playerAttack = 26;
 
                     }
 
@@ -707,7 +707,7 @@ public class Story {
 
                         // TODO: make upgraded weapon graphics
                         
-                        if(GameState.weapon == "Greatspear"){
+                        if(GameState.weapon == "greatspear"){
 
                             Graphics.displayWeapons("Spear", Colors.GREEN_BRIGHT);
 
@@ -777,18 +777,19 @@ public class Story {
             GameState.playerHealth = 150;
             GameState.playerHealCount = 4;
             GameState.playerHealAmount = 40;
+            GameState.pDefenseBuff = 10;
             GameState.pCritical = 30;
 
-            if(GameState.weapon == "Greatspear"){
+            if(GameState.weapon == "greatspear"){
 
                 GameState.playerAttack = 40;
-                GameState.pDefenseBuff = 12;
+                GameState.playerHealAmount = 43;
 
             }
             else{
 
                 GameState.playerAttack = 42;
-                GameState.pDefenseBuff = 10;
+                GameState.playerHealAmount = 40;
 
             }
 
@@ -1035,8 +1036,17 @@ public class Story {
                     Graphics.displayHealing("DumplingRecipe", Colors.WHITE_BRIGHT);
                     Graphics.textSpeed = slowSpeed;
                     Graphics.textInline(Colors.CYAN_BACKGROUND + "You found a Dumpling recipe! It\'s mystical!" + Colors.ANSI_RESET + "\n");
-                    GameState.playerHealCount = 5;
-                    GameState.playerHealAmount = 45;
+                    //GameState.playerHealCount = 5;
+                    if(GameState.weapon == "greatspear"){
+                        
+                        GameState.playerHealAmount = 47;
+
+                    }
+                    else{
+                        
+                        GameState.playerHealAmount = 45;
+
+                    }
                     GameState.firstSouth ++;
                 }
                 else{
