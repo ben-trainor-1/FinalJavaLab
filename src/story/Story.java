@@ -58,7 +58,9 @@ public class Story {
         Graphics.displayBackground("Mountains", Colors.ANSI_RESET);
 
         
-        Graphics.textInline(Colors.ANSI_BLUE +  "temp studio name" + Colors.ANSI_RESET + " presents temp game name.");
+        Graphics.textInline(Colors.ANSI_BLUE +  "CLAP Official" + Colors.ANSI_RESET + " presents Mr. Trainor: The Videogame.");
+
+        Graphics.textInline("\nEnter return when you see \"\u2023\".");
         Graphics.waitForEnter();
 
         Graphics.textSpeed = fastSpeed;
@@ -128,7 +130,6 @@ public class Story {
                 GameState.weapon = "greatspear";
                 Graphics.displayWeapons("Spear", Colors.BLACK_BOLD_BRIGHT);
                 GameState.playerHealAmount = 32;
-                System.out.println(GameState.playerAttack);
                 break;
 
             }
@@ -139,7 +140,6 @@ public class Story {
                 GameState.weapon = "battleaxe";
                 Graphics.displayWeapons("Axe", Colors.RED_BOLD);
                 GameState.playerAttack = 11;
-                System.out.println(GameState.playerAttack);
                 break;
 
             }
@@ -191,7 +191,7 @@ public class Story {
                 Graphics.textSpeed = slowSpeed;
 
                 Graphics.textInline(Colors.ANSI_GREEN +  "\"Viggo, I'm leaving this town. I'm going to Hel. You can join me if you wish\"\n" + Colors.PURPLE_BRIGHT + "\"Alas, young " + GameState.genderNoun.toLowerCase() + " I do not display your energetic talent any more.\n I will stay here, accepting my banishment.\"\n"
-                                + "\"Well, I'll miss you then. You were the closest one of this lot to me.\"\n"
+                                + Colors.ANSI_GREEN + "\"Well, I'll miss you then. You were the closest one of this lot to me.\"\n"
                                 + Colors.PURPLE_BRIGHT + "\"We understand that you have not lost your fervor for fighting like we have. We all wish you luck from the bottom of our hearts.\"\n");
                 
                 Graphics.textSpeed = normalSpeed;
@@ -251,7 +251,7 @@ public class Story {
         
         Graphics.textSpeed = fastSpeed;
 
-        Graphics.textInline(Colors.BLUE_BOLD_BRIGHT + "\"DO NOT SASS ME YOUNG " + GameState.genderNoun + " YOU HAVE BROUGHT RUIN TO US ALL.\nYou did not deserve to have fought even that dire wolf, worthless wretch...\"");
+        Graphics.textInline(Colors.BLUE_BOLD_BRIGHT + "\"DO NOT SASS ME YOUNG " + GameState.genderNoun.toUpperCase() + " YOU HAVE BROUGHT RUIN TO US ALL.\nYou did not deserve to have fought even that dire wolf, worthless wretch...\"");
         Graphics.waitForEnter();
 
         Graphics.textSpeed = slowSpeed;
@@ -277,7 +277,7 @@ public class Story {
             
                 Graphics.textInline(Colors.ANSI_PURPLE + "Odin looks solemnly at you, as if peering into your mind.\n");
                 Graphics.textSpeed = slowSpeed;
-                Graphics.textInline(Colors.BLUE_BOLD_BRIGHT + "\"You have courage. I only hope it will stay with to the end.\"\n"
+                Graphics.textInline(Colors.BLUE_BOLD_BRIGHT + "\"You have courage. I only hope it will stay with you to the end.\"\n"
                                 + Colors.ANSI_RESET); 
                 break; 
 
@@ -343,7 +343,7 @@ public class Story {
                 
                 Graphics.textSpeed = normalSpeed;
 
-                Graphics.textInline(Colors.ANSI_PURPLE + "You stand speechless before the infamous god of deceit. Words with him are dangerous... He molds them as if they are clay.\n");
+                Graphics.textInline(Colors.ANSI_PURPLE + "You stand speechless before the infamous god of deceit... Loki. Words with him are dangerous... He molds them as if they are clay.\n");
                 
                 Graphics.textSpeed = slowSpeed;
 
@@ -485,13 +485,13 @@ public class Story {
                         if(GameState.weapon == "greatspear"){
 
                             GameState.playerAttack = 15;
-                            System.out.println(GameState.playerAttack);
+        
 
                         }
                         else{
 
                             GameState.playerAttack = 16;
-                            System.out.println(GameState.playerAttack);
+        
 
                         }
                         break;
@@ -1038,7 +1038,7 @@ public class Story {
                     Graphics.textInline(Colors.CYAN_BACKGROUND + "You found a Dumpling recipe! It\'s mystical!" + Colors.ANSI_RESET + "\n");
                     //GameState.playerHealCount = 5;
                     if(GameState.weapon == "greatspear"){
-                        
+
                         GameState.playerHealAmount = 47;
 
                     }

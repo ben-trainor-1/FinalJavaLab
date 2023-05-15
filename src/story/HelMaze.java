@@ -13,8 +13,8 @@ public class HelMaze {
         //Key: L = left, R = right, U = up, D = down, B = bossfight(exit)
         //     E = enemy, 1 = riddle #1, 2 = riddle #2, 3 = riddle #3
         {"DR","LDR","LR","L7","R8","LDR","LD"},
-        {"U6X","RDU","LRD","LR","LR","LU","H"},
-        {"R","LDU","RU","LR","L3","DE4","D5"},
+        {"UX","RDU","LRD","LR","LR","LU","H"},
+        {"R6","LDU","RU","LR","L3","DE4","D5"},
         {"D2E","UR","LDR","LR","LDR","LUR","DLU"},
         {"DUR","LD","U","D1","U","D","DU"},
         {"UR","ULR","LR","ULR","LR","ULR","UL"},
