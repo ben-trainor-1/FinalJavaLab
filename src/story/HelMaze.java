@@ -16,7 +16,7 @@ public class HelMaze {
         {"U6X","RDU","LRD","LR","LR","LU","H"},
         {"R","LDU","RU","LR","L3","DE4","D5"},
         {"D2E","UR","LDR","LR","LDR","LUR","DLU"},
-        {"DUR","LD","U","D1","U","D","LDU"},
+        {"DUR","LD","U","D1","U","D","DU"},
         {"UR","ULR","LR","ULR","LR","ULR","UL"},
     };
 
@@ -31,7 +31,7 @@ public class HelMaze {
         // Set current position
         int[] currentPosition = {5,3};
         // Display position
-        Graphics.text("[" + currentPosition[0] + ", " + currentPosition[1] + "]" );
+        // Graphics.text("[" + currentPosition[0] + ", " + currentPosition[1] + "]" );
 
         while (currentPosition[0] != -1 && currentPosition[1] != -1) {
             // Print out the map
@@ -39,7 +39,7 @@ public class HelMaze {
             // Update position with movement method
             currentPosition =  movement(currentPosition[0], currentPosition[1], mazeMusic);
             // Display position
-            if (currentPosition[0] != -1) Graphics.text("[" + currentPosition[0] + ", " + currentPosition[1] + "]" );
+            // if (currentPosition[0] != -1) Graphics.text("[" + currentPosition[0] + ", " + currentPosition[1] + "]" );
         }
 
 
@@ -139,12 +139,12 @@ public class HelMaze {
         }
 
         // Print movement options
-        Graphics.text("Movement options: " + movementOptions.toString());
+        Graphics.text("Movement options: " + Colors.YELLOW_BOLD + movementOptions.toString() + Colors.ANSI_RESET);
 
         // Scanner and user movement choice
         Scanner in = new Scanner(System.in);
         String movementChoice;
-        Graphics.text("Where would you like to go?");
+        Graphics.text(Colors.PURPLE_BRIGHT + "Where would you like to go?" + Colors.ANSI_RESET);
 
         // Prevent illegal moves
         do {
@@ -153,7 +153,7 @@ public class HelMaze {
                 break;
             }
             else {
-                Graphics.text("Please enter a valid direction.");
+                Graphics.text(Colors.ANSI_RED + "Please enter a valid direction." + Colors.ANSI_RESET);
             }
         } while (true);
 
@@ -183,7 +183,7 @@ public class HelMaze {
                 System.out.print("| ");
 
                 if (playerLocation[0] == i && playerLocation[1] == j) {
-                    System.out.print("O");
+                    System.out.print(Colors.YELLOW_BOLD + "0" + Colors.ANSI_RESET);
                 }
                 else {
                     System.out.print(" ");

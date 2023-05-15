@@ -227,7 +227,8 @@ public class Story {
         play.playAudio("./src/audio/animalsAndCharacters/wolf_bit.wav", 0, 3.0F, 0);
         Player.fadeOutAudio(forestSfx, 1500);
         Graphics.displayEnemy("DireWolf", false);
-        Graphics.textInline("Dire Wolf: A fierce wolf common in these cold regions, posing a deadly threat to the unprepared.\n");
+        Graphics.textInline("Dire Wolf: A fierce wolf common in these cold regions, posing a deadly threat to the unprepared.");
+        Graphics.waitForEnter();
 
         //Insert Battle with dire wolf here
         FullCombat.enemyGameState("DireWolf", 75, 10, 5, 5, 0, 6, 5, -1, 0, 0);
@@ -1060,6 +1061,8 @@ public class Story {
                         Graphics.waitForEnter();
                         Graphics.textInline(Colors.ANSI_RESET);
 
+                        Player.fadeOutAudio(helMusic, input);
+
                         HelMaze.main(args);
 
                         // Approach palace after maze 
@@ -1070,6 +1073,7 @@ public class Story {
                         + Colors.ANSI_RESET);
                         Graphics.displayEnemy("Elf", false);
                         Graphics.textInline("Elf: a wiry race. Be wary. They know many deadly tricks.\n");
+                        Graphics.waitForEnter();
                         
                         // Elf fight
                         FullCombat.enemyGameState("Elf",175,25,5,25,2,7,20,8,2,45);
@@ -1139,6 +1143,7 @@ public class Story {
                                 + "He immediately knows its you he has to fight and charges at you. You bring out your " + GameState.weapon + " while he pulls out an axe.\n" + Colors.PURPLE_BOLD_BRIGHT);
                                 Graphics.displayEnemy("Elf", false);
                                 Graphics.textInline("Hela\'s elf: just an elf, but wearing the royal pink and red colors of Hela." + Colors.ANSI_RESET);
+                                Graphics.waitForEnter();
                                 
                                 //elf fight
                                 FullCombat.enemyGameState("Elf",175,25,5,25,2,7,20,8,2,45);
