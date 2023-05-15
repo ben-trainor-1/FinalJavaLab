@@ -128,7 +128,7 @@ public class Story {
                 GameState.weapon = "greatspear";
                 Graphics.displayWeapons("Spear", Colors.BLACK_BOLD_BRIGHT);
                 GameState.playerHealAmount = 32;
-                System.out.println(GameState.playerAttack);
+                // System.out.println(GameState.playerAttack);
                 break;
 
             }
@@ -139,7 +139,7 @@ public class Story {
                 GameState.weapon = "battleaxe";
                 Graphics.displayWeapons("Axe", Colors.RED_BOLD);
                 GameState.playerAttack = 11;
-                System.out.println(GameState.playerAttack);
+                // System.out.println(GameState.playerAttack);
                 break;
 
             }
