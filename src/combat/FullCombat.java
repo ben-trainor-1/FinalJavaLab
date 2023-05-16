@@ -124,27 +124,27 @@ public class FullCombat {
                 // Tutorial
                 if (GameState.enemy.equals("DireWolf") && tutorialFinished == false) {
 
-                    Graphics.textInline("Welcome to your first fight!");
+                    Graphics.textInline(Colors.YELLOW_BOLD + "Welcome to your first fight!" + Colors.ANSI_RESET);
                     Graphics.waitForEnter();
-                    Graphics.textInline("Each encounter is structured kind of like rock-paper-scissors.\n" +
+                    Graphics.textInline("Each encounter is structured kind of like" + Colors.YELLOW_BOLD + " rock-paper-scissors.\n" + Colors.ANSI_RESET +
                                         "You and your opponent blindly choose between attacking, defending, and healing.");
                     Graphics.waitForEnter();
                     // Attacking
-                    Graphics.textInline("\nWhen you attack, you will deal a random amount of damage based on your character's attack.");
+                    Graphics.textInline("\nWhen you " + Colors.RED_BOLD + "attack" + Colors.ANSI_RESET + ", you will deal a random amount of damage based on your character's attack.");
                     Graphics.waitForEnter();
-                    Graphics.textInline("Currently, your base attack is " +  GameState.playerAttack + ". \nThat means you will deal anywhere between " 
-                                        + (GameState.playerAttack - 5) + " and " + (GameState.playerAttack + 5) + " damage.");
+                    Graphics.textInline("Currently, your base attack is " + Colors.RED_BOLD + GameState.playerAttack + Colors.ANSI_RESET + ". \nThat means you will deal anywhere between " 
+                                        + Colors.RED_BOLD + (GameState.playerAttack - 5) + Colors.ANSI_RESET + " and " + Colors.RED_BOLD + (GameState.playerAttack + 5) + Colors.ANSI_RESET + " damage.");
                     Graphics.waitForEnter();
-                    Graphics.textInline("\nYou also have a chance of dealing a critical hit whenever you attack!");
+                    Graphics.textInline("\nYou also have a chance of dealing a " + Colors.YELLOW_BOLD + "critical hit" + Colors.ANSI_RESET + " whenever you attack!");
                     Graphics.waitForEnter();
-                    Graphics.textInline("Currently, a critical hit would increase the damage dealt by " + GameState.pCritical + ".");
+                    Graphics.textInline("Currently, a critical hit would increase the damage dealt by " + Colors.RED_BOLD + GameState.pCritical + Colors.ANSI_RESET + ".");
                     Graphics.waitForEnter();
-                    Graphics.textInline("If both you and your opponent crit, the enemy will be stunned and open for attack the next round!");
+                    Graphics.textInline("If both you and your opponent crit, the enemy will be " + Colors.YELLOW_BOLD + "stunned" + Colors.ANSI_RESET + " and open for attack the next round!");
                     Graphics.waitForEnter();
                     // Defending
-                    Graphics.textInline("\nWhen you defend, you will be protected against all normal attacks.");
+                    Graphics.textInline("\nWhen you " + Colors.BLUE_BOLD + "defend" + Colors.ANSI_RESET + ", you will be protected against all normal attacks.");
                     Graphics.waitForEnter();
-                    Graphics.textInline("However, critical hits from your opponent will cut through your defense and deal the full amount!");
+                    Graphics.textInline("However, " + Colors.YELLOW_BOLD + "critical hits" + Colors.ANSI_RESET + " from your opponent will " + Colors.YELLOW_BOLD + "cut through your defense" + Colors.ANSI_RESET + " and deal the full amount!");
                     Graphics.waitForEnter();
                     Graphics.textInline("If you successfully defend, you will receive a defensive buff in the next round\n"
                                         + "and receive less damage from any attacks (including critical hits).");
