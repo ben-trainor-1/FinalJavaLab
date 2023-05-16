@@ -863,6 +863,8 @@ public class FullCombat {
                 }
                 else {
 
+                    GameState.playerHealCount = playerInitialHealCount;
+                    GameState.enemyHealCount = enemyInitialHealCount;
                     play.playAudio("./src/audio/soundEffects/victory_theme.wav", 0, -5.0F, 0);
                     Graphics.displayWin("Trophy", Colors.ANSI_YELLOW);
                     Player.fadeOutAudio(combatMusic, 1750);
