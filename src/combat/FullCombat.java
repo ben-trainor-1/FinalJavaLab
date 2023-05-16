@@ -95,6 +95,7 @@ public class FullCombat {
             GameState.eHealedToMax = false;
             int playerInitialHealCount = GameState.playerHealCount;
             int enemyInitialHealCount = GameState.enemyHealCount;
+            boolean tutorialFinished = false;
 
             // Display enemy 
 
@@ -120,6 +121,49 @@ public class FullCombat {
                 Graphics.displayGormGro();
                 System.out.print("\n\n");
 
+                // Tutorial
+                if (GameState.enemy.equals("DireWolf") && tutorialFinished == false) {
+
+                    Graphics.textInline("Welcome to your first fight!");
+                    Graphics.waitForEnter();
+                    Graphics.textInline("Each encounter is structured kind of like rock-paper-scissors.\n" +
+                                        "You and your opponent blindly choose between attacking, defending, and healing.");
+                    Graphics.waitForEnter();
+                    // Attacking
+                    Graphics.textInline("\nWhen you attack, you will deal a random amount of damage based on your character's attack.");
+                    Graphics.waitForEnter();
+                    Graphics.textInline("Currently, your base attack is " +  GameState.playerAttack + ". \nThat means you will deal anywhere between " 
+                                        + (GameState.playerAttack - 5) + " and " + (GameState.playerAttack + 5) + " damage.");
+                    Graphics.waitForEnter();
+                    Graphics.textInline("\nYou also have a chance of dealing a critical hit whenever you attack!");
+                    Graphics.waitForEnter();
+                    Graphics.textInline("Currently, a critical hit would increase the damage dealt by " + GameState.pCritical + ".");
+                    Graphics.waitForEnter();
+                    Graphics.textInline("If both you and your opponent crit, the enemy will be stunned and open for attack the next round!");
+                    Graphics.waitForEnter();
+                    // Defending
+                    Graphics.textInline("\nWhen you defend, you will be protected against all normal attacks.");
+                    Graphics.waitForEnter();
+                    Graphics.textInline("However, critical hits from your opponent will cut through your defense and deal the full amount!");
+                    Graphics.waitForEnter();
+                    Graphics.textInline("If you successfully defend, you will receive a defensive buff in the next round\n"
+                                        + "and receive less damage from any attacks (including critical hits).");
+                    Graphics.waitForEnter();
+                    // Healing
+                    Graphics.textInline("\nWhen you heal, you will recover a random amount of health based on your character's heal amount.");
+                    Graphics.waitForEnter();
+                    Graphics.textInline("Currently, your base heal amount is " + GameState.playerHealAmount + "."
+                                        + "\nThat means you will heal anywhere between " + (GameState.playerHealAmount - 5) + " and " + (GameState.playerHealAmount + 5) + " health.");
+                    Graphics.waitForEnter();
+                    Graphics.textInline("You will be vulnerable to attacks but may mitigate the damage by healing.");
+                    Graphics.waitForEnter();
+                    // Last line
+                    Graphics.textInline("\nYour opponents will use these same tactics against you, so choose wisely!");
+                    Graphics.waitForEnter();
+                    Graphics.space(1);
+                    tutorialFinished = true;
+
+                }
 
                 // Enemy does not act if there is a parry
                 if (parry == true) {
@@ -167,13 +211,13 @@ public class FullCombat {
            
                 // Choose action
                 if (GameState.playerHealCount > 1) {
-                    Graphics.text(Colors.ANSI_RESET + "Enter \'" + Colors.ANSI_YELLOW + "Attack" + Colors.ANSI_RESET + "\', \'" + Colors.ANSI_YELLOW + "Defend" + Colors.ANSI_RESET + "\', or \'" + Colors.ANSI_YELLOW + "Heal" + Colors.ANSI_RESET + "\'\n" + Colors.ANSI_YELLOW + "1. Attack" + Colors.ANSI_RESET + " - Attacks opponent with a small chance for a" + Colors.ANSI_RED + " critical" + Colors.ANSI_RESET + " hit\n" + Colors.ANSI_YELLOW + "2. Defend" + Colors.ANSI_RESET + " - Blocks all damage except" + Colors.ANSI_RED + " critical" + Colors.ANSI_RESET + " hits\n" + Colors.ANSI_YELLOW + "3. Heal " + Colors.ANSI_RESET + "- Heals a fraction of " + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s health. " + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " has " + GameState.playerHealCount + " heals left");
+                    Graphics.text(Colors.ANSI_RESET + "Enter \'" + Colors.ANSI_YELLOW + "Attack" + Colors.ANSI_RESET + "\', \'" + Colors.ANSI_YELLOW + "Defend" + Colors.ANSI_RESET + "\', or \'" + Colors.ANSI_YELLOW + "Heal" + Colors.ANSI_RESET + "\': (" + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " has " + GameState.playerHealCount + " heals left)");
                 }
                 else if (GameState.playerHealCount == 1) {
-                    Graphics.text(Colors.ANSI_RESET + "Enter \'" + Colors.ANSI_YELLOW + "Attack" + Colors.ANSI_RESET + "\', \'" + Colors.ANSI_YELLOW + "Defend" + Colors.ANSI_RESET + "\', or \'" + Colors.ANSI_YELLOW + "Heal" + Colors.ANSI_RESET + "\'\n" + Colors.ANSI_YELLOW + "1. Attack" + Colors.ANSI_RESET + " - Attacks opponent with a small chance for a" + Colors.ANSI_RED + " critical" + Colors.ANSI_RESET + " hit\n" + Colors.ANSI_YELLOW + "2. Defend" + Colors.ANSI_RESET + " - Blocks all damage except" + Colors.ANSI_RED + " critical" + Colors.ANSI_RESET + " hits\n" + Colors.ANSI_YELLOW + "3. Heal " + Colors.ANSI_RESET + "- Heals a fraction of " + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s health. " + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " has 1 heal left");
+                    Graphics.text(Colors.ANSI_RESET + "Enter \'" + Colors.ANSI_YELLOW + "Attack" + Colors.ANSI_RESET + "\', \'" + Colors.ANSI_YELLOW + "Defend" + Colors.ANSI_RESET + "\', or \'" + Colors.ANSI_YELLOW + "Heal" + Colors.ANSI_RESET + "\': (" + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " has 1 heal left)");
                 }
                 else {
-                    Graphics.text(Colors.ANSI_RESET + "Enter \'" + Colors.ANSI_YELLOW + "Attack" + Colors.ANSI_RESET + "\', \'" + Colors.ANSI_YELLOW + "Defend" + Colors.ANSI_RESET + "\', or \'" + Colors.ANSI_YELLOW + "Heal" + Colors.ANSI_RESET + "\'\n" + Colors.ANSI_YELLOW + "1. Attack" + Colors.ANSI_RESET + " - Attacks opponent with a small chance for a" + Colors.ANSI_RED + " critical" + Colors.ANSI_RESET + " hit\n" + Colors.ANSI_YELLOW + "2. Defend" + Colors.ANSI_RESET + " - Blocks all damage except" + Colors.ANSI_RED + " critical" + Colors.ANSI_RESET + " hits\n" + Colors.ANSI_YELLOW + "3. Heal " + Colors.ANSI_RESET + "- Heals a fraction of " + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s health. " + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " has 0 heals left");
+                    Graphics.text(Colors.ANSI_RESET + "Enter \'" + Colors.ANSI_YELLOW + "Attack" + Colors.ANSI_RESET + "\', \'" + Colors.ANSI_YELLOW + "Defend" + Colors.ANSI_RESET + "\', or \'" + Colors.ANSI_YELLOW + "Heal" + Colors.ANSI_RESET + "\': (" + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " has 0 heals left)");
                 }
 
                 do {

@@ -130,6 +130,7 @@ public class Story {
                 GameState.weapon = "greatspear";
                 Graphics.displayWeapons("Spear", Colors.BLACK_BOLD_BRIGHT);
                 GameState.playerHealAmount = 32;
+                // System.out.println(GameState.playerAttack);
                 break;
 
             }
@@ -140,6 +141,7 @@ public class Story {
                 GameState.weapon = "battleaxe";
                 Graphics.displayWeapons("Axe", Colors.RED_BOLD);
                 GameState.playerAttack = 11;
+                System.out.println(GameState.playerAttack);
                 break;
 
             }
@@ -633,7 +635,7 @@ public class Story {
                 }
                 else{
 
-                    Graphics.textInline(Colors.ANSI_PURPLE + "You come upon a door. It is locked. You try to force it open, but it remains steadfast.\nperhaps something in the left passage will help.\n");
+                    Graphics.textInline(Colors.ANSI_PURPLE + "You come upon a door. It is locked. You try to force it open, but it remains steadfast.\nPerhaps something in the left passage will help.\n");
                 
                 }
             }
