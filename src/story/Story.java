@@ -141,7 +141,7 @@ public class Story {
                 GameState.weapon = "battleaxe";
                 Graphics.displayWeapons("Axe", Colors.RED_BOLD);
                 GameState.playerAttack = 11;
-                System.out.println(GameState.playerAttack);
+                // System.out.println(GameState.playerAttack);
                 break;
 
             }
