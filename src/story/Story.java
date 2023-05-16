@@ -440,7 +440,6 @@ public class Story {
                 Graphics.textSpeed = normalSpeed;
                 
                 Graphics.displayHealing("Key", Colors.BLACK_BRIGHT);
-                Thread.sleep(5000);
                 Graphics.waitForEnter();
 
                 //Option for 2nd skeleton fight
@@ -478,7 +477,6 @@ public class Story {
                         // Upgrade sound
                         play.playAudio("./src/audio/soundEffects/significant_upgrade.wav", 0, 0.0F, 0);
                         Graphics.displayHealing("MagicalNecklace", Colors.CYAN_BOLD);
-                        Thread.sleep(5000);
 
                         Graphics.waitForEnter();
                         Player.fadeInAudio(caveSfx, 500, -1, 0.0F);
@@ -719,8 +717,6 @@ public class Story {
                             Graphics.displayWeapons("Axe", Colors.RED_BOLD_BRIGHT);
 
                         }
-
-                        Thread.sleep(5000);
 
                         Graphics.textSpeed = normalSpeed;
                         GameState.playerCriticalChance = 4;
