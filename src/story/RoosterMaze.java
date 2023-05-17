@@ -166,7 +166,11 @@ public class RoosterMaze {
                     System.out.print(Colors.YELLOW_BOLD
                             + "0"
                             + Colors.ANSI_RESET);
-                } else {
+                }
+                else if (maze[i][j].contains("B")) {
+                    System.out.print(Colors.YELLOW_BOLD + "E" + Colors.ANSI_RESET);
+                }
+                else {
                     System.out.print(" ");
                 }
 

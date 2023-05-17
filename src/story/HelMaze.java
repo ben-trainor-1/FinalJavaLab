@@ -13,7 +13,7 @@ public class HelMaze {
         //Key: L = left, R = right, U = up, D = down, B = bossfight(exit)
         //     E = enemy, 1 = riddle #1, 2 = riddle #2, 3 = riddle #3
         {"DR","LDR","LR","L7","R8","LDR","LD"},
-        {"UX","RDU","LRD","LR","LR","LU","H"},
+        {"UX","RDU","LRD","LR","LR","LU","B"},
         {"R6","LDU","RU","LR","L3","DE4","D5"},
         {"D2E","UR","LDR","LR","LDR","LUR","DLU"},
         {"DUR","LD","U","D1","U","D","DU"},
@@ -184,6 +184,9 @@ public class HelMaze {
 
                 if (playerLocation[0] == i && playerLocation[1] == j) {
                     System.out.print(Colors.YELLOW_BOLD + "0" + Colors.ANSI_RESET);
+                }
+                else if (maze[i][j].contains("B")) {
+                    System.out.print(Colors.YELLOW_BOLD + "E" + Colors.ANSI_RESET);
                 }
                 else {
                     System.out.print(" ");
