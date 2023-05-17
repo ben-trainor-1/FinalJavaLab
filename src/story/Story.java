@@ -911,7 +911,7 @@ public class Story {
                         Graphics.textSpeed = slowSpeed;
 
                         Graphics.textInline(Colors.PURPLE_BRIGHT + "After a long, exhausting battle, Loki seems completely unfazed. He suddenly stops.\n"
-                                            + Colors.BLACK_BRIGHT+  "\"Alas! I must be off! I\'m sincerely sorry we cannot finish. Perhaps I will visit you during Ragnarok!\nYou have my full assurances that this is fate\'s will, not mine!\nToddles!\"\n" + Colors.ANSI_RESET
+                                            + Colors.BLACK_BRIGHT+  "\"Alas! I must be off! I\'m sincerely sorry we cannot finish. Perhaps I will visit you during Ragnarok!\nYou have my full assurances that this is fate\'s will, not mine!\nToodles!\"\n" + Colors.ANSI_RESET
                                             + Colors.PURPLE_BRIGHT + "With that he jumps off the boat."); 
                         Graphics.textInline("As for you...");
                         Graphics.waitForEnter();

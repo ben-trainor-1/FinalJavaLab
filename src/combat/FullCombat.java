@@ -840,7 +840,7 @@ public class FullCombat {
                         Graphics.waitForEnter();
 
                         // Respawn statement
-                        Graphics.textInline("\n\n" + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s brave soul is taken up to Valhalla for " + GameState.posNoun.toLowerCase() + "eternal reward...");
+                        Graphics.textInline("\n\n" + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + "\'s brave soul is taken up to Valhalla for " + GameState.posNoun.toLowerCase() + " eternal reward...");
                         Graphics.waitForEnter();
                         Graphics.textInline("\nBut wait!");
                         Graphics.waitForEnter();
