@@ -146,19 +146,19 @@ public class FullCombat {
                     Graphics.waitForEnter();
                     Graphics.textInline("However, " + Colors.YELLOW_BOLD + "critical hits" + Colors.ANSI_RESET + " from your opponent will " + Colors.YELLOW_BOLD + "cut through your defense" + Colors.ANSI_RESET + " and deal the full amount!");
                     Graphics.waitForEnter();
-                    Graphics.textInline("If you successfully defend, you will receive a defensive buff in the next round\n"
+                    Graphics.textInline("If you successfully defend, you will receive a " + Colors.YELLOW_BOLD + "defensive buff" + Colors.ANSI_RESET + " in the next round\n"
                                         + "and receive less damage from any attacks (including critical hits).");
                     Graphics.waitForEnter();
                     // Healing
-                    Graphics.textInline("\nWhen you heal, you will recover a random amount of health based on your character's heal amount.");
+                    Graphics.textInline("\nWhen you " + Colors.GREEN_BOLD + "heal" + Colors.ANSI_RESET + ", you will recover a random amount of health based on your character's heal amount.");
                     Graphics.waitForEnter();
-                    Graphics.textInline("Currently, your base heal amount is " + GameState.playerHealAmount + "."
-                                        + "\nThat means you will heal anywhere between " + (GameState.playerHealAmount - 5) + " and " + (GameState.playerHealAmount + 5) + " health.");
+                    Graphics.textInline("Currently, your base heal amount is " + Colors.GREEN_BOLD + GameState.playerHealAmount + Colors.ANSI_RESET + "."
+                                        + "\nThat means you will heal anywhere between " + Colors.GREEN_BOLD + (GameState.playerHealAmount - 5) + Colors.ANSI_RESET + " and " + Colors.GREEN_BOLD + (GameState.playerHealAmount + 5) + Colors.ANSI_RESET + " health.");
                     Graphics.waitForEnter();
                     Graphics.textInline("You will be vulnerable to attacks but may mitigate the damage by healing.");
                     Graphics.waitForEnter();
                     // Last line
-                    Graphics.textInline("\nYour opponents will use these same tactics against you, so choose wisely!");
+                    Graphics.textInline(Colors.ANSI_PURPLE + "\nYour opponents will use these same tactics against you, so choose wisely!" + Colors.ANSI_RESET);
                     Graphics.waitForEnter();
                     Graphics.space(1);
                     tutorialFinished = true;
@@ -209,6 +209,7 @@ public class FullCombat {
                 
                 // Colors.ANSI_RESET + "Enter " + Colors.ANSI_YELLOW + "1" + Colors.ANSI_RESET + " for Attack - Enter " + Colors.ANSI_YELLOW + "2" + Colors.ANSI_RESET + " for Defend - Enter " + Colors.ANSI_YELLOW + "3" + Colors.ANSI_RESET + " for Heal\n"
            
+
                 // Choose action
                 if (GameState.playerHealCount > 1) {
                     Graphics.text(Colors.ANSI_RESET + "Enter \'" + Colors.ANSI_YELLOW + "Attack" + Colors.ANSI_RESET + "\', \'" + Colors.ANSI_YELLOW + "Defend" + Colors.ANSI_RESET + "\', or \'" + Colors.ANSI_YELLOW + "Heal" + Colors.ANSI_RESET + "\': (" + Colors.ANSI_GREEN + GameState.name + Colors.ANSI_RESET + " has " + GameState.playerHealCount + " heals left)");
@@ -268,9 +269,12 @@ public class FullCombat {
                     }
                     else if (stringInput.equals("failsafe")) {
                         input = 0;
-                        failsafe = true;
-                        combatMusic.stop();
-                        break;
+                        if (GameState.enemy.equals("Reginald")) Graphics.text(Colors.RED_BOLD + "You cannot escape the almighty Reginald. Try again." + Colors.ANSI_RESET);
+                        else {
+                            failsafe = true;
+                            combatMusic.stop();
+                            break;
+                        }
                     }
                     else {
                         Graphics.text(Colors.ANSI_RESET + "Do you not know how to read? You must be a true viking. Try again.");
@@ -798,6 +802,9 @@ public class FullCombat {
                 // Calculate what happens
                 if (GameState.playerHealth <= 0) {
                     if (GameState.enemy.equals("Reginald")) {
+
+                        GameState.playerHealCount = playerInitialHealCount;
+                        GameState.enemyHealCount = enemyInitialHealCount;
                         Graphics.displayDeath("Tomb", Colors.ANSI_BLACK);
                         Player.fadeOutAudio(combatMusic, 2000);
                         Graphics.textInline("\n" + Colors.ANSI_RED + GameState.name + " attempted to fight valiantly, but was absolutely whooped by the almighty " + GameState.enemy + "..." + Colors.ANSI_RESET);
@@ -812,9 +819,12 @@ public class FullCombat {
                         Graphics.textInline("She grants you another life...");
                         Graphics.waitForEnter();
                         Graphics.textInline("\nDon't make the mistake of fighting the almighty " + Colors.ANSI_RED + GameState.enemy + Colors.ANSI_RESET + " again...");
-                        Graphics.waitForEnter();                    }
+                        Graphics.waitForEnter();                    
+                    }
                     else if (GameState.enemy.equals("Loki")) {
                       
+                        GameState.playerHealCount = playerInitialHealCount;
+                        GameState.enemyHealCount = enemyInitialHealCount;
                         Player.fadeOutAudio(combatMusic, 2000);
                         Graphics.textInline("\n\nThe fight with " + Colors.ANSI_RED + "Loki" + Colors.ANSI_RESET + " is hard and tedious...");
                         Graphics.waitForEnter();
@@ -853,6 +863,8 @@ public class FullCombat {
                 }
                 else {
 
+                    GameState.playerHealCount = playerInitialHealCount;
+                    GameState.enemyHealCount = enemyInitialHealCount;
                     play.playAudio("./src/audio/soundEffects/victory_theme.wav", 0, -5.0F, 0);
                     Graphics.displayWin("Trophy", Colors.ANSI_YELLOW);
                     Player.fadeOutAudio(combatMusic, 1750);
