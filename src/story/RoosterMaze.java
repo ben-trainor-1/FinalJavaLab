@@ -83,13 +83,19 @@ public class RoosterMaze {
 
         // Check for Enemies
         if (mazeInfo.contains("E")) {
+            
             Player.fadeOutAudio(clip, 1500);
             Graphics.text(Colors.RED_BOLD + "Uh-oh! A mysterious figure stands menacingly" + Colors.ANSI_RESET);
             Thread.sleep(50);
 
+            //Battle
             FullCombat.enemyGameState("Skeleton2", 85, 15, 5, 10, 4, 7, 5, 4, 1, 20);
             FullCombat.fight();
             Player.fadeInAudio(clip, 1500, -1, 0.0F);
+
+            //Remove enemy fight
+            maze[mazePosition[0]][mazePosition[1]] = mazeInfo.replaceAll("E", "");
+
         }
 
         // Check for Riddles
@@ -157,6 +163,9 @@ public class RoosterMaze {
     public static void printMap(String[][] mazeInstance, int[] playerLocation) throws Exception {
 
         for (int i = 0; i < mazeInstance.length; i++) {
+            
+            // for (int k = 0; k <= maze[0].length * 4; k++) System.out.print("-");
+            // System.out.println(Colors.ANSI_RESET);
 
             for (int j = 0; j < mazeInstance[0].length; j++) {
 
@@ -171,15 +180,17 @@ public class RoosterMaze {
                     System.out.print(Colors.YELLOW_BOLD + "E" + Colors.ANSI_RESET);
                 }
                 else {
-                    System.out.print(" ");
+                    System.out.print(Colors.BLACK_BOLD_BRIGHT + " ");
                 }
 
                 System.out.print(Colors.BLACK_BOLD_BRIGHT + " ");
 
             }
-            System.out.println("|" + Colors.ANSI_RESET);
+            System.out.println(Colors.BLACK_BOLD_BRIGHT + "|");
             Thread.sleep(50);
 
         }
+        // for (int k = 0; k <= maze[0].length * 4; k++) System.out.print("-");
+        System.out.println(Colors.ANSI_RESET);
     }
 }
